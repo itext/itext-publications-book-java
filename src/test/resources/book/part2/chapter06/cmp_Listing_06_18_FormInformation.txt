@@ -1,0 +1,38 @@
+title: Text
+director: Text
+CP_1: Button
+CP_2: Button
+CP_3: Button
+GP_3: Button
+GP_4: Button
+GP_7: Button
+GP_8: Button
+MA_2: Button
+MA_3: Button
+category: Button
+category.1: Button
+category.2: Button
+category.3: Button
+category.4: Button
+category.5: Button
+category.6: Button
+category.7: Button
+category.8: Button
+category.9: Button
+category.10: Button
+category.11: Button
+category.12: Button
+category.13: Button
+category.14: Button
+category.15: Button
+category.16: Button
+category.17: Button
+category.18: Button
+category.19: Button
+duration: Text
+year: Text
+Possible values for CP_1:
+ - Off
+ - Yes
+Possible values for category:
+spec, toro, anim, comp, hero, Off, worl, rive, teen, kim, kauf, zha, fest, s-am, fdir, lee, kubr, kuro, fran, scan

@@ -1,0 +1,36 @@
+./src/test/resources/book/part1/chapter01/cmp_Listing_01_05_HelloWorldLandscape1.pdf
+Number of pages: 1
+Size of page 1: [0.0,0.0,595.0,842.0]
+Rotation of page 1: 0
+Page size with rotation of page 1: Rectangle: 792.0x612.0
+Is rebuilt? false
+Is encrypted? false
+
+
+./src/test/resources/book/part1/chapter01/cmp_Listing_01_06_HelloWorldLandscape2.pdf
+Number of pages: 1
+Size of page 1: [0.0,0.0,595.0,842.0]
+Rotation of page 1: 0
+Page size with rotation of page 1: Rectangle: 792.0x612.0
+Is rebuilt? false
+Is encrypted? false
+
+
+./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf
+Number of pages: 8
+Size of page 1: [0.0,0.0,595.0,842.0]
+Rotation of page 1: 0
+Page size with rotation of page 1: Rectangle: 842.0x595.0
+Is rebuilt? false
+Is encrypted? false
+
+
+./src/test/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf
+Number of pages: 1
+Size of page 1: [0.0,0.0,595.0,842.0]
+Rotation of page 1: 0
+Page size with rotation of page 1: Rectangle: 2384.0x3370.0
+Is rebuilt? false
+Is encrypted? false
+
+
