@@ -23,8 +23,10 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
+import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
+@Ignore("See DEVSIX-660")
 @Category(SampleTest.class)
 public class Listing_11_01_FontTypes extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_01_FontTypes.pdf";
