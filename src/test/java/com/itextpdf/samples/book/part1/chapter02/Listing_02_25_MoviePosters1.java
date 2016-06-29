@@ -7,28 +7,26 @@
 
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_02_25_MoviePosters1 extends GenericTest {
@@ -42,10 +40,8 @@ public class Listing_02_25_MoviePosters1 extends GenericTest {
     public void manipulatePdf(String dest) throws IOException, SQLException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
 
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        //Initialize document
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         Rectangle rect = new Rectangle(0, 806, 36, 842);

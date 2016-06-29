@@ -10,16 +10,13 @@ package com.itextpdf.samples.book.part2.chapter06;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
+
+import java.io.IOException;
 
 // Notice that this example actually is not from book
 @Category(SampleTest.class)
@@ -34,12 +31,10 @@ public class Listing_06_12_StampText_Option2 extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         //Initialize reader
-        FileInputStream fis = new FileInputStream(SOURCE);
-        PdfReader reader = new PdfReader(fis);
+        PdfReader reader = new PdfReader(SOURCE);
 
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
+        PdfWriter writer = new PdfWriter(dest);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(reader, writer);

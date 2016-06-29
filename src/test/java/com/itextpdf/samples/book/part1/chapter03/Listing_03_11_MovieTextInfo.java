@@ -8,34 +8,31 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-
+import com.itextpdf.layout.property.Property;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
@@ -57,12 +54,8 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4.getHeight(), PageSize.A4.getWidth()));
         doc.setMargins(0, 0, 0, 0);
 

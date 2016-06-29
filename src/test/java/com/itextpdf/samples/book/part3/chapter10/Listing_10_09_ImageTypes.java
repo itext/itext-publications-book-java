@@ -11,23 +11,21 @@ import com.itextpdf.barcodes.BarcodeEAN;
 import com.itextpdf.barcodes.BarcodePDF417;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageData;
-import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageHelper;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageData;
+import com.itextpdf.kernel.pdf.canvas.wmf.WmfImageHelper;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-
-import java.awt.Toolkit;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
+
+import java.awt.*;
+import java.io.IOException;
 
 @Category(SampleTest.class)
 public class Listing_10_09_ImageTypes extends GenericTest {
@@ -50,12 +48,8 @@ public class Listing_10_09_ImageTypes extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         Image img;

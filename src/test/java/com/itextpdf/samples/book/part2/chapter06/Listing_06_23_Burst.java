@@ -15,8 +15,6 @@ import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -34,14 +32,10 @@ public class Listing_06_23_Burst extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        FileInputStream fis = new FileInputStream(MOVIE_TEMPLATES);
-        PdfReader reader = new PdfReader(fis);
-        PdfDocument srcDoc = new PdfDocument(reader);
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(MOVIE_TEMPLATES));
 
         for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
-            FileOutputStream fos = new FileOutputStream(String.format(FORMATTEDDEST, i));
-            PdfWriter writer = new PdfWriter(fos);
-            PdfDocument pdfDoc = new PdfDocument(writer);
+            PdfDocument pdfDoc = new PdfDocument(new PdfWriter(String.format(FORMATTEDDEST, i)));
             pdfDoc.initializeOutlines();
 
             srcDoc.copyPagesTo(i, i, pdfDoc, new PdfPageFormCopier());

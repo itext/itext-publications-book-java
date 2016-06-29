@@ -13,14 +13,12 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
 
 public class Listing_11_18_Ligatures2 extends GenericTest {
 
@@ -50,12 +48,8 @@ public class Listing_11_18_Ligatures2 extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
         LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc);
 
         PdfFont bf = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);

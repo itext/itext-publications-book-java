@@ -7,17 +7,14 @@
 
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -55,12 +52,8 @@ public class Listing_03_03_MovieTimeTable extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         pdfDoc.setDefaultPageSize(PageSize.A4.rotate());
 
         PdfPage page = pdfDoc.addNewPage();

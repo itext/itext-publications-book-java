@@ -14,24 +14,22 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_02_22_MovieLinks1 extends GenericTest {
@@ -44,10 +42,8 @@ public class Listing_02_22_MovieLinks1 extends GenericTest {
     }
 
     public void manipulatePdf(String destination) throws IOException, SQLException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(destination);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        //Initialize document
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(destination));
         Document doc = new Document(pdfDoc);
 
         bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);

@@ -9,20 +9,17 @@ package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_16_02_ResizeImage extends GenericTest {
@@ -37,7 +34,7 @@ public class Listing_16_02_ResizeImage extends GenericTest {
         PdfName key = new PdfName("ITXT_SpecialId");
         PdfName value = new PdfName("123456789");
         // Read the file
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SPECIAL_ID), new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SPECIAL_ID), new PdfWriter(dest));
         int n = pdfDoc.getNumberOfPdfObjects();
         PdfObject object;
         PdfStream stream;

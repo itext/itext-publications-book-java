@@ -20,7 +20,6 @@ import com.lowagie.filmfestival.PojoFactory;
 import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
@@ -36,9 +35,7 @@ public class Listing_02_06_MovieTitles extends GenericTest {
 
     public void manipulatePdf(String dest) throws FileNotFoundException, SQLException, UnsupportedEncodingException {
         // Initialize document
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

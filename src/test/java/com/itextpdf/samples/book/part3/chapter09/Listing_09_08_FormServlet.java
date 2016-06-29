@@ -35,8 +35,7 @@ public class Listing_09_08_FormServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/pdf");
         // We get a resource from our web app
-        InputStream is
-                = getServletContext().getResourceAsStream("/subscribe.pdf");
+        InputStream is = getServletContext().getResourceAsStream("/subscribe.pdf");
         // We create an OutputStream for the new PDF
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         // Now we create the PDF

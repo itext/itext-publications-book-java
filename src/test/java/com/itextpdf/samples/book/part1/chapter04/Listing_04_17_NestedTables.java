@@ -31,7 +31,6 @@ import com.lowagie.filmfestival.PojoToElementFactory;
 import com.lowagie.filmfestival.Screening;
 import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -59,9 +58,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // create the database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
 
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12

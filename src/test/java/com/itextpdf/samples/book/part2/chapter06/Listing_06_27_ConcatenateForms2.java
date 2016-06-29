@@ -19,7 +19,6 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -59,21 +58,17 @@ public class Listing_06_27_ConcatenateForms2 extends GenericTest {
     @Override
     public void manipulatePdf(String dest) throws SQLException, IOException {
         // Create the result document
-        FileOutputStream fos = new FileOutputStream(DEST);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         pdfDoc.initializeOutlines();
 
         // Create the first source document
-        PdfReader reader = new PdfReader(new ByteArrayInputStream(renameFieldsIn(DATASHEET, 1)));
-        PdfDocument srcDoc = new PdfDocument(reader);
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(renameFieldsIn(DATASHEET, 1))));
 
         srcDoc.copyPagesTo(1, 1, pdfDoc, new PdfPageFormCopier());
         srcDoc.close();
 
         // Create the second source document
-        reader = new PdfReader(new ByteArrayInputStream(renameFieldsIn(DATASHEET, 2)));
-        srcDoc = new PdfDocument(reader);
+        srcDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(renameFieldsIn(DATASHEET, 2))));
 
         srcDoc.copyPagesTo(1, 1, pdfDoc, new PdfPageFormCopier());
         srcDoc.close();

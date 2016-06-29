@@ -10,18 +10,15 @@ package com.itextpdf.samples.book.part1.chapter03;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -37,12 +34,8 @@ public class Listing_03_23_ImageDirect extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
-        //Initialize document and add page
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        //Initialize document
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Rectangle postcard = new Rectangle(283, 416);
         Document doc = new Document(pdfDoc, new PageSize(postcard.getWidth(), postcard.getHeight()));
         doc.setMargins(30, 30, 30, 30);

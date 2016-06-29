@@ -24,11 +24,9 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import java.io.FileOutputStream;
-import java.util.Locale;
-
 import org.junit.experimental.categories.Category;
+
+import java.util.Locale;
 
 
 @Category(SampleTest.class)
@@ -42,12 +40,8 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         String foobar = "Foobar Film Festival";

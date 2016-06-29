@@ -20,7 +20,6 @@ import com.lowagie.filmfestival.PojoFactory;
 import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -35,8 +34,7 @@ public class Listing_06_25_DataSheets2 extends Listing_06_24_DataSheets1 {
     }
 
     public void manipulatePdf(String dest) throws SQLException, IOException {
-        PdfWriter writer = new PdfWriter(new FileOutputStream(dest));
-        PdfDocument pdfDocResult = new PdfDocument(writer);
+        PdfDocument pdfDocResult = new PdfDocument(new PdfWriter(dest));
         pdfDocResult.initializeOutlines();
         addDataSheet(pdfDocResult);
     }
@@ -51,9 +49,8 @@ public class Listing_06_25_DataSheets2 extends Listing_06_24_DataSheets1 {
 
         // Loop over all the movies and fill out the data sheet
         for (Movie movie : movies) {
-            reader = new PdfReader(DATASHEET);
             baos = new ByteArrayOutputStream();
-            PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(baos));
+            PdfDocument pdfDoc = new PdfDocument(new PdfReader(DATASHEET), new PdfWriter(baos));
             PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
             form.setGenerateAppearance(true);
             fill(form, movie);

@@ -9,20 +9,18 @@ package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_05_15_Hero1 extends GenericTest {
@@ -35,9 +33,7 @@ public class Listing_05_15_Hero1 extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(new Rectangle(-1192, -1685, 2 * 1192, 2 * 1685)));
         pdfDoc.addNewPage();
         PdfFormXObject template = new PdfFormXObject(new Rectangle(pdfDoc.getDefaultPageSize().getWidth(),

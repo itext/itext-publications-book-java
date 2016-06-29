@@ -8,26 +8,24 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
+
+import java.io.IOException;
 
 @Category(SampleTest.class)
 public class Listing_03_01_FestivalOpening extends GenericTest {
@@ -44,12 +42,8 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, PageSize.A6);
 
         //Initialize paragraph, add it to document, add new page, add paragraph again

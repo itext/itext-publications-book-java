@@ -7,30 +7,15 @@
 
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.kernel.pdf.PdfArray;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfNumber;
-import com.itextpdf.kernel.pdf.PdfObject;
-import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Map;
-
 import org.junit.experimental.categories.Category;
 import org.w3c.dom.Element;
 
@@ -42,6 +27,12 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Map;
 
 @Category(SampleTest.class)
 public class Listing_07_02_LinkActions extends GenericTest {
@@ -62,12 +53,8 @@ public class Listing_07_02_LinkActions extends GenericTest {
         // Open the database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
 
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         Paragraph p = new Paragraph("Click on a country, and you'll get a list of movies, containing links to the ").

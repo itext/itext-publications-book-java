@@ -7,35 +7,31 @@
 
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageData;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.samples.GenericTest;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_03_26_MoviePosters extends GenericTest {
@@ -49,12 +45,8 @@ public class Listing_03_26_MoviePosters extends GenericTest {
     }
 
     public  void manipulatePdf(String dest) throws FileNotFoundException, UnsupportedEncodingException, SQLException, MalformedURLException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document and add page
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfPage page = pdfDoc.addNewPage();
 
         //Initialize form XObject and write to it

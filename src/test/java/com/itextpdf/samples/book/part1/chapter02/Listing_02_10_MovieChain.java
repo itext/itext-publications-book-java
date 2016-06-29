@@ -10,28 +10,25 @@ package com.itextpdf.samples.book.part1.chapter02;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.hyphenation.HyphenationConfig;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_02_10_MovieChain extends GenericTest {
@@ -43,16 +40,12 @@ public class Listing_02_10_MovieChain extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws FileNotFoundException, SQLException, UnsupportedEncodingException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         List<Movie> kubrick = PojoFactory.getMovies(connection, 1);
         connection.close();
 
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(240, 240));
         doc.setMargins(10, 10, 10, 10);
         // create a long Stringbuffer with movie titles

@@ -9,8 +9,6 @@ package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.canvas.PdfPatternCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.color.DeviceRgb;
@@ -18,18 +16,18 @@ import com.itextpdf.kernel.color.PatternColor;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.canvas.PdfPatternCanvas;
 import com.itextpdf.kernel.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.kernel.pdf.colorspace.PdfPattern;
 import com.itextpdf.kernel.pdf.colorspace.PdfSpecialCs;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_03_TilingPatternColor extends GenericTest {
@@ -48,12 +46,8 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws FileNotFoundException, MalformedURLException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         //Write to canvas
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());

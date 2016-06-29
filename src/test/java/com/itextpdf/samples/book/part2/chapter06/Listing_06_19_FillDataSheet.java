@@ -25,7 +25,6 @@ import com.lowagie.filmfestival.Screening;
 import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -46,7 +45,7 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
         // Create a database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // Get the movies
-        PdfDocument pdfDocResult = new PdfDocument(new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDocResult = new PdfDocument(new PdfWriter(dest));
         pdfDocResult.initializeOutlines();
         List<Movie> movies = PojoFactory.getMovies(connection);
         PdfReader reader;
@@ -56,9 +55,8 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
         for (Movie movie : movies) {
             if (movie.getYear() < 2007)
                 continue;
-            reader = new PdfReader(DATASHEET);
             baos = new ByteArrayOutputStream();
-            pdfDoc = new PdfDocument(reader, new PdfWriter(baos));
+            pdfDoc = new PdfDocument(new PdfReader(DATASHEET), new PdfWriter(baos));
             PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
             form.setGenerateAppearance(true);
             fill(form, movie);

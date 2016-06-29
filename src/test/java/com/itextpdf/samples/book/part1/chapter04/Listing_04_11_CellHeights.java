@@ -18,7 +18,6 @@ import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -31,9 +30,7 @@ public class Listing_04_11_CellHeights extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A5).rotate());
 
         Table table = new Table(2);

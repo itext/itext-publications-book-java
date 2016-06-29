@@ -9,18 +9,16 @@ package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_01_MyFirstTable extends GenericTest {
@@ -31,9 +29,7 @@ public class Listing_04_01_MyFirstTable extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         doc.add(createFirstTable());
         doc.close();

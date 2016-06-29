@@ -9,31 +9,29 @@ package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.layout.property.HorizontalAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_06_Layers extends GenericTest {
@@ -72,13 +70,10 @@ public class Listing_06_06_Layers extends GenericTest {
         createOriginalPdf(SOURCE);
 
         // Initialize source document
-        PdfReader reader = new PdfReader(SOURCE);
-        PdfDocument srcDoc = new PdfDocument(reader);
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(SOURCE));
 
         // Initialize result document
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument resultDoc = new PdfDocument(writer);
+        PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(resultDoc, new PageSize(PageSize.A5).rotate());
 
         PdfFont font = PdfFontFactory.createFont(FontConstants.ZAPFDINGBATS, true);
@@ -104,9 +99,7 @@ public class Listing_06_06_Layers extends GenericTest {
         PageSize postCard = new PageSize(283, 416);
 
         // Initialize document
-        FileOutputStream fos = new FileOutputStream(filename);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc, postCard);
         doc.setMargins(30, 30, 30, 30);
 

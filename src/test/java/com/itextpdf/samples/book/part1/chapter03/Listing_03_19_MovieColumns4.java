@@ -18,18 +18,16 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.property.Property;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-
-import java.io.FileOutputStream;
-import java.util.List;
-
 import org.junit.experimental.categories.Category;
+
+import java.util.List;
 
 @Category(SampleTest.class)
 public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
@@ -49,12 +47,8 @@ public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         normal = PdfFontFactory.createFont(FontConstants.HELVETICA);

@@ -15,13 +15,9 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.border.Border;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Image;
-import com.itextpdf.layout.element.List;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -29,14 +25,13 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.sql.SQLException;
-
-import org.junit.experimental.categories.Category;
 
 
 @Category(SampleTest.class)
@@ -102,15 +97,13 @@ public class Listing_04_20_MemoryTests extends GenericTest {
         // Create a connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // step 1
-        FileOutputStream fos = new FileOutputStream(filename);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA); // 12
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
-        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE); // 12
-        boldItalic = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLDOBLIQUE); // 12
+        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
+        boldItalic = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLDOBLIQUE);
 
         // step 4
         // Create a table with 2 columns

@@ -7,25 +7,28 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfButtonFormField;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Canvas;
+import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AbstractElement;
-import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.element.ILeafElement;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.layout.LayoutArea;
@@ -36,19 +39,13 @@ import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfButtonFormField;
-import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_08_01_Buttons extends GenericTest {
@@ -89,9 +86,7 @@ public class Listing_08_01_Buttons extends GenericTest {
     }
 
     public void createPdf(String filename) throws IOException {
-        FileOutputStream fos = new FileOutputStream(filename);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE).replace("\r\n", "\n")));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
@@ -179,8 +174,7 @@ public class Listing_08_01_Buttons extends GenericTest {
      * @throws IOException
      */
     public void fillPdf(String src, String dest) throws IOException {
-        PdfReader reader = new PdfReader(src);
-        PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(dest)));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         String[] radiostates = form.getField("language").getAppearanceStates();
         form.getField("language").setValue(radiostates[4]);
@@ -189,7 +183,6 @@ public class Listing_08_01_Buttons extends GenericTest {
             form.getField(LANGUAGES[i]).setValue(checkboxStates[i % 2 == 0 ? 1 : 0], false);
         }
         pdfDoc.close();
-        reader.close();
     }
 
     private class Button extends AbstractElement<Button> implements ILeafElement, IAccessibleElement {

@@ -20,12 +20,10 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 // TODO DEVSIX-574
@@ -38,9 +36,7 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         Table table = new Table(new float[]{1, 3, 3, 3});

@@ -28,12 +28,10 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_03_20_ColumnMovies1 extends GenericTest {
@@ -53,12 +51,8 @@ public class Listing_03_20_ColumnMovies1 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, PageSize.A4.rotate());
 
         doc.setRenderer(new ColumnDocumentRenderer(doc, COLUMNS));

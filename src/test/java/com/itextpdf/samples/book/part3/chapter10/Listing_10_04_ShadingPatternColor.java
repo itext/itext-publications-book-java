@@ -17,12 +17,10 @@ import com.itextpdf.kernel.pdf.colorspace.PdfPattern;
 import com.itextpdf.kernel.pdf.colorspace.PdfShading;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_04_ShadingPatternColor extends GenericTest {
@@ -38,12 +36,8 @@ public class Listing_10_04_ShadingPatternColor extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws FileNotFoundException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         //Write to canvas
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());

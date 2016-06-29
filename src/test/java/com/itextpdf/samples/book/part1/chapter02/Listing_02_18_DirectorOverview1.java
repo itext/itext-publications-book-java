@@ -14,7 +14,10 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.SolidLine;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.element.LineSeparator;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Tab;
+import com.itextpdf.layout.element.Text;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -22,7 +25,6 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.*;
 import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,10 +45,8 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        //Initialize document
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);

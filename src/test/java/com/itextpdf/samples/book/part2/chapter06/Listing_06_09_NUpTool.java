@@ -20,7 +20,6 @@ import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -52,8 +51,7 @@ public class Listing_06_09_NUpTool extends GenericTest {
     }
 
     public void multiplePdf(String source, String destination, int pow) throws IOException {
-        PdfReader reader = new PdfReader(source);
-        PdfDocument srcDoc = new PdfDocument(reader);
+        PdfDocument srcDoc = new PdfDocument(new PdfReader(source));
 
         Rectangle pageSize = srcDoc.getDefaultPageSize();
         Rectangle newSize = (pow % 2) == 0 ?
@@ -68,9 +66,7 @@ public class Listing_06_09_NUpTool extends GenericTest {
         int c = n / r;
 
         // Initialize result document
-        FileOutputStream fos = new FileOutputStream(String.format(destination, n));
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(String.format(destination, n)));
         Document doc = new Document(pdfDoc, new PageSize(newSize));
         pdfDoc.addNewPage();
 

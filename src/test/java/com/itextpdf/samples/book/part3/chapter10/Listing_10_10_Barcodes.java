@@ -7,34 +7,22 @@
 
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.barcodes.Barcode128;
-import com.itextpdf.barcodes.Barcode1D;
-import com.itextpdf.barcodes.Barcode39;
-import com.itextpdf.barcodes.BarcodeCodabar;
-import com.itextpdf.barcodes.BarcodeDataMatrix;
-import com.itextpdf.barcodes.BarcodeEAN;
-import com.itextpdf.barcodes.BarcodeEANSUPP;
-import com.itextpdf.barcodes.BarcodeInter25;
-import com.itextpdf.barcodes.BarcodePDF417;
-import com.itextpdf.barcodes.BarcodePostnet;
-import com.itextpdf.barcodes.BarcodeQRCode;
-import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.barcodes.*;
 import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_10_10_Barcodes extends GenericTest {
@@ -45,12 +33,8 @@ public class Listing_10_10_Barcodes extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws FileNotFoundException, UnsupportedEncodingException {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         Document doc = new Document(pdfDoc, new PageSize(340, 842));
 

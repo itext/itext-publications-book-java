@@ -7,28 +7,25 @@
 
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.color.WebColors;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.test.annotations.type.SampleTest;
-
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable {
@@ -50,12 +47,8 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         pdfDoc.setDefaultPageSize(PageSize.A4.rotate());
 
 

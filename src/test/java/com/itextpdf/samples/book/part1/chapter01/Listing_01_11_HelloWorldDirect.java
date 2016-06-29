@@ -9,16 +9,14 @@ package com.itextpdf.samples.book.part1.chapter01;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
+
+import java.io.IOException;
 
 @Category(SampleTest.class)
 public class Listing_01_11_HelloWorldDirect extends GenericTest {
@@ -31,8 +29,7 @@ public class Listing_01_11_HelloWorldDirect extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
+        PdfWriter writer = new PdfWriter(dest);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);

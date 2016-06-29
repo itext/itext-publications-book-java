@@ -10,18 +10,14 @@ package com.itextpdf.samples.book.part1.chapter01;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutResult;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.renderer.DocumentRenderer;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
-
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 
@@ -38,8 +34,7 @@ public class Listing_01_07_HelloWorldMirroredMargins extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
+        PdfWriter writer = new PdfWriter(dest);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);

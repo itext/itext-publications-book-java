@@ -10,16 +10,14 @@ package com.itextpdf.samples.book.part1.chapter01;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.experimental.categories.Category;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_01_06_HelloWorldLandscape2 extends GenericTest {
@@ -32,8 +30,7 @@ public class Listing_01_06_HelloWorldLandscape2 extends GenericTest {
 
     public void manipulatePdf(String dest) throws FileNotFoundException {
         // Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
+        PdfWriter writer = new PdfWriter(dest);
 
         // Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);

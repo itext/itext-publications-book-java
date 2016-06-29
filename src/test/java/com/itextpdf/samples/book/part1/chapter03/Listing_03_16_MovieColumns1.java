@@ -29,11 +29,9 @@ import com.lowagie.filmfestival.Country;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-
-import java.io.FileOutputStream;
-import java.util.List;
-
 import org.junit.experimental.categories.Category;
+
+import java.util.List;
 
 @Category(SampleTest.class)
 public class Listing_03_16_MovieColumns1 extends GenericTest {
@@ -47,12 +45,8 @@ public class Listing_03_16_MovieColumns1 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
         normal = PdfFontFactory.createFont(FontConstants.HELVETICA);

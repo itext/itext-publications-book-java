@@ -7,24 +7,22 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
+
+import java.io.IOException;
 
 @Category(SampleTest.class)
 public class Listing_08_15_Subscribe extends GenericTest {
@@ -45,11 +43,7 @@ public class Listing_08_15_Subscribe extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         createPdf(SRC);
 
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfReader reader = new PdfReader(SRC);
-        PdfWriter writer = new PdfWriter(fos);
-
-        PdfDocument pdfDoc = new PdfDocument(reader, writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(dest));
 
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
 
@@ -66,8 +60,7 @@ public class Listing_08_15_Subscribe extends GenericTest {
     }
 
     protected void createPdf(String filename) throws IOException {
-        PdfWriter writer = new PdfWriter(new FileOutputStream(filename));
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
 
         PdfFormField personal = PdfFormField.createEmptyField(pdfDoc);

@@ -26,15 +26,13 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
+import org.junit.experimental.categories.Category;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_05_06_PressPreviews extends GenericTest {
@@ -49,9 +47,7 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         // create the database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
 
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         doc.add(getTable(connection));

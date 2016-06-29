@@ -18,9 +18,6 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import java.io.FileOutputStream;
-
 import org.junit.experimental.categories.Category;
 
 
@@ -36,8 +33,7 @@ public class Listing_01_08_HelloWorldMirroredMarginsTop extends GenericTest {
     @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
+        PdfWriter writer = new PdfWriter(dest);
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);

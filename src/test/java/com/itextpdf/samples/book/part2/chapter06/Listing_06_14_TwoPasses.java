@@ -8,45 +8,42 @@
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.source.ByteArrayOutputStream;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Style;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.Style;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.samples.GenericTest;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Set;
 import java.util.TreeSet;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_06_14_TwoPasses extends GenericTest {
@@ -128,10 +125,9 @@ public class Listing_06_14_TwoPasses extends GenericTest {
 
         // SECOND PASS, ADD THE HEADER
 
-        // Create a reader
-        PdfReader reader = new PdfReader(new ByteArrayInputStream(baos.toByteArray()));
         // Create a pdf document
-        pdfDoc = new PdfDocument(reader, new PdfWriter(new FileOutputStream(DEST)));
+        pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())),
+                new PdfWriter(DEST));
 
         // Loop over the pages and add a header to each page
         int n = pdfDoc.getNumberOfPages();

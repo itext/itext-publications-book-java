@@ -16,8 +16,6 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
-import java.io.FileOutputStream;
-
 public class Listing_11_17_Ligatures1 extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part3/chapter11/Listing_11_17_Ligatures1.pdf";
@@ -28,12 +26,8 @@ public class Listing_11_17_Ligatures1 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc);
 
         PdfFont font = PdfFontFactory.createFont(/*"c:/windows/fonts/arial.ttf"*/"./src/test/resources/font/FreeSans.ttf",

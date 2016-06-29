@@ -7,6 +7,8 @@
 
 package com.itextpdf.samples.book.part2.chapter08;
 
+import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfBoolean;
@@ -14,13 +16,8 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -33,12 +30,8 @@ public class Listing_08_11_TextFieldActions extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
         //Initialize document
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         pdfDoc.addNewPage();
 

@@ -18,9 +18,9 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
@@ -32,7 +32,6 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -58,9 +57,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
     }
 
     public void createPdf(String dest, Locale locale, int year) throws IOException, SQLException {
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         // fonts

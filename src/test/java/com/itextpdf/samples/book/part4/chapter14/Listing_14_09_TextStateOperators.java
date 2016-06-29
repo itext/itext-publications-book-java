@@ -8,11 +8,11 @@
 package com.itextpdf.samples.book.part4.chapter14;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.color.Color;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfTextArray;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -21,9 +21,6 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-
-import java.io.FileOutputStream;
-
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -37,12 +34,8 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
-        //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos);
-
-        //Initialize document and add page
-        PdfDocument pdfDoc = new PdfDocument(writer);
+        //Initialize document
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
 
