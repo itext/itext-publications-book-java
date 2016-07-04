@@ -51,6 +51,7 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
         PdfReader reader;
         PdfDocument pdfDoc;
         ByteArrayOutputStream baos;
+        PdfPageFormCopier formsCopier = new PdfPageFormCopier();
         // Fill out the data sheet form with data
         for (Movie movie : movies) {
             if (movie.getYear() < 2007)
@@ -74,7 +75,7 @@ public class Listing_06_19_FillDataSheet extends GenericTest{
                     }
                 }
             }
-            pdfDoc.copyPagesTo(1, pdfDoc.getNumberOfPages(), pdfDocResult, new PdfPageFormCopier());
+            pdfDoc.copyPagesTo(1, pdfDoc.getNumberOfPages(), pdfDocResult, formsCopier);
         }
         // Close the database connection
         connection.close();

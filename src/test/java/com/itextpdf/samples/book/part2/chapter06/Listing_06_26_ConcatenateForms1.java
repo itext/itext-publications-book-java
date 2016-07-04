@@ -35,16 +35,18 @@ public class Listing_06_26_ConcatenateForms1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         pdfDoc.initializeOutlines();
 
+        PdfPageFormCopier formCopier = new PdfPageFormCopier();
+
         // Create the first source document
         PdfDocument srcDoc = new PdfDocument(new PdfReader(DATASHEET));
 
-        srcDoc.copyPagesTo(1, 1, pdfDoc, new PdfPageFormCopier());
+        srcDoc.copyPagesTo(1, 1, pdfDoc, formCopier);
         srcDoc.close();
 
         // Create the second source document
         srcDoc = new PdfDocument(new PdfReader(DATASHEET));
 
-        srcDoc.copyPagesTo(1, 1, pdfDoc, new PdfPageFormCopier());
+        srcDoc.copyPagesTo(1, 1, pdfDoc, formCopier);
         srcDoc.close();
 
         pdfDoc.close();

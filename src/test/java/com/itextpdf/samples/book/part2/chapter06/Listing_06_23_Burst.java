@@ -34,11 +34,12 @@ public class Listing_06_23_Burst extends GenericTest {
     public void manipulatePdf(String dest) throws IOException, SQLException {
         PdfDocument srcDoc = new PdfDocument(new PdfReader(MOVIE_TEMPLATES));
 
+        PdfPageFormCopier formCopier = new PdfPageFormCopier();
         for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             PdfDocument pdfDoc = new PdfDocument(new PdfWriter(String.format(FORMATTEDDEST, i)));
             pdfDoc.initializeOutlines();
 
-            srcDoc.copyPagesTo(i, i, pdfDoc, new PdfPageFormCopier());
+            srcDoc.copyPagesTo(i, i, pdfDoc, formCopier);
             pdfDoc.close();
         }
 
