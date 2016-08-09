@@ -17,6 +17,7 @@ import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.ITextTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
@@ -36,6 +37,18 @@ import java.util.Properties;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.experimental.categories.Category;
 
+/**
+ * Due to import control restrictions by the governments of a few countries,
+ * the encryption libraries shipped by default with the Java SDK restrict the
+ * length, and as a result the strength, of encryption keys. Be aware that in
+ * this sample by using {@link ITextTest#removeCryptographyRestrictions()} we
+ * remove cryptography restrictions via reflection for testing purposes.
+ * <br/>
+ * For more conventional way of solving this problem you need to replace the
+ * default security JARs in your Java installation with the Java Cryptography
+ * Extension (JCE) Unlimited Strength Jurisdiction Policy Files. These JARs
+ * are available for download from http://java.oracle.com/ in eligible countries.
+ */
 @Category(SampleTest.class)
 public class Listing_12_11_EncryptWithCertificate extends GenericTest {
     public static String RESULT1
@@ -155,14 +168,12 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
     @Override
     protected void beforeManipulatePdf() {
         super.beforeManipulatePdf();
-        try {
-            Field field = Class.forName("javax.crypto.JceSecurity").
-                    getDeclaredField("isRestricted");
-            field.setAccessible(true);
-            field.set(null, java.lang.Boolean.FALSE);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        ITextTest.removeCryptographyRestrictions();
+    }
 
+    @Override
+    protected void afterManipulatePdf() {
+        super.afterManipulatePdf();
+        ITextTest.restoreCryptographyRestrictions();
     }
 }
