@@ -7,6 +7,7 @@
 
 package com.itextpdf.samples.book.part4.chapter13;
 
+import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -14,23 +15,20 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.utils.CompareTool;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
-import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
+import org.junit.Assert;
+import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class Listing_13_14_FixBrokenForm extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm.pdf";
-    public static final String ORIGINAL = "./src/test/resources/book/part4/chapter13/broken_form.pdf";
+    public static final String ORIGINAL = "./src/test/resources/pdfs/broken_form.pdf";
     public static final String[] RESULT = {
             "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_fixed_form.pdf",
             "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_broken_form.pdf",
