@@ -9,6 +9,7 @@ package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
@@ -37,7 +38,7 @@ import java.util.Map;
 @Category(SampleTest.class)
 public class Listing_07_02_LinkActions extends GenericTest {
     public static final String SRC = "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
-    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions2.pdf";
+    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions.pdf";
     public static final String DEST2 = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions.xml";
 
     public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException {
@@ -87,14 +88,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
                 add(".");
         doc.add(p);
 
-        PdfArray array = new PdfArray();
-        array.add(pdfDoc.getFirstPage().getPdfObject());
-        array.add(PdfName.XYZ);
-        array.add(new PdfNumber(36));
-        array.add(new PdfNumber(842));
-        array.add(new PdfNumber(1));
-
-        pdfDoc.addNamedDestination("top", array);
+        pdfDoc.addNamedDestination("top", PdfExplicitDestination.createXYZ(1, 36, 842, 1).getPdfObject());
 
         //Close document
         doc.close();

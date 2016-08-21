@@ -11,15 +11,13 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.WriterProperties;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
+
+import java.io.IOException;
 
 @Category(SampleTest.class)
 public class Listing_01_10_HelloWorldVersion_1_7 extends GenericTest {
@@ -32,8 +30,7 @@ public class Listing_01_10_HelloWorldVersion_1_7 extends GenericTest {
 
     public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
-        FileOutputStream fos = new FileOutputStream(dest);
-        PdfWriter writer = new PdfWriter(fos, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_7));
+        PdfWriter writer = new PdfWriter(dest, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_7));
 
         //Initialize Pdf 1.7 document
         PdfDocument pdfDoc = new PdfDocument(writer);

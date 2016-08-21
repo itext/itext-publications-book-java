@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @Category(SampleTest.class)
-// TODO DEVSIX-574
 public class Listing_04_12_RotationAndColors extends GenericTest {
     public static final String DEST =
             "./target/test/resources/book/part1/chapter04/Listing_04_12_RotationAndColors.pdf";
