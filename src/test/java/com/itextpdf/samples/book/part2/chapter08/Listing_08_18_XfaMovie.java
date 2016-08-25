@@ -16,7 +16,11 @@ import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Set;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
@@ -27,7 +31,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -197,6 +200,7 @@ public class Listing_08_18_XfaMovie extends GenericTest {
     }
 
     protected void manipulatePdf(String dest) throws Exception {
+        new File(RESULTTXT1).getParentFile().mkdirs();
         readFieldnames(RESOURCE, RESULTTXT1);
         readXfa(RESOURCE, RESULTXML);
         fillData1(RESOURCE, RESULT[0]);
