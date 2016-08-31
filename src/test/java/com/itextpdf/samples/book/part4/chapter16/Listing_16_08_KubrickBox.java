@@ -12,7 +12,6 @@ import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
@@ -73,8 +72,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
                         PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, movie.getImdb()), null,
                                 String.format("kubrick_%s.pdf", movie.getImdb()), null, null, false));
                 item = new ListItem(movie.getMovieTitle());
-                target = new PdfTargetDictionary(PdfName.C);
-                target.setName(movie.getTitle());
+                target = PdfTargetDictionary.createChildTarget(movie.getTitle());
                 link = new Link(" (see info)",
                         PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
                 item.add(new Paragraph(link));
@@ -102,7 +100,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         cell.add(new Paragraph("Duration: " + movie.getDuration()));
         table.addCell(cell);
         doc.add(table);
-        PdfTargetDictionary target = new PdfTargetDictionary(PdfName.P);
+        PdfTargetDictionary target = PdfTargetDictionary.createParentTarget();
         Link link = new Link("Go to original document",
                 PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
         doc.add(new Paragraph(link));

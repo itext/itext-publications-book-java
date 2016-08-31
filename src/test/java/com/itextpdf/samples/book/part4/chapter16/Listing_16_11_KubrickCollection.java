@@ -101,11 +101,8 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
                         "%s;%s;%s\n", movie.getMovieTitle(), movie.getYear(), movie.getDuration()));
                 item = new ListItem(movie.getMovieTitle());
                 if (!"0278736".equals(movie.getImdb())) {
-                    target = new PdfTargetDictionary(PdfName.C);
-                    target.setName(movie.getTitle());
-                    intermediate = new PdfTargetDictionary(PdfName.C);
-                    intermediate.setPage(1);
-                    intermediate.setAnnotation(0);
+                    target = PdfTargetDictionary.createChildTarget(movie.getTitle());
+                    intermediate = PdfTargetDictionary.createChildTarget(2, 0);
                     intermediate.setTarget(target);
                     action = PdfAction.createGoToE(dest, true, intermediate);
                     link = new Link(" (see info)", action);
@@ -132,9 +129,7 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
                 null, Listing_16_09_KubrickMovies.FILENAME, null, null, false);
         collectionitem.addItem(TYPE_FIELD, "PDF");
         fs.setCollectionItem(collectionitem);
-        target = new PdfTargetDictionary(PdfName.C);
-        target.put(PdfName.P, new PdfString("movies", null));
-        target.put(PdfName.A, new PdfString("The movies of Stanley Kubrick"));
+        target = PdfTargetDictionary.createChildTarget("movies", "The movies of Stanley Kubrick");
         cell.setNextRenderer(new FileAttachmentRenderer(cell, "The movies of Stanley Kubrick", fs,
                 true, PdfAction.createGoToE(dest, true, target), "movies"));
         table.addCell(cell);
