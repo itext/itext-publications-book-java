@@ -42,6 +42,7 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
         PdfButtonFormField saveAs =
                 PdfFormField.createPushButton(pdfDoc, new Rectangle(636, 10, 80, 20), "Save", "Save");
         saveAs.setBorderColor(Color.BLACK);
+        saveAs.setBorderWidth(1);
         saveAs.setColor(Color.RED);
         PdfAnnotation saveAsButton = saveAs.getWidgets().get(0);
         saveAs.setAction(PdfAction.createJavaScript("app.execMenuItem('SaveAs')"));
@@ -49,6 +50,7 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
         PdfButtonFormField mail =
                 PdfFormField.createPushButton(pdfDoc, new Rectangle(736, 10, 80, 20), "Mail", "Mail");
         mail.setBorderColor(Color.BLACK);
+        mail.setBorderWidth(1);
         mail.setColor(Color.RED);
         PdfAnnotation mailButton = mail.getWidgets().get(0);
         mailButton.setAction(PdfAction.createJavaScript("app.execMenuItem('AcroSendMail:SendMail')"));

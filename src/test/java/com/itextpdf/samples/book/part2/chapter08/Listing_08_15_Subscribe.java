@@ -71,17 +71,20 @@ public class Listing_08_15_Subscribe extends GenericTest {
         table.addCell(new Cell().add(new Paragraph("Your name:")));
         cell = new Cell(1, 2);
         PdfTextFormField field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "name", "");
+        field.setBorderWidth(0);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         table.addCell(new Cell().add(new Paragraph("Login:")));
         cell = new Cell();
         field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "loginname", "");
+        field.setBorderWidth(0);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         cell = new Cell();
         field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "password", "");
+        field.setBorderWidth(0);
         field.setPassword(true);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
@@ -90,6 +93,7 @@ public class Listing_08_15_Subscribe extends GenericTest {
         cell = new Cell(1, 2);
         cell.setHeight(60);
         field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "reason", "");
+        field.setBorderWidth(0);
         field.setMultiline(true);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
