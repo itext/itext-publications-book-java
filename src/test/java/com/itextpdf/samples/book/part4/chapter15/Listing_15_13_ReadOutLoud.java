@@ -22,9 +22,10 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagutils.TagTreePointer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
+
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_15_13_ReadOutLoud extends GenericTest {
@@ -43,7 +44,7 @@ public class Listing_15_13_ReadOutLoud extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(page);
 
         PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.CP1252, false);
-        TrueTypeCollection coll = new TrueTypeCollection("./src/test/resources/font/ipam.ttc", PdfEncodings.IDENTITY_H);
+        TrueTypeCollection coll = new TrueTypeCollection("./src/test/resources/font/ipam.ttc");
         PdfFont font2 = PdfFontFactory.createFont(coll.getFontByTccIndex(1), PdfEncodings.IDENTITY_H);
 
         TagTreePointer tagPointer = new TagTreePointer(pdfDoc);

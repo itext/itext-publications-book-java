@@ -23,7 +23,6 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
@@ -52,7 +51,7 @@ public class Listing_11_01_FontTypes extends GenericTest {
         PdfFont font;
         for (int i = 0; i < FONTS.length; i++) {
             if (FONTS[i][0].endsWith(".ttc")) {
-                TrueTypeCollection coll = new TrueTypeCollection(FONTS[i][0], FONTS[i][1]);
+                TrueTypeCollection coll = new TrueTypeCollection(FONTS[i][0]);
                 font = PdfFontFactory.createFont(coll.getFontByTccIndex(0), FONTS[i][1], true);
             } else {
                 font = PdfFontFactory.createFont(FONTS[i][0], FONTS[i][1], true);

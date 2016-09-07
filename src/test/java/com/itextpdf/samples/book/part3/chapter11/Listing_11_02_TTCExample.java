@@ -38,7 +38,7 @@ public class Listing_11_02_TTCExample extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         PdfFont font;
-        TrueTypeCollection coll = new TrueTypeCollection(FONT, PdfEncodings.IDENTITY_H);
+        TrueTypeCollection coll = new TrueTypeCollection(FONT);
         for (int i = 0; i < coll.getTTCSize(); i++) {
             font = PdfFontFactory.createFont(coll.getFontByTccIndex(i), PdfEncodings.IDENTITY_H, true);
             doc.add(new Paragraph("font " + i + ": " + coll.getFontByTccIndex(i).getFontNames().getFontName())
