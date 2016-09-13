@@ -16,11 +16,13 @@ import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -34,12 +36,15 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
             = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, NoSuchFieldException, IllegalAccessException {
+
         new Listing_06_02_MemoryInfo().manipulatePdf(RESULT);
     }
 
     @Test(timeout = 120000)
     public void test() throws IOException {
         LOGGER.info("Starting test " + getClass().getName() + ".");
+        File file = new File(RESULT);
+        file.getParentFile().mkdirs();
         manipulatePdf(RESULT);
         System.out.println(RESULT + "\n" + CMP_RESULT);
         LOGGER.info("Test complete.");
@@ -57,7 +62,7 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
             // Close the text file writer
             writer.close();
         } catch (Exception e) {
-            fail();
+            fail(e.getMessage());
         }
         // The test passes if there is no exception, because the results may vary on different machines
     }

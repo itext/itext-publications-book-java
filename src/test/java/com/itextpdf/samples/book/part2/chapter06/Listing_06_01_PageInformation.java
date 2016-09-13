@@ -17,12 +17,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.SQLException;
 
 import org.junit.Test;
@@ -54,6 +49,8 @@ public class Listing_06_01_PageInformation extends GenericTest {
     @Test(timeout = 120000)
     public void test() throws IOException {
         LOGGER.info("Starting test " + getClass().getName() + ".");
+        File file = new File(RESULT);
+        file.getParentFile().mkdirs();
         manipulatePdf(RESULT);
         System.out.println(RESULT + "\n" + CMP_RESULT);
         comparePdf(RESULT, CMP_RESULT);
