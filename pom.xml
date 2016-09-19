@@ -4,7 +4,7 @@
 
     <groupId>com.itextpdf.samples</groupId>
     <artifactId>book</artifactId>
-    <version>7.0.1-SNAPSHOT</version>
+    <version>7.0.1</version>
 
     <name>iText 7 Publications: iText in Action</name>
     <url>http://itextpdf.com/</url>
@@ -12,7 +12,7 @@
     <properties>
         <bouncycastle.version>1.49</bouncycastle.version>
         <java.version>1.7</java.version>
-        <licensekey.version>2.0.2-SNAPSHOT</licensekey.version>
+        <licensekey.version>2.0.2</licensekey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sampletests>com.itextpdf.test.annotations.type.SampleTest</sampletests>
         <unittests>com.itextpdf.test.annotations.type.UnitTest</unittests>
