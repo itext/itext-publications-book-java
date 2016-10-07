@@ -41,7 +41,7 @@ public class Listing_07_09_FindDirectors extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
-        new Listing_07_07_AddVersionChecker().manipulatePdf(DEST);
+        new Listing_07_09_FindDirectors().manipulatePdf(DEST);
     }
 
     protected static String readFileToString(String path) throws IOException {

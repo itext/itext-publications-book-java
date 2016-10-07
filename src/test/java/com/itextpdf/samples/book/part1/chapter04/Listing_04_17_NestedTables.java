@@ -75,6 +75,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         doc.close();
     }
 
+
     public Table getTable(DatabaseConnection connection, Date day)
             throws UnsupportedEncodingException, SQLException, MalformedURLException {
         // Create a table with only one column
