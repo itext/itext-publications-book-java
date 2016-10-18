@@ -161,7 +161,9 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
         public void endElement(String uri, String localName, String qName)
                 throws SAXException {
             if ("span".equals(qName)) {
-                document.add(paragraph);
+                if (!paragraph.isEmpty()) {
+                    document.add(paragraph);
+                }
                 paragraph = new Paragraph().setFont(font);
             } else if ("ul".equals(qName)) {
                 document.add(list);
