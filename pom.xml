@@ -13,6 +13,7 @@
         <bouncycastle.version>1.49</bouncycastle.version>
         <java.version>1.7</java.version>
         <licensekey.version>2.0.3-SNAPSHOT</licensekey.version>
+        <typography.version>1.0.2-SNAPSHOT</typography.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sampletests>com.itextpdf.test.annotations.type.SampleTest</sampletests>
         <unittests>com.itextpdf.test.annotations.type.UnitTest</unittests>
@@ -78,6 +79,18 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>font-asian</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>hyph</artifactId>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>typography</artifactId>
+            <version>${typography.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
