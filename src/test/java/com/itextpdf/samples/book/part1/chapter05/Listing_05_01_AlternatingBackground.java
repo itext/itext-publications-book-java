@@ -14,6 +14,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
@@ -59,7 +60,7 @@ public class Listing_05_01_AlternatingBackground extends GenericTest {
                 doc.add(new AreaBreak());
             }
             Table table = getTable(connection, day);
-            table.setNextRenderer(new AlternatingBackgroundTableRenderer(table, new Table.RowRange(0, 50)));
+            table.setNextRenderer(new AlternatingBackgroundTableRenderer(table, new Table.RowRange(0, table.getNumberOfRows()-1)));
             doc.add(table);
             d++;
         }
