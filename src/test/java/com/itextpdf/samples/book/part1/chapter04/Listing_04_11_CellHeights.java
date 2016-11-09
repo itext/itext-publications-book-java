@@ -41,7 +41,6 @@ public class Listing_04_11_CellHeights extends GenericTest {
         // the prhase is wrapped
         table.addCell("wrap");
         table.addCell(cell);
-        table.addCell(new Cell().add(p));
         // a long phrase with newlines
         p = new Paragraph(
                 "Dr. iText or:\nHow I Learned to Stop Worrying\nand Love PDF.");
