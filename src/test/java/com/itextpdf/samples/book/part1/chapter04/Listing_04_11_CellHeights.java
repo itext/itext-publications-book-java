@@ -51,14 +51,11 @@ public class Listing_04_11_CellHeights extends GenericTest {
         table.addCell(cell);
         // the phrase doesn't fit the fixed height
         table.addCell("fixed height (not sufficient)");
-        cell.setHeight(36f);
-        table.addCell(cell.clone(true));
+        table.addCell(cell.clone(true).setHeight(36));
         // The minimum height is exceeded
         table.addCell("minimum height");
         cell = new Cell().add(new Paragraph("Dr. iText"));
-        // TODO DEVSIX-522
-        cell.setHeight(36f);
-        table.addCell(cell);
+        table.addCell(cell.clone(true).setMinHeight(36));
         table.addCell("extend last row");
         table.addCell(cell.clone(true));
         doc.add(table);
