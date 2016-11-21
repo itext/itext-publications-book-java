@@ -221,7 +221,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             Rectangle rect = getOccupiedAreaBBox();
             drawContext.getCanvas()
                     .saveState()
-                    .roundRectangle(rect.getX() - 3, rect.getBottom() - 3, rect.getWidth() + 6, rect.getHeight() + 6, 10)
+                    .roundRectangle(rect.getX(), rect.getBottom(), rect.getWidth(), rect.getHeight(), 4)
                     .setFillColorCmyk(cmykYellow[0], cmykYellow[1], cmykYellow[2], cmykYellow[3])
                     .setStrokeColorCmyk(cmykYellow[0], cmykYellow[1], cmykYellow[2], cmykYellow[3])
                     .fillStroke()
