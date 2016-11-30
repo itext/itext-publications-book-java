@@ -19,6 +19,7 @@ import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
@@ -44,6 +45,8 @@ public class Listing_11_13_Diacritics1 extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws IOException {
+        //Load the license file to use advanced typography features (Thai script)
+        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         PdfFont font;
