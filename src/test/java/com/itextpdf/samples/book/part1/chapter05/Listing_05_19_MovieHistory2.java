@@ -22,6 +22,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.Canvas;
+import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.BlockElement;
 import com.itextpdf.layout.element.Div;
@@ -30,22 +31,20 @@ import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.BlockRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.layout.Document;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
+import com.lowagie.filmfestival.PojoToElementFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
-
-import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_05_19_MovieHistory2 extends GenericTest {
@@ -174,27 +173,24 @@ public class Listing_05_19_MovieHistory2 extends GenericTest {
             PdfCanvas canvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
 
             new Canvas(canvas, pdfDoc, artBox)
-                    .add(new Paragraph(header).setFixedPosition(36, 800, 150));
+                    .add(new Paragraph(header).setMargin(0).setMultipliedLeading(1).setFixedPosition(36, 800, 150));
             new Canvas(canvas, pdfDoc, artBox)
-                    .add(new Paragraph("Movie History").setFixedPosition(470, 800, 150));
+                    .add(new Paragraph("Movie History").setMargin(0).setMultipliedLeading(1).setFixedPosition(470, 800, 150));
             new Canvas(canvas, pdfDoc, artBox)
-                    .add(new Paragraph(Integer.toString(pdfDoc.getPageNumber(page))).setFixedPosition(285, 36, 30));
+                    .add(new Paragraph(Integer.toString(pdfDoc.getPageNumber(page))).setMargin(0).setMultipliedLeading(1).setFixedPosition(285, 36, 30));
 
         }
 
     }
 
-
     class SectionRenderer extends BlockRenderer {
         protected int depth;
         protected boolean drawLine = true;
-
 
         public SectionRenderer(BlockElement modelElement, int depth) {
             super(modelElement);
             this.depth = depth;
         }
-
 
         @Override
         public void draw(DrawContext drawContext) {

@@ -109,23 +109,23 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         x = (OFFSET_LEFT + OFFSET_LOCATION) / 2;
         y = OFFSET_BOTTOM + HEIGHT + 24;
         doc.add(new Paragraph("FOOBAR FILM FESTIVAL").setFontSize(18)
-                .setFixedPosition(x, y, WIDTH).setTextAlignment(TextAlignment.CENTER));
+                .setFixedPosition(x, y, WIDTH).setMarginBottom(0).setMultipliedLeading(1).setTextAlignment(TextAlignment.CENTER));
 
         x = OFFSET_LOCATION + WIDTH_LOCATION / 2f - 3;
         y = OFFSET_BOTTOM;
-        doc.add(new Paragraph("The Majestic").setFontSize(18)
+        doc.add(new Paragraph("The Majestic").setFontSize(18).setMarginBottom(0).setMultipliedLeading(1)
                 .setFixedPosition(x, y, HEIGHT_LOCATION * 2)
                 .setRotationAngle(Math.PI / 2)
                 .setTextAlignment(TextAlignment.CENTER));
 
         y = OFFSET_BOTTOM + HEIGHT_LOCATION * 2;
-        doc.add(new Paragraph("Googolplex").setFontSize(18)
+        doc.add(new Paragraph("Googolplex").setFontSize(18).setMarginBottom(0).setMultipliedLeading(1)
                 .setFixedPosition(x, y, HEIGHT_LOCATION * 4)
                 .setRotationAngle(Math.PI / 2)
                 .setTextAlignment(TextAlignment.CENTER));
 
         y = OFFSET_BOTTOM + HEIGHT_LOCATION * 6f;
-        doc.add(new Paragraph("Cinema Paradiso").setFontSize(18)
+        doc.add(new Paragraph("Cinema Paradiso").setFontSize(18).setMarginBottom(0).setMultipliedLeading(1)
                 .setFixedPosition(x, y, HEIGHT_LOCATION * 3)
                 .setRotationAngle(Math.PI / 2)
                 .setTextAlignment(TextAlignment.CENTER));
@@ -133,7 +133,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         x = OFFSET_LOCATION + WIDTH_LOCATION - 6;
         for (int i = 0; i < LOCATIONS; i++) {
             y = OFFSET_BOTTOM + ((8 - i) * HEIGHT_LOCATION);
-            doc.add(new Paragraph(locations.get(i)).setFontSize(12)
+            doc.add(new Paragraph(locations.get(i)).setFontSize(12).setMarginBottom(0).setMultipliedLeading(1)
                     .setFixedPosition(x, y, HEIGHT_LOCATION)
                     .setRotationAngle(Math.PI / 2)
                     .setTextAlignment(TextAlignment.CENTER));
@@ -142,7 +142,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         y = OFFSET_BOTTOM + HEIGHT;
         for (int i = 0; i < TIMESLOTS; i++) {
             x = OFFSET_LEFT + (i * WIDTH_TIMESLOT);
-            doc.add(new Paragraph(TIME[i]).setFontSize(6)
+            doc.add(new Paragraph(TIME[i]).setFontSize(6).setMarginBottom(0).setMultipliedLeading(1)
                     .setFixedPosition(x, y, 100).setTextAlignment(TextAlignment.LEFT)
                     .setRotationAngle(Math.PI / 4));
         }
@@ -157,13 +157,13 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         y = OFFSET_BOTTOM + HEIGHT + 12;
 
         Paragraph p1 = new Paragraph("Day " + d).
-                setFontSize(18).
+                setFontSize(18).setMarginBottom(0).setMultipliedLeading(1).
                 setFixedPosition(d, x, y, 100);
 
         x = OFFSET_LEFT;
 
         Paragraph p2 = new Paragraph(day.toString()).
-                setFontSize(18).
+                setFontSize(18).setMarginBottom(0).setMultipliedLeading(1).
                 setFixedPosition(d, x, y, 100).
                 setWidth(WIDTH).
                 setTextAlignment(TextAlignment.RIGHT);
@@ -178,11 +178,8 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         if (screening.isPress()) {
             Rectangle rect = getPosition(screening);
 
-            Paragraph p = new Paragraph().add(press).
-                    setFixedPosition(rect.getX(), rect.getY(), rect.getWidth()).
-                    setHeight(rect.getHeight()).
-                    setTextAlignment(TextAlignment.CENTER);
-            doc.add(p);
+            doc.showTextAligned(new Paragraph().add(press).setMargin(0), (rect.getLeft() + rect.getRight()) / 2,
+                    rect.getBottom() + rect.getHeight() / 4f, TextAlignment.CENTER);
         }
     }
 }
