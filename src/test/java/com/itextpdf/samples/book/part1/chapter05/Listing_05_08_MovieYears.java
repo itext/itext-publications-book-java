@@ -25,6 +25,7 @@ import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.Property;
+import com.itextpdf.layout.property.TransparentColor;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.LinkRenderer;
 import com.itextpdf.layout.renderer.ParagraphRenderer;
@@ -132,7 +133,7 @@ public class Listing_05_08_MovieYears extends GenericTest {
     private class EllipseTextRenderer extends LinkRenderer {
         public EllipseTextRenderer(Link textElement) {
             super(textElement);
-            setProperty(Property.FONT_COLOR, Color.WHITE);
+            setProperty(Property.FONT_COLOR, new TransparentColor(Color.WHITE));
         }
 
         @Override
