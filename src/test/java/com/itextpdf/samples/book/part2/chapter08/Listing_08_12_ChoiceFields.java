@@ -50,37 +50,51 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         Cell cell;
-        Cell space;
-        space = new Cell(1, 2);
-        space.setBorder(Border.NO_BORDER);
-        space.setHeight(8);
+        Cell space = new Cell(1, 2)
+                .setBorder(Border.NO_BORDER)
+                .setHeight(8);
         Table table = new Table(2);
-        Style leftCellStyle = new Style().setBorder(Border.NO_BORDER)
+        Style leftCellStyle = new Style()
+                .setBorder(Border.NO_BORDER)
                 .setHorizontalAlignment(HorizontalAlignment.RIGHT);
+
+        // row 1
         table.addCell(new Cell().add(new Paragraph("Language of the movie:")).addStyle(leftCellStyle));
-        cell = new Cell();
-        cell.setHeight(20);
+        cell = new Cell().setHeight(20);
         cell.setNextRenderer(new ChoiceCellRenderer(cell, 1));
         table.addCell(cell);
-        table.addCell(space);
+
+        // row 2
+        table.addCell(space.clone(true));
+
+        // row 3
         table.addCell(new Cell().add(new Paragraph("Subtitle languages:")).addStyle(leftCellStyle));
-        cell = new Cell();
+        cell = new Cell().setHeight(71);
         cell.setNextRenderer(new ChoiceCellRenderer(cell, 2));
-        cell.setHeight(71);
         table.addCell(cell);
-        table.addCell(space);
+
+        // row 4
+        table.addCell(space.clone(true));
+
+        // row 5
         table.addCell(new Cell().add(new Paragraph("Select preferred language")).addStyle(leftCellStyle));
         cell = new Cell();
         cell.setNextRenderer(new ChoiceCellRenderer(cell, 3));
         table.addCell(cell);
-        table.addCell(space);
+
+        // row 6
+        table.addCell(space.clone(true));
+
+        // row 7
         table.addCell(new Cell().add(new Paragraph("Language of the director:"))
                 .setBorder(Border.NO_BORDER)
                 .setHorizontalAlignment(HorizontalAlignment.RIGHT));
         cell = new Cell();
         cell.setNextRenderer(new ChoiceCellRenderer(cell, 4));
         table.addCell(cell);
+
         doc.add(table);
+
         doc.close();
     }
 
