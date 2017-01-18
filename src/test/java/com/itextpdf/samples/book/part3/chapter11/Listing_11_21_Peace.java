@@ -18,18 +18,18 @@ import com.itextpdf.layout.font.FontSet;
 import com.itextpdf.layout.property.Property;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
+import org.junit.Ignore;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+@Ignore("DEVSIX-1032")
 public class Listing_11_21_Peace extends GenericTest {
 
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_21_Peace.pdf";
@@ -58,7 +58,7 @@ public class Listing_11_21_Peace extends GenericTest {
         fontSet.addFont(fontsFolder + "NotoSansTelugu-Regular.ttf");
         fontSet.addFont(fontsFolder + "NotoSansThaana-Regular.ttf");
         fontSet.addFont(fontsFolder + "NotoSansYi-Regular.ttf");
-        fontSet.addFont("c:/windows/fonts/arialuni.ttf");
+        fontSet.addFont(fontsFolder + "FreeSans.ttf");
     }
     
     private static final String RESOURCE = "src/test/resources/xml/peace.xml";
