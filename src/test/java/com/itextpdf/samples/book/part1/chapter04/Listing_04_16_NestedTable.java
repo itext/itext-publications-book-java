@@ -1,10 +1,11 @@
 /*
-
     This file is part of the iText (R) project.
-    Copyright (c) 1998-2016 iText Group NV
+    Copyright (c) 1998-2017 iText Group NV
+    Authors: iText Software.
 
-*/
-
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -51,4 +52,3 @@ public class Listing_04_16_NestedTable extends GenericTest {
         doc.close();
     }
 }
-

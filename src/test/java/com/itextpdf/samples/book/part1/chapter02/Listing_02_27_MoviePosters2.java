@@ -1,10 +1,11 @@
 /*
-
     This file is part of the iText (R) project.
-    Copyright (c) 1998-2016 iText Group NV
+    Copyright (c) 1998-2017 iText Group NV
+    Authors: iText Software.
 
-*/
-
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.io.image.ImageDataFactory;
@@ -24,7 +25,6 @@ import org.junit.experimental.categories.Category;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
 
 @Category(SampleTest.class)
 public class Listing_02_27_MoviePosters2 extends GenericTest {

@@ -1,10 +1,11 @@
 /*
-
     This file is part of the iText (R) project.
-    Copyright (c) 1998-2016 iText Group NV
+    Copyright (c) 1998-2017 iText Group NV
+    Authors: iText Software.
 
-*/
-
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
@@ -65,7 +66,7 @@ public class Listing_08_18_XfaMovie extends GenericTest {
             "./src/test/resources/book/part2/chapter08/cmp_Listing_08_18_XfaMovie_xfa_filled_2.pdf",
             "./src/test/resources/book/part2/chapter08/cmp_Listing_08_18_XfaMovie_xfa_filled_3.pdf"
     };
-    
+
     /**
      * Checks if a PDF containing an interactive form uses
      * AcroForm technology, XFA technology, or both.
@@ -233,7 +234,7 @@ public class Listing_08_18_XfaMovie extends GenericTest {
         }
         if (errorMessage != null) Assert.fail(errorMessage);
     }
-    
+
     @Override
     protected String getDest() {
         return RESULT[0];

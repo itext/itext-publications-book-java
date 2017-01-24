@@ -1,10 +1,11 @@
 /*
-
     This file is part of the iText (R) project.
-    Copyright (c) 1998-2016 iText Group NV
+    Copyright (c) 1998-2017 iText Group NV
+    Authors: iText Software.
 
-*/
-
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part4.chapter14;
 
 import javax.swing.*;
@@ -101,4 +102,3 @@ public class Listing_14_11_PearExample extends JPanel {
         f.setVisible(true);
     }
 }
-

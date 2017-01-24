@@ -1,4 +1,12 @@
 /*
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2017 iText Group NV
+    Authors: iText Software.
+
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
+/*
  * This class is part of the book "iText in Action - 2nd Edition"
  * written by Bruno Lowagie (ISBN: 9781935182610)
  * For more info, go to: http://itextpdf.com/examples/

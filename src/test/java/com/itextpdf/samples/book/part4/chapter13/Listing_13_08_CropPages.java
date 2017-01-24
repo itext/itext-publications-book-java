@@ -1,10 +1,11 @@
 /*
-
     This file is part of the iText (R) project.
-    Copyright (c) 1998-2016 iText Group NV
+    Copyright (c) 1998-2017 iText Group NV
+    Authors: iText Software.
 
-*/
-
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.kernel.pdf.PdfArray;
@@ -26,7 +27,7 @@ import org.junit.experimental.categories.Category;
 public class Listing_13_08_CropPages extends GenericTest {
     public static final String DEST
             = "./target/test/resources/book/part4/chapter13/Listing_13_08_CropPages.pdf";
-    public static final String MOVIE_TEMPLATES 
+    public static final String MOVIE_TEMPLATES
             = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {

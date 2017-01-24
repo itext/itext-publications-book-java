@@ -1,10 +1,11 @@
 /*
-
     This file is part of the iText (R) project.
-    Copyright (c) 1998-2016 iText Group NV
+    Copyright (c) 1998-2017 iText Group NV
+    Authors: iText Software.
 
-*/
-
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.io.font.FontConstants;
@@ -141,7 +142,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
                 screening.getLocation(), screening.getTime().getTime());
         cell.add(new Paragraph(s).setTextAlignment(TextAlignment.CENTER));
         table.addCell(cell);
-        // cell 2: English and original title 
+        // cell 2: English and original title
         Movie movie = screening.getMovie();
         Paragraph p = new Paragraph();
         p.add(new Text(movie.getMovieTitle()).setFont(bold));
@@ -173,4 +174,3 @@ public class Listing_04_17_NestedTables extends GenericTest {
         return new Image(img).scaleToFit(80, 72);
     }
 }
-

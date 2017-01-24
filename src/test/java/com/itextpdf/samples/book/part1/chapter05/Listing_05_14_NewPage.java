@@ -1,10 +1,11 @@
 /*
-
     This file is part of the iText (R) project.
-    Copyright (c) 1998-2016 iText Group NV
+    Copyright (c) 1998-2017 iText Group NV
+    Authors: iText Software.
 
-*/
-
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.kernel.geom.PageSize;
@@ -42,5 +43,3 @@ public class Listing_05_14_NewPage extends GenericTest {
         doc.close();
     }
 }
-
-
