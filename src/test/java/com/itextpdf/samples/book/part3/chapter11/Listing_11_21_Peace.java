@@ -41,25 +41,7 @@ public class Listing_11_21_Peace extends GenericTest {
     /** Paths to and encodings of fonts we're going to use in this example */
     static {
         fontSet = new FontSet();
-        fontSet.addFont(fontsFolder + "NotoSans-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansBengali-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansCanadianAboriginal-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansCherokee-Regular.ttf");
-        // fontSet.addFont(fontsFolder + "NotoSansDevanagari-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansEthiopic-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansGothic-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansGurmukhi-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansKhmer-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansMyanmar-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansOldItalic-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansRunic-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansSinhala-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansSyriacEastern-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansTamil-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansTelugu-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansThaana-Regular.ttf");
-        fontSet.addFont(fontsFolder + "NotoSansYi-Regular.ttf");
-        fontSet.addFont(fontsFolder + "FreeSans.ttf");
+        fontSet.addDirectory(fontsFolder);
     }
     
     private static final String RESOURCE = "src/test/resources/xml/peace.xml";
@@ -125,10 +107,7 @@ public class Listing_11_21_Peace extends GenericTest {
             while ((pos = buf.indexOf("\n")) != -1) {
                 buf.replace(pos, pos + 1, " ");
             }
-            while (buf.charAt(0) == ' ') {
-                buf.deleteCharAt(0);
-            }
-            return buf.toString();
+            return buf.toString().trim();
         }
     }
 }
