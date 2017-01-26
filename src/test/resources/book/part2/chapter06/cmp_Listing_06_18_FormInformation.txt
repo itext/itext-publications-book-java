@@ -35,4 +35,4 @@ Possible values for CP_1:
  - Off
  - Yes
 Possible values for category:
-spec, toro, anim, comp, hero, Off, worl, rive, teen, kim, kauf, zha, fest, s-am, fdir, lee, kubr, kuro, fran, scan
+Off, comp, fest, fdir, kubr, kuro, zha, lee, kim, toro, worl, fran, scan, s-am, spec, teen, anim, kauf, rive, hero

@@ -30,11 +30,12 @@ public class Listing_16_03_ListUsedFonts {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_03_ListUsedFonts.pdf";
     public static final String RESULT = "./target/test/resources/book/part4/chapter16/Listing_16_03_ListUsedFonts.txt";
     public static final String FONT_TYPES = "./src/test/resources/book/part3/chapter11/cmp_Listing_11_01_FontTypes.pdf";
-    public static final String CMP_RESULT = "CMR10 (Type 1) embedded\n" +
-            "FreeSans subset (WNIWQP)\n" +
-            "FreeSans subset (YZWWXX)\n" +
+    public static final String CMP_RESULT =
+            "CMR10 (Type 1) embedded\n" +
+            "FreeSans subset (JQPZRH)\n" +
+            "FreeSans subset (YFQONL)\n" +
             "Helvetica nofontdescriptor\n" +
-            "IPAMincho subset (DPQXQX)\n" +
+            "IPAMincho subset (HMSBOO)\n" +
             "KozMinPro-Regular-UniJIS-UCS2-H nofontdescriptor\n" +
             "Puritan2 (Type1) embedded\n";
 
