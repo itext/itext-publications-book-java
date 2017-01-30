@@ -134,7 +134,7 @@ public class Listing_06_14_TwoPasses extends GenericTest {
         int n = pdfDoc.getNumberOfPages();
         for (int i = 1; i <= n; i++) {
             new Canvas(new PdfCanvas(pdfDoc.getPage(i)), pdfDoc,
-                    new Rectangle(34, 803, 100, 30)).add(getHeaderTable(i, n));
+                    new Rectangle(36, 803, 523, 30)).add(getHeaderTable(i, n));
         }
 
         // Close the pdf document

@@ -18,6 +18,7 @@ import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -39,8 +40,7 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        Table table = new Table(new float[]{1, 3, 3, 3});
-        table.setWidthPercent(100);
+        Table table = new Table(UnitValue.createPercentArray(new float[]{1, 3, 3, 3}));
         Cell cell;
         // row 1, cell 1
         cell = new Cell().add("COLOR");

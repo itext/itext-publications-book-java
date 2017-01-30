@@ -52,7 +52,7 @@ public class Listing_06_05_ImportingPages2 extends GenericTest {
             PdfPage curPage = srcDoc.getPage(i);
             PdfFormXObject header = curPage.copyAsFormXObject(resultDoc);
             Cell cell = new Cell()
-                    .add(new Image(header).setAutoScaleWidth(true))
+                    .add(new Image(header).setWidthPercent(100).setAutoScaleWidth(true))
                     .setBorder(new SolidBorder(1));
             cell.setNextRenderer(new MyCellRenderer(cell));
             table.addCell(cell);

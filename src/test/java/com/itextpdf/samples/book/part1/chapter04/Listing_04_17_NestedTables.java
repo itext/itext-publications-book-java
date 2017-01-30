@@ -22,6 +22,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -96,8 +97,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
 
     private Table getTable(Screening screening) throws MalformedURLException {
         // Create a table with 4 columns
-        Table table = new Table(new float[]{1, 5, 10, 10});
-        table.setWidthPercent(100);
+        Table table = new Table(UnitValue.createPercentArray(new float[]{1, 5, 10, 10}));
         // Get the movie
         Movie movie = screening.getMovie();
         // A cell with the title as a nested table spanning the complete row
@@ -132,8 +132,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
     }
 
     private Table fullTitle(Screening screening) {
-        Table table = new Table(new float[]{3, 15, 2});
-        table.setWidthPercent(100);
+        Table table = new Table(UnitValue.createPercentArray(new float[]{3, 15, 2}));
         // cell 1: location and time
         Cell cell = new Cell();
         cell.setBorder(Border.NO_BORDER);

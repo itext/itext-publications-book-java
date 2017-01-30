@@ -19,6 +19,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -57,8 +58,7 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
         doc.add(new Paragraph("Movies:"));
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {
-            Table table = new Table(new float[]{1, 4});
-            table.setWidthPercent(100);
+            Table table = new Table(UnitValue.createPercentArray(new float[]{1, 4}));
             Cell cell;
             cell = new Cell(1, 2).add(new Paragraph(movie.getTitle()).setFont(bold));
             cell.setTextAlignment(TextAlignment.CENTER);

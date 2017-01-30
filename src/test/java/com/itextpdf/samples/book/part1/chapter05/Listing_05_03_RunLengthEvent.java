@@ -23,6 +23,7 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
@@ -70,8 +71,7 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
     }
 
     public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
-        Table table = new Table(new float[]{2, 1, 2, 5, 1});
-        table.setWidthPercent(100);
+        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 2, 5, 1}));
         table.addHeaderCell(new Cell(1, 5)
                 .add(day.toString())
                 .setPadding(3)

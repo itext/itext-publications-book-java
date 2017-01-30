@@ -16,6 +16,7 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
@@ -53,7 +54,7 @@ public class Listing_08_07_TextFields extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Cell cell;
-        Table table = new Table(new float[]{1, 2});
+        Table table = new Table(UnitValue.createPercentArray(new float[]{1, 2}));
         table.setWidthPercent(80);
 
         table.addCell(new Cell().add(new Paragraph("Name:")));
