@@ -68,7 +68,7 @@ public class Listing_06_14_TwoPasses extends GenericTest {
      */
     public static Table getHeaderTable(int x, int y) {
         Table table = new Table(2);
-        table.setWidth(527);
+        table.setWidth(523);
         Style style = new Style()
                 .setBorder(Border.NO_BORDER)
                 .setHeight(20)
