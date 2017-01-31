@@ -26,6 +26,7 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutResult;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -102,8 +103,7 @@ public class Listing_04_23_ColumnTable extends GenericTest {
 
     public Table getTable(DatabaseConnection connection, Date day)
             throws SQLException, IOException {
-        Table table = new Table(new float[]{2, 1.5f, 2, 4.5f, 1});
-        table.setWidthPercent(100);
+        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1.5f, 2, 4.5f, 1}));
         Style style = new Style().setBackgroundColor(Color.LIGHT_GRAY);
         table.addHeaderCell(new Cell().add("Location").addStyle(style));
         table.addHeaderCell(new Cell().add("Time").addStyle(style));

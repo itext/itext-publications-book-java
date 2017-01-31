@@ -107,7 +107,7 @@ public class Listing_04_20_MemoryTests extends GenericTest {
 
         // step 4
         // Create a table with 2 columns
-        Table table = new Table(new float[]{150,600}, test);
+        Table table = new Table(new float[]{150, 600}, test);
 
         // Mark the table as not complete
         java.util.List<Movie> movies = PojoFactory.getMovies(connection);

@@ -18,6 +18,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -61,8 +62,7 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
         Cell cell;
         for (Movie movie : movies) {
             // a table with two columns
-            Table table = new Table(new float[]{1, 7});
-            table.setWidthPercent(100);
+            Table table = new Table(UnitValue.createPercentArray(new float[]{1, 7}));
             table.setMarginTop(5);
             // a cell with an image
             cell = new Cell().add(new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb()))).setAutoScaleWidth(true));

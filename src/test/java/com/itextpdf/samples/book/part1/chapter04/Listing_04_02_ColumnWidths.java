@@ -14,6 +14,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
@@ -52,7 +53,7 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
     }
 
     public static Table createTable1() {
-        Table table = new Table(new float[]{2, 1, 1});
+        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 1}));
         table.setWidthPercent(288 / 5.23f);
         Cell cell;
         cell = new Cell(1, 3).add("Table 1");
@@ -67,7 +68,7 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
     }
 
     public static Table createTable2() {
-        Table table = new Table(new float[]{2, 1, 1});
+        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 1}));
         table.setWidth(288);
         Cell cell;
         cell = new Cell(1, 3).add("Table 2");
@@ -82,7 +83,7 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
     }
 
     public static Table createTable3() {
-        Table table = new Table(new float[]{2, 1, 1});
+        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 1}));
         table.setWidthPercent(55.067f);
         Cell cell;
         cell = new Cell(1, 3).add("Table 3");

@@ -18,6 +18,7 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -67,8 +68,7 @@ public class Listing_04_18_HeaderFooter1 extends GenericTest {
 
     public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
         // Create a table with 7 columns
-        Table table = new Table(new float[]{2, 1, 2, 5, 1, 3, 2});
-        table.setWidthPercent(100);
+        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 2, 5, 1, 3, 2}));
         // Add the first header row
         Cell cell = new Cell(1, 7).add(new Paragraph(day.toString()).setFontColor(Color.WHITE));
         cell.setBackgroundColor(Color.BLACK);
