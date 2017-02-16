@@ -4,7 +4,7 @@
 
     <groupId>com.itextpdf.samples</groupId>
     <artifactId>book</artifactId>
-    <version>7.0.2-SNAPSHOT</version>
+    <version>7.0.3-SNAPSHOT</version>
 
     <name>iText 7 Publications: iText in Action</name>
     <url>http://itextpdf.com/</url>
@@ -19,10 +19,10 @@
         <jacoco.version>0.7.5.201505241946</jacoco.version>
         <java.version>1.7</java.version>
         <javadoc.version>2.10.3</javadoc.version>
-        <licensekey.version>2.0.3-SNAPSHOT</licensekey.version>
+        <licensekey.version>2.0.3</licensekey.version>
         <pitest.version>1.1.8</pitest.version>
         <pmd.version>3.5</pmd.version>
-        <typography.version>1.0.2-SNAPSHOT</typography.version>
+        <typography.version>1.0.3-SNAPSHOT</typography.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sampletests>com.itextpdf.test.annotations.type.SampleTest</sampletests>
         <unittests>com.itextpdf.test.annotations.type.UnitTest</unittests>
