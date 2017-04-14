@@ -21,10 +21,11 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
 
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore
+import java.util.Set;
+import java.util.TreeSet;
+
 @Category(SampleTest.class)
 public class Listing_11_19_FontFactory extends GenericTest {
     public static final String DEST
@@ -38,6 +39,8 @@ public class Listing_11_19_FontFactory extends GenericTest {
 
     @Override
     protected void manipulatePdf(String dest) throws Exception {
+        FontProgramFactory.clearRegisteredFonts();
+        FontProgramFactory.clearRegisteredFontFamilies();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         PdfFont font = PdfFontFactory.createFont(FontConstants.TIMES_ROMAN);
@@ -62,7 +65,8 @@ public class Listing_11_19_FontFactory extends GenericTest {
         doc.add(new Paragraph("Registered fonts:"));
         // "./src/test/resources/font" include so many fonts that we decided to use the other directory
         FontProgramFactory.registerFontDirectory(FONT_DIR);
-        for (String f : FontProgramFactory.getRegisteredFonts()) {
+        // TreeSet is used to stabilize test.
+        for (String f : new TreeSet<>(FontProgramFactory.getRegisteredFonts())) {
             doc.add(new Paragraph(f).setFont(PdfFontFactory.createRegisteredFont(f, "", true)));
         }
         doc.add(new Paragraph("\n"));
@@ -71,8 +75,11 @@ public class Listing_11_19_FontFactory extends GenericTest {
         doc.add(new Paragraph("Computer Modern").setFont(cmr10));
         doc.add(new Paragraph("\n"));
 
-        FontProgramFactory.registerSystemFontDirectories();
-        for (String f : FontProgramFactory.getRegisteredFontFamilies()) {
+        // To test FontProgramFactory.registerSystemFontDirectories(), uncomment the following line.
+        // FontProgramFactory.registerSystemFontDirectories();
+
+        // TreeSet is used to stabilize test.
+        for (String f : new TreeSet<>(FontProgramFactory.getRegisteredFontFamilies())) {
             doc.add(new Paragraph(f));
         }
         doc.add(new Paragraph("\n"));
