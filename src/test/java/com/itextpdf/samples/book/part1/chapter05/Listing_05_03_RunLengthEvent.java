@@ -71,7 +71,8 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
     }
 
     public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
-        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 2, 5, 1}));
+        Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 2, 5, 1}))
+                .setFixedLayout().useAllAvailableWidth();
         table.addHeaderCell(new Cell(1, 5)
                 .add(day.toString())
                 .setPadding(3)

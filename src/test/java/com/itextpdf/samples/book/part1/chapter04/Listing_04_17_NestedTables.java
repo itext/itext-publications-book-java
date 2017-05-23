@@ -97,7 +97,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
 
     private Table getTable(Screening screening) throws MalformedURLException {
         // Create a table with 4 columns
-        Table table = new Table(UnitValue.createPercentArray(new float[]{1, 5, 10, 10}));
+        Table table = new Table(UnitValue.createPercentArray(new float[]{1, 5, 10, 10})).useAllAvailableWidth();
         // Get the movie
         Movie movie = screening.getMovie();
         // A cell with the title as a nested table spanning the complete row
@@ -132,7 +132,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
     }
 
     private Table fullTitle(Screening screening) {
-        Table table = new Table(UnitValue.createPercentArray(new float[]{3, 15, 2}));
+        Table table = new Table(UnitValue.createPercentArray(new float[]{3, 15, 2})).useAllAvailableWidth();
         // cell 1: location and time
         Cell cell = new Cell();
         cell.setBorder(Border.NO_BORDER);
