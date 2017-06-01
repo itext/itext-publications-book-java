@@ -58,7 +58,8 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
         doc.add(new Paragraph("Movies:"));
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {
-            Table table = new Table(UnitValue.createPercentArray(new float[]{1, 4}));
+            Table table = new Table(UnitValue.createPercentArray(new float[]{1, 4}))
+                    .useAllAvailableWidth();
             Cell cell;
             cell = new Cell(1, 2).add(new Paragraph(movie.getTitle()).setFont(bold));
             cell.setTextAlignment(TextAlignment.CENTER);
