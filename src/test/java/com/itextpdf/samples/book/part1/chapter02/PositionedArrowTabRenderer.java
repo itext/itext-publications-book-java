@@ -48,10 +48,10 @@ public class PositionedArrowTabRenderer extends TabRenderer {
         p.setFont(zapfdingbats);
         if (isLeft) {
             new Canvas(drawContext.getCanvas(), drawContext.getDocument(), rect)
-                    .showTextAligned(p, pageSize.getLeft()-15, rect.getBottom()+8, TextAlignment.CENTER, VerticalAlignment.MIDDLE);
+                    .showTextAligned(p, pageSize.getLeft()-15, rect.getBottom()+5, TextAlignment.CENTER, VerticalAlignment.MIDDLE);
         } else {
             new Canvas(drawContext.getCanvas(), drawContext.getDocument(), rect)
-                    .showTextAligned(p, pageSize.getRight()+15, rect.getBottom()+8, drawContext.getDocument().getNumberOfPages(), TextAlignment.CENTER, VerticalAlignment.MIDDLE, (float) Math.PI);
+                    .showTextAligned(p, pageSize.getRight()+15, rect.getBottom()+5, drawContext.getDocument().getNumberOfPages(), TextAlignment.CENTER, VerticalAlignment.MIDDLE, (float) Math.PI);
         }
     }
 }
