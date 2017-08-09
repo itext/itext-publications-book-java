@@ -15,7 +15,7 @@ import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
+import com.itextpdf.kernel.pdf.action.PdfTarget;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
@@ -59,7 +59,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         doc.add(img);
         List list = new List();
         list.setSymbolIndent(20);
-        PdfTargetDictionary target;
+        PdfTarget target;
         Link link;
         ListItem item;
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
@@ -71,9 +71,9 @@ public class Listing_16_08_KubrickBox extends GenericTest {
             if (movie.getYear() > 1960) {
                 pdfDoc.addFileAttachment(movie.getTitle(),
                         PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, movie.getImdb()), null,
-                                String.format("kubrick_%s.pdf", movie.getImdb()), null, null, false));
+                                String.format("kubrick_%s.pdf", movie.getImdb()), null, null));
                 item = new ListItem(movie.getMovieTitle());
-                target = PdfTargetDictionary.createChildTarget(movie.getTitle());
+                target = PdfTarget.createChildTarget(movie.getTitle());
                 link = new Link(" (see info)",
                         PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
                 item.add(new Paragraph(link));
@@ -101,7 +101,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         cell.add(new Paragraph("Duration: " + movie.getDuration()));
         table.addCell(cell);
         doc.add(table);
-        PdfTargetDictionary target = PdfTargetDictionary.createParentTarget();
+        PdfTarget target = PdfTarget.createParentTarget();
         Link link = new Link("Go to original document",
                 PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
         doc.add(new Paragraph(link));

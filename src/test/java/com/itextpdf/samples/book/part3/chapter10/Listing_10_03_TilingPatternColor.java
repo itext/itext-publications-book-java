@@ -10,10 +10,10 @@ package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.color.DeviceGray;
-import com.itextpdf.kernel.color.DeviceRgb;
-import com.itextpdf.kernel.color.PatternColor;
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.colors.PatternColor;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;

@@ -33,7 +33,7 @@ public class Listing_16_15_MovieAnnotation extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfAnnotation screenAnnotation = new PdfScreenAnnotation(new Rectangle(200, 700, 200, 100));
         PdfFileSpec spec = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, RESOURCE,
-                "Fox and Dog", "Fox and Dog", null, null, false);
+                "Fox and Dog", "Fox and Dog", null, null);
         PdfAction action = PdfAction.createRendition("foxdog.mpg", spec, "video/mpeg", screenAnnotation);
         screenAnnotation.setAction(action);
         pdfDoc.addNewPage().addAnnotation(screenAnnotation);

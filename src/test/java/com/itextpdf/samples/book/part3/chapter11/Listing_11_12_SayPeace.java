@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;

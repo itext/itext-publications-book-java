@@ -9,8 +9,8 @@
 package com.itextpdf.samples.book.part4.chapter14;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;

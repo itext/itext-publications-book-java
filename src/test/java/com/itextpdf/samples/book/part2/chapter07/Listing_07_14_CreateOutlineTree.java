@@ -8,11 +8,10 @@
  */
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -28,7 +27,6 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.experimental.categories.Category;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;

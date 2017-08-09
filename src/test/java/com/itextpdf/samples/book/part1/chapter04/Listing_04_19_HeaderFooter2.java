@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -77,21 +77,21 @@ public class Listing_04_19_HeaderFooter2 extends GenericTest {
         table.addHeaderCell(cell);
 
         // set headers and footers
-        table.addHeaderCell(new Cell().add("Location").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Time").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Run Length").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Title").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Year").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Directors").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addHeaderCell(new Cell().add("Countries").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add(new Paragraph("Location")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add(new Paragraph("Time")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add(new Paragraph("Run Length")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add(new Paragraph("Title")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add(new Paragraph("Year")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add(new Paragraph("Directors")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addHeaderCell(new Cell().add(new Paragraph("Countries")).setBackgroundColor(Color.LIGHT_GRAY));
 
-        table.addFooterCell(new Cell().add("Location").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Time").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Run Length").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Title").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Year").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Directors").setBackgroundColor(Color.LIGHT_GRAY));
-        table.addFooterCell(new Cell().add("Countries").setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add(new Paragraph("Location")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add(new Paragraph("Time")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add(new Paragraph("Run Length")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add(new Paragraph("Title")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add(new Paragraph("Year")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add(new Paragraph("Directors")).setBackgroundColor(Color.LIGHT_GRAY));
+        table.addFooterCell(new Cell().add(new Paragraph("Countries")).setBackgroundColor(Color.LIGHT_GRAY));
 
         // Now let's loop over the screenings
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);

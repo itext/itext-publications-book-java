@@ -13,6 +13,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.samples.GenericTest;
@@ -56,14 +57,14 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 1}));
         table.setWidthPercent(288 / 5.23f);
         Cell cell;
-        cell = new Cell(1, 3).add("Table 1");
+        cell = new Cell(1, 3).add(new Paragraph("Table 1"));
         table.addCell(cell);
-        cell = new Cell(2, 1).add("Cell with rowspan 2");
+        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
         table.addCell(cell);
-        table.addCell(new Cell().add("row 1; cell 1"));
-        table.addCell(new Cell().add("row 1; cell 2"));
-        table.addCell(new Cell().add("row 2; cell 1"));
-        table.addCell(new Cell().add("row 2; cell 2"));
+        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
+        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
+        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
+        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
         return table;
     }
 
@@ -71,14 +72,14 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 1}));
         table.setWidth(288);
         Cell cell;
-        cell = new Cell(1, 3).add("Table 2");
+        cell = new Cell(1, 3).add(new Paragraph("Table 2"));
         table.addCell(cell);
-        cell = new Cell(2, 1).add("Cell with rowspan 2");
+        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
         table.addCell(cell);
-        table.addCell(new Cell().add("row 1; cell 1"));
-        table.addCell(new Cell().add("row 1; cell 2"));
-        table.addCell(new Cell().add("row 2; cell 1"));
-        table.addCell(new Cell().add("row 2; cell 2"));
+        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
+        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
+        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
+        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
         return table;
     }
 
@@ -86,14 +87,14 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 1}));
         table.setWidthPercent(55.067f);
         Cell cell;
-        cell = new Cell(1, 3).add("Table 3");
+        cell = new Cell(1, 3).add(new Paragraph("Table 3"));
         table.addCell(cell);
-        cell = new Cell(2, 1).add("Cell with rowspan 2");
+        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
         table.addCell(cell);
-        table.addCell(new Cell().add("row 1; cell 1"));
-        table.addCell(new Cell().add("row 1; cell 2"));
-        table.addCell(new Cell().add("row 2; cell 1"));
-        table.addCell(new Cell().add("row 2; cell 2"));
+        table.addCell(new Cell().add(new Paragraph("row 1; cell 1")));
+        table.addCell(new Cell().add(new Paragraph("row 1; cell 2")));
+        table.addCell(new Cell().add(new Paragraph("row 2; cell 1")));
+        table.addCell(new Cell().add(new Paragraph("row 2; cell 2")));
         return table;
     }
 
@@ -102,9 +103,9 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
         Rectangle rect = new Rectangle(523, 770);
         table.setWidthPercent((144 + 72 + 72) / rect.getWidth() * 100);
         Cell cell;
-        cell = new Cell(1, 3).add("Table 4");
+        cell = new Cell(1, 3).add(new Paragraph("Table 4"));
         table.addCell(cell);
-        cell = new Cell(2, 1).add("Cell with rowspan 2");
+        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
         table.addCell(cell);
         table.addCell("row 1; cell 1");
         table.addCell("row 1; cell 2");
@@ -116,9 +117,9 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
     public static Table createTable5() {
         Table table = new Table(new float[]{144, 72, 72});
         Cell cell;
-        cell = new Cell(1, 3).add("Table 5");
+        cell = new Cell(1, 3).add(new Paragraph("Table 5"));
         table.addCell(cell);
-        cell = new Cell(2, 1).add("Cell with rowspan 2");
+        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
         table.addCell(cell);
         table.addCell("row 1; cell 1");
         table.addCell("row 1; cell 2");

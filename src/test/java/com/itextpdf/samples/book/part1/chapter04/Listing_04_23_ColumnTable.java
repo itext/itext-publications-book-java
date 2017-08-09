@@ -10,7 +10,7 @@ package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -105,16 +105,16 @@ public class Listing_04_23_ColumnTable extends GenericTest {
             throws SQLException, IOException {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1.5f, 2, 4.5f, 1}));
         Style style = new Style().setBackgroundColor(Color.LIGHT_GRAY);
-        table.addHeaderCell(new Cell().add("Location").addStyle(style));
-        table.addHeaderCell(new Cell().add("Time").addStyle(style));
-        table.addHeaderCell(new Cell().add("Run Length").addStyle(style));
-        table.addHeaderCell(new Cell().add("Title").addStyle(style));
-        table.addHeaderCell(new Cell().add("Year").addStyle(style));
-        table.addFooterCell(new Cell().add("Location").addStyle(style));
-        table.addFooterCell(new Cell().add("Time").addStyle(style));
-        table.addFooterCell(new Cell().add("Run Length").addStyle(style));
-        table.addFooterCell(new Cell().add("Title").addStyle(style));
-        table.addFooterCell(new Cell().add("Year").addStyle(style));
+        table.addHeaderCell(new Cell().add(new Paragraph("Location")).addStyle(style));
+        table.addHeaderCell(new Cell().add(new Paragraph("Time")).addStyle(style));
+        table.addHeaderCell(new Cell().add(new Paragraph("Run Length")).addStyle(style));
+        table.addHeaderCell(new Cell().add(new Paragraph("Title")).addStyle(style));
+        table.addHeaderCell(new Cell().add(new Paragraph("Year")).addStyle(style));
+        table.addFooterCell(new Cell().add(new Paragraph("Location")).addStyle(style));
+        table.addFooterCell(new Cell().add(new Paragraph("Time")).addStyle(style));
+        table.addFooterCell(new Cell().add(new Paragraph("Run Length")).addStyle(style));
+        table.addFooterCell(new Cell().add(new Paragraph("Title")).addStyle(style));
+        table.addFooterCell(new Cell().add(new Paragraph("Year")).addStyle(style));
 
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
         Movie movie;

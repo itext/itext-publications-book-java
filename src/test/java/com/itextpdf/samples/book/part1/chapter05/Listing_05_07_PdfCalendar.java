@@ -10,8 +10,8 @@ package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.color.DeviceCmyk;
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.DeviceCmyk;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -89,7 +89,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             // add empty cells
             while (position != calendar.get(Calendar.DAY_OF_WEEK)) {
                 position = (position % 7) + 1;
-                Cell cell = new Cell().add("");
+                Cell cell = new Cell().add(new Paragraph(""));
                 cell.setNextRenderer(new RoundedCellRenderer(cell, cmykWhite, false));
                 table.addCell(cell);
             }
@@ -102,7 +102,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             // add empty cells
             while (position != 2) {
                 position = (position % 7) + 1;
-                Cell cell = new Cell().add("");
+                Cell cell = new Cell().add(new Paragraph(""));
                 cell.setNextRenderer(new RoundedCellRenderer(cell, cmykWhite, false));
                 table.addCell(cell);
             }

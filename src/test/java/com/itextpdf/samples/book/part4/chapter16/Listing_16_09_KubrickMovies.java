@@ -16,7 +16,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
+import com.itextpdf.kernel.pdf.action.PdfTarget;
 import com.itextpdf.kernel.pdf.collection.PdfCollection;
 import com.itextpdf.kernel.pdf.collection.PdfCollectionField;
 import com.itextpdf.kernel.pdf.collection.PdfCollectionItem;
@@ -120,7 +120,7 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
             fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, movie.getImdb()),
                     movie.getTitle(),
                     String.format("kubrick_%s.pdf", movie.getImdb()),
-                    null, null, true);
+                    null, null);
 
             item = new PdfCollectionItem(schema);
             item.addItem("TITLE", movie.getMovieTitle(false));
@@ -152,8 +152,8 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
         cell.add(new Paragraph("Duration: " + movie.getDuration()));
         table.addCell(cell);
         doc.add(table);
-        PdfTargetDictionary target = PdfTargetDictionary.createParentTarget();
-        target.setTarget(PdfTargetDictionary.createParentTarget());
+        PdfTarget target = PdfTarget.createParentTarget();
+        target.setTarget(PdfTarget.createParentTarget());
         Link link = new Link("Go to original document",
                 PdfAction.createGoToE(new PdfNamedDestination("movies"), false, target));
         // TODO

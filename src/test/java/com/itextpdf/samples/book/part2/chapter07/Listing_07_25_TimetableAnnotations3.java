@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfLineAnnotation;
@@ -87,7 +87,7 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                 }
                 // Annotation for screenings with tickets available
                 else {
-                    PdfBorderArray borderArray = new PdfBorderArray(0, 0, 2, new PdfDashPattern());
+                    PdfAnnotationBorder borderArray = new PdfAnnotationBorder(0, 0, 2, new PdfDashPattern());
                     annotation = new PdfSquareAnnotation(rect)
                             .setContents("Tickets available")
                             .setTitle(new PdfString(movie.getMovieTitle()))

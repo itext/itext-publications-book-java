@@ -76,9 +76,9 @@ public class Listing_06_14_TwoPasses extends GenericTest {
                 .setBorderBottom(new SolidBorder(1));
         table.setBorder(Border.NO_BORDER);
         table.addCell(new Cell()
-                .add("FOOBAR FILMFESTIVAL").addStyle(style));
+                .add(new Paragraph("FOOBAR FILMFESTIVAL")).addStyle(style));
         table.addCell(new Cell()
-                .add(String.format("Page %d of %d", x, y)).addStyle(style));
+                .add(new Paragraph(String.format("Page %d of %d", x, y))).addStyle(style));
         return table;
     }
 

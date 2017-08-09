@@ -86,7 +86,7 @@ public class Listing_07_24_MovieAnnotations3 extends GenericTest {
             super.draw(drawContext);
             PdfFileSpec fs = null;
             try {
-                fs = PdfFileSpec.createEmbeddedFileSpec(drawContext.getDocument(), filePath, null, fileDisplay, null, null, false);
+                fs = PdfFileSpec.createEmbeddedFileSpec(drawContext.getDocument(), filePath, null, fileDisplay, null, null);
             } catch (IOException e) {
                 e.printStackTrace();
             }

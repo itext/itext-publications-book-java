@@ -12,6 +12,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.samples.GenericTest;
@@ -51,10 +52,10 @@ public class Listing_04_05_TableAlignment extends GenericTest {
         // the cell object
         Cell cell;
         // we add a cell with colspan 3
-        cell = new Cell(1, 3).add("Cell with colspan 3");
+        cell = new Cell(1, 3).add(new Paragraph("Cell with colspan 3"));
         table.addCell(cell);
         // now we add a cell with rowspan 2
-        cell = new Cell(2, 1).add("Cell with rowspan 2");
+        cell = new Cell(2, 1).add(new Paragraph("Cell with rowspan 2"));
         table.addCell(cell);
         // we add the four remaining cells with addCell()
         table.addCell("row 1; cell 1");

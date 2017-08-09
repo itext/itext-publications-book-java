@@ -74,7 +74,7 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                 table.addCell(cell);
             }
             List<Director> directors = movie.getDirectors();
-            cell = new Cell(directors.size(), 1).add("Directors:");
+            cell = new Cell(directors.size(), 1).add(new Paragraph("Directors:"));
             cell.setVerticalAlignment(VerticalAlignment.MIDDLE);
             table.addCell(cell);
             int count = 0;
@@ -87,20 +87,20 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                 cell.setMarginLeft(10 * count++);
                 table.addCell(cell);
             }
-            table.addCell(new Cell().add("Year:")
+            table.addCell(new Cell().add(new Paragraph("Year:"))
                     .setTextAlignment(TextAlignment.RIGHT));
-            table.addCell(new Cell().add(String.valueOf(movie.getYear()))
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getYear())))
                     .setTextAlignment(TextAlignment.RIGHT));
-            table.addCell(new Cell().add("Run length:")
+            table.addCell(new Cell().add(new Paragraph("Run length:"))
                     .setTextAlignment(TextAlignment.RIGHT));
-            table.addCell(new Cell().add(String.valueOf(movie.getDuration()))
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getDuration())))
                     .setTextAlignment(TextAlignment.RIGHT));
             List<Country> countries = movie.getCountries();
-            cell = new Cell(countries.size(), 1).add("Countries:");
+            cell = new Cell(countries.size(), 1).add(new Paragraph("Countries:"));
             cell.setVerticalAlignment(VerticalAlignment.BOTTOM);
             table.addCell(cell);
             for (Country country : countries) {
-                table.addCell(new Cell().add(country.getCountry())
+                table.addCell(new Cell().add(new Paragraph(country.getCountry()))
                         .setTextAlignment(TextAlignment.CENTER));
             }
             doc.add(table);

@@ -17,6 +17,7 @@ import com.itextpdf.layout.Style;
 import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
@@ -72,11 +73,11 @@ public class Listing_05_06_PressPreviews extends GenericTest {
 
         for (int i = 0; i < 2; i++) {
             List<Cell> cells = new ArrayList<>();
-            cells.add(new Cell().add("Location"));
-            cells.add(new Cell().add("Date/Time"));
-            cells.add(new Cell().add("Run Length"));
-            cells.add(new Cell().add("Title"));
-            cells.add(new Cell().add("Year"));
+            cells.add(new Cell().add(new Paragraph("Location")));
+            cells.add(new Cell().add(new Paragraph("Date/Time")));
+            cells.add(new Cell().add(new Paragraph("Run Length")));
+            cells.add(new Cell().add(new Paragraph("Title")));
+            cells.add(new Cell().add(new Paragraph("Year")));
 
             for (Cell c : cells) {
                 c.addStyle(defaultCellStyle);
@@ -93,23 +94,23 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         Movie movie;
         for (Screening screening : screenings) {
             movie = screening.getMovie();
-            cell = new Cell().add(screening.getLocation())
+            cell = new Cell().add(new Paragraph(screening.getLocation()))
                     .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
-            cell = new Cell().add(String.format("%s   %2$tH:%2$tM", screening.getDate().toString(), screening.getTime()))
+            cell = new Cell().add(new Paragraph(String.format("%s   %2$tH:%2$tM", screening.getDate().toString(), screening.getTime())))
                     .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
-            cell = new Cell().add(String.format("%d '", movie.getDuration()))
+            cell = new Cell().add(new Paragraph(String.format("%d '", movie.getDuration())))
                     .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
-            cell = new Cell().add(movie.getMovieTitle())
+            cell = new Cell().add(new Paragraph(movie.getMovieTitle()))
                     .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
-            cell = new Cell().add(String.valueOf(movie.getYear()))
+            cell = new Cell().add(new Paragraph(String.valueOf(movie.getYear())))
                     .addStyle(defaultCellStyle);
             cell.setNextRenderer(new PressPreviewsCellRenderer(cell));
             table.addCell(cell);
