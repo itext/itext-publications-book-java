@@ -28,6 +28,7 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -67,7 +68,7 @@ public class Listing_06_14_TwoPasses extends GenericTest {
      * @return a table that can be used as header
      */
     public static Table getHeaderTable(int x, int y) {
-        Table table = new Table(2);
+        Table table = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
         table.setWidth(523);
         Style style = new Style()
                 .setBorder(Border.NO_BORDER)

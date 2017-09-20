@@ -25,6 +25,7 @@ import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
@@ -77,7 +78,7 @@ public class Listing_07_05_TimetableDestinations extends GenericTest {
     }
 
     public Table createNavigationTable(int pagenumber, int total) {
-        Table table = new Table(4);
+        Table table = new Table(UnitValue.createPercentArray(4)).useAllAvailableWidth();
         table.setWidth(120);
         Style style = new Style().setTextAlignment(TextAlignment.CENTER).setBorder(Border.NO_BORDER);
         Link first = new Link(String.valueOf((char) 220), actions.get(0));

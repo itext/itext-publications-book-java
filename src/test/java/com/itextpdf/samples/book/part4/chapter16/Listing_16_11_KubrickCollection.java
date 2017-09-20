@@ -27,6 +27,7 @@ import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
@@ -122,7 +123,7 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
         pdfDoc.addFileAttachment("Kubrick box: the movies", fs);
 
         doc.add(new AreaBreak());
-        Table table = new Table(1);
+        Table table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth();
         table.setMarginBottom(10);
         Cell cell = new Cell().add(new Paragraph("All movies by Kubrick"));
         cell.setBorder(Border.NO_BORDER);

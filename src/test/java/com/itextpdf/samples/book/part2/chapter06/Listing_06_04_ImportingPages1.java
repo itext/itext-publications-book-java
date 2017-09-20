@@ -16,6 +16,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
@@ -39,7 +40,7 @@ public class Listing_06_04_ImportingPages1 extends GenericTest {
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(resultDoc);
 
-        Table table = new Table(2);
+        Table table = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
 
         PdfDocument srcDoc = new PdfDocument(new PdfReader(MOVIE_TEMPLATES));
 

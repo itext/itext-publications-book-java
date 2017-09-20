@@ -21,6 +21,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -91,7 +92,7 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
             // draw the background
             drawImageAndText(calendar, doc);
             // create a table with 7 columns
-            table = new Table(7);
+            table = new Table(UnitValue.createPercentArray(7)).useAllAvailableWidth();
             table.setWidth(504);
             // add the name of the month
             table.addCell(getMonthCell(calendar, locale));

@@ -81,7 +81,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
     public Table getTable(DatabaseConnection connection, Date day)
             throws UnsupportedEncodingException, SQLException, MalformedURLException {
         // Create a table with only one column
-        Table table = new Table(1);
+        Table table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth();
         // add the cell with the date
         Cell cell = new Cell().add(new Paragraph(day.toString()).setFontColor(Color.WHITE));
         cell.setBackgroundColor(Color.BLACK);

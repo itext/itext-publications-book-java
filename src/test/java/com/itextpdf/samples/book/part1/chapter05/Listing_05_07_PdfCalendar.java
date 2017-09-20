@@ -24,6 +24,7 @@ import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
@@ -77,7 +78,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             // draw the background
             drawImageAndText(calendar, doc);
             // create a table with 7 columns
-            table = new Table(7);
+            table = new Table(UnitValue.createPercentArray(7)).useAllAvailableWidth();
             table.setBackgroundColor(Color.YELLOW);
             table.setWidth(504);
             table.setNextRenderer(new RoundedTableRenderer(table, new Table.RowRange(0, 6)));

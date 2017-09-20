@@ -14,6 +14,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
@@ -46,7 +47,7 @@ public class Listing_04_10_TableHeight extends GenericTest {
 
     public static Table createFirstTable() {
         // a table with three columns
-        Table table = new Table(3);
+        Table table = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
         // the cell object
         Cell cell;
         // we add a cell with colspan 3

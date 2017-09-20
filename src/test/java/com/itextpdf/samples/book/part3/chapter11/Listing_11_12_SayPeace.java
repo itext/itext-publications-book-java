@@ -24,6 +24,7 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -112,7 +113,7 @@ public class Listing_11_12_SayPeace extends GenericTest {
                 }
             }
             else if ("pace".equals(qName)) {
-                table = new Table(1);
+                table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth();
             }
         }
 

@@ -18,6 +18,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Style;
@@ -51,7 +52,7 @@ public class Listing_07_01_NamedActions extends GenericTest {
 
         PdfFont symbol = PdfFontFactory.createFont(FontConstants.SYMBOL);
 
-        Table table = new Table(4).
+        Table table = new Table(UnitValue.createPercentArray(4)).useAllAvailableWidth().
             setFont(symbol).
             setFontSize(20);
         Style cellStyle = new Style().setBorder(Border.NO_BORDER)

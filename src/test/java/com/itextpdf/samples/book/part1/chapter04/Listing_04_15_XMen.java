@@ -18,6 +18,7 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -47,7 +48,7 @@ public class Listing_04_15_XMen extends GenericTest {
                 new Image(ImageDataFactory.create(String.format(RESOURCE, "0348150")))
         };
         // Creates a table with 6 columns
-        Table table = new Table(6);
+        Table table = new Table(UnitValue.createPercentArray(6)).useAllAvailableWidth();
         // first movie
         table.addCell(new Cell()
                 .add(new Paragraph("X-Men"))
