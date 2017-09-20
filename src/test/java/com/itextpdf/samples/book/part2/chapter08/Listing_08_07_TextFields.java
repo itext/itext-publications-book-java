@@ -138,6 +138,7 @@ public class Listing_08_07_TextFields extends GenericTest {
                 case 2:
                     borderStyleDict.put(PdfName.S, PdfName.S);
                     text.getWidgets().get(0).setBorderStyle(borderStyleDict);
+                    text.setValue("Name...");
                     text.setMaxLen(8);
                     text.setComb(true);
                     text.setBorderWidth(2);
