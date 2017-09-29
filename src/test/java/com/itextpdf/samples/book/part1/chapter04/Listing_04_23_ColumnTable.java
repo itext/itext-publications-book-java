@@ -25,6 +25,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutResult;
+import com.itextpdf.layout.layout.RootLayoutArea;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.DocumentRenderer;
@@ -35,13 +36,12 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
+import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_23_ColumnTable extends GenericTest {
@@ -144,10 +144,10 @@ public class Listing_04_23_ColumnTable extends GenericTest {
                 addChild(getHeaderTable(date, currentPageNumber, bold).createRendererSubTree());
 
                 nextAreaNumber++;
-                currentArea = new LayoutArea(currentPageNumber, new Rectangle(36, 36, 383, 450));
+                currentArea = new RootLayoutArea(currentPageNumber, new Rectangle(36, 36, 383, 450));
             } else {
                 nextAreaNumber++;
-                currentArea = new LayoutArea(currentPageNumber, new Rectangle(423, 36, 383, 450));
+                currentArea = new RootLayoutArea(currentPageNumber, new Rectangle(423, 36, 383, 450));
             }
             return currentArea;
         }
