@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -84,7 +84,7 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
             }
             // adds a separator
             SolidLine line = new SolidLine(.5f);
-            line.setColor(Color.BLUE);
+            line.setColor(ColorConstants.BLUE);
             p.addTabStops(new TabStop(1000, TabAlignment.RIGHT, line));
             p.add(new Tab());
             // adds more info about the director

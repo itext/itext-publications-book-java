@@ -14,6 +14,7 @@ import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -164,9 +165,9 @@ public class Listing_07_29_Calculator extends GenericTest {
         PdfButtonFormField pushButton = PdfFormField.createPushButton(pdfDoc, rect, "btn_" + btn, "btn_" + btn);
         pushButton.setFieldName("btn_" + btn);
         pushButton.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_PUSH);
-        pushButton.getWidgets().get(0).setNormalAppearance(createAppearance(pdfDoc, btn, Color.GRAY, w, h, font));
-        pushButton.getWidgets().get(0).setRolloverAppearance(createAppearance(pdfDoc, btn, Color.RED, w, h, font));
-        pushButton.getWidgets().get(0).setDownAppearance(createAppearance(pdfDoc, btn, Color.BLUE, w, h, font));
+        pushButton.getWidgets().get(0).setNormalAppearance(createAppearance(pdfDoc, btn, ColorConstants.GRAY, w, h, font));
+        pushButton.getWidgets().get(0).setRolloverAppearance(createAppearance(pdfDoc, btn, ColorConstants.RED, w, h, font));
+        pushButton.getWidgets().get(0).setDownAppearance(createAppearance(pdfDoc, btn, ColorConstants.BLUE, w, h, font));
         pushButton.getWidgets().get(0).setAdditionalAction(PdfName.U, PdfAction.createJavaScript(script));
         pushButton.getWidgets().get(0).setAdditionalAction(PdfName.E,
                 PdfAction.createJavaScript("this.showMove('" + btn + "');"));

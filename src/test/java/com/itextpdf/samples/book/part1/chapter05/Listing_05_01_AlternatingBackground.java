@@ -8,14 +8,13 @@
  */
 package com.itextpdf.samples.book.part1.chapter05;
 
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.border.SolidBorder;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
@@ -76,48 +75,48 @@ public class Listing_05_01_AlternatingBackground extends GenericTest {
         table.addHeaderCell(new Cell(1, 5)
                 .add(day.toString())
                 .setPadding(3)
-                .setBackgroundColor(Color.RED)
+                .setBackgroundColor(ColorConstants.RED)
                 .setTextAlignment(TextAlignment.CENTER));
 
         table.addHeaderCell(new Cell()
                 .add("Location")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
                 .add("Time")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
                 .add("Run Length")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
                 .add("Title")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         table.addHeaderCell(new Cell()
                 .add("Year")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Location")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Time")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Run Length")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Title")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         table.addFooterCell(new Cell()
                 .add("Year")
-                .setBackgroundColor(Color.ORANGE)
+                .setBackgroundColor(ColorConstants.ORANGE)
                 .setTextAlignment(TextAlignment.LEFT));
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
         Movie movie;
@@ -167,10 +166,10 @@ class AlternatingBackgroundTableRenderer extends TableRenderer {
             PdfCanvas canvas = drawContext.getCanvas();
             canvas.saveState();
             if (isOdd) {
-                canvas.setFillColor(Color.WHITE);
+                canvas.setFillColor(ColorConstants.WHITE);
                 isOdd = false;
             } else {
-                canvas.setFillColor(Color.YELLOW);
+                canvas.setFillColor(ColorConstants.YELLOW);
                 isOdd = true;
             }
             canvas.rectangle(rect);

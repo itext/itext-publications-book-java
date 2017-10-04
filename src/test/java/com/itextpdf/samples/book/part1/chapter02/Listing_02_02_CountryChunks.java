@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -54,9 +54,9 @@ public class Listing_02_02_CountryChunks extends GenericTest {
             Paragraph p = new Paragraph().setFixedLeading(16);
             p.add(new Text(rs.getString("country")));
             p.add(new Text(" "));
-            Text id = new Text(rs.getString("id")).setFont(font).setFontSize(6).setFontColor(Color.WHITE);
+            Text id = new Text(rs.getString("id")).setFont(font).setFontSize(6).setFontColor(ColorConstants.WHITE);
             // with a background color and a text rise
-            id.setBackgroundColor(Color.BLACK, 1f, 0.5f, 1f, 1.5f).setTextRise(6);
+            id.setBackgroundColor(ColorConstants.BLACK, 1f, 0.5f, 1f, 1.5f).setTextRise(6);
             p.add(id);
             doc.add(p);
         }

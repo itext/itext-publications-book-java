@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part2.chapter08;
 
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -96,7 +96,7 @@ public class Listing_08_07_TextFields extends GenericTest {
         fields.get("text_1").setValue("Bruno Lowagie");
 
         fields.get("text_2").setFieldFlags(0);
-        fields.get("text_2").setBorderColor(Color.RED);
+        fields.get("text_2").setBorderColor(ColorConstants.RED);
         fields.get("text_2").setValue("bruno");
 
         fields.get("text_3").setFieldFlag(PdfFormField.FF_PASSWORD, false);
@@ -153,7 +153,7 @@ public class Listing_08_07_TextFields extends GenericTest {
                 case 4:
                     borderStyleDict.put(PdfName.S, PdfName.D);
                     text.getWidgets().get(0).setBorderStyle(borderStyleDict);
-                    text.setBorderColor(Color.RED);
+                    text.setBorderColor(ColorConstants.RED);
                     text.setFontSize(8);
                     text.setValue("Enter the reason why you want to win a free " +
                             "accreditation for the Foobar Film Festival");

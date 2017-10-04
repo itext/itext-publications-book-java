@@ -16,6 +16,7 @@ import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.color.DeviceGray;
 import com.itextpdf.kernel.color.DeviceRgb;
 import com.itextpdf.kernel.color.WebColors;
@@ -117,7 +118,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
                 millimetersToPoints(7) - millimetersToPoints(0)), YEAR, "");
         screening.setJustification(PdfFormField.ALIGN_CENTER);
         screening.setBackgroundColor(new DeviceGray(0.4f));
-        screening.setColor(Color.LIGHT_GRAY);
+        screening.setColor(ColorConstants.LIGHT_GRAY);
         form.addField(screening);
 
         pdfDoc.close();
@@ -263,8 +264,8 @@ public class Listing_08_16_MovieAds extends GenericTest {
         protected String caption;
         protected com.itextpdf.io.image.ImageData image;
         protected Rectangle rect;
-        protected Color borderColor = Color.BLACK;
-        protected Color buttonBackgroundColor = Color.WHITE;
+        protected Color borderColor = ColorConstants.BLACK;
+        protected Color buttonBackgroundColor = ColorConstants.WHITE;
 
         public CustomButton(PdfButtonFormField button) {
             this.button = button;

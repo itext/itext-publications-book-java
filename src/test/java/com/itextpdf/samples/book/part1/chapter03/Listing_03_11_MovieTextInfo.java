@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -66,7 +66,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         Text press = new Text("P").
                 setFont(font).
                 setFontSize(HEIGHT_LOCATION / 2).
-                setFontColor(Color.WHITE);
+                setFontColor(ColorConstants.WHITE);
 
         try {
             DatabaseConnection connection = new HsqldbConnection("filmfestival");

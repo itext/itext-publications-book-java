@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.color.Color;
+import com.itextpdf.kernel.color.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -49,8 +49,8 @@ public class Listing_02_25_MoviePosters1 extends GenericTest {
 
         new PdfCanvas(pdfDoc.addNewPage())
                 .saveState()
-                .setStrokeColor(Color.RED)
-                .setFillColor(Color.RED)
+                .setStrokeColor(ColorConstants.RED)
+                .setFillColor(ColorConstants.RED)
                 .rectangle(rect)
                 .fillStroke()
                 .restoreState();
