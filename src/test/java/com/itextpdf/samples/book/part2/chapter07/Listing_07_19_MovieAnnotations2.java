@@ -88,9 +88,9 @@ public class Listing_07_19_MovieAnnotations2 extends GenericTest {
             Rectangle rect = new Rectangle(getOccupiedAreaBBox().getLeft() + getOccupiedAreaBBox().getWidth() / 4,
                     getOccupiedAreaBBox().getBottom(), 10, 10);
             PdfAnnotation annotation = new PdfTextAnnotation(rect)
+                    .setOpen(false)
                     .setTitle(new PdfString(title))
                     .setContents(new PdfString(contents))
-                    .setOpen(false)
                     .setName(new PdfString("Comment"));
             drawContext.getDocument().getLastPage().addAnnotation(annotation);
         }

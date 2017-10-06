@@ -23,6 +23,7 @@ import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
@@ -162,7 +163,7 @@ public class Listing_08_01_Buttons extends GenericTest {
 
         doc.add(new Paragraph().add(button));
 
-        PdfAnnotation ann = button.getButton().getWidgets().get(0);
+        PdfWidgetAnnotation ann = button.getButton().getWidgets().get(0);
         ann.setAction(PdfAction.createJavaScript("this.showButtonState()"));
 
         doc.close();

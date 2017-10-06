@@ -16,6 +16,7 @@ import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
@@ -82,7 +83,7 @@ public class Listing_07_27_Advertisement extends GenericTest {
         button.setFontSize(10);
         doc.add(new Paragraph().add(button));
 
-        PdfAnnotation menubar = button.getButton().getWidgets().get(0);
+        PdfWidgetAnnotation menubar = button.getButton().getWidgets().get(0);
         String js = "var f1 = getField('click'); f1.display = display.hidden;"
                 + "var f2 = getField('advertisement'); f2.display = display.hidden;";
         menubar.setAction(PdfAction.createJavaScript(js));
@@ -96,7 +97,7 @@ public class Listing_07_27_Advertisement extends GenericTest {
         button.setFontSize(8);
         doc.add(new Paragraph().add(button));
 
-        PdfAnnotation advertisement = button.getButton().getWidgets().get(0);
+        PdfWidgetAnnotation advertisement = button.getButton().getWidgets().get(0);
         advertisement.setAction(PdfAction.createURI("http://www.1t3xt.com/docs/book.php"));
         // Close the pdf document
         pdfDoc.close();

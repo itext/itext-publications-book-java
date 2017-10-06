@@ -17,6 +17,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
@@ -53,7 +54,7 @@ public class Listing_07_26_ButtonsActions extends GenericTest {
         mail.setBorderColor(ColorConstants.BLACK);
         mail.setBorderWidth(1);
         mail.setColor(ColorConstants.RED);
-        PdfAnnotation mailButton = mail.getWidgets().get(0);
+        PdfWidgetAnnotation mailButton = mail.getWidgets().get(0);
         mailButton.setAction(PdfAction.createJavaScript("app.execMenuItem('AcroSendMail:SendMail')"));
         // Add the annotations to every page of the document
         for (int page = 1; page <= pdfDoc.getNumberOfPages(); page++) {

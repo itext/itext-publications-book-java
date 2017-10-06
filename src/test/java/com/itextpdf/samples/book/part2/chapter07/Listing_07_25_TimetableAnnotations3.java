@@ -79,12 +79,12 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
                     PdfDictionary borderStyleDict = new PdfDictionary();
                     borderStyleDict.put(PdfName.W, new PdfNumber(5));
                     borderStyleDict.put(PdfName.S, PdfName.B);
-                    annotation = new PdfLineAnnotation(rect, line).
-                            setContents("SOLD OUT")
+                    annotation = new PdfLineAnnotation(rect, line)
+                            .setBorderStyle(borderStyleDict)
+                            .setContents("SOLD OUT")
                             .setTitle(new PdfString(movie.getMovieTitle()))
                             .setColor(ColorConstants.GREEN.getColorValue())
-                            .setFlags(PdfAnnotation.PRINT)
-                            .setBorderStyle(borderStyleDict);
+                            .setFlags(PdfAnnotation.PRINT);
                 }
                 // Annotation for screenings with tickets available
                 else {
