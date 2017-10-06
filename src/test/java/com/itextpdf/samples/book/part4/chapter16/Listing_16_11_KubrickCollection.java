@@ -20,6 +20,7 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfFileAttachmentAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.kernel.pdf.collection.*;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
@@ -55,6 +56,7 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
     public static final String FILE_FIELD = "FILE";
     public static final String FILE_CAPTION = "File name";
     public String[] KEYS = {TYPE_FIELD, FILE_FIELD};
+    public static final PdfArray EMPTY_ANNOTATION_BORDER = new PdfArray(new int[] {0, 0, 0});
 
     public static void main(String args[]) throws Exception {
         new Listing_16_08_KubrickBox().manipulatePdf(DEST);
@@ -100,15 +102,18 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
             if (movie.getYear() > 1960) {
                 out.print(String.format(
                         "%s;%s;%s\n", movie.getMovieTitle(), movie.getYear(), movie.getDuration()));
-                item = new ListItem(movie.getMovieTitle());
+                item = new ListItem();
+                Paragraph content = new Paragraph(movie.getMovieTitle());
                 if (!"0278736".equals(movie.getImdb())) {
                     target = PdfTargetDictionary.createChildTarget(movie.getTitle());
-                    intermediate = PdfTargetDictionary.createChildTarget(2, 0);
+                    intermediate = PdfTargetDictionary.createChildTarget(2, 1);
                     intermediate.setTarget(target);
                     action = PdfAction.createGoToE(dest, true, intermediate);
                     link = new Link(" (see info)", action);
-                    item.add(new Paragraph(link));
+                    link.getLinkAnnotation().setBorder(EMPTY_ANNOTATION_BORDER);
+                    content.add(link);
                 }
+                item.add(content);
                 list.add(item);
             }
         }
@@ -184,18 +189,19 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
         public void drawBorder(DrawContext drawContext) {
             super.drawBorder(drawContext);
             Rectangle rect = getOccupiedAreaBBox();
+            int pageNumber = getOccupiedArea().getPageNumber();
             PdfAnnotation annotation = new PdfFileAttachmentAnnotation(new Rectangle(rect.getLeft() - 20,
                     rect.getTop() - 15, 15, 10), fs);
             annotation.setName(new PdfString(description));
             if (isExtendedEvent) {
-                annotation.setAction(action);
+                drawContext.getDocument().getPage(pageNumber).addAnnotation(new PdfLinkAnnotation(rect).setAction(action).setBorder(EMPTY_ANNOTATION_BORDER));
                 PdfArray array = new PdfArray();
-                array.add(drawContext.getDocument().getFirstPage().getPdfObject());
+                array.add(drawContext.getDocument().getPage(pageNumber).getPdfObject());
                 array.add(PdfName.FitH);
                 array.add(new PdfNumber(rect.getTop()));
                 drawContext.getDocument().addNamedDestination(top, array);
             }
-            drawContext.getDocument().getLastPage().addAnnotation(annotation);
+            drawContext.getDocument().getPage(pageNumber).addAnnotation(annotation);
 
         }
     }
