@@ -10,7 +10,7 @@ package com.itextpdf.samples.book.part1.chapter02;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -59,7 +59,7 @@ public class Listing_02_28_MoviePosters3 extends GenericTest {
             Image img = new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb())));
             img.setHorizontalAlignment(HorizontalAlignment.LEFT);
 
-            img.setBorder(new SolidBorder(Color.WHITE, 10));
+            img.setBorder(new SolidBorder(ColorConstants.WHITE, 10));
             img.scaleToFit(1000, 72);
             doc.add(img);
             // Create text elements

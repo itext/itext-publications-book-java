@@ -9,6 +9,7 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceCmyk;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.colors.DeviceRgb;
@@ -42,8 +43,8 @@ public class Listing_10_01_DeviceColor extends GenericTest {
         colorRectangle(canvas, new DeviceRgb(0f, 1f, 1f), 252, 770, 36, 36);
         colorRectangle(canvas, new DeviceRgb(1f, 0f, 1f), 306, 770, 36, 36);
         colorRectangle(canvas, new DeviceRgb(1f, 1f, 0f), 360, 770, 36, 36);
-        colorRectangle(canvas, Color.BLACK, 416, 770, 36, 36);
-        colorRectangle(canvas, Color.LIGHT_GRAY, 470, 770, 36, 36);
+        colorRectangle(canvas, ColorConstants.BLACK, 416, 770, 36, 36);
+        colorRectangle(canvas, ColorConstants.LIGHT_GRAY, 470, 770, 36, 36);
         // CMYK Colors
         colorRectangle(canvas, new DeviceCmyk(0, 0, 0, 0), 36, 716, 36, 36);
         colorRectangle(canvas, new DeviceCmyk(0, 0, 100, 0), 90, 716, 36, 36);

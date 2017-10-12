@@ -11,7 +11,7 @@ package com.itextpdf.samples.book.part1.chapter04;
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.colors.WebColors;
 import com.itextpdf.kernel.font.PdfFont;
@@ -83,8 +83,8 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // Create a table with only one column
         Table table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth();
         // add the cell with the date
-        Cell cell = new Cell().add(new Paragraph(day.toString()).setFontColor(Color.WHITE));
-        cell.setBackgroundColor(Color.BLACK);
+        Cell cell = new Cell().add(new Paragraph(day.toString()).setFontColor(ColorConstants.WHITE));
+        cell.setBackgroundColor(ColorConstants.BLACK);
         cell.setTextAlignment(TextAlignment.CENTER);
         table.addCell(cell);
         // add the movies as nested tables
@@ -136,7 +136,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // cell 1: location and time
         Cell cell = new Cell();
         cell.setBorder(Border.NO_BORDER);
-        cell.setBackgroundColor(Color.WHITE);
+        cell.setBackgroundColor(ColorConstants.WHITE);
         String s = String.format("%s \u2013 %2$tH:%2$tM",
                 screening.getLocation(), screening.getTime().getTime());
         cell.add(new Paragraph(s).setTextAlignment(TextAlignment.CENTER));
@@ -156,7 +156,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         // cell 3 duration
         cell = new Cell();
         cell.setBorder(Border.NO_BORDER);
-        cell.setBackgroundColor(Color.WHITE);
+        cell.setBackgroundColor(ColorConstants.WHITE);
         p = new Paragraph(String.format("%d'", movie.getDuration()));
         p.setTextAlignment(TextAlignment.CENTER);
         cell.add(p);

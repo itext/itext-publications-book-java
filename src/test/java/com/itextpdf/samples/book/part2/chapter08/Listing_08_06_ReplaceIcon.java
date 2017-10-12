@@ -11,6 +11,7 @@ package com.itextpdf.samples.book.part2.chapter08;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -84,8 +85,8 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         protected String caption;
         protected ImageData image;
         protected Rectangle rect;
-        protected Color borderColor = Color.BLACK;
-        protected Color buttonBackgroundColor = Color.WHITE;
+        protected Color borderColor = ColorConstants.BLACK;
+        protected Color buttonBackgroundColor = ColorConstants.WHITE;
 
         public CustomButton(PdfButtonFormField button) {
             this.button = button;

@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
@@ -87,7 +87,7 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
                             pdfDoc.getLastPage().getPageSize().getTop())));
             link = movieBookmark.addOutline("link to IMDB");
             link.setStyle(PdfOutline.FLAG_BOLD);
-            link.setColor(Color.BLUE);
+            link.setColor(ColorConstants.BLUE);
             link.addAction(PdfAction.createURI((String.format(RESOURCE, movie.getImdb()))));
             info = movieBookmark.addOutline("instant info");
             info.addAction(PdfAction.createJavaScript(

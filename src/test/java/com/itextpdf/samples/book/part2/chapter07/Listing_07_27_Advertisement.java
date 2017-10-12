@@ -10,6 +10,7 @@ package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.pdf.*;
@@ -76,8 +77,8 @@ public class Listing_07_27_Advertisement extends GenericTest {
 
         CustomButton button = new CustomButton("click", "Close this advertisement", pdfDoc, rect);
         button.setImage(new PdfImageXObject(ImageDataFactory.create(IMAGE)));
-        button.setButtonBackgroundColor(Color.RED);
-        button.setBorderColor(Color.RED);
+        button.setButtonBackgroundColor(ColorConstants.RED);
+        button.setBorderColor(ColorConstants.RED);
         button.setFontSize(10);
         doc.add(new Paragraph().add(button));
 
@@ -89,8 +90,8 @@ public class Listing_07_27_Advertisement extends GenericTest {
         // Create the advertisement annotation for the content
         rect = new Rectangle(400, 550, 545-400, 222);
         button = new CustomButton("advertisement", "Buy the book iText in Action 2nd edition", pdfDoc, rect);
-        button.setButtonBackgroundColor(Color.WHITE);
-        button.setBorderColor(Color.RED);
+        button.setButtonBackgroundColor(ColorConstants.WHITE);
+        button.setBorderColor(ColorConstants.RED);
         button.setImage(adDoc.getPage(1).copyAsFormXObject(pdfDoc));
         button.setFontSize(8);
         doc.add(new Paragraph().add(button));
@@ -108,8 +109,8 @@ public class Listing_07_27_Advertisement extends GenericTest {
         protected String caption;
         protected PdfXObject image;
         protected Rectangle rect;
-        protected Color borderColor = Color.BLACK;
-        protected Color buttonBackgroundColor = Color.WHITE;
+        protected Color borderColor = ColorConstants.BLACK;
+        protected Color buttonBackgroundColor = ColorConstants.WHITE;
         protected int fontSize = 12;
 
         public CustomButton(String name, String caption, PdfDocument document, Rectangle rect) {

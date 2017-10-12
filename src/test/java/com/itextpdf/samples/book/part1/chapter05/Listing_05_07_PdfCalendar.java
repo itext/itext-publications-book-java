@@ -10,7 +10,7 @@ package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceCmyk;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -79,7 +79,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             drawImageAndText(calendar, doc);
             // create a table with 7 columns
             table = new Table(UnitValue.createPercentArray(7)).useAllAvailableWidth();
-            table.setBackgroundColor(Color.YELLOW);
+            table.setBackgroundColor(ColorConstants.YELLOW);
             table.setWidth(504);
             table.setNextRenderer(new RoundedTableRenderer(table, new Table.RowRange(0, 6)));
             // add the name of the month
@@ -165,7 +165,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
     public Cell getDayCell(Calendar calendar, Locale locale) {
         Cell cell = new Cell();
         cell.setPadding(10);
-        cell.setBackgroundColor(Color.WHITE);
+        cell.setBackgroundColor(ColorConstants.WHITE);
         if (isSunday(calendar) || isSpecialDay(calendar)) {
             cell.setBorder(Border.NO_BORDER);
             cell.setNextRenderer(new RoundedCellRenderer(cell, cmykGreen, true));

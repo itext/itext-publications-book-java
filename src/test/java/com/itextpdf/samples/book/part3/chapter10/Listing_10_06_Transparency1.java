@@ -8,6 +8,7 @@
  */
 package com.itextpdf.samples.book.part3.chapter10;
 
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.DeviceGray;
@@ -114,7 +115,7 @@ public class Listing_10_06_Transparency1 extends GenericTest {
      * @throws Exception
      */
     public static void pictureBackdrop(float x, float y, PdfCanvas canvas) {
-        canvas.setStrokeColor(Color.DARK_GRAY)
+        canvas.setStrokeColor(ColorConstants.DARK_GRAY)
                 .setFillColor(new DeviceGray(0.8f))
                 .rectangle(x, y, 100, 200)
                 .fill()
@@ -132,13 +133,13 @@ public class Listing_10_06_Transparency1 extends GenericTest {
      * @throws Exception
      */
     public static void pictureCircles(float x, float y, PdfCanvas canvas) {
-        canvas.setFillColor(Color.RED)
+        canvas.setFillColor(ColorConstants.RED)
                 .circle(x + 70, y + 70, 50)
                 .fill()
-                .setFillColor(Color.YELLOW)
+                .setFillColor(ColorConstants.YELLOW)
                 .circle(x + 100, y + 130, 50)
                 .fill()
-                .setFillColor(Color.BLUE)
+                .setFillColor(ColorConstants.BLUE)
                 .circle(x + 130, y + 70, 50)
                 .fill();
     }

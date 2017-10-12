@@ -10,7 +10,7 @@ package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -157,7 +157,7 @@ public class Listing_03_07_FoobarFilmFestival extends GenericTest {
         c = new Text(foobar).setFont(freeSans);
         c.setTextRenderingMode(PdfCanvasConstants.TextRenderingMode.STROKE)
                 .setStrokeWidth(0.1f)
-                .setStrokeColor(Color.RED);
+                .setStrokeColor(ColorConstants.RED);
         phrase = new Paragraph(c);
         doc.showTextAligned(phrase, 400, 464, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         c = new Text(foobar).setFont(freeSans);

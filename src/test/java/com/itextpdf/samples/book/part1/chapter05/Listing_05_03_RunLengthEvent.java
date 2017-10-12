@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -77,11 +77,11 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         table.addHeaderCell(new Cell(1, 5)
                 .add(new Paragraph(day.toString()))
                 .setPadding(3)
-                .setBackgroundColor(Color.RED)
+                .setBackgroundColor(ColorConstants.RED)
                 .setTextAlignment(TextAlignment.CENTER));
         Style style = new Style();
         style
-                .setBackgroundColor(Color.YELLOW)
+                .setBackgroundColor(ColorConstants.YELLOW)
                 .setTextAlignment(TextAlignment.LEFT)
                 .setPaddingLeft(3)
                 .setPaddingRight(3)

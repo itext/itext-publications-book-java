@@ -10,6 +10,7 @@ package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -67,7 +68,7 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
         float sine = (float) Math.sin(Math.PI / 60);
         float cosine = (float) Math.cos(Math.PI / 60);
         canvas.saveState().beginText().setTextRenderingMode(2).
-                setLineWidth(1.5f).setFillColor(DeviceRgb.WHITE).setStrokeColor(DeviceRgb.RED).
+                setLineWidth(1.5f).setFillColor(ColorConstants.WHITE).setStrokeColor(ColorConstants.RED).
                 setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 36).setTextMatrix(cosine, sine, -sine, cosine, 50, 324).
                 showText("SOLD OUT").endText().restoreState();
 

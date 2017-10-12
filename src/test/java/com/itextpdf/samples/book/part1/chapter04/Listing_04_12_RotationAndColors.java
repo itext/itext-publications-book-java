@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -51,17 +51,17 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         // row 1, cell 2
         cell = new Cell().add(new Paragraph("red / no borders"));
         cell.setBorder(Border.NO_BORDER);
-        cell.setBackgroundColor(Color.RED);
+        cell.setBackgroundColor(ColorConstants.RED);
         table.addCell(cell);
         // row 1, cell 3
         cell = new Cell().add(new Paragraph("green / black bottom border"));
-        cell.setBorderBottom(new SolidBorder(Color.BLACK, 10f));
-        cell.setBackgroundColor(Color.GREEN);
+        cell.setBorderBottom(new SolidBorder(ColorConstants.BLACK, 10f));
+        cell.setBackgroundColor(ColorConstants.GREEN);
         table.addCell(cell);
         // row 1, cell 4
         cell = new Cell().add(new Paragraph("cyan / blue top border + padding"));
-        cell.setBorderTop(new SolidBorder(Color.BLUE, 5f));
-        cell.setBackgroundColor(Color.CYAN);
+        cell.setBorderTop(new SolidBorder(ColorConstants.BLUE, 5f));
+        cell.setBackgroundColor(ColorConstants.CYAN);
         table.addCell(cell);
         // row 2, cell 1
         cell = new Cell().add(new Paragraph("GRAY"));
@@ -91,21 +91,21 @@ public class Listing_04_12_RotationAndColors extends GenericTest {
         table.addCell(cell);
         // row 3, cell 2
         cell = new Cell().add(new Paragraph("different borders"));
-        cell.setBorderLeft(new SolidBorder(Color.RED, 16f));
-        cell.setBorderBottom(new SolidBorder(Color.ORANGE, 12f));
-        cell.setBorderRight(new SolidBorder(Color.YELLOW, 8f));
-        cell.setBorderTop(new SolidBorder(Color.GREEN, 4f));
+        cell.setBorderLeft(new SolidBorder(ColorConstants.RED, 16f));
+        cell.setBorderBottom(new SolidBorder(ColorConstants.ORANGE, 12f));
+        cell.setBorderRight(new SolidBorder(ColorConstants.YELLOW, 8f));
+        cell.setBorderTop(new SolidBorder(ColorConstants.GREEN, 4f));
         table.addCell(cell);
         // row 3, cell 3
         cell = new Cell().add(new Paragraph("with correct padding"));
-        cell.setBorderLeft(new SolidBorder(Color.RED, 16f));
-        cell.setBorderBottom(new SolidBorder(Color.ORANGE, 12f));
-        cell.setBorderRight(new SolidBorder(Color.YELLOW, 8f));
-        cell.setBorderTop(new SolidBorder(Color.GREEN, 4f));
+        cell.setBorderLeft(new SolidBorder(ColorConstants.RED, 16f));
+        cell.setBorderBottom(new SolidBorder(ColorConstants.ORANGE, 12f));
+        cell.setBorderRight(new SolidBorder(ColorConstants.YELLOW, 8f));
+        cell.setBorderTop(new SolidBorder(ColorConstants.GREEN, 4f));
         table.addCell(cell);
         // row 3, cell 4
         cell = new Cell().add(new Paragraph("red border"));
-        cell.setBorder(new SolidBorder(Color.RED, 8f));
+        cell.setBorder(new SolidBorder(ColorConstants.RED, 8f));
         table.addCell(cell);
         doc.add(table);
         doc.close();

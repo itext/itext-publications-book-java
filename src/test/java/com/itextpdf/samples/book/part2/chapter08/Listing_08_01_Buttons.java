@@ -15,6 +15,7 @@ import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -98,8 +99,8 @@ public class Listing_08_01_Buttons extends GenericTest {
         for (int i = 0; i < LANGUAGES.length; i++) {
             rect = new Rectangle(40, 806 - i * 40, 60 - 40, 806 - 788);
             radio = PdfFormField.createRadioButton(pdfDoc, rect, radioGroup, LANGUAGES[i]);
-            radio.setBorderColor(Color.DARK_GRAY);
-            radio.setBackgroundColor(Color.LIGHT_GRAY);
+            radio.setBorderColor(ColorConstants.DARK_GRAY);
+            radio.setBackgroundColor(ColorConstants.LIGHT_GRAY);
             radio.setCheckType(PdfFormField.TYPE_CIRCLE);
             canvas
                     .beginText()
@@ -156,7 +157,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         Button button = new Button("Buttons", "Push me", pdfDoc, rect);
         button.setImage(ImageDataFactory.create(IMAGE));
         button.setButtonBackgroundColor(new DeviceGray(0.75f));
-        button.setBorderColor(Color.DARK_GRAY);
+        button.setBorderColor(ColorConstants.DARK_GRAY);
         button.setFontSize(12);
 
         doc.add(new Paragraph().add(button));
@@ -193,8 +194,8 @@ public class Listing_08_01_Buttons extends GenericTest {
         protected String caption;
         protected ImageData image;
         protected Rectangle rect;
-        protected Color borderColor = Color.BLACK;
-        protected Color buttonBackgroundColor = Color.WHITE;
+        protected Color borderColor = ColorConstants.BLACK;
+        protected Color buttonBackgroundColor = ColorConstants.WHITE;
 
         public Button(String name, String caption, PdfDocument document, Rectangle rect) {
             button = PdfFormField.createButton(document, new Rectangle(0, 0), 0);

@@ -8,6 +8,7 @@
  */
 package com.itextpdf.samples.book.part3.chapter10;
 
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.DeviceCmyk;
@@ -101,12 +102,12 @@ public class Listing_10_07_Transparency2 extends GenericTest {
      * @throws Exception
      */
     public static void pictureBackdrop(float x, float y, PdfCanvas canvas) {
-        PdfShading.Axial axial = new PdfShading.Axial(new PdfDeviceCs.Rgb(), x, y, Color.YELLOW.getColorValue(),
-                x + 200, y, Color.RED.getColorValue());
+        PdfShading.Axial axial = new PdfShading.Axial(new PdfDeviceCs.Rgb(), x, y, ColorConstants.YELLOW.getColorValue(),
+                x + 200, y, ColorConstants.RED.getColorValue());
         PdfPattern.Shading axialPattern = new PdfPattern.Shading(axial);
         canvas
                 .setFillColorShading(axialPattern)
-                .setStrokeColor(Color.BLACK)
+                .setStrokeColor(ColorConstants.BLACK)
                 .setLineWidth(2)
                 .rectangle(x, y, 200, 200)
                 .fillStroke();

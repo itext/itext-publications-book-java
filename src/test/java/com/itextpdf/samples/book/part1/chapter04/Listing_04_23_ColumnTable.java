@@ -10,7 +10,7 @@ package com.itextpdf.samples.book.part1.chapter04;
 
 import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -91,7 +91,7 @@ public class Listing_04_23_ColumnTable extends GenericTest {
     public static Table getHeaderTable(Date day, int page, PdfFont font) {
         Table header = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
         header.setWidthPercent(100);
-        Style style = new Style().setBackgroundColor(Color.BLACK).setFontColor(Color.WHITE).setFont(font);
+        Style style = new Style().setBackgroundColor(ColorConstants.BLACK).setFontColor(ColorConstants.WHITE).setFont(font);
         Paragraph p = new Paragraph("Foobar Film Festival").addStyle(style);
         header.addCell(new Cell().add(p));
         p = new Paragraph(day.toString()).addStyle(style);
@@ -104,7 +104,7 @@ public class Listing_04_23_ColumnTable extends GenericTest {
     public Table getTable(DatabaseConnection connection, Date day)
             throws SQLException, IOException {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1.5f, 2, 4.5f, 1}));
-        Style style = new Style().setBackgroundColor(Color.LIGHT_GRAY);
+        Style style = new Style().setBackgroundColor(ColorConstants.LIGHT_GRAY);
         table.addHeaderCell(new Cell().add(new Paragraph("Location")).addStyle(style));
         table.addHeaderCell(new Cell().add(new Paragraph("Time")).addStyle(style));
         table.addHeaderCell(new Cell().add(new Paragraph("Run Length")).addStyle(style));
