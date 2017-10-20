@@ -27,6 +27,7 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -186,8 +187,8 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         }
 
         @Override
-        public CellRenderer getNextRenderer() {
-            return new FilmCellRenderer(getModelElement(), duration, isPressPreview);
+        public IRenderer getNextRenderer() {
+            return new FilmCellRenderer((Cell)getModelElement(), duration, isPressPreview);
         }
     }
 }

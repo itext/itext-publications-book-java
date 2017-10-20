@@ -37,7 +37,7 @@ public class Listing_01_08_HelloWorldMirroredMarginsTop extends GenericTest {
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(writer);
-        PageSize customPageSize = PageSize.A5.clone();
+        PageSize customPageSize = (PageSize) PageSize.A5.clone();
         Document doc = new Document(pdfDoc, customPageSize);
         doc.setMargins(108, 72, 180, 36);
         doc.setRenderer(new DocumentRenderer(doc) {

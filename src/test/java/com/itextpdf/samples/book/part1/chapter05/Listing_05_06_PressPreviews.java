@@ -21,6 +21,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -134,7 +135,7 @@ public class Listing_05_06_PressPreviews extends GenericTest {
         }
 
         @Override
-        public CellRenderer getNextRenderer() {
+        public IRenderer getNextRenderer() {
             return new PressPreviewsCellRenderer((Cell) modelElement);
         }
     }
