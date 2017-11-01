@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part3.chapter09;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.Document;
@@ -90,7 +90,7 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
             } else if ("movie".equals(qName)) {
                 flushStack();
                 Div p = new Div();
-                p.setFont(PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD));
+                p.setFont(PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD));
                 stack.push(p);
                 year = attributes.getValue("year");
                 duration = attributes.getValue("duration");

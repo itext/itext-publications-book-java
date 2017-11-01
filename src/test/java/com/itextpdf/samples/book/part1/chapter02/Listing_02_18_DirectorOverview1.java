@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -50,8 +50,8 @@ public class Listing_02_18_DirectorOverview1 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
+        normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

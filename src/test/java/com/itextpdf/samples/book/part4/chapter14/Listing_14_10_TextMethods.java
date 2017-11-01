@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter14;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -52,7 +52,7 @@ public class Listing_14_10_TextMethods extends GenericTest {
                 .stroke();
         // draw text
         String text = "AWAY again ";
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
         canvas.beginText()
                 .setFontAndSize(font, 12)
                 .setTextMatrix(50, 800)

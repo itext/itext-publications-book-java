@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter13;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.*;
@@ -56,8 +56,8 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
-        PdfFont bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        PdfFont bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
 
         Set<Movie> movies = new TreeSet<>(new MovieComparator(MovieComparator.BY_YEAR));
         movies.addAll(PojoFactory.getMovies(connection));

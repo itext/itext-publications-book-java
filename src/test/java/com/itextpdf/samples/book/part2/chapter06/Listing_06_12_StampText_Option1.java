@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part2.chapter06;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -43,7 +43,7 @@ public class Listing_06_12_StampText_Option1 extends GenericTest {
 
         //Initialize canvas and write to it
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        canvas.saveState().beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12).
+        canvas.saveState().beginText().setFontAndSize(PdfFontFactory.createFont(StandardFontNames.HELVETICA), 12).
                 moveText(36, 540).showText("Hello people!").endText().restoreState();
         canvas.release();
 

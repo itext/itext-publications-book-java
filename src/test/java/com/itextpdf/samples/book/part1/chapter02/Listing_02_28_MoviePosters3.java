@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
@@ -51,7 +51,7 @@ public class Listing_02_28_MoviePosters3 extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
 
         List<Movie> movies = PojoFactory.getMovies(connection);
         for (Movie movie : movies) {

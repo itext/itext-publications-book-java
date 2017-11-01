@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.source.PdfTokenizer;
 import com.itextpdf.io.source.RandomAccessFileOrArray;
@@ -58,7 +58,7 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         canvas.beginText();
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(StandardFontNames.HELVETICA), 12);
         canvas.moveText(88.66f, 367);
         canvas.showText("ld");
         canvas.moveText(-22f, 0);
@@ -72,7 +72,7 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
         PdfFormXObject xObject = new PdfFormXObject(new Rectangle(250, 25));
         PdfCanvas xObjectCanvas = new PdfCanvas(xObject, pdfDoc);
         xObjectCanvas.beginText();
-        xObjectCanvas.setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12);
+        xObjectCanvas.setFontAndSize(PdfFontFactory.createFont(StandardFontNames.HELVETICA), 12);
         xObjectCanvas.moveText(0, 7);
         xObjectCanvas.showText("Hello People");
         xObjectCanvas.endText();

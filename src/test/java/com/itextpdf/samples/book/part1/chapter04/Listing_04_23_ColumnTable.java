@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
@@ -64,7 +64,7 @@ public class Listing_04_23_ColumnTable extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD, PdfEncodings.WINANSI);
+        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD, PdfEncodings.WINANSI);
 
         ColumnDocumentRenderer renderer = new ColumnDocumentRenderer(doc);
         doc.setRenderer(renderer);

@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -34,7 +34,7 @@ public class PositionedArrowTabRenderer extends TabRenderer {
         super(tab);
         this.isLeft = isLeft;
         try {
-            zapfdingbats = PdfFontFactory.createFont(FontConstants.ZAPFDINGBATS, PdfEncodings.WINANSI, false);
+            zapfdingbats = PdfFontFactory.createFont(StandardFontNames.ZAPFDINGBATS, PdfEncodings.WINANSI, false);
         } catch (IOException ioe) {
             zapfdingbats = null;
         }

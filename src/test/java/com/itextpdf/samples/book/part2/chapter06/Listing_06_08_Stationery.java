@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part2.chapter06;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
@@ -80,9 +80,9 @@ public class Listing_06_08_Stationery extends GenericTest {
         StationeryEventHandler eventHandler = new StationeryEventHandler();
         pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, eventHandler);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_OBLIQUE);
+        normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
 
         doc.setMargins(72, 36, 36, 36);
         // useStationary(writer);
@@ -119,7 +119,7 @@ public class Listing_06_08_Stationery extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
 
         Table table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth().setWidth(UnitValue.createPercentValue(80)).setHorizontalAlignment(HorizontalAlignment.CENTER);
         Style style = new Style().setTextAlignment(TextAlignment.CENTER);
@@ -127,7 +127,7 @@ public class Listing_06_08_Stationery extends GenericTest {
                 .addStyle(style)
                 .add(new Paragraph("FOOBAR FILM FESTIVAL").setFont(bold)));
         doc.add(table);
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage().newContentStreamBefore(),
                 pdfDoc.getLastPage().getResources(), pdfDoc);
         new Canvas(canvas, pdfDoc, pdfDoc.getLastPage().getPageSize())

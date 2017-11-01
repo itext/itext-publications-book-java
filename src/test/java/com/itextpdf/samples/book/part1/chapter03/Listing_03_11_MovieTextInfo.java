@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -60,7 +60,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4.getHeight(), PageSize.A4.getWidth()));
         doc.setMargins(0, 0, 0, 0);
 
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
         doc.setProperty(Property.FONT, font);
 
         Text press = new Text("P").

@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
@@ -52,10 +52,10 @@ public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
-        boldItalic = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLDOBLIQUE);
+        normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_OBLIQUE);
+        boldItalic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLDOBLIQUE);
 
         doc.setProperty(Property.FONT, normal);
 

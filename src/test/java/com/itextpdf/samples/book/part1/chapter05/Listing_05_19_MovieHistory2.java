@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter05;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
@@ -67,8 +67,8 @@ public class Listing_05_19_MovieHistory2 extends GenericTest {
         HeadertHandler handler = new HeadertHandler();
         pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, handler);
 
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
-        PdfFont bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        PdfFont bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
 
 
         // Make the connection to the database

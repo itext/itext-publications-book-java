@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -51,13 +51,14 @@ public class Listing_02_21_DirectorOverview3 extends GenericTest {
         new Listing_02_21_DirectorOverview3().manipulatePdf(DEST);
     }
 
+    @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
+        normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
 
         // Make the connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

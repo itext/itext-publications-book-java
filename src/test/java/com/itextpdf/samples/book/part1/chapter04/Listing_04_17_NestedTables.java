@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.ColorConstants;
@@ -63,7 +63,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
+        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD); // 12
 
         List<Date> days = PojoFactory.getDays(connection);
         int d = 1;

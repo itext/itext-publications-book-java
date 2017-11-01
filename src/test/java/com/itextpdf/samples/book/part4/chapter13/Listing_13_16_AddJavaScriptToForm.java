@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter13;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.colors.Color;
@@ -52,7 +52,7 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
 
         canvas.beginText();
-        canvas.setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12);
+        canvas.setFontAndSize(PdfFontFactory.createFont(StandardFontNames.HELVETICA), 12);
         canvas.moveText(36, 770);
         canvas.showText("Married?");
         canvas.moveText(22, -20) ;// 58, 750);
