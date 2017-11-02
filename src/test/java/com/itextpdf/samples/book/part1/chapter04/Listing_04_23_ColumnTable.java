@@ -90,7 +90,6 @@ public class Listing_04_23_ColumnTable extends GenericTest {
 
     public static Table getHeaderTable(Date day, int page, PdfFont font) {
         Table header = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
-        header.setWidthPercent(100);
         Style style = new Style().setBackgroundColor(ColorConstants.BLACK).setFontColor(ColorConstants.WHITE).setFont(font);
         Paragraph p = new Paragraph("Foobar Film Festival").addStyle(style);
         header.addCell(new Cell().add(p));

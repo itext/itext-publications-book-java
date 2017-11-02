@@ -94,7 +94,6 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         doc.add(p);
         doc.add(new Paragraph("\n"));
         Table table = new Table(WIDTHS);
-        table.setWidthPercent(100);
         table.addCell(new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb()))).setAutoScale(true));
         Cell cell = new Cell();
         cell.add(new Paragraph("Year: " + movie.getYear()));

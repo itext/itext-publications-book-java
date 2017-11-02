@@ -36,7 +36,7 @@ public class Listing_04_05_TableAlignment extends GenericTest {
         Document doc = new Document(pdfDoc);
 
         Table table = createFirstTable();
-        table.setWidthPercent(50);
+        table.setWidth(UnitValue.createPercentValue(50));
         table.setHorizontalAlignment(HorizontalAlignment.LEFT);
         doc.add(table);
         table.setHorizontalAlignment(HorizontalAlignment.CENTER);

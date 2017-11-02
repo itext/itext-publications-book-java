@@ -86,7 +86,7 @@ public class Listing_04_15_XMen extends GenericTest {
                 .add(new Paragraph("Superman Returns")));
         cell = new Cell();
         // we set the widt percent of image
-        img[3].setWidthPercent(50);
+        img[3].setWidth(UnitValue.createPercentValue(50));
         cell
                 .add(img[3])
                 .setHorizontalAlignment(HorizontalAlignment.CENTER)

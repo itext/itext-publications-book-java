@@ -55,7 +55,7 @@ public class Listing_08_07_TextFields extends GenericTest {
 
         Cell cell;
         Table table = new Table(UnitValue.createPercentArray(new float[]{1, 2}));
-        table.setWidthPercent(80);
+        table.setWidth(UnitValue.createPercentValue(80));
 
         table.addCell(new Cell().add(new Paragraph("Name:")));
         cell = new Cell();

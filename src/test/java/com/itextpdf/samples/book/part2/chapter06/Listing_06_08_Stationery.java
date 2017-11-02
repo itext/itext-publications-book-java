@@ -121,7 +121,7 @@ public class Listing_06_08_Stationery extends GenericTest {
 
         bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
 
-        Table table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth().setWidthPercent(80).setHorizontalAlignment(HorizontalAlignment.CENTER);
+        Table table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth().setWidth(UnitValue.createPercentValue(80)).setHorizontalAlignment(HorizontalAlignment.CENTER);
         Style style = new Style().setTextAlignment(TextAlignment.CENTER);
         table.addCell(new Cell()
                 .addStyle(style)

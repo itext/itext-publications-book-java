@@ -46,7 +46,7 @@ public class Listing_06_04_ImportingPages1 extends GenericTest {
 
         for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             PdfFormXObject header = srcDoc.getPage(i).copyAsFormXObject(resultDoc);
-            Cell cell = new Cell().add(new Image(header).setWidthPercent(100).setAutoScale(true));
+            Cell cell = new Cell().add(new Image(header).setWidth(UnitValue.createPercentValue(100)).setAutoScale(true));
             table.addCell(cell);
         }
 

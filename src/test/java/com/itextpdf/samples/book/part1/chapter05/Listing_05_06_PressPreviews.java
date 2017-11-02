@@ -64,7 +64,6 @@ public class Listing_05_06_PressPreviews extends GenericTest {
 
     public Table getTable(DatabaseConnection connection) throws UnsupportedEncodingException, SQLException {
         Table table = new Table(new float[]{50, 50, 50, 100, 50});
-        table.setWidthPercent(100);
         table.setBorder(new SolidBorder(1));
         Cell cell;
 

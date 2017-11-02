@@ -55,7 +55,7 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
 
     public static Table createTable1() {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 1}));
-        table.setWidthPercent(288 / 5.23f);
+        table.setWidth(UnitValue.createPercentValue(288 / 5.23f));
         Cell cell;
         cell = new Cell(1, 3).add(new Paragraph("Table 1"));
         table.addCell(cell);
@@ -85,7 +85,7 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
 
     public static Table createTable3() {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 1}));
-        table.setWidthPercent(55.067f);
+        table.setWidth(UnitValue.createPercentValue(55.067f));
         Cell cell;
         cell = new Cell(1, 3).add(new Paragraph("Table 3"));
         table.addCell(cell);
@@ -101,7 +101,7 @@ public class Listing_04_02_ColumnWidths extends GenericTest {
     public static Table createTable4() {
         Table table = new Table(new float[]{144, 72, 72});
         Rectangle rect = new Rectangle(523, 770);
-        table.setWidthPercent((144 + 72 + 72) / rect.getWidth() * 100);
+        table.setWidth(UnitValue.createPercentValue((144 + 72 + 72) / rect.getWidth() * 100));
         Cell cell;
         cell = new Cell(1, 3).add(new Paragraph("Table 4"));
         table.addCell(cell);
