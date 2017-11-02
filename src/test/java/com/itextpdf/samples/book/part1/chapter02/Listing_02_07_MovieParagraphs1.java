@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -112,9 +112,9 @@ public class Listing_02_07_MovieParagraphs1 extends GenericTest {
     }
 
     protected void createFonts() throws IOException {
-        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
-        boldItalic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLDOBLIQUE);
-        italic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_OBLIQUE);
-        normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        boldItalic = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLDOBLIQUE);
+        italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE);
+        normal = PdfFontFactory.createFont(StandardFonts.HELVETICA);
     }
 }

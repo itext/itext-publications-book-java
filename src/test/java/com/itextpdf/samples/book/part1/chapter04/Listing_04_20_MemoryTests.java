@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -100,10 +100,10 @@ public class Listing_04_20_MemoryTests extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
-        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
-        italic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_OBLIQUE);
-        boldItalic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLDOBLIQUE);
+        normal = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE);
+        boldItalic = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLDOBLIQUE);
 
         // step 4
         // Create a table with 2 columns

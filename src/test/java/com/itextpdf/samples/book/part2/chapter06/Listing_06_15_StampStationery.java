@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part2.chapter06;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -95,9 +95,9 @@ public class Listing_06_15_StampStationery extends GenericTest {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4));
         doc.setMargins(72, 36, 36, 36);
 
-        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
-        italic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_OBLIQUE);
-        normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE);
+        normal = PdfFontFactory.createFont(StandardFonts.HELVETICA);
 
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(

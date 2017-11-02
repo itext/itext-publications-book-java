@@ -12,7 +12,7 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
@@ -116,7 +116,7 @@ public class Listing_07_29_Calculator extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(360, 360));
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE).replace("\r\n", "\n")));
-        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         // step 4
         // add the keys for the digits
         for (int i = 0; i < 10; i++) {

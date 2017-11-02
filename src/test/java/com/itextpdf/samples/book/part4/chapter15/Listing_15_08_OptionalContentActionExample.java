@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.colors.DeviceRgb;
@@ -53,12 +53,12 @@ public class Listing_15_08_OptionalContentActionExample extends GenericTest {
         a3.setOn(false);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage())
-                .setFontAndSize(PdfFontFactory.createFont(StandardFontNames.HELVETICA), 18);
+                .setFontAndSize(PdfFontFactory.createFont(StandardFonts.HELVETICA), 18);
         canvas.beginText().moveText(50, 766).showText("Q1: Who is the director of the movie 'Paths of Glory'?").endText();
         canvas.beginText().moveText(50, 718).showText("Q2: Who directed the movie 'Lawrence of Arabia'?").endText();
         canvas.beginText().moveText(50, 670).showText("Q3: Who is the director of 'House of Flying Daggers'?").endText();
         canvas.saveState();
-        canvas.setFontAndSize(PdfFontFactory.createFont(StandardFontNames.HELVETICA), 18);
+        canvas.setFontAndSize(PdfFontFactory.createFont(StandardFonts.HELVETICA), 18);
         canvas.setFillColor(new DeviceRgb(0xFF, 0x00, 0x00));
         canvas.beginLayer(a1).beginText().moveText(50, 742).showText("A1: Stanley Kubrick").endText().endLayer();
         canvas.beginLayer(a2).beginText().moveText(50, 694).showText("A2: David Lean").endText().endLayer();

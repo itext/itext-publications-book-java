@@ -8,23 +8,21 @@
  */
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.font.constants.StandardFontNames;
 import com.itextpdf.io.font.FontEncoding;
 import com.itextpdf.io.font.FontProgramFactory;
 import com.itextpdf.io.font.PdfEncodings;
+import com.itextpdf.io.font.constants.FontStyles;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.GenericTest;
-
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
 
-import java.util.Set;
 import java.util.TreeSet;
 
 @Category(SampleTest.class)
@@ -44,9 +42,9 @@ public class Listing_11_19_FontFactory extends GenericTest {
         FontProgramFactory.clearRegisteredFontFamilies();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFontFactory.createFont(StandardFontNames.TIMES_ROMAN);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
         doc.add(new Paragraph("Times-Roman").setFont(font));
-        PdfFont fontBold = PdfFontFactory.createFont(StandardFontNames.TIMES_BOLD);
+        PdfFont fontBold = PdfFontFactory.createFont(StandardFonts.TIMES_BOLD);
         doc.add(new Paragraph("Times-Roman, Bold").setFont(fontBold));
         doc.add(new Paragraph("\n"));
 
@@ -87,7 +85,7 @@ public class Listing_11_19_FontFactory extends GenericTest {
 
         PdfFont garamond = PdfFontFactory.createRegisteredFont("EB Garamond", PdfEncodings.WINANSI, true);
         doc.add(new Paragraph("EB Garamond").setFont(garamond));
-        PdfFont garamondItalic = PdfFontFactory.createRegisteredFont("EB Garamond", PdfEncodings.WINANSI, true, FontConstants.ITALIC);
+        PdfFont garamondItalic = PdfFontFactory.createRegisteredFont("EB Garamond", PdfEncodings.WINANSI, true, FontStyles.ITALIC);
         doc.add(new Paragraph("EB Garamond Italic").setFont(garamondItalic).setFontSize(12));
 
         doc.close();

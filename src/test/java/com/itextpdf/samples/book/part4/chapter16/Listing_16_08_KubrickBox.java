@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter16;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -89,7 +89,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
         Paragraph p = new Paragraph(movie.getMovieTitle())
-                .setFont(PdfFontFactory.createFont(StandardFontNames.HELVETICA, PdfEncodings.WINANSI, false))
+                .setFont(PdfFontFactory.createFont(StandardFonts.HELVETICA, PdfEncodings.WINANSI, false))
                 .setFontSize(16);
         doc.add(p);
         doc.add(new Paragraph("\n"));

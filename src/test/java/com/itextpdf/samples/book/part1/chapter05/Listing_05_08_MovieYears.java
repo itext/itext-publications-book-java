@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter05;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceRgb;
@@ -63,8 +63,8 @@ public class Listing_05_08_MovieYears extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        PdfFont bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD, PdfEncodings.WINANSI);
-        PdfFont italic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_OBLIQUE, PdfEncodings.WINANSI);
+        PdfFont bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD, PdfEncodings.WINANSI);
+        PdfFont italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE, PdfEncodings.WINANSI);
 
         Paragraph p;
         Text text;

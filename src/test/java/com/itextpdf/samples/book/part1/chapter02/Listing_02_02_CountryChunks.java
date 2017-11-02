@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter02;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -41,7 +41,7 @@ public class Listing_02_02_CountryChunks extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
 
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // create the statement

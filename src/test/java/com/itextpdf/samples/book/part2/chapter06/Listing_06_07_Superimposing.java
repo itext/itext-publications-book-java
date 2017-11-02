@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part2.chapter06;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -93,7 +93,7 @@ public class Listing_06_07_Superimposing extends GenericTest {
 
         // Page 3: the words "Foobar Film Festival"
         Paragraph p = new Paragraph("Foobar Film Festival")
-                .setFont(PdfFontFactory.createFont(StandardFontNames.HELVETICA))
+                .setFont(PdfFontFactory.createFont(StandardFonts.HELVETICA))
                 .setFontSize(22)
                 .setHorizontalAlignment(HorizontalAlignment.CENTER);
         doc.add(p);
@@ -110,7 +110,7 @@ public class Listing_06_07_Superimposing extends GenericTest {
         over.setLineWidth(1.5f);
         over.setStrokeColor(new DeviceRgb(0xFF, 0x00, 0x00));
         over.setFillColor(new DeviceRgb(0xFF, 0xFF, 0xFF));
-        over.setFontAndSize(PdfFontFactory.createFont(StandardFontNames.HELVETICA), 36);
+        over.setFontAndSize(PdfFontFactory.createFont(StandardFonts.HELVETICA), 36);
         over.setTextMatrix(cosinus, sinus, -sinus, cosinus, 50, 324);
         over.showText("SOLD OUT");
         over.setTextMatrix(0, 0);

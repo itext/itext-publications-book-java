@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -50,7 +50,7 @@ public class Listing_03_29_MovieTemplates extends Listing_03_15_MovieCalendar {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
-        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         doc.setProperty(Property.FONT, font);
 
         Text press = new Text("P").

@@ -11,7 +11,7 @@ package com.itextpdf.samples.book.part2.chapter08;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.Color;
@@ -93,7 +93,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         Document doc = new Document(pdfDoc);
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE).replace("\r\n", "\n")));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         Rectangle rect;
         PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "language", "");
         PdfFormField radio;

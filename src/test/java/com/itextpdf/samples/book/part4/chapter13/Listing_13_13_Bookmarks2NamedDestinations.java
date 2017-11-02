@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter13;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.*;
@@ -27,7 +27,6 @@ import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -56,8 +55,8 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
-        PdfFont bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+        PdfFont bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
 
         Set<Movie> movies = new TreeSet<>(new MovieComparator(MovieComparator.BY_YEAR));
         movies.addAll(PojoFactory.getMovies(connection));

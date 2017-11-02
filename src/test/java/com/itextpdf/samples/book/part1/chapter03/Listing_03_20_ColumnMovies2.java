@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter03;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -67,9 +67,9 @@ public class Listing_03_20_ColumnMovies2 extends GenericTest {
     }
 
     public void addContent(Document doc, Movie movie) throws IOException {
-        PdfFont bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD);
-        PdfFont italic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_OBLIQUE);
-        PdfFont normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        PdfFont bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        PdfFont italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE);
+        PdfFont normal = PdfFontFactory.createFont(StandardFonts.HELVETICA);
 
         Div div = new Div().setKeepTogether(true);
         Paragraph p = new Paragraph(movie.getTitle()).setFont(bold).

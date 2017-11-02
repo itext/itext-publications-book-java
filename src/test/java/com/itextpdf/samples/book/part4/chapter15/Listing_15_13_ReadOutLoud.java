@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.font.TrueTypeCollection;
 import com.itextpdf.io.image.ImageData;
@@ -44,7 +44,7 @@ public class Listing_15_13_ReadOutLoud extends GenericTest {
         PdfPage page = pdfDoc.addNewPage();
         PdfCanvas canvas = new PdfCanvas(page);
 
-        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA, PdfEncodings.CP1252, false);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA, PdfEncodings.CP1252, false);
         TrueTypeCollection coll = new TrueTypeCollection("./src/test/resources/font/ipam.ttc");
         PdfFont font2 = PdfFontFactory.createFont(coll.getFontByTccIndex(1), PdfEncodings.IDENTITY_H);
 

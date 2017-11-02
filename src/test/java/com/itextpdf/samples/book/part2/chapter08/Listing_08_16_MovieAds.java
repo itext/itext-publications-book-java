@@ -12,7 +12,7 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.colors.Color;
@@ -181,9 +181,9 @@ public class Listing_08_16_MovieAds extends GenericTest {
         PdfFont bold = null;
         PdfFont italic = null;
         try {
-            normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA, "", false, true);
-            bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD, "", false, true);
-            italic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_OBLIQUE, "", false, true);
+            normal = PdfFontFactory.createFont(StandardFonts.HELVETICA, "", false, true);
+            bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD, "", false, true);
+            italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE, "", false, true);
         } catch (IOException e) {
             e.printStackTrace();
         }

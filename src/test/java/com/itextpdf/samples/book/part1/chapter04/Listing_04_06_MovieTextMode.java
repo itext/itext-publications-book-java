@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -51,9 +51,9 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        normal = PdfFontFactory.createFont(StandardFontNames.HELVETICA); // 12
-        bold = PdfFontFactory.createFont(StandardFontNames.HELVETICA_BOLD); // 12
-        italic = PdfFontFactory.createFont(StandardFontNames.HELVETICA_OBLIQUE); // 12
+        normal = PdfFontFactory.createFont(StandardFonts.HELVETICA); // 12
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD); // 12
+        italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE); // 12
 
         doc.add(new Paragraph("Movies:"));
         List<Movie> movies = PojoFactory.getMovies(connection);

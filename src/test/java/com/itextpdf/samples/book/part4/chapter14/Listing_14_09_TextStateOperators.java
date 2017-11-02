@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter14;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
@@ -38,7 +38,7 @@ public class Listing_14_09_TextStateOperators extends GenericTest {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
-        PdfFont font = PdfFontFactory.createFont(StandardFontNames.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         String text = "AWAY again";

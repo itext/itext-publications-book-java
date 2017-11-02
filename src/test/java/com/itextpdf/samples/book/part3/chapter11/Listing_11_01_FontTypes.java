@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.io.font.constants.StandardFontNames;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.FontEncoding;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.font.TrueTypeCollection;
@@ -31,7 +31,7 @@ public class Listing_11_01_FontTypes extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_01_FontTypes.pdf";
     public static String TEXT = "quick brown fox jumps over the lazy dog\nQUICK BROWN FOX JUMPS OVER THE LAZY DOG";
     public static String[][] FONTS = {
-            {StandardFontNames.HELVETICA, PdfEncodings.WINANSI},
+            {StandardFonts.HELVETICA, PdfEncodings.WINANSI},
             {"./src/test/resources/font/cmr10.afm", PdfEncodings.WINANSI},
             {"./src/test/resources/font/cmr10.pfm", FontEncoding.FONT_SPECIFIC},
             {"./src/test/resources/font/FreeSans.ttf", PdfEncodings.WINANSI},
