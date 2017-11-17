@@ -15,8 +15,10 @@ import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.tagging.StandardRoles;
+import com.itextpdf.kernel.pdf.tagutils.DefaultAccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
-import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
+import com.itextpdf.layout.tagging.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Canvas;
@@ -80,7 +82,7 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
 
     class CustomButton extends AbstractElement<CustomButton> implements ILeafElement, IAccessibleElement {
 
-        protected PdfName role = PdfName.Figure;
+        protected DefaultAccessibilityProperties accessibilityProperties;
         protected PdfButtonFormField button;
         protected String caption;
         protected ImageData image;
@@ -98,18 +100,11 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         }
 
         @Override
-        public PdfName getRole() {
-            return role;
-        }
-
-        @Override
-        public void setRole(PdfName role) {
-            this.role = role;
-        }
-
-        @Override
         public AccessibilityProperties getAccessibilityProperties() {
-            return null;
+            if (accessibilityProperties == null) {
+                accessibilityProperties = new DefaultAccessibilityProperties(StandardRoles.FIGURE);
+            }
+            return accessibilityProperties;
         }
 
         public PdfButtonFormField getButton() {

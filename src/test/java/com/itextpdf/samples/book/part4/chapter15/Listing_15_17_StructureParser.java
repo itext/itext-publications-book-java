@@ -8,23 +8,21 @@
  */
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.kernel.pdf.PdfName;
+import java.util.List;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import java.util.List;
 
 public class Listing_15_17_StructureParser extends DefaultHandler {
     /**
      * The list of structure roles
      */
-    protected List<PdfName> roles;
+    protected List<String> roles;
 
     /**
      * Creates a parser that will parse an XML file into a structure tree.
      */
-    public Listing_15_17_StructureParser(List<PdfName> roles) {
+    public Listing_15_17_StructureParser(List<String> roles) {
         this.roles = roles;
     }
 
@@ -37,6 +35,6 @@ public class Listing_15_17_StructureParser extends DefaultHandler {
         if ("chapter".equals(qName)) {
             return;
         }
-        roles.add(new PdfName(qName));
+        roles.add(qName);
     }
 }
