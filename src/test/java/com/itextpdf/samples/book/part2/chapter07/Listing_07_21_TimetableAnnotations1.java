@@ -9,8 +9,8 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.color.DeviceRgb;
-import com.itextpdf.kernel.color.WebColors;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.colors.WebColors;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;

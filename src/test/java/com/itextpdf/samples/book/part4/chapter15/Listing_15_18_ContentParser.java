@@ -25,11 +25,11 @@ import java.util.List;
 public class Listing_15_18_ContentParser extends DefaultHandler {
     protected StringBuffer buf = new StringBuffer();
     protected Document doc;
-    protected List<PdfName> roles;
+    protected List<String> roles;
     protected PdfFont font;
-    protected PdfName role;
+    protected String role;
 
-    public Listing_15_18_ContentParser(Document doc, List<PdfName> roles)
+    public Listing_15_18_ContentParser(Document doc, List<String> roles)
             throws IOException {
         this.doc = doc;
         this.roles = roles;
@@ -66,7 +66,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
         buf = new StringBuffer();
         if (s.length() > 0) {
             Paragraph p = new Paragraph(s).setFont(font);
-            p.setRole(role);
+            p.getAccessibilityProperties().setRole(role);
             p.setTextAlignment(TextAlignment.JUSTIFIED);
             doc.add(p);
         }

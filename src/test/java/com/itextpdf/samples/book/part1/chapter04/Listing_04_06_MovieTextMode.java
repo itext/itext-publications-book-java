@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -51,9 +51,9 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA); // 12
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
-        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE); // 12
+        normal = PdfFontFactory.createFont(StandardFonts.HELVETICA); // 12
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD); // 12
+        italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE); // 12
 
         doc.add(new Paragraph("Movies:"));
         List<Movie> movies = PojoFactory.getMovies(connection);
@@ -74,7 +74,7 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                 table.addCell(cell);
             }
             List<Director> directors = movie.getDirectors();
-            cell = new Cell(directors.size(), 1).add("Directors:");
+            cell = new Cell(directors.size(), 1).add(new Paragraph("Directors:"));
             cell.setVerticalAlignment(VerticalAlignment.MIDDLE);
             table.addCell(cell);
             int count = 0;
@@ -87,20 +87,20 @@ public class Listing_04_06_MovieTextMode extends GenericTest {
                 cell.setMarginLeft(10 * count++);
                 table.addCell(cell);
             }
-            table.addCell(new Cell().add("Year:")
+            table.addCell(new Cell().add(new Paragraph("Year:"))
                     .setTextAlignment(TextAlignment.RIGHT));
-            table.addCell(new Cell().add(String.valueOf(movie.getYear()))
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getYear())))
                     .setTextAlignment(TextAlignment.RIGHT));
-            table.addCell(new Cell().add("Run length:")
+            table.addCell(new Cell().add(new Paragraph("Run length:"))
                     .setTextAlignment(TextAlignment.RIGHT));
-            table.addCell(new Cell().add(String.valueOf(movie.getDuration()))
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(movie.getDuration())))
                     .setTextAlignment(TextAlignment.RIGHT));
             List<Country> countries = movie.getCountries();
-            cell = new Cell(countries.size(), 1).add("Countries:");
+            cell = new Cell(countries.size(), 1).add(new Paragraph("Countries:"));
             cell.setVerticalAlignment(VerticalAlignment.BOTTOM);
             table.addCell(cell);
             for (Country country : countries) {
-                table.addCell(new Cell().add(country.getCountry())
+                table.addCell(new Cell().add(new Paragraph(country.getCountry()))
                         .setTextAlignment(TextAlignment.CENTER));
             }
             doc.add(table);

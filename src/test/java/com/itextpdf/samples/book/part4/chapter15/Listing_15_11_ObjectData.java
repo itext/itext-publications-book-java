@@ -8,10 +8,13 @@
  */
 package com.itextpdf.samples.book.part4.chapter15;
 
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.tagging.PdfUserPropertiesAttributes;
+import com.itextpdf.kernel.pdf.tagging.PdfUserProperty;
 import com.itextpdf.kernel.pdf.tagutils.TagTreePointer;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.samples.GenericTest;
@@ -62,7 +65,7 @@ public class Listing_15_11_ObjectData extends GenericTest {
 
         TagTreePointer tagPointer = new TagTreePointer(pdfDoc);
         tagPointer.setPageForTagging(pdfDoc.addNewPage());
-        tagPointer.addTag(new PdfName("Directors"));
+        tagPointer.addTag("Directors");
 
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(SELECTDIRECTORS);
@@ -72,23 +75,11 @@ public class Listing_15_11_ObjectData extends GenericTest {
         while (rs.next()) {
             id = rs.getInt("id");
             director = PojoFactory.getDirector(rs);
-            PdfDictionary userproperties = new PdfDictionary();
-            userproperties.put(PdfName.O, new PdfName("UserProperties"));
-            PdfArray properties = new PdfArray();
-            PdfDictionary property1 = new PdfDictionary();
-            property1.put(PdfName.N, new PdfString("Name"));
-            property1.put(PdfName.V, new PdfString(director.getName()));
-            properties.add(property1);
-            PdfDictionary property2 = new PdfDictionary();
-            property2.put(PdfName.N, new PdfString("Given name"));
-            property2.put(PdfName.V, new PdfString(director.getGivenName()));
-            properties.add(property2);
-            PdfDictionary property3 = new PdfDictionary();
-            property3.put(PdfName.N, new PdfString("Posters"));
-            property3.put(PdfName.V, new PdfNumber(rs.getInt("c")));
-            properties.add(property3);
-            userproperties.put(PdfName.P, properties);
-            tagPointer.addTag(new PdfName("director" + id)).getProperties().addAttributes(userproperties);
+            PdfUserPropertiesAttributes userproperties = new PdfUserPropertiesAttributes();
+            userproperties.addUserProperty(new PdfUserProperty("Name", director.getName()));
+            userproperties.addUserProperty(new PdfUserProperty("Given name", director.getGivenName()));
+            userproperties.addUserProperty(new PdfUserProperty("Posters", rs.getInt("c")));
+            tagPointer.addTag("director" + id).getProperties().addAttributes(userproperties);
             tagPointer.moveToParent();
         }
 
@@ -107,7 +98,7 @@ public class Listing_15_11_ObjectData extends GenericTest {
             img = ImageDataFactory.create(String.format(RESOURCE, entry.getKey().getImdb()));
             Image image = new Image(img);
             tagPointer.moveToKid(entry.getValue() - 1);
-            tagPointer.addTag(image.getRole());
+            tagPointer.addTag(image.getAccessibilityProperties().getRole());
             canvas.openTag(tagPointer.getTagReference());
             canvas.addImage(img, x + (45 - 30) / 2, y, 30, false);
             canvas.closeTag();

@@ -15,10 +15,11 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.border.SolidBorder;
+import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
@@ -44,7 +45,7 @@ public class Listing_06_05_ImportingPages2 extends GenericTest {
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(resultDoc);
 
-        Table table = new Table(2);
+        Table table = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
 
         PdfDocument srcDoc = new PdfDocument(new PdfReader(MOVIE_TEMPLATES));
 
@@ -52,7 +53,7 @@ public class Listing_06_05_ImportingPages2 extends GenericTest {
             PdfPage curPage = srcDoc.getPage(i);
             PdfFormXObject header = curPage.copyAsFormXObject(resultDoc);
             Cell cell = new Cell()
-                    .add(new Image(header).setWidthPercent(100).setAutoScaleWidth(true))
+                    .add(new Image(header).setWidth(UnitValue.createPercentValue(100)).setAutoScaleWidth(true))
                     .setBorder(new SolidBorder(1));
             cell.setNextRenderer(new MyCellRenderer(cell));
             table.addCell(cell);

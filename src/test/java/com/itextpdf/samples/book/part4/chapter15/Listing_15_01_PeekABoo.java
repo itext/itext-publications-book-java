@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
@@ -20,7 +20,6 @@ import com.itextpdf.kernel.pdf.layer.PdfLayer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.junit.experimental.categories.Category;
@@ -54,7 +53,7 @@ public class Listing_15_01_PeekABoo extends GenericTest {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfLayer layer = new PdfLayer("Do you see me?", pdfDoc);
         layer.setOn(on);
-        canvas.beginText().setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 18)
+        canvas.beginText().setFontAndSize(PdfFontFactory.createFont(StandardFonts.HELVETICA), 18)
                 .moveText(50, 760)
                 .showText("Do you see me?")
                 .beginLayer(layer)

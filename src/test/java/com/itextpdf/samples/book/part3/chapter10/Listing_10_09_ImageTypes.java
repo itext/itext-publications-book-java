@@ -58,7 +58,7 @@ public class Listing_10_09_ImageTypes extends GenericTest {
             if (String.format("src/test/resources/img/%s", RESOURCES[i]).contains(".wmf")) {
                 WmfImageHelper wmf
                         = new WmfImageHelper(new WmfImageData(String.format("src/test/resources/img/%s", RESOURCES[i])));
-                img = new Image((PdfFormXObject) wmf.createPdfForm(pdfDoc));
+                img = new Image((PdfFormXObject) wmf.createFormXObject(pdfDoc));
             } else {
                 ImageData image
                         = ImageDataFactory.create(String.format("src/test/resources/img/%s", RESOURCES[i]));

@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.PdfEncodings;
-import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -17,13 +17,14 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -112,7 +113,7 @@ public class Listing_11_12_SayPeace extends GenericTest {
                 }
             }
             else if ("pace".equals(qName)) {
-                table = new Table(1);
+                table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth();
             }
         }
 

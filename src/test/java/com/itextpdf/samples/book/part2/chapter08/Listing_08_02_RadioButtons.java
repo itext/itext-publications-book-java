@@ -8,10 +8,10 @@
  */
 package com.itextpdf.samples.book.part2.chapter08;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -44,7 +44,7 @@ public class Listing_08_02_RadioButtons extends GenericTest {
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI, false);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA, PdfEncodings.WINANSI, false);
         PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "language", "");
         radioGroup.setFieldName("language");
         Rectangle rect = new Rectangle(40, 806, 60 - 40, 788 - 806);

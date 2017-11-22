@@ -10,19 +10,20 @@ package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.color.ColorConstants;
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.tagging.StandardRoles;
+import com.itextpdf.kernel.pdf.tagutils.DefaultAccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
-import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
+import com.itextpdf.layout.tagging.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AbstractElement;
-import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.element.ILeafElement;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.layout.LayoutArea;
@@ -81,7 +82,7 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
 
     class CustomButton extends AbstractElement<CustomButton> implements ILeafElement, IAccessibleElement {
 
-        protected PdfName role = PdfName.Figure;
+        protected DefaultAccessibilityProperties accessibilityProperties;
         protected PdfButtonFormField button;
         protected String caption;
         protected ImageData image;
@@ -99,18 +100,11 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         }
 
         @Override
-        public PdfName getRole() {
-            return role;
-        }
-
-        @Override
-        public void setRole(PdfName role) {
-            this.role = role;
-        }
-
-        @Override
         public AccessibilityProperties getAccessibilityProperties() {
-            return null;
+            if (accessibilityProperties == null) {
+                accessibilityProperties = new DefaultAccessibilityProperties(StandardRoles.FIGURE);
+            }
+            return accessibilityProperties;
         }
 
         public PdfButtonFormField getButton() {

@@ -8,14 +8,14 @@
  */
 package com.itextpdf.samples.book.part4.chapter16;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.kernel.pdf.action.PdfTargetDictionary;
+import com.itextpdf.kernel.pdf.action.PdfTarget;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
@@ -59,7 +59,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         doc.add(img);
         List list = new List();
         list.setSymbolIndent(20);
-        PdfTargetDictionary target;
+        PdfTarget target;
         Link link;
         ListItem item;
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
@@ -71,9 +71,9 @@ public class Listing_16_08_KubrickBox extends GenericTest {
             if (movie.getYear() > 1960) {
                 pdfDoc.addFileAttachment(movie.getTitle(),
                         PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, movie.getImdb()), null,
-                                String.format("kubrick_%s.pdf", movie.getImdb()), null, null, false));
+                                String.format("kubrick_%s.pdf", movie.getImdb()), null, null));
                 item = new ListItem(movie.getMovieTitle());
-                target = PdfTargetDictionary.createChildTarget(movie.getTitle());
+                target = PdfTarget.createChildTarget(movie.getTitle());
                 link = new Link(" (see info)",
                         PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
                 item.add(new Paragraph(link));
@@ -89,19 +89,18 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
         Paragraph p = new Paragraph(movie.getMovieTitle())
-                .setFont(PdfFontFactory.createFont(FontConstants.HELVETICA, PdfEncodings.WINANSI, false))
+                .setFont(PdfFontFactory.createFont(StandardFonts.HELVETICA, PdfEncodings.WINANSI, false))
                 .setFontSize(16);
         doc.add(p);
         doc.add(new Paragraph("\n"));
         Table table = new Table(WIDTHS);
-        table.setWidthPercent(100);
         table.addCell(new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb()))).setAutoScale(true));
         Cell cell = new Cell();
         cell.add(new Paragraph("Year: " + movie.getYear()));
         cell.add(new Paragraph("Duration: " + movie.getDuration()));
         table.addCell(cell);
         doc.add(table);
-        PdfTargetDictionary target = PdfTargetDictionary.createParentTarget();
+        PdfTarget target = PdfTarget.createParentTarget();
         Link link = new Link("Go to original document",
                 PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
         doc.add(new Paragraph(link));

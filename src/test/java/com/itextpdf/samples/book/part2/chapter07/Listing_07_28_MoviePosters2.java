@@ -19,6 +19,7 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfPopupAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
@@ -107,9 +108,9 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
         // Create the text annotation
         PdfTextAnnotation text = new PdfTextAnnotation(rect);
         text.setIconName(new PdfName("Comment"))
+                .setOpen(false)
                 .setTitle(new PdfString(title))
                 .setContents(contents)
-                .setOpen(false)
                 .setName(new PdfString(String.format("IMDB%s", imdb)));
         text.setFlags(PdfAnnotation.READ_ONLY | PdfAnnotation.NO_VIEW);
         // Create the popup annotation
@@ -126,7 +127,7 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
         pdfDoc.getPage(1).addAnnotation(popup);
         // Create a button field
         PdfButtonFormField field = PdfFormField.createPushButton(pdfDoc, rect, String.format("b%s", imdb), "");
-        PdfAnnotation widget = field.getWidgets().get(0);
+        PdfWidgetAnnotation widget = field.getWidgets().get(0);
         widget.remove(PdfName.AP);
         // Show the popup onMouseEnter
         PdfAction enter = PdfAction.createJavaScript(String.format(JS1, imdb));

@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part4.chapter15;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfVersion;
@@ -19,7 +19,6 @@ import com.itextpdf.kernel.pdf.layer.PdfLayer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -50,7 +49,7 @@ public class Listing_15_02_OptionalContentExample extends GenericTest {
         nested.addChild(nested_2);
         nested_2.setLocked(true);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage())
-                .setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 18);
+                .setFontAndSize(PdfFontFactory.createFont(StandardFonts.HELVETICA), 18);
         canvas
                 .beginLayer(nested)
                 .beginText()

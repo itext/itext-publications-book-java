@@ -8,11 +8,11 @@
  */
 package com.itextpdf.samples.book.part1.chapter05;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
@@ -26,7 +26,6 @@ import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.lowagie.database.DatabaseConnection;
@@ -71,9 +70,9 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
         PdfCanvas canvas = new PdfCanvas(template, pdfDoc);
 
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE);
+        normal = PdfFontFactory.createFont(StandardFonts.HELVETICA);
 
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(
@@ -100,7 +99,7 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
 
         canvas.beginText();
         try {
-            canvas.setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12);
+            canvas.setFontAndSize(PdfFontFactory.createFont(StandardFonts.HELVETICA), 12);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -121,7 +120,7 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
             PdfPage page = docEvent.getPage();
             PdfFont font = null;
             try {
-                font = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+                font = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
             } catch (IOException e) {
                 e.printStackTrace();
             }

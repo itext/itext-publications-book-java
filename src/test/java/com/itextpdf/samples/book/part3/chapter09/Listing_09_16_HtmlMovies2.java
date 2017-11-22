@@ -10,19 +10,20 @@ package com.itextpdf.samples.book.part3.chapter09;
 
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
@@ -125,7 +126,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
             list = new com.itextpdf.layout.element.List();
             listItem = new ListItem();
             cell = new Cell().setBorder(Border.NO_BORDER).setVerticalAlignment(VerticalAlignment.MIDDLE);
-            table = new Table(2).setBorder(Border.NO_BORDER);
+            table = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth().setBorder(Border.NO_BORDER);
             isItalic = false;
         }
 
@@ -185,7 +186,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
                 isItalic = false;
             } else if ("tr".equals(qName)) {
                 document.add(table);
-                table = new Table(2).setBorder(Border.NO_BORDER);
+                table = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth().setBorder(Border.NO_BORDER);
             } else if ("td".equals(qName)) {
                 table.addCell(cell);
                 cell = new Cell().setBorder(Border.NO_BORDER).setVerticalAlignment(VerticalAlignment.MIDDLE);

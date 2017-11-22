@@ -17,6 +17,7 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.font.FontProvider;
 import com.itextpdf.layout.font.FontSet;
 import com.itextpdf.layout.property.Property;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
 import org.junit.Ignore;
@@ -60,7 +61,7 @@ public class Listing_11_21_Peace extends GenericTest {
         document.setFontProvider(new FontProvider(fontSet));
         document.setProperty(Property.FONT, "Noto");
         
-        Table table = new Table(3);
+        Table table = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
         SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
         parser.parse(new InputSource(new FileInputStream(RESOURCE)), new CustomHandler(table));
         document.add(table);

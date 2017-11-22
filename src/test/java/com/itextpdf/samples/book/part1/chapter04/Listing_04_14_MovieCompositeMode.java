@@ -8,14 +8,14 @@
  */
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
@@ -52,9 +52,9 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA); // 12
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
-        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE); // 12
+        normal = PdfFontFactory.createFont(StandardFonts.HELVETICA); // 12
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD); // 12
+        italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE); // 12
 
         doc.add(new Paragraph("Movies:"));
         java.util.List<Movie> movies = PojoFactory.getMovies(connection);

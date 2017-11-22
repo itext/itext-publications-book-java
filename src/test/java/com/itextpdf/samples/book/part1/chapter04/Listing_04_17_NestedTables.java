@@ -8,18 +8,18 @@
  */
 package com.itextpdf.samples.book.part1.chapter04;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.color.ColorConstants;
-import com.itextpdf.kernel.color.DeviceRgb;
-import com.itextpdf.kernel.color.WebColors;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.colors.WebColors;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
@@ -63,7 +63,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD); // 12
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD); // 12
 
         List<Date> days = PojoFactory.getDays(connection);
         int d = 1;
@@ -81,7 +81,7 @@ public class Listing_04_17_NestedTables extends GenericTest {
     public Table getTable(DatabaseConnection connection, Date day)
             throws UnsupportedEncodingException, SQLException, MalformedURLException {
         // Create a table with only one column
-        Table table = new Table(1);
+        Table table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth();
         // add the cell with the date
         Cell cell = new Cell().add(new Paragraph(day.toString()).setFontColor(ColorConstants.WHITE));
         cell.setBackgroundColor(ColorConstants.BLACK);

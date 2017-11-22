@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.barcodes.*;
-import com.itextpdf.kernel.color.ColorConstants;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;

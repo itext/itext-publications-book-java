@@ -11,15 +11,16 @@ package com.itextpdf.samples.book.part2.chapter08;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfChoiceFormField;
 import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.kernel.color.ColorConstants;
+import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.Style;
-import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.samples.GenericTest;
@@ -54,7 +55,7 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
         Cell space = new Cell(1, 2)
                 .setBorder(Border.NO_BORDER)
                 .setHeight(8);
-        Table table = new Table(2);
+        Table table = new Table(UnitValue.createPercentArray(2)).useAllAvailableWidth();
         Style leftCellStyle = new Style()
                 .setBorder(Border.NO_BORDER)
                 .setHorizontalAlignment(HorizontalAlignment.RIGHT);

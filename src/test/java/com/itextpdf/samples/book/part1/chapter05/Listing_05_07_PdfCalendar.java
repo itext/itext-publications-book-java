@@ -10,8 +10,8 @@ package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.color.ColorConstants;
-import com.itextpdf.kernel.color.DeviceCmyk;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.colors.DeviceCmyk;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -19,11 +19,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
@@ -77,7 +78,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             // draw the background
             drawImageAndText(calendar, doc);
             // create a table with 7 columns
-            table = new Table(7);
+            table = new Table(UnitValue.createPercentArray(7)).useAllAvailableWidth();
             table.setBackgroundColor(ColorConstants.YELLOW);
             table.setWidth(504);
             table.setNextRenderer(new RoundedTableRenderer(table, new Table.RowRange(0, 6)));
@@ -89,7 +90,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             // add empty cells
             while (position != calendar.get(Calendar.DAY_OF_WEEK)) {
                 position = (position % 7) + 1;
-                Cell cell = new Cell().add("");
+                Cell cell = new Cell().add(new Paragraph(""));
                 cell.setNextRenderer(new RoundedCellRenderer(cell, cmykWhite, false));
                 table.addCell(cell);
             }
@@ -102,7 +103,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             // add empty cells
             while (position != 2) {
                 position = (position % 7) + 1;
-                Cell cell = new Cell().add("");
+                Cell cell = new Cell().add(new Paragraph(""));
                 cell.setNextRenderer(new RoundedCellRenderer(cell, cmykWhite, false));
                 table.addCell(cell);
             }
@@ -231,7 +232,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         }
 
         @Override
-        protected void drawBorders(DrawContext drawContext, boolean hasHeader, boolean hasFooter) {
+        protected void drawBorders(DrawContext drawContext) {
             //super.drawBorders(canvas);
         }
     }

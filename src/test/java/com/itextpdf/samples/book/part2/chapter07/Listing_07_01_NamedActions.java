@@ -8,7 +8,7 @@
  */
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.font.PdfFont;
@@ -18,10 +18,11 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Style;
-import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
@@ -49,9 +50,9 @@ public class Listing_07_01_NamedActions extends GenericTest {
                 new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);
 
-        PdfFont symbol = PdfFontFactory.createFont(FontConstants.SYMBOL);
+        PdfFont symbol = PdfFontFactory.createFont(StandardFonts.SYMBOL);
 
-        Table table = new Table(4).
+        Table table = new Table(UnitValue.createPercentArray(4)).useAllAvailableWidth().
             setFont(symbol).
             setFontSize(20);
         Style cellStyle = new Style().setBorder(Border.NO_BORDER)

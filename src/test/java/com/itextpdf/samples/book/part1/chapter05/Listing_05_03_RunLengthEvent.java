@@ -8,9 +8,9 @@
  */
 package com.itextpdf.samples.book.part1.chapter05;
 
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.color.ColorConstants;
-import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -21,11 +21,13 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
@@ -74,7 +76,7 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 2, 5, 1}))
                 .setFixedLayout().useAllAvailableWidth();
         table.addHeaderCell(new Cell(1, 5)
-                .add(day.toString())
+                .add(new Paragraph(day.toString()))
                 .setPadding(3)
                 .setBackgroundColor(ColorConstants.RED)
                 .setTextAlignment(TextAlignment.CENTER));
@@ -87,34 +89,34 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
                 .setPaddingTop(3)
                 .setPaddingBottom(3);
         table.addHeaderCell(new Cell()
-                .add("Location")
+                .add(new Paragraph("Location"))
                 .addStyle(style));
         table.addHeaderCell(new Cell()
-                .add("Time")
+                .add(new Paragraph("Time"))
                 .addStyle(style));
         table.addHeaderCell(new Cell()
-                .add("Run Length")
+                .add(new Paragraph("Run Length"))
                 .addStyle(style));
         table.addHeaderCell(new Cell()
-                .add("Title")
+                .add(new Paragraph("Title"))
                 .addStyle(style));
         table.addHeaderCell(new Cell()
-                .add("Year")
+                .add(new Paragraph("Year"))
                 .addStyle(style));
         table.addFooterCell(new Cell()
-                .add("Location")
+                .add(new Paragraph("Location"))
                 .addStyle(style));
         table.addFooterCell(new Cell()
-                .add("Time")
+                .add(new Paragraph("Time"))
                 .addStyle(style));
         table.addFooterCell(new Cell()
-                .add("Run Length")
+                .add(new Paragraph("Run Length"))
                 .addStyle(style));
         table.addFooterCell(new Cell()
-                .add("Title")
+                .add(new Paragraph("Title"))
                 .addStyle(style));
         table.addFooterCell(new Cell()
-                .add("Year")
+                .add(new Paragraph("Year"))
                 .addStyle(style));
         List<Screening> screenings = PojoFactory.getScreenings(connection, day);
         Movie movie;
@@ -125,7 +127,7 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
             table.addCell(String.format("%1$tH:%1$tM", screening.getTime()));
             runLength = new Cell();
             runLength.setNextRenderer(new FilmCellRenderer(runLength, movie.getDuration(), false));
-            runLength.add(String.format("%d '", movie.getDuration()));
+            runLength.add(new Paragraph(String.format("%d '", movie.getDuration())));
             if (screening.isPress()) {
                 runLength.setNextRenderer(new FilmCellRenderer(runLength, movie.getDuration(), true));
             }
@@ -173,7 +175,7 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
                 PdfCanvas canvas = drawContext.getCanvas();
                 canvas.beginText();
                 try {
-                    canvas.setFontAndSize(PdfFontFactory.createFont(FontConstants.HELVETICA), 12);
+                    canvas.setFontAndSize(PdfFontFactory.createFont(StandardFonts.HELVETICA), 12);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -185,8 +187,8 @@ public class Listing_05_03_RunLengthEvent extends GenericTest {
         }
 
         @Override
-        public CellRenderer getNextRenderer() {
-            return new FilmCellRenderer(getModelElement(), duration, isPressPreview);
+        public IRenderer getNextRenderer() {
+            return new FilmCellRenderer((Cell)getModelElement(), duration, isPressPreview);
         }
     }
 }

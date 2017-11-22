@@ -73,9 +73,9 @@ public class Listing_13_11_PageLabelExample extends GenericTest {
             addParagraphs(doc, connection, SQL[i], FIELD[i]);
             doc.add(new AreaBreak());
         }
-        pdfDoc.getPage(start[0]).setPageLabel(PageLabelNumberingStyleConstants.UPPERCASE_LETTERS, null);
-        pdfDoc.getPage(start[1]).setPageLabel(PageLabelNumberingStyleConstants.DECIMAL_ARABIC_NUMERALS, null);
-        pdfDoc.getPage(start[2]).setPageLabel(PageLabelNumberingStyleConstants.DECIMAL_ARABIC_NUMERALS, "Movies-", start[2] - start[1] + 1);
+        pdfDoc.getPage(start[0]).setPageLabel(PageLabelNumberingStyle.UPPERCASE_LETTERS, null);
+        pdfDoc.getPage(start[1]).setPageLabel(PageLabelNumberingStyle.DECIMAL_ARABIC_NUMERALS, null);
+        pdfDoc.getPage(start[2]).setPageLabel(PageLabelNumberingStyle.DECIMAL_ARABIC_NUMERALS, "Movies-", start[2] - start[1] + 1);
         pdfDoc.close();
         connection.close();
     }

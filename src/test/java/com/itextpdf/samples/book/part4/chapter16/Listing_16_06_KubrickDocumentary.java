@@ -85,7 +85,7 @@ public class Listing_16_06_KubrickDocumentary extends GenericTest {
         out.print("</movies>");
         out.flush();
         out.close();
-        pdfDoc.addFileAttachment("kubrick", PdfFileSpec.createEmbeddedFileSpec(pdfDoc, txt.toByteArray(), null, "kubrick.xml", null, null, null, true));
+        pdfDoc.addFileAttachment("kubrick", PdfFileSpec.createEmbeddedFileSpec(pdfDoc, txt.toByteArray(), null, "kubrick.xml", null, null, null));
         doc.close();
         return baos.toByteArray();
     }

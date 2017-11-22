@@ -8,8 +8,8 @@
  */
 package com.itextpdf.samples.book.part2.chapter06;
 
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.io.font.constants.StandardFonts;
+import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
 import com.itextpdf.kernel.events.PdfDocumentEvent;
@@ -30,6 +30,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -65,6 +66,7 @@ public class Listing_06_08_Stationery extends GenericTest {
         new Listing_06_08_Stationery().manipulatePdf(DEST);
     }
 
+    @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         // Create the database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
@@ -79,9 +81,9 @@ public class Listing_06_08_Stationery extends GenericTest {
         StationeryEventHandler eventHandler = new StationeryEventHandler();
         pdfDoc.addEventHandler(PdfDocumentEvent.END_PAGE, eventHandler);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
-        italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE);
-        normal = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+        italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE);
+        normal = PdfFontFactory.createFont(StandardFonts.HELVETICA);
 
         doc.setMargins(72, 36, 36, 36);
         // useStationary(writer);
@@ -118,15 +120,15 @@ public class Listing_06_08_Stationery extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
 
-        bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
 
-        Table table = new Table(1).setWidthPercent(80).setHorizontalAlignment(HorizontalAlignment.CENTER);
+        Table table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth().setWidth(UnitValue.createPercentValue(80)).setHorizontalAlignment(HorizontalAlignment.CENTER);
         Style style = new Style().setTextAlignment(TextAlignment.CENTER);
         table.addCell(new Cell()
                 .addStyle(style)
                 .add(new Paragraph("FOOBAR FILM FESTIVAL").setFont(bold)));
         doc.add(table);
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage().newContentStreamBefore(),
                 pdfDoc.getLastPage().getResources(), pdfDoc);
         new Canvas(canvas, pdfDoc, pdfDoc.getLastPage().getPageSize())

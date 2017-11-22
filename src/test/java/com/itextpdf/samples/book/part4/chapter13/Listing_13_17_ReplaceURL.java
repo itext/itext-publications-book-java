@@ -9,7 +9,7 @@
 package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
@@ -18,6 +18,7 @@ import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.utils.CompareTool;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.forms.PdfAcroForm;
@@ -56,7 +57,7 @@ public class Listing_13_17_ReplaceURL extends GenericTest {
 
         PdfFormField personal = PdfFormField.createEmptyField(pdfDoc);
         personal.setFieldName("personal");
-        Table table = new Table(3);
+        Table table = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
         Cell cell;
 
         table.addCell("Your name:");

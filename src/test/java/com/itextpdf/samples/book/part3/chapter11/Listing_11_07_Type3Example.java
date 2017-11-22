@@ -8,8 +8,8 @@
  */
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.kernel.color.DeviceGray;
-import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.colors.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.font.PdfType3Font;
 import com.itextpdf.kernel.pdf.PdfDocument;

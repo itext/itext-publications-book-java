@@ -11,21 +11,22 @@ package com.itextpdf.samples.book.part2.chapter08;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.color.ColorConstants;
-import com.itextpdf.kernel.color.DeviceGray;
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
-import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
+import com.itextpdf.kernel.pdf.tagging.StandardRoles;
+import com.itextpdf.kernel.pdf.tagutils.DefaultAccessibilityProperties;
+import com.itextpdf.layout.tagging.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Canvas;
@@ -92,7 +93,7 @@ public class Listing_08_01_Buttons extends GenericTest {
         Document doc = new Document(pdfDoc);
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE).replace("\r\n", "\n")));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        PdfFont font = PdfFontFactory.createFont(FontConstants.HELVETICA);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         Rectangle rect;
         PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "language", "");
         PdfFormField radio;
@@ -162,7 +163,7 @@ public class Listing_08_01_Buttons extends GenericTest {
 
         doc.add(new Paragraph().add(button));
 
-        PdfAnnotation ann = button.getButton().getWidgets().get(0);
+        PdfWidgetAnnotation ann = button.getButton().getWidgets().get(0);
         ann.setAction(PdfAction.createJavaScript("this.showButtonState()"));
 
         doc.close();
@@ -189,7 +190,7 @@ public class Listing_08_01_Buttons extends GenericTest {
 
     private class Button extends AbstractElement<Button> implements ILeafElement, IAccessibleElement {
 
-        protected PdfName role = PdfName.Figure;
+        DefaultAccessibilityProperties accessibilityProperties;
         protected PdfButtonFormField button;
         protected String caption;
         protected ImageData image;
@@ -212,18 +213,11 @@ public class Listing_08_01_Buttons extends GenericTest {
         }
 
         @Override
-        public PdfName getRole() {
-            return role;
-        }
-
-        @Override
-        public void setRole(PdfName role) {
-            this.role = role;
-        }
-
-        @Override
-        public AccessibilityProperties getAccessibilityProperties() {
-            return null;
+        public DefaultAccessibilityProperties getAccessibilityProperties() {
+            if (accessibilityProperties == null) {
+                accessibilityProperties = new DefaultAccessibilityProperties(StandardRoles.FIGURE);
+            }
+            return accessibilityProperties;
         }
 
         public PdfButtonFormField getButton() {

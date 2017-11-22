@@ -12,14 +12,14 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
-import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.color.ColorConstants;
-import com.itextpdf.kernel.color.DeviceGray;
-import com.itextpdf.kernel.color.DeviceRgb;
-import com.itextpdf.kernel.color.WebColors;
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.ColorConstants;
+import com.itextpdf.kernel.colors.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceRgb;
+import com.itextpdf.kernel.colors.WebColors;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -33,8 +33,10 @@ import com.itextpdf.kernel.pdf.PdfResources;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.tagging.StandardRoles;
+import com.itextpdf.kernel.pdf.tagutils.DefaultAccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
-import com.itextpdf.kernel.pdf.tagutils.IAccessibleElement;
+import com.itextpdf.layout.tagging.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Canvas;
@@ -181,9 +183,9 @@ public class Listing_08_16_MovieAds extends GenericTest {
         PdfFont bold = null;
         PdfFont italic = null;
         try {
-            normal = PdfFontFactory.createFont(FontConstants.HELVETICA, "", false, true);
-            bold = PdfFontFactory.createFont(FontConstants.HELVETICA_BOLD, "", false, true);
-            italic = PdfFontFactory.createFont(FontConstants.HELVETICA_OBLIQUE, "", false, true);
+            normal = PdfFontFactory.createFont(StandardFonts.HELVETICA, "", false, true);
+            bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD, "", false, true);
+            italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE, "", false, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -259,7 +261,7 @@ public class Listing_08_16_MovieAds extends GenericTest {
 
 
     class CustomButton extends AbstractElement<CustomButton> implements ILeafElement, IAccessibleElement {
-        protected PdfName role = PdfName.Figure;
+        protected DefaultAccessibilityProperties accessibilityProperties;
         protected PdfButtonFormField button;
         protected String caption;
         protected com.itextpdf.io.image.ImageData image;
@@ -277,18 +279,11 @@ public class Listing_08_16_MovieAds extends GenericTest {
         }
 
         @Override
-        public PdfName getRole() {
-            return role;
-        }
-
-        @Override
-        public void setRole(PdfName role) {
-            this.role = role;
-        }
-
-        @Override
         public AccessibilityProperties getAccessibilityProperties() {
-            return null;
+            if (accessibilityProperties == null) {
+                accessibilityProperties = new DefaultAccessibilityProperties(StandardRoles.FIGURE);
+            }
+            return accessibilityProperties;
         }
 
         public PdfButtonFormField getButton() {
