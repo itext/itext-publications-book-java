@@ -21,13 +21,24 @@ import com.itextpdf.kernel.pdf.action.PdfTarget;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfFileAttachmentAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfLinkAnnotation;
-import com.itextpdf.kernel.pdf.collection.*;
+import com.itextpdf.kernel.pdf.collection.PdfCollection;
+import com.itextpdf.kernel.pdf.collection.PdfCollectionField;
+import com.itextpdf.kernel.pdf.collection.PdfCollectionItem;
+import com.itextpdf.kernel.pdf.collection.PdfCollectionSchema;
+import com.itextpdf.kernel.pdf.collection.PdfCollectionSort;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
-import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.element.AreaBreak;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Link;
+import com.itextpdf.layout.element.List;
+import com.itextpdf.layout.element.ListItem;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
@@ -37,14 +48,12 @@ import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Set;
 import java.util.TreeSet;
-
-
-import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_16_11_KubrickCollection extends GenericTest {
@@ -57,10 +66,10 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
     public static final String FILE_FIELD = "FILE";
     public static final String FILE_CAPTION = "File name";
     public String[] KEYS = {TYPE_FIELD, FILE_FIELD};
-    public static final PdfArray EMPTY_ANNOTATION_BORDER = new PdfArray(new int[] {0, 0, 0});
+    public static final PdfArray EMPTY_ANNOTATION_BORDER = new PdfArray(new int[]{0, 0, 0});
 
     public static void main(String args[]) throws Exception {
-        new Listing_16_08_KubrickBox().manipulatePdf(DEST);
+        new Listing_16_11_KubrickCollection().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String destination) throws Exception {
@@ -207,11 +216,12 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
         }
     }
 
-/**
- * Creates a Collection schema that can be used to organize the movies of Stanley Kubrick
- * in a collection: year, title, duration, DVD acquisition, filesize (filename is present, but hidden).
- * @return a collection schema
- */
+    /**
+     * Creates a Collection schema that can be used to organize the movies of Stanley Kubrick
+     * in a collection: year, title, duration, DVD acquisition, filesize (filename is present, but hidden).
+     *
+     * @return a collection schema
+     */
     private static PdfCollectionSchema getCollectionSchema() {
         PdfCollectionSchema schema = new PdfCollectionSchema();
 

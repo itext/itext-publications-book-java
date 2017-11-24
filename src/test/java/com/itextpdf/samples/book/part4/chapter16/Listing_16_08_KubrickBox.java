@@ -32,21 +32,21 @@ import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class Listing_16_08_KubrickBox extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_08_KubrickBox.pdf";
     public static final String IMG_BOX = "./src/test/resources/img/kubrick_box.jpg";
     public static final String RESOURCE_FILES = "./src/test/resources/pdfs/%s.pdf";
+    public static final String RESOURCE_PDFS_PREFIX = "16_08_";
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
-    public static final float[] WIDTHS = { 1 , 7 };
+    public static final float[] WIDTHS = {1, 7};
 
     public static void main(String args[]) throws Exception {
         new Listing_16_08_KubrickBox().manipulatePdf(DEST);
@@ -70,12 +70,12 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         for (Movie movie : box) {
             if (movie.getYear() > 1960) {
                 pdfDoc.addFileAttachment(movie.getTitle(),
-                        PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, movie.getImdb()), null,
-                                String.format("kubrick_%s.pdf", movie.getImdb()), null, null));
+                        PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, RESOURCE_PDFS_PREFIX + movie.getImdb()) /*createMoviePage(movie)*/, null,
+                                String.format("kubrick_%s.pdf", movie.getImdb()), null, /*null, */null));
                 item = new ListItem(movie.getMovieTitle());
                 target = PdfTarget.createChildTarget(movie.getTitle());
                 link = new Link(" (see info)",
-                        PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
+                        PdfAction.createGoToE(PdfExplicitDestination.createFit(1), true, target));
                 item.add(new Paragraph(link));
                 list.add(item);
             }
@@ -84,6 +84,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         doc.close();
     }
 
+    // due to CompareTool reasons we do not call this method. However it was used to create RESOURCE_FILES pdfs.
     public byte[] createMoviePage(Movie movie) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));

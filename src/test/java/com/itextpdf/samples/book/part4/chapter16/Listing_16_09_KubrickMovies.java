@@ -12,6 +12,7 @@ import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -36,21 +37,23 @@ import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
 @Category(SampleTest.class)
 public class Listing_16_09_KubrickMovies extends GenericTest {
     public static final String FILENAME = "Listing_16_09_KubrickMovies.pdf";
     public static final String DEST = "./target/test/resources/book/part4/chapter16/" + FILENAME;
     public static final String RESOURCE_FILES = "./src/test/resources/pdfs/%s.pdf";
+    public static final String RESOURCE_PDFS_PREFIX = "16_09_";
+
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
     public static final float[] WIDTHS = {50, 350};
+    public static final PdfArray EMPTY_ANNOTATION_BORDER = new PdfArray(new int[]{0, 0, 0});
 
     public static void main(String args[]) throws Exception {
         new Listing_16_08_KubrickBox().manipulatePdf(DEST);
@@ -117,15 +120,15 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
         java.util.List<Movie> movies = PojoFactory.getMovies(connection, 1);
         connection.close();
         for (Movie movie : movies) {
-            fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, movie.getImdb()),
+            fs = PdfFileSpec.createEmbeddedFileSpec(pdfDoc, String.format(RESOURCE_FILES, RESOURCE_PDFS_PREFIX + movie.getImdb()) /*createMoviePage(movie)*/,
                     movie.getTitle(),
                     String.format("kubrick_%s.pdf", movie.getImdb()),
-                    null, null);
+                    null,  /*null, */null);
 
             item = new PdfCollectionItem(schema);
             item.addItem("TITLE", movie.getMovieTitle(false));
             if (movie.getMovieTitle(true) != null) {
-                 item.setPrefix("TITLE", movie.getMovieTitle(true));
+                item.setPrefix("TITLE", movie.getMovieTitle(true));
             }
             item.addItem("DURATION", new PdfNumber(movie.getDuration()));
             item.addItem("YEAR", new PdfNumber(movie.getYear()));
@@ -136,6 +139,7 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
         return baos.toByteArray();
     }
 
+    // due to CompareTool reasons we do not call this method. However it was used to create RESOURCE_FILES pdfs.
     public byte[] createMoviePage(Movie movie) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
@@ -154,9 +158,9 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
         doc.add(table);
         PdfTarget target = PdfTarget.createParentTarget();
         target.setTarget(PdfTarget.createParentTarget());
-        Link link = new Link("Go to original document",
-                PdfAction.createGoToE(new PdfNamedDestination("movies"), false, target));
-        // TODO
+        PdfAction action = PdfAction.createGoToE(new PdfNamedDestination("movies"), false, target);
+        Link link = new Link("Go to original document", action);
+        link.getLinkAnnotation().setBorder(EMPTY_ANNOTATION_BORDER);
         doc.add(new Paragraph(link));
         doc.close();
         return baos.toByteArray();
