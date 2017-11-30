@@ -20,6 +20,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 
 @Category(SampleTest.class)
@@ -27,11 +29,23 @@ public class Listing_16_02_ResizeImage extends GenericTest {
     public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_02_ResizeImage.pdf";
     public static float FACTOR = 0.5f;
     public static final String SPECIAL_ID = "./src/test/resources/book/part4/chapter16/cmp_Listing_16_01_SpecialId.pdf";
+
+    private static final String PRE_GENERATED_RESIZED_IMAGE = "./src/test/resources/book/part4/chapter16/resizedImage.jpg";
+
     public static void main(String args[]) throws IOException, SQLException {
-        new Listing_16_02_ResizeImage().manipulatePdf(DEST);
+        boolean isLoadPreGeneratedImage = false;
+        new Listing_16_02_ResizeImage().manipulatePdf(DEST, isLoadPreGeneratedImage);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
+        manipulatePdf(dest, true);
+    }
+
+    /**
+     * Different JDK versions have different Color Management Modules, which result in different bytes
+     * content for images. That's why for testing purposes we use pre-generated image.
+     */
+    public void manipulatePdf(String dest, boolean isLoadPreGeneratedImage) throws IOException, SQLException {
         PdfName key = new PdfName("ITXT_SpecialId");
         PdfName value = new PdfName("123456789");
         // Read the file
@@ -51,14 +65,20 @@ public class Listing_16_02_ResizeImage extends GenericTest {
                 if (bi == null) continue;
                 int width = (int)(bi.getWidth() * FACTOR);
                 int height = (int)(bi.getHeight() * FACTOR);
-                BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-                AffineTransform at = AffineTransform.getScaleInstance(FACTOR, FACTOR);
-                Graphics2D g = img.createGraphics();
-                g.drawRenderedImage(bi, at);
-                ByteArrayOutputStream imgBytes = new ByteArrayOutputStream();
-                ImageIO.write(img, "JPG", imgBytes);
+                byte[] imgBytes;
+                if (isLoadPreGeneratedImage) {
+                    imgBytes = loadPreGeneratedImage();
+                } else {
+                    BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+                    AffineTransform at = AffineTransform.getScaleInstance(FACTOR, FACTOR);
+                    Graphics2D g = img.createGraphics();
+                    g.drawRenderedImage(bi, at);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    ImageIO.write(img, "JPG", baos);
+                    imgBytes = baos.toByteArray();
+                }
                 stream.clear();
-                stream.setData(imgBytes.toByteArray(), false);
+                stream.setData(imgBytes, false);
                 stream.put(PdfName.Type, PdfName.XObject);
                 stream.put(PdfName.Subtype, PdfName.Image);
                 stream.put(key, value);
@@ -70,5 +90,9 @@ public class Listing_16_02_ResizeImage extends GenericTest {
             }
         }
         pdfDoc.close();
+    }
+
+    private byte[] loadPreGeneratedImage() throws IOException {
+        return Files.readAllBytes(Paths.get(PRE_GENERATED_RESIZED_IMAGE));
     }
 }
