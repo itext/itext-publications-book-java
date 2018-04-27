@@ -17,7 +17,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfTarget;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
-import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitRemoteGoToDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
@@ -75,7 +75,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
                 item = new ListItem(movie.getMovieTitle());
                 target = PdfTarget.createChildTarget(movie.getTitle());
                 link = new Link(" (see info)",
-                        PdfAction.createGoToE(PdfExplicitDestination.createFit(1), true, target));
+                        PdfAction.createGoToE(PdfExplicitRemoteGoToDestination.createFit(1), true, target));
                 item.add(new Paragraph(link));
                 list.add(item);
             }
@@ -103,7 +103,7 @@ public class Listing_16_08_KubrickBox extends GenericTest {
         doc.add(table);
         PdfTarget target = PdfTarget.createParentTarget();
         Link link = new Link("Go to original document",
-                PdfAction.createGoToE(PdfExplicitDestination.createFit(1), false, target));
+                PdfAction.createGoToE(PdfExplicitRemoteGoToDestination.createFit(1), false, target));
         doc.add(new Paragraph(link));
         doc.close();
         return baos.toByteArray();

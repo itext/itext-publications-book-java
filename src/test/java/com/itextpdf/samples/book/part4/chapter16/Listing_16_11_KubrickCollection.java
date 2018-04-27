@@ -28,7 +28,7 @@ import com.itextpdf.kernel.pdf.collection.PdfCollectionSchema;
 import com.itextpdf.kernel.pdf.collection.PdfCollectionSort;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
-import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
+import com.itextpdf.kernel.pdf.navigation.PdfExplicitRemoteGoToDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.AreaBreak;
@@ -96,7 +96,7 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
         doc.add(img);
         List list = new List();
         list.setSymbolIndent(20);
-        PdfDestination dest = PdfExplicitDestination.createFit(2);
+        PdfDestination dest = PdfExplicitRemoteGoToDestination.createFit(2);
         PdfTarget intermediate;
         PdfTarget target;
         Link link;

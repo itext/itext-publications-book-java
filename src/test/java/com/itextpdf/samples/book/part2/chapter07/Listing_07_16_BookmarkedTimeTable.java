@@ -59,7 +59,7 @@ public class Listing_07_16_BookmarkedTimeTable extends GenericTest {
         List<Date> days = PojoFactory.getDays(connection);
         for (Date day : days) {
             kid = root.addOutline(day.toString());
-            kid.addAction(PdfAction.createGoTo(PdfExplicitDestination.createFit(page)));
+            kid.addAction(PdfAction.createGoTo(PdfExplicitDestination.createFit(pdfDoc.getPage(page))));
             page++;
         }
         // Close the document

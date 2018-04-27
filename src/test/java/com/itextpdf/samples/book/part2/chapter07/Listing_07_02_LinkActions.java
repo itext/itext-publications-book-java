@@ -8,7 +8,11 @@
  */
 package com.itextpdf.samples.book.part2.chapter07;
 
-import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfObject;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
@@ -89,7 +93,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
                 add(".");
         doc.add(p);
 
-        pdfDoc.addNamedDestination("top", PdfExplicitDestination.createXYZ(1, 36, 842, 1).getPdfObject());
+        pdfDoc.addNamedDestination("top", PdfExplicitDestination.createXYZ(pdfDoc.getPage(1), 36, 842, 1).getPdfObject());
 
         //Close document
         doc.close();

@@ -61,7 +61,7 @@ public class Listing_07_05_TimetableDestinations extends GenericTest {
         // Make a list with all the possible actions
         actions = new ArrayList<PdfAction>();
         for (int i = 1; i <= n; i++) {
-            actions.add(PdfAction.createGoTo(PdfExplicitDestination.createFit(i)));
+            actions.add(PdfAction.createGoTo(PdfExplicitDestination.createFit(pdfDoc.getPage(i))));
         }
 
         PdfFont symbol = PdfFontFactory.createFont(StandardFonts.SYMBOL);
