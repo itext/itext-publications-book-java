@@ -17,6 +17,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
+import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
@@ -48,6 +49,10 @@ public class Listing_09_15_HtmlMovies1 extends GenericTest {
     @Override
     public void manipulatePdf(String pdf)
             throws SQLException, IOException, ParserConfigurationException, SAXException {
+        // License file is loaded because open type font is used and typography module is in classpath:
+        // typography module is utilized and requires license.
+        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
+
         // Create a database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         // Create a stream to produce HTML
