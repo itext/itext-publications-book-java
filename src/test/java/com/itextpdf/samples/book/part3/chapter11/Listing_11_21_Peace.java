@@ -35,16 +35,16 @@ import java.io.IOException;
 public class Listing_11_21_Peace extends GenericTest {
 
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_21_Peace.pdf";
-    
+
     private static final String fontsFolder = "src/test/resources/font/";
-    
+
     private static final FontSet fontSet;
     /** Paths to and encodings of fonts we're going to use in this example */
     static {
         fontSet = new FontSet();
         fontSet.addDirectory(fontsFolder);
     }
-    
+
     private static final String RESOURCE = "src/test/resources/xml/peace.xml";
 
     public static void main(String[] args) throws Exception {
@@ -59,8 +59,8 @@ public class Listing_11_21_Peace extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc, PageSize.A4);
         document.setFontProvider(new FontProvider(fontSet));
-        document.setProperty(Property.FONT, "Noto");
-        
+        document.setFontFamily("Noto");
+
         Table table = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
         SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
         parser.parse(new InputSource(new FileInputStream(RESOURCE)), new CustomHandler(table));
@@ -68,7 +68,7 @@ public class Listing_11_21_Peace extends GenericTest {
         //Close document
         document.close();
     }
-    
+
     private static class CustomHandler extends DefaultHandler {
 
         private StringBuilder buf = new StringBuilder();
