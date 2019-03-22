@@ -70,7 +70,7 @@ public class GenericTest {
      * If SRC and DEST are defined, the example manipulates a PDF;
      * if only DEST is defined, the example creates a PDF.
      */
-    @Test(timeout = 120000)
+    @Test(timeout = 150000)
     public void test() throws Exception {
         if (this.getClass().getName().equals(GenericTest.class.getName()))
             return;
