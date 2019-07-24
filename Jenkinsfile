@@ -26,6 +26,16 @@ pipeline {
     }
 
     stages {
+        stage('Clean workspace') {
+            options {
+                timeout(time: 5, unit: 'MINUTES')
+            }
+            steps {
+                withMaven(jdk: '1.8', maven: 'M3') {
+                    sh 'mvn clean'
+                }
+            }
+        }
         stage('Compile') {
             steps {
                 withMaven(jdk: '1.8', maven: 'M3') {
@@ -87,31 +97,15 @@ pipeline {
                 )
             }
         }
-        stage('Run Tests') {
-            parallel {
-                stage('Surefire (Unit Tests)') {
-                    steps {
-                        withMaven(jdk: '1.8', maven: 'M3') {
-                            sh 'mvn surefire:test -DgsExec=$(which gs) -DcompareExec=$(which compare) -Dmaven.test.skip=false -Dmaven.test.failure.ignore=false -Dmaven.javadoc.failOnError=false'
-                        }
-                    }
-                    post {
-                        always {
-                            junit 'target/surefire-reports/*.xml'
-                        }
-                    }
+        stage('Run Failsafe (Integration) Tests)') {
+            steps {
+                withMaven(jdk: '1.8', maven: 'M3') {
+                    sh 'mvn failsafe:integration-test failsafe:verify -DgsExec=$(which gs) -DcompareExec=$(which compare) -Dmaven.test.skip=false -Dmaven.test.failure.ignore=false -Dmaven.javadoc.failOnError=false'
                 }
-                stage('Failsafe (Integration Tests)') {
-                    steps {
-                        withMaven(jdk: '1.8', maven: 'M3') {
-                            sh 'mvn failsafe:integration-test failsafe:verify -DgsExec=$(which gs) -DcompareExec=$(which compare) -Dmaven.test.skip=false -Dmaven.test.failure.ignore=false -Dmaven.javadoc.failOnError=false'
-                        }
-                    }
-                    post {
-                        always {
-                            junit 'target/failsafe-reports/*.xml'
-                        }
-                    }
+            }
+            post {
+                always {
+                    junit 'target/failsafe-reports/*.xml'
                 }
             }
         }
