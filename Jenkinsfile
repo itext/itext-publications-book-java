@@ -63,7 +63,7 @@ pipeline {
             }
             steps {
                 withMaven(jdk: "${JDK_VERSION}", maven: 'M3') {
-                    sh 'mvn checkstyle:checkstyle findbugs:check pmd:pmd -Dpmd.analysisCache=true javadoc:javadoc -Dmaven.javadoc.failOnError=false'
+                    sh 'mvn checkstyle:checkstyle spotbugs:check pmd:pmd -Dpmd.analysisCache=true javadoc:javadoc -Dmaven.javadoc.failOnError=false'
                 }
             }
             post {
@@ -104,7 +104,7 @@ pipeline {
             }
             steps {
                 withMaven(jdk: "${JDK_VERSION}", maven: 'M3') {
-                    sh 'mvn verify -DgsExec="${gsExec}" -DcompareExec="${compareExec}" -Dmaven.test.skip=false -Dmaven.test.failure.ignore=false -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Dpmd.skip=true'
+                    sh 'mvn verify -DgsExec="${gsExec}" -DcompareExec="${compareExec}" -Dmaven.test.skip=false -Dmaven.test.failure.ignore=false -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Dpmd.skip=true -Dspotbugs.skip=true'
                 }
             }
             post {
