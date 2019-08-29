@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>com.itextpdf.samples</groupId>
   <artifactId>book</artifactId>
-  <version>7.1.8-SNAPSHOT</version>
-
+  <version>7.1.8</version>
   <name>iText 7 Publications: iText in Action</name>
   <url>https://itextpdf.com/</url>
-
   <properties>
     <bouncycastle.version>1.49</bouncycastle.version>
     <checkstyle.version>2.15</checkstyle.version>
@@ -28,10 +25,9 @@
     <slowtests>com.itextpdf.test.annotations.type.SlowTest</slowtests>
     <spotbugs.version>3.1.11</spotbugs.version>
     <surefire.version>3.0.0-M3</surefire.version>
-    <typography.version>2.0.5-SNAPSHOT</typography.version>
+    <typography.version>2.0.4</typography.version>
     <unittests>com.itextpdf.test.annotations.type.UnitTest</unittests>
   </properties>
-
   <dependencies>
     <dependency>
       <groupId>com.itextpdf</groupId>
@@ -111,7 +107,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <repositories>
     <repository>
       <releases>
@@ -136,7 +131,6 @@
       <url>https://repo.itextsupport.com/releases</url>
     </repository>
   </repositories>
-
   <build>
     <plugins>
       <plugin>
@@ -250,7 +244,6 @@
       </plugin>
     </plugins>
   </build>
-
   <profiles>
     <profile>
       <id>java8-disable-strict-javadoc</id>
@@ -402,7 +395,7 @@
                 <featureBranchPrefix>feature/</featureBranchPrefix>
                 <releaseBranchPrefix>release/</releaseBranchPrefix>
                 <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
-                <versionTagPrefix />
+                <versionTagPrefix/>
               </flowInitContext>
               <allowUntracked>true</allowUntracked>
               <autoVersionSubmodules>true</autoVersionSubmodules>
