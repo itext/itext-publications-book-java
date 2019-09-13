@@ -100,7 +100,7 @@ pipeline {
         }
         stage('Run Tests') {
             options {
-                timeout(time: 5, unit: 'MINUTES')
+                timeout(time: 30, unit: 'MINUTES')
             }
             steps {
                 withMaven(jdk: "${JDK_VERSION}", maven: 'M3') {
