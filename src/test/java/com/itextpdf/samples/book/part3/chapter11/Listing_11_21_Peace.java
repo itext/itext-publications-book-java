@@ -20,7 +20,9 @@ import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.licensekey.LicenseKey;
 import com.itextpdf.samples.GenericTest;
+import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -31,7 +33,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-@Ignore("DEVSIX-1032")
+@Category(SampleTest.class)
 public class Listing_11_21_Peace extends GenericTest {
 
     public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_21_Peace.pdf";
@@ -59,7 +61,7 @@ public class Listing_11_21_Peace extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc, PageSize.A4);
         document.setFontProvider(new FontProvider(fontSet));
-        document.setFontFamily("Noto");
+        document.setFontFamily("Noto Sans");
 
         Table table = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
         SAXParser parser = SAXParserFactory.newInstance().newSAXParser();

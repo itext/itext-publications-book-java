@@ -62,7 +62,6 @@ public class Listing_09_06_SubmitForm extends GenericTest {
                 pdfDoc, new Rectangle(420, 660, 50, 30), "reset", "RESET");
         reset.setBackgroundColor(new DeviceGray(0.7f));
         reset.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        // TODO DEVSIX-573
         reset.setAction(PdfAction.createResetForm(null, 0));
         form.addField(reset);
         // close the document

@@ -20,7 +20,6 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
-@Ignore("See DEVSIX-660")
 @Category(SampleTest.class)
 public class Listing_11_08_CJKExample extends GenericTest {
     public static final String DEST =
