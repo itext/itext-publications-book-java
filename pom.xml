@@ -25,7 +25,7 @@
     <slowtests>com.itextpdf.test.annotations.type.SlowTest</slowtests>
     <spotbugs.version>3.1.11</spotbugs.version>
     <surefire.version>3.0.0-M3</surefire.version>
-    <typography.version>2.0.4</typography.version>
+    <typography.version>2.0.5-SNAPSHOT</typography.version>
     <unittests>com.itextpdf.test.annotations.type.UnitTest</unittests>
   </properties>
   <dependencies>
