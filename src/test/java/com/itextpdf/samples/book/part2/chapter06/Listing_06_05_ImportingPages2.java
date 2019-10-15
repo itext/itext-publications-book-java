@@ -22,6 +22,7 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import org.junit.experimental.categories.Category;
@@ -69,6 +70,14 @@ public class Listing_06_05_ImportingPages2 extends GenericTest {
     class MyCellRenderer extends CellRenderer {
         public MyCellRenderer(Cell modelElement) {
             super(modelElement);
+        }
+
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
+        @Override
+        public IRenderer getNextRenderer() {
+            return new MyCellRenderer((Cell) modelElement);
         }
 
         @Override

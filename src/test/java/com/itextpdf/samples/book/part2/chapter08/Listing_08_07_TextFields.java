@@ -17,6 +17,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
@@ -117,6 +118,14 @@ public class Listing_08_07_TextFields extends GenericTest {
         public TextFilledCellRenderer(Cell modelElement, int tf) {
             super(modelElement);
             this.tf = tf;
+        }
+
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
+        @Override
+        public IRenderer getNextRenderer() {
+            return new TextFilledCellRenderer((Cell) modelElement, tf);
         }
 
         @Override

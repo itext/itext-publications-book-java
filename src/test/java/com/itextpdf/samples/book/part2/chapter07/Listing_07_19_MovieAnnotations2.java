@@ -14,6 +14,8 @@ import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
+import com.itextpdf.layout.renderer.IRenderer;
+import com.itextpdf.layout.renderer.ImageRenderer;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
@@ -80,6 +82,14 @@ public class Listing_07_19_MovieAnnotations2 extends GenericTest {
             super(textElement);
             this.title = title;
             this.contents = contents;
+        }
+
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
+        @Override
+        public IRenderer getNextRenderer() {
+            return new AnnotatedTextRenderer((Text) modelElement, title, contents);
         }
 
         @Override

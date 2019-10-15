@@ -18,6 +18,7 @@ import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.ListItemRenderer;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -110,7 +111,6 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
         return baos.toByteArray();
     }
 
-
     private class AnnotatedListItemRenderer extends ListItemRenderer {
         private String fileDisplay;
         private String filePath;
@@ -121,6 +121,14 @@ public class Listing_16_05_KubrickDvds extends GenericTest {
             fileDisplay = display;
             filePath = path;
             fileTitle = title;
+        }
+
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
+        @Override
+        public IRenderer getNextRenderer() {
+            return new AnnotatedListItemRenderer((ListItem) modelElement, filePath, fileDisplay, fileTitle);
         }
 
         @Override

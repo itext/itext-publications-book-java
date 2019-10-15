@@ -28,6 +28,7 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.property.TransparentColor;
 import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.LinkRenderer;
 import com.itextpdf.layout.renderer.ParagraphRenderer;
 import com.itextpdf.layout.renderer.TextRenderer;
@@ -107,8 +108,17 @@ public class Listing_05_08_MovieYears extends GenericTest {
     }
 
     private class StripTextRenderer extends TextRenderer {
+
         public StripTextRenderer(Text textElement) {
             super(textElement);
+        }
+
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
+        @Override
+        public IRenderer getNextRenderer() {
+            return new StripTextRenderer((Text) modelElement);
         }
 
         @Override
@@ -132,9 +142,18 @@ public class Listing_05_08_MovieYears extends GenericTest {
 
 
     private class EllipseTextRenderer extends LinkRenderer {
+
         public EllipseTextRenderer(Link textElement) {
             super(textElement);
             setProperty(Property.FONT_COLOR, new TransparentColor(ColorConstants.WHITE));
+        }
+
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
+        @Override
+        public IRenderer getNextRenderer() {
+            return new EllipseTextRenderer((Link) modelElement);
         }
 
         @Override
@@ -155,6 +174,14 @@ public class Listing_05_08_MovieYears extends GenericTest {
     private class LinedParagraphRenderer extends ParagraphRenderer {
         public LinedParagraphRenderer(Paragraph modelElement) {
             super(modelElement);
+        }
+
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
+        @Override
+        public IRenderer getNextRenderer() {
+            return new LinedParagraphRenderer((Paragraph) modelElement);
         }
 
         @Override
