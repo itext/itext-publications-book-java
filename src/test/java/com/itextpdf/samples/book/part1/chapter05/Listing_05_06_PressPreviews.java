@@ -19,6 +19,7 @@ import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
@@ -63,7 +64,7 @@ public class Listing_05_06_PressPreviews extends GenericTest {
     }
 
     public Table getTable(DatabaseConnection connection) throws UnsupportedEncodingException, SQLException {
-        Table table = new Table(new float[]{50, 50, 50, 100, 50});
+        Table table = new Table(UnitValue.createPercentArray(new float[]{1, 2, 2, 5, 1})).useAllAvailableWidth();
         table.setBorder(new SolidBorder(1));
         Cell cell;
 
