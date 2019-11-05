@@ -30,7 +30,6 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
@@ -39,7 +38,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_05_06_PressPreviews extends GenericTest {
     public static final String DEST =
