@@ -95,6 +95,16 @@ pipeline {
                         dir ('license') {
                             sh 'git archive --format=tar --remote=ssh://git@git.itextsupport.com:7999/i7j/licensekey.git develop:src/test/resources/com/itextpdf/licensekey -- all-products.xml | tar -O -xf - > itextkey-multiple-products.xml'
                         }
+                    },
+                    "pdfHTML + pdfCalligraph" : {
+                        dir ('license') {
+                            sh 'git archive --format=tar --remote=ssh://git@git.itextsupport.com:7999/i7j/licensekey.git develop:src/test/resources/com/itextpdf/licensekey -- all-products.xml | tar -O -xf - > itextkey-html2pdf_typography.xml'
+                        }
+                    },
+                    "All Products" : {
+                        dir ('license') {
+                            sh 'git archive --format=tar --remote=ssh://git@git.itextsupport.com:7999/i7j/licensekey.git develop:src/test/resources/com/itextpdf/licensekey -- all-products.xml | tar -O -xf - > all-products.xml'
+                        }
                     }
                 )
             }
