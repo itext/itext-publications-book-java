@@ -19,6 +19,7 @@ import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
@@ -29,7 +30,6 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
@@ -38,7 +38,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Ignore
 @Category(SampleTest.class)
 public class Listing_05_06_PressPreviews extends GenericTest {
     public static final String DEST =
@@ -63,7 +62,7 @@ public class Listing_05_06_PressPreviews extends GenericTest {
     }
 
     public Table getTable(DatabaseConnection connection) throws UnsupportedEncodingException, SQLException {
-        Table table = new Table(new float[]{50, 50, 50, 100, 50});
+        Table table = new Table(UnitValue.createPercentArray(new float[]{1, 2, 2, 5, 1})).useAllAvailableWidth();
         table.setBorder(new SolidBorder(1));
         Cell cell;
 
@@ -133,6 +132,9 @@ public class Listing_05_06_PressPreviews extends GenericTest {
                     .stroke();
         }
 
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
         @Override
         public IRenderer getNextRenderer() {
             return new PressPreviewsCellRenderer((Cell) modelElement);

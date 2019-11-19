@@ -72,14 +72,20 @@ public class GenericTest {
      */
     @Test(timeout = 150000)
     public void test() throws Exception {
-        if (this.getClass().getName().equals(GenericTest.class.getName()))
+        if (this.getClass().getName().equals(GenericTest.class.getName())) {
             return;
-        unloadLicense();
+        }
+
+        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/all-products.xml");
+
         LOGGER.info("Starting test " + getClass().getName() + ".");
+
         // Getting the destination PDF file (must be there!)
         String dest = getDest();
-        if (dest == null || dest.length() == 0)
+        if (dest == null || dest.length() == 0) {
             throw new OperationsException("DEST cannot be empty!");
+        }
+
         // Compare the destination PDF with a reference PDF
         beforeManipulatePdf();
         manipulatePdf(dest);
@@ -87,6 +93,8 @@ public class GenericTest {
         System.out.println(dest + "\n" + getCmpPdf());
         comparePdf(dest, getCmpPdf());
         LOGGER.info("Test complete.");
+
+        unloadLicense();
     }
 
     /**
@@ -202,6 +210,8 @@ public class GenericTest {
             versionField.setAccessible(true);
             versionField.set(null, null);
         } catch (Exception ignored) {
+
+            // No exception handling required, because there can be no license loaded
         }
     }
 }

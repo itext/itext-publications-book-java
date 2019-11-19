@@ -28,6 +28,7 @@ import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
+import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.book.part1.chapter04.Listing_04_21_PdfCalendar;
 import com.itextpdf.test.annotations.type.SampleTest;
@@ -35,6 +36,7 @@ import org.junit.experimental.categories.Category;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.security.cert.Certificate;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -231,6 +233,14 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
 
         }
 
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
+        @Override
+        public IRenderer getNextRenderer() {
+            return new RoundedTableRenderer((Table) modelElement, rowRange);
+        }
+
         @Override
         protected void drawBorders(DrawContext drawContext) {
             //super.drawBorders(canvas);
@@ -246,6 +256,14 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             super(modelElement);
             this.cmykColor = cmykColor;
             this.isColoredBackground = isColoredBackground;
+        }
+
+        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
+        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // renderer will be created
+        @Override
+        public IRenderer getNextRenderer() {
+            return new RoundedCellRenderer((Cell)modelElement, cmykColor, isColoredBackground);
         }
 
         @Override

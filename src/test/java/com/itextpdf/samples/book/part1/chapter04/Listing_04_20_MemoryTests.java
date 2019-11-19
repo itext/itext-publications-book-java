@@ -17,22 +17,26 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
-import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.List;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.sql.SQLException;
+import org.junit.experimental.categories.Category;
 
 @Category(SampleTest.class)
 public class Listing_04_20_MemoryTests extends GenericTest {
@@ -65,16 +69,19 @@ public class Listing_04_20_MemoryTests extends GenericTest {
 
     public void createPdfs() {
         try {
-            // the report file
+
+            // The report file
             PrintWriter writer = new PrintWriter(new FileOutputStream(RESULT0));
             resetMaximum(writer);
             test = false;
             println(writer, RESULT1);
+
             // PDF without memory management
             createPdfWithPdfPTable(writer, RESULT1);
             resetMaximum(writer);
             test = true;
             println(writer, DEST);
+
             // PDF with memory management
             createPdfWithPdfPTable(writer, DEST);
             resetMaximum(writer);
@@ -94,9 +101,11 @@ public class Listing_04_20_MemoryTests extends GenericTest {
      * @throws SQLException
      */
     private void createPdfWithPdfPTable(Writer writerArg, String filename) throws IOException, SQLException {
+
         // Create a connection to the database
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
-        // step 1
+
+        // Step 1
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
@@ -105,24 +114,31 @@ public class Listing_04_20_MemoryTests extends GenericTest {
         italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE);
         boldItalic = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLDOBLIQUE);
 
-        // step 4
+        // Step 4
         // Create a table with 2 columns
         Table table = new Table(new float[]{150, 600}, test);
 
-        // Mark the table as not complete
+        // In large table mode, we need to add it to the document at some point before flushing
+        if (test) {
+            doc.add(table);
+        }
+
         java.util.List<Movie> movies = PojoFactory.getMovies(connection);
         List list;
         Cell cell;
         int count = 0;
-        // add information about a movie
+
+        // Add information about a movie
         for (Movie movie : movies) {
             table.setMarginTop(5);
-            // add a movie poster
+
+            // Add a movie poster
             cell = new Cell().add(new Image(ImageDataFactory.create(String.format(RESOURCE, movie.getImdb()))).scaleToFit(100,200));
             cell.setBorder(Border.NO_BORDER);
             cell.setMargin(10);
             table.addCell(cell);
-            // add movie information
+
+            // Add movie information
             cell = new Cell();
             Paragraph p = new Paragraph(movie.getTitle()).setFont(bold);
             p.setHorizontalAlignment(HorizontalAlignment.CENTER);
@@ -150,23 +166,32 @@ public class Listing_04_20_MemoryTests extends GenericTest {
             list.setMarginLeft(40);
             cell.add(list);
             table.addCell(cell);
-            // insert a checkpoint every 10 movies
-            if (count++ % 10 == 0) {
-                // add the incomplete table to the document
-                if (test)
-                    doc.add(table);
+
+            // Insert a checkpoint every 20 movies
+            if (count++ % 20 == 0) {
+
+                // Add the incomplete table to the document
+                if (test) {
+                    table.flush();
+                }
                 checkpoint(writerArg);
             }
         }
-        // Mark the table as complete
+
         if (test) {
+
+            // Mark the table as complete
             table.complete();
+        } else {
+
+            // Add the non-large table to the document
+            doc.add(table);
         }
-        // add the table to the document
-        doc.add(table);
-        // insert a last checkpoint
+
+        // Insert a last checkpoint
         checkpoint(writerArg);
-        // step 5
+
+        // Step 5
         doc.close();
     }
 
@@ -246,17 +271,9 @@ public class Listing_04_20_MemoryTests extends GenericTest {
      * Makes sure all garbage is cleared from the memory.
      */
     private static void garbageCollect() {
-        try {
-            System.gc();
-            Thread.sleep(100);
-            System.runFinalization();
-            Thread.sleep(100);
-            System.gc();
-            Thread.sleep(100);
-            System.runFinalization();
-            Thread.sleep(100);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
+        System.gc();
+        System.runFinalization();
+        System.gc();
+        System.runFinalization();
     }
 }

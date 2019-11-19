@@ -24,7 +24,6 @@ import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.*;
-import org.junit.Ignore;
 import org.junit.experimental.categories.Category;
 
 import java.io.IOException;
@@ -36,8 +35,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Ignore
-// TODO DEVSIX-584
+//TODO update cmp file after DEVSIX-584 is closed
 @Category(SampleTest.class)
 public class Listing_02_21_DirectorOverview3 extends GenericTest {
     public static final String DEST =

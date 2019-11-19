@@ -8,8 +8,6 @@
  */
 package com.itextpdf.samples.book.part2.chapter06;
 
-import static org.junit.Assert.fail;
-
 import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -22,10 +20,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import static org.junit.Assert.fail;
 
 @Category(SampleTest.class)
 public class Listing_06_02_MemoryInfo extends GenericTest {
@@ -126,18 +123,10 @@ public class Listing_06_02_MemoryInfo extends GenericTest {
      * Makes sure all garbage is cleared from the memory.
      */
     public static void garbageCollect() {
-        try {
-            System.gc();
-            Thread.sleep(200);
-            System.runFinalization();
-            Thread.sleep(200);
-            System.gc();
-            Thread.sleep(200);
-            System.runFinalization();
-            Thread.sleep(200);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
+        System.gc();
+        System.runFinalization();
+        System.gc();
+        System.runFinalization();
     }
 
 }
