@@ -70,7 +70,6 @@ public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
         stream.put(new PdfName("Length1"), new PdfNumber(fontfile.length));
         // create a reader object
         PdfReader reader = new PdfReader(src);
-        int n = (int) reader.getLastXref();
         PdfObject object;
         PdfDictionary font;
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
