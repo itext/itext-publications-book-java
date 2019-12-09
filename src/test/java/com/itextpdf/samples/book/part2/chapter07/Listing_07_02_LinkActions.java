@@ -22,6 +22,7 @@ import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
+import javax.xml.transform.OutputKeys;
 import org.junit.experimental.categories.Category;
 import org.w3c.dom.Element;
 
@@ -33,7 +34,6 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,6 +43,7 @@ import java.util.Map;
 @Category(SampleTest.class)
 public class Listing_07_02_LinkActions extends GenericTest {
     public static final String SRC = "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
+    public static final String SRC_RELATIVE = "../../../../../../src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
     public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions.pdf";
     public static final String DEST2 = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions.xml";
 
@@ -51,15 +52,16 @@ public class Listing_07_02_LinkActions extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException, TransformerException, ParserConfigurationException {
-        manipulatePdf2(DEST);
+        manipulatePdf2(dest);
         createXml(SRC, DEST2);
     }
 
-    public void manipulatePdf2(String dest) throws FileNotFoundException, SQLException {
+    public void manipulatePdf2(String dest) throws IOException, SQLException {
+
         // Open the database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
 
-        //Initialize document
+        // Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
@@ -69,7 +71,8 @@ public class Listing_07_02_LinkActions extends GenericTest {
         doc.add(p);
 
         p = new Paragraph("This list can be found in a ").
-                add(new Link("separate document", PdfAction.createGoToR("../../part1/chapter02/Listing_02_22_MovieLinks1.pdf", 1))).
+                add(new Link("separate document",
+                        PdfAction.createGoToR(SRC_RELATIVE, 1))).
                 add(".");
         doc.add(p);
 
@@ -79,15 +82,17 @@ public class Listing_07_02_LinkActions extends GenericTest {
                 "SELECT DISTINCT mc.country_id, c.country, count(*) AS c "
                         + "FROM film_country c, film_movie_country mc WHERE c.id = mc.country_id "
                         + "GROUP BY mc.country_id, country ORDER BY c DESC");
+
         // Loop over the countries
         while (rs.next()) {
             Paragraph country = new Paragraph(rs.getString("country"));
             country.add(": ");
             Link link = new Link(String.format("%d movies", rs.getInt("c")),
-                    PdfAction.createGoToR("../../part1/chapter02/Listing_02_22_MovieLinks1.pdf", rs.getString("country_id"), true));
+                    PdfAction.createGoToR(SRC_RELATIVE, rs.getString("country_id"), true));
             country.add(link);
             doc.add(country);
         }
+
         p = new Paragraph("Go to ").
                 add(new Link("top", PdfAction.createGoTo("top"))).
                 add(".");
@@ -95,7 +100,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
 
         pdfDoc.addNamedDestination("top", PdfExplicitDestination.createXYZ(pdfDoc.getPage(1), 36, 842, 1).getPdfObject());
 
-        //Close document
+        // Close document
         doc.close();
     }
 
@@ -128,6 +133,7 @@ public class Listing_07_02_LinkActions extends GenericTest {
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer t = tf.newTransformer();
         t.setOutputProperty("encoding", "ISO8859-1");
+        t.setOutputProperty(OutputKeys.INDENT, "yes");
 
         t.transform(new DOMSource(doc), new StreamResult(dest));
         pdfDoc.close();

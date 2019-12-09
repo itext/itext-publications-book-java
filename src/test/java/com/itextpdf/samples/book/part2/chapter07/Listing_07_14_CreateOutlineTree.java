@@ -11,8 +11,8 @@ package com.itextpdf.samples.book.part2.chapter07;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
-import com.itextpdf.kernel.pdf.PdfObject;
 import com.itextpdf.kernel.pdf.PdfOutline;
+import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
@@ -29,12 +29,11 @@ import com.lowagie.filmfestival.PojoToElementFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Map;
 import java.util.List;
 
+import javax.xml.transform.OutputKeys;
 import org.junit.experimental.categories.Category;
 import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -63,22 +62,32 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
 
     protected String[] arguments;
 
-    public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException, SAXException {
+    public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException {
         new Listing_07_14_CreateOutlineTree().manipulatePdf(DEST);
-        createXml(DEST, DEST_XML);
     }
 
-    public void manipulatePdf(String dest) throws IOException, SQLException {
+    public void manipulatePdf(String dest)
+            throws IOException, SQLException, TransformerException, ParserConfigurationException {
+        manipulatePdf2(dest);
+        createXml(dest, DEST_XML);
+    }
+
+    public void manipulatePdf2 (String dest) throws IOException, SQLException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
+
+        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
+
         pdfDoc.getCatalog().setPageMode(PdfName.UseOutlines);
+
+        // To get cached outline tree, set flag to false. If outlines have not been initialized before the method will return null
         PdfOutline root = pdfDoc.getOutlines(false);
         PdfOutline movieBookmark;
         PdfOutline link;
         PdfOutline info;
         String title;
         List<Movie> movies = PojoFactory.getMovies(connection);
+
         // Add page in order to have canvas to write on
         pdfDoc.addNewPage();
         for (Movie movie : movies) {
@@ -87,9 +96,16 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
                 title = "\ube48\uc9d1";
             }
             movieBookmark = root.addOutline(title);
-            movieBookmark.addAction(PdfAction.createGoTo(
-                    PdfExplicitDestination.createFitH(pdfDoc.getLastPage(),
-                            pdfDoc.getLastPage().getPageSize().getTop())));
+
+            // Create an action GoTo to the top of the movieBookmark area. In iText7 element's renderer
+            // is used to layout and draw the element. By getting the current area of a document renderer we can obtain
+            // the space yet to be covered by the document's content and, therefore, the position at which the very
+            // next element will be placed.
+            // For more info please follow https://itextpdf.com/en/blog/technical-notes/itext-pdf-renderer-framework
+            PdfPage lastPage = pdfDoc.getLastPage();
+            float topOfBookmark = doc.getRenderer().getCurrentArea().getBBox().getTop();
+            movieBookmark.addAction(PdfAction.createGoTo(PdfExplicitDestination.createFitH(lastPage, topOfBookmark)));
+
             link = movieBookmark.addOutline("link to IMDB");
             link.setStyle(PdfOutline.FLAG_BOLD);
             link.setColor(ColorConstants.BLUE);
@@ -101,7 +117,9 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
             doc.add(PojoToElementFactory.getDirectorList(movie));
             doc.add(PojoToElementFactory.getCountryList(movie));
         }
+
         doc.close();
+
         // Close the database connection
         connection.close();
     }
@@ -115,26 +133,35 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
      */
     public static void createXml(String src, String dest) throws IOException, ParserConfigurationException, TransformerException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
+
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = docFactory.newDocumentBuilder();
 
         org.w3c.dom.Document doc = db.newDocument();
-        Element root = doc.createElement("Destination");
+        Element root = doc.createElement("Bookmark");
         doc.appendChild(root);
 
-        Map<String, PdfObject> names = pdfDoc.getCatalog().getNameTree(PdfName.Dests).getNames();
-        for (Map.Entry<String, PdfObject> name : names.entrySet()) {
-            Element el = doc.createElement("Name");
-            el.setAttribute("Page", name.getValue().toString());
-            el.setTextContent(name.getKey());
+        List<PdfOutline> outlines = pdfDoc.getOutlines(false).getAllChildren();
+        for (PdfOutline outline : outlines) {
+            Element el = doc.createElement("Title");
+            Element el2 = doc.createElement("Link");
+            Element el3 = doc.createElement("Info");
+            el.setTextContent(outline.getTitle());
+            el.setAttribute("ElementsNumber", outline.getContent().get(PdfName.Parent).toString().substring(47, 55));
+            el2.setTextContent(outline.getAllChildren().get(0).getTitle());
+            el3.setTextContent(outline.getAllChildren().get(1).getTitle());
             root.appendChild(el);
+            el.appendChild(el2);
+            el.appendChild(el3);
         }
 
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer t = tf.newTransformer();
         t.setOutputProperty("encoding", "ISO8859-1");
-
+        t.setOutputProperty(OutputKeys.INDENT, "yes");
+        t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         t.transform(new DOMSource(doc), new StreamResult(dest));
+
         pdfDoc.close();
     }
 }
