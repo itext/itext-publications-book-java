@@ -1,6 +1,6 @@
 /*
     This file is part of the iText (R) project.
-    Copyright (c) 1998-2019 iText Group NV
+    Copyright (c) 1998-2020 iText Group NV
     Authors: iText Software.
 
     For more information, please contact iText Software at this address:
@@ -70,7 +70,6 @@ public class Listing_16_04_EmbedFontPostFacto extends GenericTest {
         stream.put(new PdfName("Length1"), new PdfNumber(fontfile.length));
         // create a reader object
         PdfReader reader = new PdfReader(src);
-        int n = (int) reader.getLastXref();
         PdfObject object;
         PdfDictionary font;
         PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(dest));
