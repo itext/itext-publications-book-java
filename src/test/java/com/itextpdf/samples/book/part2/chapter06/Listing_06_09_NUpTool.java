@@ -17,19 +17,16 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_06_09_NUpTool extends GenericTest {
+public class Listing_06_09_NUpTool {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter06/Listing_06_09_NUpTool.pdf";
+            = "./target/book/part2/chapter06/Listing_06_09_NUpTool.pdf";
     public static final String RESULT
-            = "./target/test/resources/book/part2/chapter06/Listing_06_09_NUpTool%dup.pdf";
+            = "./target/book/part2/chapter06/Listing_06_09_NUpTool%dup.pdf";
     public static final String RESOURCE
             = "./src/test/resources/img/loa.jpg";
     public static final String STATIONERY
@@ -38,6 +35,9 @@ public class Listing_06_09_NUpTool extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_06_09_NUpTool().manipulatePdf(DEST);
     }
 

@@ -16,22 +16,21 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_14_07_TransformationMatrix2 extends GenericTest {
+public class Listing_14_07_TransformationMatrix2 {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter14/Listing_14_07_TransformationMatrix2.pdf";
+            = "./target/book/part4/chapter14/Listing_14_07_TransformationMatrix2.pdf";
     public static final String RESOURCE
             = "./src/test/resources/pdfs/logo.pdf";
 
     public static void main(String args[]) throws IOException {
-        new Listing_14_06_TransformationMatrix1().manipulatePdf(DEST);
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
+        new Listing_14_07_TransformationMatrix2().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException {

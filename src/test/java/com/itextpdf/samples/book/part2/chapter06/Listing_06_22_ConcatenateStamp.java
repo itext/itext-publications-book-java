@@ -17,23 +17,23 @@ import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_06_22_ConcatenateStamp extends GenericTest {
+public class Listing_06_22_ConcatenateStamp {
     public static final String DEST =
-            "./target/test/resources/book/part2/chapter06/Listing_06_22_ConcatenateStamp.pdf";
+            "./target/book/part2/chapter06/Listing_06_22_ConcatenateStamp.pdf";
     public static final String MOVIE_LINKS1 =
             "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
     public static final String MOVIE_HISTORY =
             "./src/test/resources/book/part1/chapter02/cmp_Listing_02_24_MovieHistory.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_06_22_ConcatenateStamp().manipulatePdf(DEST);
     }
 

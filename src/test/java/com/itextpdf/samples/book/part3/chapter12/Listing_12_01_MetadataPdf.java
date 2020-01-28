@@ -14,26 +14,29 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_12_01_MetadataPdf extends GenericTest {
-    public static final String DEST
-            = "./target/test/resources/book/part3/chapter12/Listing_12_01_MetadataPdf.pdf";
-    public static final String RESULT2
-            = "./target/test/resources/book/part3/chapter12/Listing_12_01_MetadataPdf_pdf_metadata_changed.pdf";
+public class Listing_12_01_MetadataPdf {
+    public static final String[] RESULT = {
+            "./target/book/part3/chapter12/Listing_12_01_MetadataPdf.pdf",
+            "./target/book/part3/chapter12/Listing_12_01_MetadataPdf_pdf_metadata_changed.pdf"
+    };
+
+    public static final String DEST = RESULT[0];
+
     public static void main(String args[]) throws IOException {
         new Listing_12_01_MetadataPdf().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         createPdf(DEST);
-        changePdf(DEST, RESULT2);
+        changePdf(DEST, RESULT[1]);
     }
 
     public void createPdf(String dest) throws FileNotFoundException {

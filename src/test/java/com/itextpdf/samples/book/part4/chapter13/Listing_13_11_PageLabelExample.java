@@ -10,15 +10,14 @@ package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -26,16 +25,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_13_11_PageLabelExample extends GenericTest {
+public class Listing_13_11_PageLabelExample {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter13/Listing_13_11_PageLabelExample.pdf";
+            = "./target/book/part4/chapter13/Listing_13_11_PageLabelExample.pdf";
     public static final String DEST2
-            = "./target/test/resources/book/part4/chapter13/Listing_13_11_PageLabelExample_2.pdf";
-    public static final String LABELS
-            = "./target/test/resources/book/part4/chapter13/page_labels.txt";
+            = "./target/book/part4/chapter13/Listing_13_11_PageLabelExample_2.pdf";
+    public static final String DEST_TXT
+            = "./target/book/part4/chapter13/page_labels.txt";
     public static final String[] SQL = {
             "SELECT country FROM film_country ORDER BY country",
             "SELECT name FROM film_director ORDER BY name",
@@ -45,13 +41,15 @@ public class Listing_13_11_PageLabelExample extends GenericTest {
     public static final String[] FIELD = { "country", "name", "title" };
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_13_11_PageLabelExample().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
         createPdf(dest);
-        listPageLabels(dest, LABELS);
+        listPageLabels(dest, DEST_TXT);
         //manipulatePageLabel(RESULT, DEST2);
     }
 

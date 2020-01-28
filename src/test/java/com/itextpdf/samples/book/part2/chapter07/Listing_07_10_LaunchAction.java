@@ -13,21 +13,20 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_10_LaunchAction extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_10_LaunchAction.pdf";
+public class Listing_07_10_LaunchAction {
+    public static final String DEST = "./target/book/part2/chapter07/Listing_07_10_LaunchAction.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_10_LaunchAction().manipulatePdf(DEST);
     }
 

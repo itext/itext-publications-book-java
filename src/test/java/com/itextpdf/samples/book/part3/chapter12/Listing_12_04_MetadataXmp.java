@@ -13,7 +13,6 @@ import com.itextpdf.kernel.pdf.PdfDocumentInfo;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.WriterProperties;
-import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.kernel.xmp.PdfConst;
 import com.itextpdf.kernel.xmp.XMPConst;
 import com.itextpdf.kernel.xmp.XMPException;
@@ -22,33 +21,27 @@ import com.itextpdf.kernel.xmp.XMPMetaFactory;
 import com.itextpdf.kernel.xmp.options.PropertyOptions;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.Assert;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_12_04_MetadataXmp extends GenericTest {
+public class Listing_12_04_MetadataXmp {
     public static final String METADATA_PDF
             = "./src/test/resources/book/part3/chapter12/cmp_Listing_12_01_MetadataPdf.pdf";
-    public static final String[] RESULTS = {
-            "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata.pdf",
-            "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_automatic.pdf",
-            "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_added.pdf"
+    public static final String[] RESULT = {
+            "./target/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata.pdf",
+            "./target/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_automatic.pdf",
+            "./target/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_added.pdf"
     };
-    public static final String[] CMP_RESULTS = {
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_04_MetadataXmp_xmp_metadata.pdf",
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_04_MetadataXmp_xmp_metadata_automatic.pdf",
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_04_MetadataXmp_xmp_metadata_added.pdf"
-    };
-    public static final String RESULT_XML = "./target/test/resources/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp.xml";
-    public static final String DEST = RESULTS[0];
+
+    public static final String RESULT_XML = "./target/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp.xml";
+    public static final String DEST = RESULT[0];
 
     public static void main(String args[]) throws IOException, XMPException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_12_04_MetadataXmp().manipulatePdf(DEST);
     }
 
@@ -107,32 +100,9 @@ public class Listing_12_04_MetadataXmp extends GenericTest {
     }
 
     public void manipulatePdf(String dest) throws IOException, XMPException {
-        createPdf(RESULTS[0]);
-        createPdfAutomatic(RESULTS[1]);
-        manipulatePdf(METADATA_PDF, RESULTS[2]);
-        readXmpMetadata(RESULTS[2], RESULT_XML);
-    }
-
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        CompareTool compareTool = new CompareTool();
-        String outPath;
-        for (int i = 0; i < RESULTS.length; i++) {
-            outPath = new File(RESULTS[i]).getParent();
-            if (compareXml) {
-                if (!compareTool.compareXmls(RESULTS[i], CMP_RESULTS[i])) {
-                    addError("The XML structures are different.");
-                }
-            } else {
-                if (compareRenders) {
-                    addError(compareTool.compareVisually(RESULTS[i], CMP_RESULTS[i], outPath, differenceImagePrefix));
-                    addError(compareTool.compareLinkAnnotations(dest, cmp));
-                } else {
-                    addError(compareTool.compareByContent(RESULTS[i], CMP_RESULTS[i], outPath, differenceImagePrefix));
-                }
-                addError(compareTool.compareDocumentInfo(RESULTS[i], CMP_RESULTS[i]));
-            }
-        }
-        if (errorMessage != null) Assert.fail(errorMessage);
+        createPdf(RESULT[0]);
+        createPdfAutomatic(RESULT[1]);
+        manipulatePdf(METADATA_PDF, RESULT[2]);
+        readXmpMetadata(RESULT[2], RESULT_XML);
     }
 }

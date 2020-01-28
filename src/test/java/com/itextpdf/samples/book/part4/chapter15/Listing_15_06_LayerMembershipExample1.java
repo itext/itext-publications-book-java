@@ -18,19 +18,18 @@ import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.layer.PdfLayer;
 import com.itextpdf.kernel.pdf.layer.PdfLayerMembership;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_15_06_LayerMembershipExample1 extends GenericTest {
+public class Listing_15_06_LayerMembershipExample1 {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter15/Listing_15_06_LayerMembershipExample1.pdf";
+            = "./target/book/part4/chapter15/Listing_15_06_LayerMembershipExample1.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_15_06_LayerMembershipExample1().manipulatePdf(DEST);
     }
 

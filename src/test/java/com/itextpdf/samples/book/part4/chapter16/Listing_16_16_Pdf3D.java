@@ -20,19 +20,18 @@ import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.Pdf3DAnnotation;
 import com.itextpdf.layout.Document;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileInputStream;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_16_16_Pdf3D extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_16_Pdf3D.pdf";
+public class Listing_16_16_Pdf3D {
+    public static final String DEST = "./target/book/part4/chapter16/Listing_16_16_Pdf3D.pdf";
     public static String RESOURCE = "./src/test/resources/img/teapot.u3d";
 
     public static void main(String args[]) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_16_16_Pdf3D().manipulatePdf(DEST);
     }
 

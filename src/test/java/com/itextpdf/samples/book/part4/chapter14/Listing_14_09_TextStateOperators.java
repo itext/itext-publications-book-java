@@ -20,20 +20,20 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvasConstants;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
-public class Listing_14_09_TextStateOperators extends GenericTest {
+import java.io.File;
+
+public class Listing_14_09_TextStateOperators {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter14/Listing_14_09_TextStateOperators.pdf";
+            = "./target/book/part4/chapter14/Listing_14_09_TextStateOperators.pdf";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_14_09_TextStateOperators().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

@@ -9,40 +9,24 @@
 package com.itextpdf.samples.book.part1.chapter01;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
 public class Listing_01_13_HelloZip {
-    public static final String DEST = "./target/test/resources/book/part1/chapter01/Listing_01_13_HelloZip.zip";
+    public static final String DEST = "./target/book/part1/chapter01/Listing_01_13_HelloZip.zip";
 
-    @BeforeClass
-    public static void beforeClass() throws Exception {
+    public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-    }
 
-    @Before
-    public void before() throws IOException, InterruptedException {
-        Listing_01_13_HelloZip helloZip = new Listing_01_13_HelloZip();
-        helloZip.manipulatePdf(DEST);
+        new Listing_01_13_HelloZip().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException {
@@ -70,19 +54,5 @@ public class Listing_01_13_HelloZip {
             zip.closeEntry();
         }
         zip.close();
-    }
-
-    @Test
-    public void comparePdf() throws IOException {
-        ZipFile zf = new ZipFile(DEST);
-        for (int i = 1; i <= 3; i++) {
-            InputStream in = zf.getInputStream(zf.getEntry("hello_" + i + ".pdf"));
-            //Check only whether the created files can be opened or not
-            try {
-                new PdfDocument(new PdfReader(in));
-            } catch (IOException e) {
-                Assert.fail();
-            }
-        }
     }
 }

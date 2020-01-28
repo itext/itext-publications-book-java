@@ -17,25 +17,24 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
-import org.junit.experimental.categories.Category;
+import java.io.File;
 
-@Category(SampleTest.class)
-public class Listing_11_02_TTCExample extends GenericTest {
+public class Listing_11_02_TTCExample {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter11/Listing_11_02_TTCExample.pdf";
+            = "./target/book/part3/chapter11/Listing_11_02_TTCExample.pdf";
     // Notice that we'va changed windows MS Gothic to IPA Gothic so the results in comparison with itext5 are different
     public static final String FONT
             = "./src/test/resources/font/ipam.ttc";
     // public static final String FONT = "c:/windows/fonts/msgothic.ttc";
 
     public static void main(String[] agrs) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_02_TTCExample().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         // License file is loaded because open type font is used and typography module is in classpath:
         // typography module is utilized and requires license.

@@ -12,40 +12,26 @@ import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.ReaderProperties;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import static org.junit.Assert.fail;
 
-@Category(SampleTest.class)
-public class Listing_06_02_MemoryInfo extends GenericTest {
-    public static final String RESULT
-            = "./target/test/resources/book/part2/chapter06/Listing_06_02_MemoryInfo.txt";
-    public static final String CMP_RESULT
-            = "./src/test/resources/book/part2/chapter06/cmp_Listing_06_02_MemoryInfo.txt";
+public class Listing_06_02_MemoryInfo {
+    public static final String DEST
+            = "./target/book/part2/chapter06/Listing_06_02_MemoryInfo.txt";
+
     public static final String MOVIE_TEMPLATES
             = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, NoSuchFieldException, IllegalAccessException {
-
-        new Listing_06_02_MemoryInfo().manipulatePdf(RESULT);
-    }
-
-    @Test(timeout = 120000)
-    public void test() throws IOException {
-        LOGGER.info("Starting test " + getClass().getName() + ".");
-        File file = new File(RESULT);
+        File file = new File(DEST);
         file.getParentFile().mkdirs();
-        manipulatePdf(RESULT);
-        System.out.println(RESULT + "\n" + CMP_RESULT);
-        LOGGER.info("Test complete.");
+
+        new Listing_06_02_MemoryInfo().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) {

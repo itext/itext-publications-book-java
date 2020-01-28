@@ -12,7 +12,6 @@ import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
-import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,43 +20,29 @@ import java.io.PrintWriter;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
 public class Listing_16_03_ListUsedFonts {
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_03_ListUsedFonts.pdf";
-    public static final String RESULT = "./target/test/resources/book/part4/chapter16/Listing_16_03_ListUsedFonts.txt";
+    public static final String DEST = "./target/book/part4/chapter16/Listing_16_03_ListUsedFonts.txt";
     public static final String FONT_TYPES = "./src/test/resources/book/part3/chapter11/cmp_Listing_11_01_FontTypes.pdf";
-    public static final String CMP_RESULT =
-            "CMR10 (Type 1) embedded\n" +
-            "FreeSans subset (FWZWRA)\n" +
-            "FreeSans subset (ZCOWGE)\n" +
-            "Helvetica nofontdescriptor\n" +
-            "IPAMincho subset (YKEHKY)\n" +
-            "KozMinPro-Regular-UniJIS-UCS2-H nofontdescriptor\n" +
-            "Puritan2 (Type1) embedded\n";
 
     public static void main(String args[]) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_16_03_ListUsedFonts().manipulatePdf();
     }
 
-    @Test
     public void manipulatePdf() throws Exception {
-        new File(RESULT).getParentFile().mkdirs();
+        new File(DEST).getParentFile().mkdirs();
         Set<String> set = listFonts(FONT_TYPES);
         StringBuffer buffer = new StringBuffer();
         for (String fontName : set) {
             buffer.append(fontName+"\n");
         }
 
-        PrintWriter out = new PrintWriter(new FileOutputStream(RESULT));
+        PrintWriter out = new PrintWriter(new FileOutputStream(DEST));
         out.print(buffer.toString());
         out.flush();
         out.close();
-
-        Assert.assertEquals(CMP_RESULT, buffer.toString());
     }
 
     /**

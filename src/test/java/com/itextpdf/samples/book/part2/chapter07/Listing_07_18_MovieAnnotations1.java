@@ -15,27 +15,23 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.layout.renderer.IRenderer;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.ParagraphRenderer;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_18_MovieAnnotations1 extends GenericTest {
+public class Listing_07_18_MovieAnnotations1 {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter07/Listing_07_18_MovieAnnotations1.pdf";
+            = "./target/book/part2/chapter07/Listing_07_18_MovieAnnotations1.pdf";
     /**
      * Pattern for an info String.
      */
@@ -44,6 +40,9 @@ public class Listing_07_18_MovieAnnotations1 extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_18_MovieAnnotations1().manipulatePdf(DEST);
     }
 

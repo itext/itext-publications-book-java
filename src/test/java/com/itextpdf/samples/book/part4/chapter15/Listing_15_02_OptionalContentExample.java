@@ -16,21 +16,20 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.layer.PdfLayer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_15_02_OptionalContentExample extends GenericTest {
+public class Listing_15_02_OptionalContentExample {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter15/Listing_15_02_OptionalContentExample.pdf";
+            = "./target/book/part4/chapter15/Listing_15_02_OptionalContentExample.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_15_02_OptionalContentExample().manipulatePdf(DEST);
     }
 

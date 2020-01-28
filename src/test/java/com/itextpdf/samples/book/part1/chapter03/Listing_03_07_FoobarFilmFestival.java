@@ -24,23 +24,22 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.util.Locale;
 
 
-@Category(SampleTest.class)
-public class Listing_03_07_FoobarFilmFestival extends GenericTest {
+public class Listing_03_07_FoobarFilmFestival {
     public static final String DEST
-            = "./target/test/resources/book/part1/chapter03/Listing_03_07_FoobarFilmFestival.pdf";
+            = "./target/book/part1/chapter03/Listing_03_07_FoobarFilmFestival.pdf";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_03_07_FoobarFilmFestival().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         // License file is loaded because open type font is used and typography module is in classpath:
         // typography module is utilized and requires license.

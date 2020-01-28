@@ -44,22 +44,19 @@ import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.ImageRenderer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.PrintStream;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_16_11_KubrickCollection extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_11_KubrickCollection.pdf";
+public class Listing_16_11_KubrickCollection {
+    public static final String DEST = "./target/book/part4/chapter16/Listing_16_11_KubrickCollection.pdf";
     public static final String RESOURCE = "./src/test/resources/book/part4/chapter16/";
     public static final String IMG_BOX = "./src/test/resources/img/kubrick_box.jpg";
     public static final String IMG_KUBRICK = "./src/test/resources/img/kubrick.jpg";
@@ -71,6 +68,9 @@ public class Listing_16_11_KubrickCollection extends GenericTest {
     public static final PdfArray EMPTY_ANNOTATION_BORDER = new PdfArray(new int[]{0, 0, 0});
 
     public static void main(String args[]) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_16_11_KubrickCollection().manipulatePdf(DEST);
     }
 

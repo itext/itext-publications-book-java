@@ -34,19 +34,15 @@ import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_27_Advertisement extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_27_Advertisement.pdf";
+public class Listing_07_27_Advertisement {
+    public static final String DEST = "./target/book/part2/chapter07/Listing_07_27_Advertisement.pdf";
 
     /** Path to a resource. */
     public static final String RESOURCE = "./src/test/resources/pdfs/hero.pdf";
@@ -59,6 +55,9 @@ public class Listing_07_27_Advertisement extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         Listing_07_27_Advertisement application = new Listing_07_27_Advertisement();
         application.arguments = args;
         application.manipulatePdf(DEST);

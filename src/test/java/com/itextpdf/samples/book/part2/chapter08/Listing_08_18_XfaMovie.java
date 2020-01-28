@@ -13,9 +13,6 @@ import com.itextpdf.forms.xfa.XfaForm;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.utils.CompareTool;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,41 +28,45 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.junit.Assert;
-import org.junit.experimental.categories.Category;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-@Category(SampleTest.class)
-public class Listing_08_18_XfaMovie extends GenericTest {
+public class Listing_08_18_XfaMovie {
     /** The original PDF. */
     public static final String RESOURCE = "./src/test/resources/pdfs/xfa_movie.pdf";
+
     /** XML making up an XFA form we want to put inside an existing PDF. */
     public static final String RESOURCEXFA = "./src/test/resources/xml/xfa.xml";
-    /** Shows information about a form that has an AcroForm and an XFA stream. */
-    public static final String RESULTTXT1 = "./target/test/resources/book/part2/chapter08/movie_xfa.txt";
-    /** Shows information about a form that has an AcroForm after the XFA stream was removed. */
-    public static final String RESULTTXT2 = "./target/test/resources/book/part2/chapter08/movie_acroform.txt";
-    /** The XML making up the XFA form in the original PDF */
-    public static final String RESULTXML = "./target/test/resources/book/part2/chapter08/movie_xfa.xml";
-    /** The XML making up the XFA form in a PDF that was filled out using iText */
-    public static final String RESULTXMLFILLED = "./target/test/resources/book/part2/chapter08/movie_filled.xml";
-    /** The XML data taken from an XFA form that was filled out using iText. */
-    public static final String RESULTDATA = "./target/test/resources/book/part2/chapter08/movie.xml";
+
+    public static final String[] TXT_FILES = {
+            // Shows information about a form that has an AcroForm and an XFA stream.
+            "./target/book/part2/chapter08/movie_xfa.txt",
+
+            // Shows information about a form that has an AcroForm after the XFA stream was removed.
+            "./target/book/part2/chapter08/movie_acroform.txt"
+    };
+
+    public static final String[] XML_FILES = {
+            // The XML making up the XFA form in the original PDF
+            "./target/book/part2/chapter08/movie_xfa.xml",
+
+            // The XML making up the XFA form in a PDF that was filled out using iText
+            "./target/book/part2/chapter08/movie_filled.xml",
+
+            // The XML data taken from an XFA form that was filled out using iText.
+            "./target/book/part2/chapter08/movie.xml"
+    };
+
     /** The resulting PDF. */
     public static final String[] RESULT = {
-            "./target/test/resources/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_1.pdf",
-            "./target/test/resources/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_2.pdf",
-            "./target/test/resources/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_3.pdf"
+            "./target/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_1.pdf",
+            "./target/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_2.pdf",
+            "./target/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_3.pdf"
     };
-    /** PDFs to compare with. */
-    public static final String[] CMP_RESULT = {
-            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_18_XfaMovie_xfa_filled_1.pdf",
-            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_18_XfaMovie_xfa_filled_2.pdf",
-            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_18_XfaMovie_xfa_filled_3.pdf"
-    };
+
+    public static final String DEST = RESULT[2];
 
     /**
      * Checks if a PDF containing an interactive form uses
@@ -201,42 +202,14 @@ public class Listing_08_18_XfaMovie extends GenericTest {
     }
 
     protected void manipulatePdf(String dest) throws Exception {
-        new File(RESULTTXT1).getParentFile().mkdirs();
-        readFieldnames(RESOURCE, RESULTTXT1);
-        readXfa(RESOURCE, RESULTXML);
+        new File(TXT_FILES[0]).getParentFile().mkdirs();
+        readFieldnames(RESOURCE, TXT_FILES[0]);
+        readXfa(RESOURCE, XML_FILES[0]);
         fillData1(RESOURCE, RESULT[0]);
-        readXfa(RESULT[0], RESULTXMLFILLED);
+        readXfa(RESULT[0], XML_FILES[1]);
         fillData2(RESOURCE, RESOURCEXFA, RESULT[1]);
-        readData(RESULT[1], RESULTDATA);
+        readData(RESULT[1], XML_FILES[2]);
         fillData3(RESOURCE, RESULT[2]);
-        readFieldnames(RESULT[2], RESULTTXT2);
-    }
-
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        CompareTool compareTool = new CompareTool();
-        String outPath;
-        for (int i = 0; i < RESULT.length; i++) {
-            outPath = new File(RESULT[i]).getParent();
-            if (compareXml) {
-                if (!compareTool.compareXmls(RESULT[i], CMP_RESULT[i])) {
-                    addError("The XML structures are different.");
-                }
-            } else {
-                if (compareRenders) {
-                    addError(compareTool.compareVisually(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                    addError(compareTool.compareLinkAnnotations(dest, cmp));
-                } else {
-                    addError(compareTool.compareByContent(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                }
-                addError(compareTool.compareDocumentInfo(RESULT[i], CMP_RESULT[i]));
-            }
-        }
-        if (errorMessage != null) Assert.fail(errorMessage);
-    }
-
-    @Override
-    protected String getDest() {
-        return RESULT[0];
+        readFieldnames(RESULT[2], TXT_FILES[1]);
     }
 }

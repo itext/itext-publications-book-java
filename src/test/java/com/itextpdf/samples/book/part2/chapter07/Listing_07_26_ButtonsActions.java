@@ -18,22 +18,22 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_07_26_ButtonsActions extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_26_ButtonsActions.pdf";
+public class Listing_07_26_ButtonsActions {
+    public static final String DEST = "./target/book/part2/chapter07/Listing_07_26_ButtonsActions.pdf";
 
     public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         Listing_07_26_ButtonsActions application = new Listing_07_26_ButtonsActions();
         application.arguments = args;
         application.manipulatePdf(DEST);

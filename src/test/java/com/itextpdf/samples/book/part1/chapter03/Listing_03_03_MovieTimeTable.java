@@ -14,14 +14,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
-public class Listing_03_03_MovieTimeTable extends GenericTest {
+import java.io.File;
 
-    public static final String DEST = "./target/test/resources/book/part1/chapter03/Listing_03_03_MovieTimeTable.pdf";
+public class Listing_03_03_MovieTimeTable {
+
+    public static final String DEST = "./target/book/part1/chapter03/Listing_03_03_MovieTimeTable.pdf";
 
     /** The number of locations on our time table. */
     public static final int LOCATIONS = 9;
@@ -48,10 +46,12 @@ public class Listing_03_03_MovieTimeTable extends GenericTest {
     public static final float WIDTH_TIMESLOT = WIDTH / TIMESLOTS;
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_03_03_MovieTimeTable().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

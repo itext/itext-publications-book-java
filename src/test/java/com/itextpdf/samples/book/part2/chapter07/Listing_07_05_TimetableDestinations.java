@@ -26,20 +26,16 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_05_TimetableDestinations extends GenericTest {
+public class Listing_07_05_TimetableDestinations {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter07/Listing_07_05_TimetableDestinations.pdf";
+            = "./target/book/part2/chapter07/Listing_07_05_TimetableDestinations.pdf";
     public static final String SRC
             = "./src/test/resources/js/viewer_version.js";
     public static final String MOVIE_TEMPLATES
@@ -49,6 +45,9 @@ public class Listing_07_05_TimetableDestinations extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_05_TimetableDestinations().manipulatePdf(DEST);
     }
 

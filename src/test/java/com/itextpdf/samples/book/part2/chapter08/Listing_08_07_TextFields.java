@@ -18,7 +18,6 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.IRenderer;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
@@ -28,26 +27,29 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import org.junit.experimental.categories.Category;
+public class Listing_08_07_TextFields {
+    public static final String[] RESULT = {
+            "./target/book/part2/chapter08/Listing_08_07_TextFields.pdf",
+            "./target/book/part2/chapter08/Listing_08_07_TextFields_filled.pdf"
+    };
 
-@Category(SampleTest.class)
-public class Listing_08_07_TextFields extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_07_TextFields.pdf";
-    public static final String FILLED = "./target/test/resources/book/part2/chapter08/Listing_08_07_TextFields_filled.pdf";
+    public static final String DEST = RESULT[0];
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_08_07_TextFields().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         createPdf(DEST);
-        fillPdf(DEST, FILLED);
+        fillPdf(DEST, RESULT[1]);
     }
 
     public void createPdf(String dest) throws IOException {

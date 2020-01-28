@@ -11,10 +11,8 @@ package com.itextpdf.samples.book.part2.chapter08;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.xfa.XfaForm;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Country;
@@ -22,6 +20,7 @@ import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -29,17 +28,26 @@ import java.io.OutputStreamWriter;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.experimental.categories.Category;
+public class Listing_08_28_XfaMovies {
 
-@Category(SampleTest.class)
-public class Listing_08_28_XfaMovies extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_28_XfaMovies.pdf";
     /** The original PDF. */
     public static final String RESOURCE = "./src/test/resources/pdfs/xfa_movies.pdf";
+
     /** Information about the form in xfa_movies.pdf */
-    public static final String RESULTTXT = "./target/test/resources/book/part2/chapter08/movies_xfa.txt";
+    public static final String[] TXT_FILES = {
+            "./target/book/part2/chapter08/movies_xfa.txt"
+    };
+
     /** The XML data that is going to be used to fill out the XFA form. */
-    public static final String XMLDATA = "./target/test/resources/book/part2/chapter08/movies.xml";
+    public static final String[] XML_FILES = {
+            "./target/book/part2/chapter08/movies.xml"
+    };
+
+    public static final String[] RESULT = {
+            "./target/book/part2/chapter08/Listing_08_28_XfaMovies.pdf"
+    };
+
+    public static final String DEST = RESULT[0];
 
     /**
      * Manipulates a PDF file src with the file dest as result
@@ -122,12 +130,14 @@ public class Listing_08_28_XfaMovies extends GenericTest {
     }
 
     public static void main(String[] args) throws Exception {
+        new File(DEST).getParentFile().mkdirs();
+
         new Listing_08_28_XfaMovies().manipulatePdf(DEST);
     }
 
     protected void manipulatePdf(String dest) throws Exception {
-        new Listing_08_18_XfaMovie().readFieldnames(RESOURCE, RESULTTXT);
-        createXML(XMLDATA);
-        manipulatePdf2(RESOURCE, XMLDATA, DEST);
+        new Listing_08_18_XfaMovie().readFieldnames(RESOURCE, TXT_FILES[0]);
+        createXML(XML_FILES[0]);
+        manipulatePdf2(RESOURCE, XML_FILES[0], DEST);
     }
 }

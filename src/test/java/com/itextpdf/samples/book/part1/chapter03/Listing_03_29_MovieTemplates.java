@@ -24,24 +24,25 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.Property;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
-@Category(SampleTest.class)
 public class Listing_03_29_MovieTemplates extends Listing_03_15_MovieCalendar {
-    public static final String DEST = "./target/test/resources/book/part1/chapter03/Listing_03_29_MovieTemplates.pdf";
+    public static final String DEST = "./target/book/part1/chapter03/Listing_03_29_MovieTemplates.pdf";
     public static final String RESOURCE = "src/test/resources/img/posters/%s.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_03_29_MovieTemplates().manipulatePdf(DEST);
     }
 

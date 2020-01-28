@@ -14,38 +14,35 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.kernel.pdf.WriterProperties;
-import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.junit.Assert;
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_12_09_EncryptionPdf extends GenericTest {
+public class Listing_12_09_EncryptionPdf {
     public static byte[] USER = "Hello".getBytes();
     public static byte[] OWNER = "World".getBytes();
-    public static final String RESULT1
-            = "./target/test/resources/book/part3/chapter12/Listing_12_09_EncryptionPdf_encryption.pdf";
-    public static final String RESULT2
-            = "./target/test/resources/book/part3/chapter12/Listing_12_09_EncryptionPdf_encryption_decrypted.pdf";
-    public static final String RESULT3
-            = "./target/test/resources/book/part3/chapter12/Listing_12_09_EncryptionPdf_encryption_encrypted.pdf";
+    public static final String[] RESULT = {
+            "./target/book/part3/chapter12/Listing_12_09_EncryptionPdf_encryption.pdf",
+            "./target/book/part3/chapter12/Listing_12_09_EncryptionPdf_encryption_decrypted.pdf",
+            "./target/book/part3/chapter12/Listing_12_09_EncryptionPdf_encryption_encrypted.pdf"
+    };
+
+    public static final String DEST = RESULT[0];
 
     public static void main(String args[]) throws IOException {
-        new Listing_12_09_EncryptionPdf().manipulatePdf(RESULT1);
+        File file = new File(RESULT[0]);
+        file.getParentFile().mkdirs();
+
+        new Listing_12_09_EncryptionPdf().manipulatePdf(RESULT[0]);
     }
 
     public void manipulatePdf(String dest) throws IOException {
-        createPdf(RESULT1);
-        decryptPdf(RESULT1, RESULT2);
-        encryptPdf(RESULT2, RESULT3);
+        createPdf(RESULT[0]);
+        decryptPdf(RESULT[0], RESULT[1]);
+        encryptPdf(RESULT[1], RESULT[2]);
     }
 
     public void createPdf(String dest) throws FileNotFoundException {
@@ -72,40 +69,5 @@ public class Listing_12_09_EncryptionPdf extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), writer);
         pdfDoc.close();
         writer.close();
-    }
-
-    // Override the comparison method in order to pass owner passwords
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        if (cmp == null || cmp.length() == 0) return;
-        CompareTool compareTool = new CompareTool();
-        compareTool.enableEncryptionCompare();
-        String outPath = new File(dest).getParent();
-        new File(outPath).mkdirs();
-        if (compareXml) {
-            if (!compareTool.compareXmls(dest, cmp)) {
-                addError("The XML structures are different.");
-            }
-        } else {
-            if (compareRenders) {
-                addError(compareTool.compareVisually(dest, cmp, outPath, differenceImagePrefix));
-                addError(compareTool.compareLinkAnnotations(dest, cmp));
-            } else {
-                addError(compareTool.compareByContent(dest, cmp, outPath, differenceImagePrefix, OWNER, OWNER));
-            }
-            addError(compareTool.compareDocumentInfo(dest, cmp, OWNER, OWNER));
-        }
-
-        if (errorMessage != null) {
-            Assert.fail(errorMessage);
-        }
-    }
-
-    // only for GenericTest running
-    @Override
-    protected String getDest() {
-        File file = new File(RESULT1);
-        file.getParentFile().mkdirs();
-        return RESULT1;
     }
 }

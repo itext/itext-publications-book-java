@@ -26,22 +26,19 @@ import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_16_08_KubrickBox extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_08_KubrickBox.pdf";
+public class Listing_16_08_KubrickBox {
+    public static final String DEST = "./target/book/part4/chapter16/Listing_16_08_KubrickBox.pdf";
     public static final String IMG_BOX = "./src/test/resources/img/kubrick_box.jpg";
     public static final String RESOURCE_FILES = "./src/test/resources/pdfs/%s.pdf";
     public static final String RESOURCE_PDFS_PREFIX = "16_08_";
@@ -49,6 +46,9 @@ public class Listing_16_08_KubrickBox extends GenericTest {
     public static final float[] WIDTHS = {1, 7};
 
     public static void main(String args[]) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_16_08_KubrickBox().manipulatePdf(DEST);
     }
 

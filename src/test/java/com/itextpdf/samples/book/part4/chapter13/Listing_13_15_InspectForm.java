@@ -15,38 +15,30 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfFormField;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.sql.SQLException;
 import java.util.Map;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_13_15_InspectForm extends GenericTest {
+public class Listing_13_15_InspectForm {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter13/Listing_13_15_InspectForm.pdf";
-    public static final String DESTTXT
-            = "./target/test/resources/book/part4/chapter13/Listing_13_15_InspectForm_fieldflags.txt";
-    public static final String CMPTXT
-            = "./src/test/resources/book/part4/chapter13/cmp_Listing_13_15_InspectForm_fieldflags.txt";
+            = "./target/book/part4/chapter13/Listing_13_15_InspectForm_fieldflags.txt";
+
     public static final String SUBSCRIBE
             = "./src/test/resources/pdfs/subscribe.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_13_15_InspectForm().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
-        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(DESTTXT));
+        OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(dest));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SUBSCRIBE));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         Map<String, PdfFormField> fields = form.getFormFields();
@@ -73,28 +65,5 @@ public class Listing_13_15_InspectForm extends GenericTest {
         out.flush();
         out.close();
         pdfDoc.close();
-    }
-
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        BufferedReader destReader;
-        BufferedReader cmpReader;
-        String curDestStr;
-        String curCmpStr;
-            destReader = new BufferedReader(new InputStreamReader(new FileInputStream(DESTTXT)));
-            cmpReader = new BufferedReader(new InputStreamReader(new FileInputStream(CMPTXT)));
-            int row = 1;
-            while ((curDestStr = destReader.readLine()) != null) {
-                if ((curCmpStr = cmpReader.readLine()) != null) {
-                    addError("The lengths of files are different.");
-                }
-                if (!curCmpStr.equals(curDestStr)) {
-                    addError("The files are different on the row " + row );
-                }
-                row++;
-            }
-            if ((curCmpStr = cmpReader.readLine()) != null) {
-                addError("The lengths of files are different.");
-            }
     }
 }

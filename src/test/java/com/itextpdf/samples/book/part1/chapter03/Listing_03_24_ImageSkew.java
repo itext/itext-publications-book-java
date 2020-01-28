@@ -14,22 +14,22 @@ import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
-public class Listing_03_24_ImageSkew extends GenericTest {
+import java.io.File;
 
-    public static final String DEST = "./target/test/resources/book/part1/chapter03/Listing_03_24_ImageSkew.pdf";
+public class Listing_03_24_ImageSkew {
+
+    public static final String DEST = "./target/book/part1/chapter03/Listing_03_24_ImageSkew.pdf";
 
     public static final String RESOURCE = "src/test/resources/img/loa.jpg";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_03_24_ImageSkew().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

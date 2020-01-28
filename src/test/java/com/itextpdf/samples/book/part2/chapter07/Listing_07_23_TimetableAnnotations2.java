@@ -16,23 +16,21 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfLinkAnnotation;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.TimeZone;
 
-import org.junit.experimental.categories.Category;
-
-
-@Category(SampleTest.class)
 public class Listing_07_23_TimetableAnnotations2 extends Listing_07_21_TimetableAnnotations1 {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter07/Listing_07_23_TimetableAnnotations2.pdf";
+            = "./target/book/part2/chapter07/Listing_07_23_TimetableAnnotations2.pdf";
 
     public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
@@ -42,10 +40,13 @@ public class Listing_07_23_TimetableAnnotations2 extends Listing_07_21_Timetable
     public static final String IMDB = "http://imdb.com/title/tt%s/";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         Listing_07_23_TimetableAnnotations2 application = new Listing_07_23_TimetableAnnotations2();
-        application.afterManipulatePdf();
-        application.manipulatePdf(DEST);
         application.beforeManipulatePdf();
+        application.manipulatePdf(DEST);
+        application.afterManipulatePdf();
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {

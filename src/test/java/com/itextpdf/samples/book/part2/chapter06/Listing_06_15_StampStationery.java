@@ -21,16 +21,14 @@ import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,12 +36,11 @@ import java.sql.Statement;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_06_15_StampStationery extends GenericTest {
+public class Listing_06_15_StampStationery {
     public static final String DEST =
-            "./target/test/resources/book/part2/chapter06/Listing_06_15_StampStationery.pdf";
+            "./target/book/part2/chapter06/Listing_06_15_StampStationery.pdf";
     public static final String ORIGINAL =
-            "./target/test/resources/book/part2/chapter06/Listing_06_15_StampStationery_original.pdf";
+            "./target/book/part2/chapter06/Listing_06_15_StampStationery_original.pdf";
     public static final String STATIONERY_WATERMARK =
             "./src/test/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery_watermark.pdf";
 
@@ -52,6 +49,9 @@ public class Listing_06_15_StampStationery extends GenericTest {
     protected PdfFont normal;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_06_15_StampStationery().manipulatePdf(DEST);
     }
 

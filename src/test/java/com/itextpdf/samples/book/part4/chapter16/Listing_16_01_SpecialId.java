@@ -16,21 +16,20 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_16_01_SpecialId extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_01_SpecialId.pdf";
+public class Listing_16_01_SpecialId {
+    public static final String DEST = "./target/book/part4/chapter16/Listing_16_01_SpecialId.pdf";
     public static String RESOURCE = "./src/test/resources/img/bruno.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_16_01_SpecialId().manipulatePdf(DEST);
     }
 

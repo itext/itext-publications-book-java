@@ -13,18 +13,13 @@ import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
-import com.itextpdf.samples.GenericTest;
 
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_10_16_TransparentImage extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_16_TransparentImage.pdf";
+public class Listing_10_16_TransparentImage {
+    public static final String DEST = "./target/book/part3/chapter10/Listing_10_16_TransparentImage.pdf";
     public static final String RESOURCE1
             = "./src/test/resources/img/bruno.jpg";
     public static final String RESOURCE2

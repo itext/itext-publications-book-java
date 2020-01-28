@@ -16,15 +16,17 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
+import java.io.File;
+
 public class Listing_11_05_UnicodeExample extends Listing_11_04_EncodingExample {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter11/Listing_11_05_UnicodeExample.pdf";
+            = "./target/book/part3/chapter11/Listing_11_05_UnicodeExample.pdf";
 
     public static void main(String[] agrs) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_05_UnicodeExample().manipulatePdf(DEST);
     }
 

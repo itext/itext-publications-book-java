@@ -15,19 +15,19 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
 // The example has no sense because in itext7 the height of table and rows is not set until rendering
-public class Listing_04_10_TableHeight extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_10_TableHeight.pdf";
+public class Listing_04_10_TableHeight {
+    public static final String DEST = "./target/book/part1/chapter04/Listing_04_10_TableHeight.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_04_10_TableHeight().manipulatePdf(DEST);
     }
 

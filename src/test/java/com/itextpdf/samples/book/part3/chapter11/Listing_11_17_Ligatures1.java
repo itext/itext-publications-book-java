@@ -15,17 +15,20 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 
-public class Listing_11_17_Ligatures1 extends GenericTest {
+import java.io.File;
+
+public class Listing_11_17_Ligatures1 {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter11/Listing_11_17_Ligatures1.pdf";
+            = "./target/book/part3/chapter11/Listing_11_17_Ligatures1.pdf";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_17_Ligatures1().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

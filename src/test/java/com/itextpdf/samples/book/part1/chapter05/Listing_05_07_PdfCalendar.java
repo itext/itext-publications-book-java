@@ -20,7 +20,14 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
-import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.element.AreaBreak;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Tab;
+import com.itextpdf.layout.element.TabStop;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.layout.property.TextAlignment;
@@ -31,9 +38,8 @@ import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.TableRenderer;
 import com.itextpdf.samples.book.part1.chapter04.Listing_04_21_PdfCalendar;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.cert.Certificate;
@@ -42,9 +48,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-@Category(SampleTest.class)
 public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
-    public static final String DEST = "./target/test/resources/book/part1/chapter05/Listing_05_07_PdfCalendar.pdf";
+    public static final String DEST = "./target/book/part1/chapter05/Listing_05_07_PdfCalendar.pdf";
 
     float[] cmykGreen = new float[]{1, 0, 1, 0};
     float[] cmykGray = new float[]{0, 0, 0, 50f/255};
@@ -52,6 +57,9 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
     float[] cmykYellow = new float[]{0, 0, 1, 15f/255};
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_05_07_PdfCalendar().manipulatePdf(DEST);
     }
 

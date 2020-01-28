@@ -12,11 +12,10 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -24,13 +23,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_02_01_DatabaseTest extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_01_DatabaseTest.pdf";
+public class Listing_02_01_DatabaseTest {
+    public static final String DEST = "./target/book/part1/chapter02/Listing_02_01_DatabaseTest.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_02_01_DatabaseTest().manipulatePdf(DEST);
     }
 

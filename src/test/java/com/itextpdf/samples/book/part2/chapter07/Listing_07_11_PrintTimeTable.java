@@ -15,23 +15,18 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_11_PrintTimeTable extends GenericTest {
+public class Listing_07_11_PrintTimeTable {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter07/Listing_07_11_PrintTimeTable.pdf";
+            = "./target/book/part2/chapter07/Listing_07_11_PrintTimeTable.pdf";
     public static final String RESOURCE
             = "./src/test/resources/js/print_page.js";
 
@@ -40,6 +35,9 @@ public class Listing_07_11_PrintTimeTable extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         Listing_07_11_PrintTimeTable application = new Listing_07_11_PrintTimeTable();
         application.arguments = args;
         application.manipulatePdf(DEST);

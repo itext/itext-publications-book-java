@@ -14,27 +14,25 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfNumber;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_13_09_RotatePages extends GenericTest {
+public class Listing_13_09_RotatePages {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter13/Listing_13_09_RotatePages.pdf";
+            = "./target/book/part4/chapter13/Listing_13_09_RotatePages.pdf";
     public static final String MOVIE_TEMPLATES
             = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_13_09_RotatePages().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
         changePdf(MOVIE_TEMPLATES, dest);
     }

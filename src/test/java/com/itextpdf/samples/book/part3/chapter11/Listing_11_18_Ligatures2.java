@@ -19,11 +19,12 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
 
-public class Listing_11_18_Ligatures2 extends GenericTest {
+import java.io.File;
 
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_18_Ligatures2.pdf";
+public class Listing_11_18_Ligatures2 {
+
+    public static final String DEST = "./target/book/part3/chapter11/Listing_11_18_Ligatures2.pdf";
     /**
      * Correct movie title.
      */
@@ -42,10 +43,12 @@ public class Listing_11_18_Ligatures2 extends GenericTest {
     // c:/windows/fonts/arial.ttf
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_18_Ligatures2().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
         LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");

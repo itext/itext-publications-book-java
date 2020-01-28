@@ -31,23 +31,20 @@ import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_16_09_KubrickMovies extends GenericTest {
+public class Listing_16_09_KubrickMovies {
     public static final String FILENAME = "Listing_16_09_KubrickMovies.pdf";
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/" + FILENAME;
+    public static final String DEST = "./target/book/part4/chapter16/" + FILENAME;
     public static final String RESOURCE_FILES = "./src/test/resources/pdfs/%s.pdf";
     public static final String RESOURCE_PDFS_PREFIX = "16_09_";
 
@@ -56,7 +53,10 @@ public class Listing_16_09_KubrickMovies extends GenericTest {
     public static final PdfArray EMPTY_ANNOTATION_BORDER = new PdfArray(new int[]{0, 0, 0});
 
     public static void main(String args[]) throws Exception {
-        new Listing_16_08_KubrickBox().manipulatePdf(DEST);
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
+        new Listing_16_09_KubrickMovies().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws Exception {

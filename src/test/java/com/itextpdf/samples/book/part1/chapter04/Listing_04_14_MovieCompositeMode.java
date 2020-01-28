@@ -16,25 +16,26 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
-import com.itextpdf.layout.element.*;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Image;
+import com.itextpdf.layout.element.List;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_04_14_MovieCompositeMode extends GenericTest {
+public class Listing_04_14_MovieCompositeMode {
     public static final String DEST =
-            "./target/test/resources/book/part1/chapter04/Listing_04_14_MovieCompositeRole.pdf";
+            "./target/book/part1/chapter04/Listing_04_14_MovieCompositeRole.pdf";
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     protected PdfFont normal;
@@ -42,6 +43,9 @@ public class Listing_04_14_MovieCompositeMode extends GenericTest {
     protected PdfFont italic;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_04_14_MovieCompositeMode().manipulatePdf(DEST);
     }
 

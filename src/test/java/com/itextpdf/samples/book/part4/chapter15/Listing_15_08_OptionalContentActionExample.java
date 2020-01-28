@@ -19,23 +19,22 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.action.PdfActionOcgState;
 import com.itextpdf.kernel.pdf.layer.PdfLayer;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_15_08_OptionalContentActionExample extends GenericTest {
+public class Listing_15_08_OptionalContentActionExample {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter15/Listing_15_08_OptionalContentActionExample.pdf";
+            = "./target/book/part4/chapter15/Listing_15_08_OptionalContentActionExample.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_15_08_OptionalContentActionExample().manipulatePdf(DEST);
     }
 

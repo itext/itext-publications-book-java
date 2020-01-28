@@ -18,12 +18,10 @@ import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
+import java.io.File;
 import javax.xml.transform.OutputKeys;
-import org.junit.experimental.categories.Category;
 import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -40,20 +38,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
 
-@Category(SampleTest.class)
-public class Listing_07_02_LinkActions extends GenericTest {
+public class Listing_07_02_LinkActions {
     public static final String SRC = "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
-    public static final String SRC_RELATIVE = "../../../../../../src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
-    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions.pdf";
-    public static final String DEST2 = "./target/test/resources/book/part2/chapter07/Listing_07_02_LinkActions.xml";
+    public static final String SRC_RELATIVE = "../../../../src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
+    public static final String DEST = "./target/book/part2/chapter07/Listing_07_02_LinkActions.pdf";
+    public static final String DEST_XML = "./target/book/part2/chapter07/Listing_07_02_LinkActions.xml";
 
     public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_02_LinkActions().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException, TransformerException, ParserConfigurationException {
         manipulatePdf2(dest);
-        createXml(SRC, DEST2);
+        createXml(SRC, DEST_XML);
     }
 
     public void manipulatePdf2(String dest) throws IOException, SQLException {

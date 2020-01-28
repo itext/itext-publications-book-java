@@ -21,19 +21,18 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagging.StandardRoles;
 import com.itextpdf.kernel.pdf.tagutils.TagTreePointer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_15_13_ReadOutLoud extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter15/Listing_15_13_ReadOutLoud.pdf";
+public class Listing_15_13_ReadOutLoud {
+    public static final String DEST = "./target/book/part4/chapter15/Listing_15_13_ReadOutLoud.pdf";
     public static String RESOURCE = "./src/test/resources/img/posters/0062622.jpg";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_15_13_ReadOutLoud().manipulatePdf(DEST);
     }
 

@@ -18,21 +18,20 @@ import com.itextpdf.layout.layout.LayoutResult;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.layout.renderer.IRenderer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
-public class Listing_01_07_HelloWorldMirroredMargins extends GenericTest {
+import java.io.File;
+
+public class Listing_01_07_HelloWorldMirroredMargins {
     public static final String DEST =
-            "./target/test/resources/book/part1/chapter01/Listing_01_07_HelloWorldMirroredMargins.pdf";
-
+            "./target/book/part1/chapter01/Listing_01_07_HelloWorldMirroredMargins.pdf";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_01_07_HelloWorldMirroredMargins().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize writer
         PdfWriter writer = new PdfWriter(dest);

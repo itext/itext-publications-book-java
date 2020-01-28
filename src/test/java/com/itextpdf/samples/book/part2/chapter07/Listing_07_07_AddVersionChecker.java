@@ -12,20 +12,15 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.test.annotations.type.SampleTest;
-import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_07_AddVersionChecker extends GenericTest {
+public class Listing_07_07_AddVersionChecker {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter07/Listing_07_07_AddVersionChecker.pdf";
+            = "./target/book/part2/chapter07/Listing_07_07_AddVersionChecker.pdf";
     public static final String RESOURCE
             = "./src/test/resources/js/viewer_version.js";
 
@@ -34,6 +29,9 @@ public class Listing_07_07_AddVersionChecker extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         Listing_07_07_AddVersionChecker checker = new Listing_07_07_AddVersionChecker();
         checker.arguments = args;
         checker.manipulatePdf(DEST);

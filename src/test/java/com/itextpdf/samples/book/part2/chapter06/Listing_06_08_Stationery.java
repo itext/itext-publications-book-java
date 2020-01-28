@@ -32,16 +32,14 @@ import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,12 +47,11 @@ import java.sql.Statement;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_06_08_Stationery extends GenericTest {
+public class Listing_06_08_Stationery {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter06/Listing_06_08_Stationery.pdf";
+            = "./target/book/part2/chapter06/Listing_06_08_Stationery.pdf";
     public static final String SOURCE
-            = "./target/test/resources/book/part2/chapter06/Listing_06_08_Stationery_watermark.pdf";
+            = "./target/book/part2/chapter06/Listing_06_08_Stationery_watermark.pdf";
     public static final String RESOURCE
             = "./src/test/resources/img/loa.jpg";
 
@@ -63,10 +60,12 @@ public class Listing_06_08_Stationery extends GenericTest {
     protected PdfFont normal;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_06_08_Stationery().manipulatePdf(DEST);
     }
 
-    @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         // Create the database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");

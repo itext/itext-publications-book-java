@@ -16,43 +16,41 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.impl.Utils;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_16_06_KubrickDocumentary extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_06_KubrickDocumentary.pdf";
+public class Listing_16_06_KubrickDocumentary {
     public static final String FILENAME = "Listing_16_06_KubrickDocumentary.pdf";
-    public static final String PATH = "./target/test/resources/book/part4/chapter16/%s";
-    public static final String RESULT = String.format(PATH, FILENAME);
+    public static final String PATH = "./target/book/part4/chapter16/%s";
+    public static final String DEST = String.format(PATH, FILENAME);
 
     public static void main(String args[]) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_16_06_KubrickDocumentary().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws Exception {
-        FileOutputStream os = new FileOutputStream(RESULT);
+        FileOutputStream os = new FileOutputStream(dest);
         os.write(createPdf());
         os.flush();
         os.close();
-        extractDocLevelAttachments(RESULT);
+        extractDocLevelAttachments(dest);
     }
 
     public byte[] createPdf() throws IOException, SQLException {

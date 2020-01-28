@@ -21,19 +21,17 @@ import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.Property;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.util.List;
 
-@Category(SampleTest.class)
 public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
 
-    public static final String DEST = "./target/test/resources/book/part1/chapter03/Listing_03_19_MovieColumns4.pdf";
+    public static final String DEST = "./target/book/part1/chapter03/Listing_03_19_MovieColumns4.pdf";
 
     public static final Rectangle[] COLUMNS = {
             new Rectangle(36, 666, 260, 136), new Rectangle(110, 580, 190, 90),
@@ -43,6 +41,9 @@ public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
     };
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_03_19_MovieColumns4().manipulatePdf(DEST);
     }
 

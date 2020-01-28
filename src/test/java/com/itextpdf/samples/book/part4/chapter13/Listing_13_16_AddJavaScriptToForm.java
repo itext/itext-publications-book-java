@@ -24,26 +24,27 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
+public class Listing_13_16_AddJavaScriptToForm {
+    public static final String[] RESULT = {
+            "./target/book/part4/chapter13/Listing_13_16_AddJavaScriptToForm.pdf",
+            "./target/book/part4/chapter13/Listing_13_16_AddJavaScriptToForm_form_without_js.pdf"
+    };
 
-@Category(SampleTest.class)
-public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
-    public static final String DEST
-            = "./target/test/resources/book/part4/chapter13/Listing_13_16_AddJavaScriptToForm.pdf";
-    public static final String ORIGINAL
-            = "./target/test/resources/book/part4/chapter13/Listing_13_16_AddJavaScriptToForm_form_without_js.pdf";
+    public static final String DEST = RESULT[0];
+
     public static final String RESOURCE
             = "./src/test/resources/js/extra.js";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_13_16_AddJavaScriptToForm().manipulatePdf(DEST);
     }
 
@@ -108,9 +109,9 @@ public class Listing_13_16_AddJavaScriptToForm extends GenericTest {
         return new String(jsBytes);
     }
 
-    @Override
+
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
-        createPdf(ORIGINAL);
-        changePdf(ORIGINAL, dest);
+        createPdf(RESULT[1]);
+        changePdf(RESULT[1], dest);
     }
 }

@@ -22,18 +22,15 @@ import com.itextpdf.kernel.pdf.canvas.PdfPatternCanvas;
 import com.itextpdf.kernel.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.kernel.pdf.colorspace.PdfPattern;
 import com.itextpdf.kernel.pdf.colorspace.PdfSpecialCs;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-@Category(SampleTest.class)
-public class Listing_10_03_TilingPatternColor extends GenericTest {
+public class Listing_10_03_TilingPatternColor {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter10/Listing_10_03_TilingPatternColor.pdf";
+            = "./target/book/part3/chapter10/Listing_10_03_TilingPatternColor.pdf";
     public static final String IMG_SRC
             = "./src/test/resources/img/info.png";
 
@@ -43,6 +40,9 @@ public class Listing_10_03_TilingPatternColor extends GenericTest {
     }
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_10_03_TilingPatternColor().manipulatePdf(DEST);
     }
 

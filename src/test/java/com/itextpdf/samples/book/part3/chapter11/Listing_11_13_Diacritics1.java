@@ -21,16 +21,13 @@ import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_11_13_Diacritics1 extends GenericTest {
+public class Listing_11_13_Diacritics1 {
     public static final String DEST =
-            "./target/test/resources/book/part3/chapter11/Listing_11_13_Diacritics1.pdf";
+            "./target/book/part3/chapter11/Listing_11_13_Diacritics1.pdf";
     public static final String MOVIE =
             "\u0e1f\u0e49\u0e32\u0e17\u0e30\u0e25\u0e32\u0e22\u0e42\u0e08\u0e23";
     public static final String POSTER =
@@ -41,10 +38,12 @@ public class Listing_11_13_Diacritics1 extends GenericTest {
     };
 
     public static void main(String[] agrs) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_13_Diacritics1().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws IOException {
         //Load the license file to use advanced typography features (Thai script)
         LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");

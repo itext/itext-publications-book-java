@@ -17,22 +17,19 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
 import javax.xml.transform.OutputKeys;
-import org.junit.experimental.categories.Category;
 import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -44,12 +41,11 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-@Category(SampleTest.class)
-public class Listing_07_14_CreateOutlineTree extends GenericTest {
+public class Listing_07_14_CreateOutlineTree {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter07/Listing_07_14_CreateOutlineTree.pdf";
+            = "./target/book/part2/chapter07/Listing_07_14_CreateOutlineTree.pdf";
     public static final String DEST_XML
-            = "./target/test/resources/book/part2/chapter07/Listing_07_14_CreateOutlineTree.xml";
+            = "./target/book/part2/chapter07/Listing_07_14_CreateOutlineTree.xml";
 
     /**
      * Pattern of the IMDB urls
@@ -63,6 +59,9 @@ public class Listing_07_14_CreateOutlineTree extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_14_CreateOutlineTree().manipulatePdf(DEST);
     }
 

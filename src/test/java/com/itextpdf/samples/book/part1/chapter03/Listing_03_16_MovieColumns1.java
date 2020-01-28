@@ -22,29 +22,28 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Country;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.util.List;
 
-@Category(SampleTest.class)
-public class Listing_03_16_MovieColumns1 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter03/Listing_03_16_MovieColumns1.pdf";
+public class Listing_03_16_MovieColumns1 {
+    public static final String DEST = "./target/book/part1/chapter03/Listing_03_16_MovieColumns1.pdf";
 
     protected PdfFont normal, bold, italic, boldItalic;
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_03_16_MovieColumns1().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

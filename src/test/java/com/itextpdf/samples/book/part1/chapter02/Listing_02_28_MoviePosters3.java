@@ -20,27 +20,26 @@ import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.HorizontalAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
-
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@Category(SampleTest.class)
-public class Listing_02_28_MoviePosters3 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_28_MoviePosters3.pdf";
+public class Listing_02_28_MoviePosters3 {
+    public static final String DEST = "./target/book/part1/chapter02/Listing_02_28_MoviePosters3.pdf";
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     protected PdfFont bold;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_02_28_MoviePosters3().manipulatePdf(DEST);
     }
 

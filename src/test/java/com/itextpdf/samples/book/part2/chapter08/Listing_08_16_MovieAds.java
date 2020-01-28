@@ -54,8 +54,6 @@ import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.ParagraphRenderer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
@@ -63,16 +61,14 @@ import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_08_16_MovieAds extends GenericTest {
+public class Listing_08_16_MovieAds {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter08/Listing_08_16_MovieAds.pdf";
+            = "./target/book/part2/chapter08/Listing_08_16_MovieAds.pdf";
     public static final String TEMPLATE
-            = "./target/test/resources/book/part2/chapter08/Listing_08_16_MovieAds_template.pdf";
+            = "./target/book/part2/chapter08/Listing_08_16_MovieAds_template.pdf";
     public static final String RESOURCE
             = "./src/test/resources/pdfs/movie_overview.pdf";
     public static final String IMAGE
@@ -82,6 +78,9 @@ public class Listing_08_16_MovieAds extends GenericTest {
     public static final String YEAR = "year";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_08_16_MovieAds().manipulatePdf(DEST);
     }
 

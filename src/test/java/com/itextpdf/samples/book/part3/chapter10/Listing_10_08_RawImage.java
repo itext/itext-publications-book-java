@@ -11,21 +11,20 @@ package com.itextpdf.samples.book.part3.chapter10;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_10_08_RawImage extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_08_RawImage.pdf";
+public class Listing_10_08_RawImage {
+    public static final String DEST = "./target/book/part3/chapter10/Listing_10_08_RawImage.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_10_08_RawImage().manipulatePdf(DEST);
     }
 

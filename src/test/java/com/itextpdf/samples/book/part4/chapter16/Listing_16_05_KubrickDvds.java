@@ -20,30 +20,30 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.ListItemRenderer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_16_05_KubrickDvds extends GenericTest {
+public class Listing_16_05_KubrickDvds {
     public static final String FILENAME = "Listing_16_05_KubrickDvds.pdf";
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/" + FILENAME;
+    public static final String DEST = "./target/book/part4/chapter16/" + FILENAME;
     public static final String RESOURCE
             = "./src/test/resources/img/posters/%s.jpg";
-    public static final String PATH = "./target/test/resources/book/part4/chapter16/%s";
+    public static final String PATH = "./target/book/part4/chapter16/%s";
 
     public static void main(String args[]) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_16_05_KubrickDvds().manipulatePdf(DEST);
     }
 

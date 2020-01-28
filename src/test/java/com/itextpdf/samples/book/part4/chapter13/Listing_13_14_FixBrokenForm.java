@@ -15,37 +15,28 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.kernel.xmp.XMPException;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.Assert;
-import org.junit.experimental.categories.Category;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_13_14_FixBrokenForm extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm.pdf";
+public class Listing_13_14_FixBrokenForm {
     public static final String ORIGINAL = "./src/test/resources/pdfs/broken_form.pdf";
     public static final String[] RESULT = {
-            "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_fixed_form.pdf",
-            "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_broken_form.pdf",
-            "./target/test/resources/book/part4/chapter13/Listing_13_14_FixBrokenForm_filled_form.pdf"
-    };
-    public static final String[] CMP_RESULT = {
-            "./src/test/resources/book/part4/chapter13/cmp_Listing_13_14_FixBrokenForm_fixed_form.pdf",
-            "./src/test/resources/book/part4/chapter13/cmp_Listing_13_14_FixBrokenForm_broken_form.pdf",
-            "./src/test/resources/book/part4/chapter13/cmp_Listing_13_14_FixBrokenForm_filled_form.pdf"
+            "./target/book/part4/chapter13/Listing_13_14_FixBrokenForm_fixed_form.pdf",
+            "./target/book/part4/chapter13/Listing_13_14_FixBrokenForm_broken_form.pdf",
+            "./target/book/part4/chapter13/Listing_13_14_FixBrokenForm_filled_form.pdf"
     };
 
+    public static final String DEST = RESULT[0];
+
     public static void main(String args[]) throws IOException, SQLException, XMPException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_13_14_FixBrokenForm().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
         changePdf(ORIGINAL, RESULT[0]);
         fillData(ORIGINAL, RESULT[1]);
@@ -86,29 +77,5 @@ public class Listing_13_14_FixBrokenForm extends GenericTest {
             form.getField("duration").setValue("108");
         }
         pdfDoc.close();
-    }
-
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        CompareTool compareTool = new CompareTool();
-        String outPath;
-        for (int i = 0; i < RESULT.length; i++) {
-            outPath = new File(RESULT[i]).getParent();
-            if (compareXml) {
-                if (!compareTool.compareXmls(RESULT[i], CMP_RESULT[i])) {
-                    addError("The XML structures are different.");
-                }
-            } else {
-                if (compareRenders) {
-                    addError(compareTool.compareVisually(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                    addError(compareTool.compareLinkAnnotations(dest, cmp));
-                } else {
-                    addError(compareTool.compareByContent(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                }
-                addError(compareTool.compareDocumentInfo(RESULT[i], CMP_RESULT[i]));
-            }
-        }
-
-        if (errorMessage != null) Assert.fail(errorMessage);
     }
 }

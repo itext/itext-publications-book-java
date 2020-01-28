@@ -15,23 +15,16 @@ import com.itextpdf.io.source.RandomAccessFileOrArray;
 import com.itextpdf.io.source.RandomAccessSourceFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Image;
-import com.itextpdf.samples.GenericTest;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_10_14_PagedImages extends GenericTest {
+public class Listing_10_14_PagedImages {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter10/Listing_10_14_PagedImages.pdf";
-    public static final String RESULT
-            = "./target/test/resources/book/part3/chapter10/tiff_jbig2_gif.pdf";
+            = "./target/book/part3/chapter10/Listing_10_14_PagedImages.pdf";
     public static final String RESOURCE1
             = "./src/test/resources/img/marbles.tif";
     public static final String RESOURCE2
@@ -40,6 +33,9 @@ public class Listing_10_14_PagedImages extends GenericTest {
             = "./src/test/resources/img/animated_fox_dog.gif";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_10_14_PagedImages().manipulatePdf(DEST);
     }
 

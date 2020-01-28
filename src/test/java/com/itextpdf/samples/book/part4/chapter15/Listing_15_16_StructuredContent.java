@@ -15,9 +15,8 @@ import com.itextpdf.kernel.pdf.tagging.PdfStructTreeRoot;
 import com.itextpdf.kernel.pdf.tagging.StandardRoles;
 import com.itextpdf.kernel.pdf.tagutils.TagTreePointer;
 import com.itextpdf.layout.Document;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
+
+import java.io.File;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -30,14 +29,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Category(SampleTest.class)
-public class Listing_15_16_StructuredContent extends GenericTest {
+public class Listing_15_16_StructuredContent {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter15/Listing_15_16_StructuredContent.pdf";
+            = "./target/book/part4/chapter15/Listing_15_16_StructuredContent.pdf";
     public static String RESOURCE
             = "./src/test/resources/xml/moby.xml";
 
     public static void main(String args[]) throws IOException, SQLException, ParserConfigurationException, SAXException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_15_16_StructuredContent().manipulatePdf(DEST);
     }
 

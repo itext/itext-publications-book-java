@@ -24,18 +24,17 @@ import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_08_12_ChoiceFields extends GenericTest {
-    public static final String DEST
-            = "./target/test/resources/book/part2/chapter08/Listing_08_12_ChoiceFields.pdf";
-    public static final String DEST2
-            = "./target/test/resources/book/part2/chapter08/Listing_08_12_ChoiceFields_filled.pdf";
+public class Listing_08_12_ChoiceFields {
+    public static final String[] RESULT = {
+            "./target/book/part2/chapter08/Listing_08_12_ChoiceFields.pdf",
+            "./target/book/part2/chapter08/Listing_08_12_ChoiceFields_filled.pdf"
+    };
+
+    public static final String DEST = RESULT[0];
 
     public static final String[] LANGUAGES =
             {"English", "German", "French", "Spanish", "Dutch"};
@@ -46,6 +45,9 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
             {"EN", "DE", "FR", "ES", "NL"};
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_08_12_ChoiceFields().manipulatePdf(DEST);
     }
 
@@ -136,10 +138,9 @@ public class Listing_08_12_ChoiceFields extends GenericTest {
         pdfDoc.close();
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         createPdf(DEST);
-        fillPdf(DEST, DEST2);
+        fillPdf(DEST, RESULT[1]);
     }
 
     protected String[] getOptions(PdfArray array) {

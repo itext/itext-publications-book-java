@@ -17,15 +17,13 @@ import com.itextpdf.kernel.pdf.tagging.PdfUserPropertiesAttributes;
 import com.itextpdf.kernel.pdf.tagging.PdfUserProperty;
 import com.itextpdf.kernel.pdf.tagutils.TagTreePointer;
 import com.itextpdf.layout.element.Image;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,10 +32,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-@Category(SampleTest.class)
-public class Listing_15_11_ObjectData extends GenericTest {
+public class Listing_15_11_ObjectData {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter15/Listing_15_11_ObjectData.pdf";
+            = "./target/book/part4/chapter15/Listing_15_11_ObjectData.pdf";
     public static final String RESOURCE
             = "./src/test/resources/img/posters/%s.jpg";
     public static final String SELECTDIRECTORS
@@ -47,6 +44,9 @@ public class Listing_15_11_ObjectData extends GenericTest {
             + "GROUP BY d.id, d.name, d.given_name ORDER BY id";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_15_11_ObjectData().manipulatePdf(DEST);
     }
 

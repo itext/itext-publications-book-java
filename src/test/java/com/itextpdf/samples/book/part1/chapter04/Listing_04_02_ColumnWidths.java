@@ -16,18 +16,18 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_04_02_ColumnWidths extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_02_ColumnWidths.pdf";
+public class Listing_04_02_ColumnWidths {
+    public static final String DEST = "./target/book/part1/chapter04/Listing_04_02_ColumnWidths.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_04_02_ColumnWidths().manipulatePdf(DEST);
     }
 

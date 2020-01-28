@@ -19,14 +19,12 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
 import com.itextpdf.layout.Document;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -34,14 +32,16 @@ import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.List;
 
-@Category(SampleTest.class)
-public class Listing_03_26_MoviePosters extends GenericTest {
+public class Listing_03_26_MoviePosters {
 
-    public static final String DEST = "./target/test/resources/book/part1/chapter03/Listing_03_26_MoviePosters.pdf";
+    public static final String DEST = "./target/book/part1/chapter03/Listing_03_26_MoviePosters.pdf";
 
     public static final String RESOURCE = "src/test/resources/img/posters/%s.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_03_26_MoviePosters().manipulatePdf(DEST);
     }
 

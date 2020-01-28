@@ -13,18 +13,14 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
+import java.io.File;
 
-@Category(SampleTest.class)
-public class Listing_11_14_Diacritics2 extends GenericTest {
+public class Listing_11_14_Diacritics2 {
     public static final String DEST =
-            "./target/test/resources/book/part3/chapter11/Listing_11_14_Diacritics2.pdf";
+            "./target/book/part3/chapter11/Listing_11_14_Diacritics2.pdf";
     public static final String MOVIE =
             "Tomten \u00a8ar far till alla barnen";
     public static final String[] FONTS = {
@@ -33,10 +29,12 @@ public class Listing_11_14_Diacritics2 extends GenericTest {
     };
 
     public static void main(String[] agrs) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_14_Diacritics2().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);

@@ -20,13 +20,11 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
-import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,13 +32,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-@Category(SampleTest.class)
-public class Listing_06_16_InsertPages extends GenericTest {
+public class Listing_06_16_InsertPages {
     public static final String DEST_TEMP =
-            "./target/test/resources/book/part2/chapter06/Listing_06_16_InsertPages.pdf";
+            "./target/book/part2/chapter06/Listing_06_16_InsertPages.pdf";
     // Notice that we will compare via CompareTool with the reordered document
     public static final String DEST =
-            "./target/test/resources/book/part2/chapter06/Listing_06_16_InsertPages_reordered.pdf";
+            "./target/book/part2/chapter06/Listing_06_16_InsertPages_reordered.pdf";
     public static final String STAMP_STATIONERY =
             "./src/test/resources/book/part2/chapter06/cmp_Listing_06_15_StampStationery.pdf";
     public static final String STATIONERY_WATERMARK =
@@ -48,6 +45,9 @@ public class Listing_06_16_InsertPages extends GenericTest {
 
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_06_16_InsertPages().manipulatePdf(DEST_TEMP);
     }
 

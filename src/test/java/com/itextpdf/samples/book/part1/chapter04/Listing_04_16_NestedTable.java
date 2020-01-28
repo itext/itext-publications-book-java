@@ -13,20 +13,20 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_04_16_NestedTable extends GenericTest {
+public class Listing_04_16_NestedTable {
     public static final String DEST =
-            "./target/test/resources/book/part1/chapter04/Listing_04_16_NestedTable.pdf";
+            "./target/book/part1/chapter04/Listing_04_16_NestedTable.pdf";
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_04_16_NestedTable().manipulatePdf(DEST);
     }
 

@@ -18,29 +18,28 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 
-import org.junit.experimental.categories.Category;
+import java.io.File;
 
-@Category(SampleTest.class)
-public class Listing_08_02_RadioButtons extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_02_RadioButtons.pdf";
+public class Listing_08_02_RadioButtons {
+    public static final String DEST = "./target/book/part2/chapter08/Listing_08_02_RadioButtons.pdf";
     /**
      * Possible values of a Choice field.
      */
     public static final String[] LANGUAGES = {"English", "German", "French", "Spanish", "Dutch"};
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_08_02_RadioButtons().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
         Document doc = new Document(pdfDoc);

@@ -1,0 +1,7 @@
+CMR10 (Type 1) embedded
+FreeSans subset (FWZWRA)
+FreeSans subset (ZCOWGE)
+Helvetica nofontdescriptor
+IPAMincho subset (YKEHKY)
+KozMinPro-Regular-UniJIS-UCS2-H nofontdescriptor
+Puritan2 (Type1) embedded

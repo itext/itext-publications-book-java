@@ -20,7 +20,6 @@ import com.itextpdf.layout.renderer.DrawContext;
 
 import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
 public class Listing_08_14_ChildFieldEvent extends CellRenderer {
     protected PdfFormField field;
     protected float padding;

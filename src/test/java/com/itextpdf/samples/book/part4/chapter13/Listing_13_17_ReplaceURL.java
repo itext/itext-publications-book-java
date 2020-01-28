@@ -17,9 +17,8 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.kernel.utils.CompareTool;
+
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
@@ -28,28 +27,19 @@ import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.samples.GenericTest;
 import com.itextpdf.samples.book.part2.chapter08.Listing_08_14_ChildFieldEvent;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.Assert;
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_13_17_ReplaceURL extends GenericTest {
-    // DEST is alias for RESULT2
-    public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_17_ReplaceURL.pdf";
+public class Listing_13_17_ReplaceURL {
     public static final String[] RESULT = {
-            "./target/test/resources/book/part4/chapter13/Listing_13_17_ReplaceURL_submit1.pdf",
-            "./target/test/resources/book/part4/chapter13/Listing_13_17_ReplaceURL_submit2.pdf"
+            "./target/book/part4/chapter13/Listing_13_17_ReplaceURL_submit1.pdf",
+            "./target/book/part4/chapter13/Listing_13_17_ReplaceURL_submit2.pdf"
     };
-    public static final String[] CMP_RESULT = {
-            "./src/test/resources/book/part4/chapter13/cmp_Listing_13_17_ReplaceURL_submit1.pdf",
-            "./src/test/resources/book/part4/chapter13/cmp_Listing_13_17_ReplaceURL_submit2.pdf"
-    };
+
+    public static final String DEST = RESULT[1];
 
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
@@ -115,36 +105,14 @@ public class Listing_13_17_ReplaceURL extends GenericTest {
     }
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_13_17_ReplaceURL().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
         createPdf(RESULT[0]);
         changePdf(RESULT[0], RESULT[1]);
-    }
-
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        CompareTool compareTool = new CompareTool();
-        String outPath;
-        for (int i = 0; i < RESULT.length; i++) {
-            outPath = new File(RESULT[i]).getParent();
-            if (compareXml) {
-                if (!compareTool.compareXmls(RESULT[i], CMP_RESULT[i])) {
-                    addError("The XML structures are different.");
-                }
-            } else {
-                if (compareRenders) {
-                    addError(compareTool.compareVisually(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                    addError(compareTool.compareLinkAnnotations(dest, cmp));
-                } else {
-                    addError(compareTool.compareByContent(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                }
-                addError(compareTool.compareDocumentInfo(RESULT[i], CMP_RESULT[i]));
-            }
-        }
-
-        if (errorMessage != null) Assert.fail(errorMessage);
     }
 }

@@ -14,16 +14,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_11_08_CJKExample extends GenericTest {
+public class Listing_11_08_CJKExample {
     public static final String DEST =
-            "./target/test/resources/book/part3/chapter11/Listing_11_08_CJKExample.pdf";
+            "./target/book/part3/chapter11/Listing_11_08_CJKExample.pdf";
     public static final String[][] MOVIES = {
             {
                     "STSong-Light", "UniGB-UCS2-H",
@@ -46,10 +42,12 @@ public class Listing_11_08_CJKExample extends GenericTest {
     };
 
     public static void main(String[] agrs) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_08_CJKExample().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);

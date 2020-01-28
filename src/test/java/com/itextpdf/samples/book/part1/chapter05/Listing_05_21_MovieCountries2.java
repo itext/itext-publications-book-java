@@ -23,7 +23,6 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
@@ -35,6 +34,7 @@ import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,13 +42,13 @@ import java.sql.Statement;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
 public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1 {
-    public static final String DEST = "./target/test/resources/book/part1/chapter05/Listing_05_21_MovieCountries2.pdf";
+    public static final String DEST = "./target/book/part1/chapter05/Listing_05_21_MovieCountries2.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_05_21_MovieCountries2().manipulatePdf(DEST);
     }
 

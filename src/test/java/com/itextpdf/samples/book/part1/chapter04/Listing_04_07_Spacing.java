@@ -15,21 +15,21 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_04_07_Spacing extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_07_Spacing.pdf";
+public class Listing_04_07_Spacing {
+    public static final String DEST = "./target/book/part1/chapter04/Listing_04_07_Spacing.pdf";
 
     private static final String longText = "Dr. iText or: How I Learned to Stop Worrying " +
             "and Love the Portable Document Format.";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_04_07_Spacing().manipulatePdf(DEST);
     }
 

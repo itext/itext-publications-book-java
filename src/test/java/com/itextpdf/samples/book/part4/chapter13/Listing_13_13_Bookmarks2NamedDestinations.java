@@ -25,17 +25,14 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 import com.itextpdf.samples.book.part2.chapter07.Listing_07_02_LinkActions;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
-
+import java.io.File;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
@@ -43,17 +40,18 @@ import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.pdf";
-    public static final String RESULT1 = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations.pdf";
-    public static final String RESULT2 = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.pdf";
-    public static final String RESULT3 = "./target/test/resources/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.xml";
+public class Listing_13_13_Bookmarks2NamedDestinations {
+    public static final String DEST = "./target/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.pdf";
+    public static final String RESULT1 = "./target/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations.pdf";
+    public static final String RESULT2 = "./target/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.xml";
     public static final String[] EPOCH =
             {"Forties", "Fifties", "Sixties", "Seventies", "Eighties",
                     "Nineties", "Twenty-first Century"};
 
     public static void main(String args[]) throws IOException, SQLException, XMPException, TransformerException, ParserConfigurationException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_13_13_Bookmarks2NamedDestinations().manipulatePdf(DEST);
     }
 
@@ -163,10 +161,9 @@ public class Listing_13_13_Bookmarks2NamedDestinations extends GenericTest {
         }
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException, TransformerException, ParserConfigurationException {
         createPdf(RESULT1);
-        changePdf(RESULT1, RESULT2);
-        Listing_07_02_LinkActions.createXml(RESULT2, RESULT3);
+        changePdf(RESULT1, DEST);
+        Listing_07_02_LinkActions.createXml(DEST, RESULT2);
     }
 }

@@ -20,25 +20,21 @@ import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfPopupAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.layout.element.Image;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_28_MoviePosters2 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_28_MoviePosters2.pdf";
+public class Listing_07_28_MoviePosters2 {
+    public static final String DEST = "./target/book/part2/chapter07/Listing_07_28_MoviePosters2.pdf";
     /** A pattern for an info string. */
     public static final String INFO = "Movie produced in %s; run length: %s";
     /** A JavaScript snippet */
@@ -54,6 +50,9 @@ public class Listing_07_28_MoviePosters2 extends GenericTest {
     public static final String MOVIE_POSTERS1 = "./src/test/resources/book/part2/chapter07/cmp_Listing_07_22_MoviePosters1.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         Listing_07_28_MoviePosters2 application = new Listing_07_28_MoviePosters2();
         application.arguments = args;
         application.manipulatePdf(DEST);

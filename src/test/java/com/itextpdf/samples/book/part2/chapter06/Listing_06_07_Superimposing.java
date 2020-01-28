@@ -25,25 +25,25 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.HorizontalAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_06_07_Superimposing extends GenericTest {
+public class Listing_06_07_Superimposing {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter06/Listing_06_07_Superimposing.pdf";
+            = "./target/book/part2/chapter06/Listing_06_07_Superimposing.pdf";
     public static final String SOURCE
-            = "./target/test/resources/book/part2/chapter06/Listing_06_07_Superimposing_opening.pdf";
+            = "./target/book/part2/chapter06/Listing_06_07_Superimposing_opening.pdf";
     public static final String RESOURCE
             = "./src/test/resources/img/loa.jpg";
 
     public static final PageSize postCard = new PageSize(283, 416);
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_06_07_Superimposing().manipulatePdf(DEST);
     }
 

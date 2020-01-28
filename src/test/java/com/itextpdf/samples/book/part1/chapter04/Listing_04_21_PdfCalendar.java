@@ -23,10 +23,8 @@ import com.itextpdf.layout.property.TabAlignment;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.property.VerticalAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -35,9 +33,8 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.Properties;
 
-@Category(SampleTest.class)
-public class Listing_04_21_PdfCalendar extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_21_PdfCalendar.pdf";
+public class Listing_04_21_PdfCalendar {
+    public static final String DEST = "./target/book/part1/chapter04/Listing_04_21_PdfCalendar.pdf";
     /**
      * The year for which we want to create a calendar
      */
@@ -64,6 +61,9 @@ public class Listing_04_21_PdfCalendar extends GenericTest {
     protected PdfFont bold;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_04_21_PdfCalendar().manipulatePdf(DEST);
     }
 

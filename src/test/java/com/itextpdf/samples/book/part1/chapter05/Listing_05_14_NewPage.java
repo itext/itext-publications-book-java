@@ -14,20 +14,20 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
 // IMPORTANT: this sample is not relevant anymore
-@Category(SampleTest.class)
-public class Listing_05_14_NewPage extends GenericTest {
+public class Listing_05_14_NewPage {
     public static final String DEST =
-            "./target/test/resources/book/part1/chapter05/Listing_05_14_NewPage.pdf";
+            "./target/book/part1/chapter05/Listing_05_14_NewPage.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_05_14_NewPage().manipulatePdf(DEST);
     }
 

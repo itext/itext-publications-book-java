@@ -20,22 +20,21 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfTransparencyGroup;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_10_22_TransparentOverlay extends GenericTest {
+public class Listing_10_22_TransparentOverlay {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter10/Listing_10_22_TransparentOverlay.pdf";
+            = "./target/book/part3/chapter10/Listing_10_22_TransparentOverlay.pdf";
     public static final String RESOURCE
             = "./src/test/resources/img/bruno_ingeborg.jpg";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_10_22_TransparentOverlay().manipulatePdf(DEST);
     }
 

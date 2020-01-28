@@ -1,0 +1,62 @@
+<movies>
+<movie>
+<title>2001: A Space Odyssey</title>
+<year>1968</year>
+<duration>141</duration>
+</movie>
+<movie>
+<title>Barry Lyndon</title>
+<year>1975</year>
+<duration>184</duration>
+</movie>
+<movie>
+<title>A Clockwork Orange</title>
+<year>1971</year>
+<duration>136</duration>
+</movie>
+<movie>
+<title>Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb</title>
+<year>1964</year>
+<duration>93</duration>
+</movie>
+<movie>
+<title>Eyes Wide Shut</title>
+<year>1999</year>
+<duration>159</duration>
+</movie>
+<movie>
+<title>Full Metal Jacket</title>
+<year>1987</year>
+<duration>116</duration>
+</movie>
+<movie>
+<title>Killer's Kiss</title>
+<year>1955</year>
+<duration>67</duration>
+</movie>
+<movie>
+<title>The Killing</title>
+<year>1956</year>
+<duration>85</duration>
+</movie>
+<movie>
+<title>Lolita</title>
+<year>1962</year>
+<duration>152</duration>
+</movie>
+<movie>
+<title>Paths of Glory</title>
+<year>1957</year>
+<duration>87</duration>
+</movie>
+<movie>
+<title>The Shining</title>
+<year>1980</year>
+<duration>142</duration>
+</movie>
+<movie>
+<title>Spartacus</title>
+<year>1960</year>
+<duration>184</duration>
+</movie>
+</movies>

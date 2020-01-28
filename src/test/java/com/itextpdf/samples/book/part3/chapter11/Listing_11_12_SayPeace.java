@@ -26,9 +26,8 @@ import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
+
+import java.io.File;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -41,19 +40,20 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Category(SampleTest.class)
-public class Listing_11_12_SayPeace extends GenericTest {
+public class Listing_11_12_SayPeace {
 
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_12_SayPeace.pdf";
+    public static final String DEST = "./target/book/part3/chapter11/Listing_11_12_SayPeace.pdf";
     private static final String FONT = "src/test/resources/font/FreeSans.ttf";
     private static final String ARABIC_FONT = "src/test/resources/font/NotoNaskhArabic-Regular.ttf";
     private static final String RESOURCE = "src/test/resources/xml/say_peace.xml";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_12_SayPeace().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
         LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");

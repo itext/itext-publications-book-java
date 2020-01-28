@@ -20,7 +20,13 @@ import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfArray;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfResources;
+import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -42,21 +48,21 @@ import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_08_01_Buttons extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_01_Buttons.pdf";
-    /**
-     * The resulting PDF.
-     */
-    public static final String FILLED = "./target/test/resources/book/part2/chapter08/Listing_08_01_Buttons_filled.pdf";
+public class Listing_08_01_Buttons {
+    public static final String[] RESULT = {
+            "./target/book/part2/chapter08/Listing_08_01_Buttons.pdf",
+
+            // The resulting PDF.
+            "./target/book/part2/chapter08/Listing_08_01_Buttons_filled.pdf"
+    };
+
+    public static final String DEST = RESULT[0];
+
     /**
      * Path to a JavaScript resource.
      */
@@ -71,13 +77,15 @@ public class Listing_08_01_Buttons extends GenericTest {
     public static final String[] LANGUAGES = {"English", "German", "French", "Spanish", "Dutch"};
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_08_01_Buttons().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         createPdf(DEST);
-        fillPdf(DEST, FILLED);
+        fillPdf(DEST, RESULT[1]);
     }
 
     protected static String readFileToString(String path) throws IOException {

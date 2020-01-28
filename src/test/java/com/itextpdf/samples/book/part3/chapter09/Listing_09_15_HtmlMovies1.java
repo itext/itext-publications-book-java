@@ -18,13 +18,19 @@ import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Country;
 import com.lowagie.filmfestival.Director;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.io.Reader;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -33,20 +39,21 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.*;
 import java.sql.SQLException;
 import java.util.List;
 
-public class Listing_09_15_HtmlMovies1 extends GenericTest {
-    public static final String HTML = "./target/test/resources/book/part3/chapter09/Listing_09_15_HtmlMovies1.html";
-    public static final String DEST = "./target/test/resources/book/part3/chapter09/Listing_09_15_HtmlMovies1.pdf";
+public class Listing_09_15_HtmlMovies1 {
+    public static final String HTML = "./target/book/part3/chapter09/Listing_09_15_HtmlMovies1.html";
+    public static final String DEST = "./target/book/part3/chapter09/Listing_09_15_HtmlMovies1.pdf";
 
     public static void main(String[] args)
             throws IOException, SQLException, ParserConfigurationException, SAXException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_09_15_HtmlMovies1().manipulatePdf(DEST);
     }
 
-    @Override
     public void manipulatePdf(String pdf)
             throws SQLException, IOException, ParserConfigurationException, SAXException {
         // License file is loaded because open type font is used and typography module is in classpath:

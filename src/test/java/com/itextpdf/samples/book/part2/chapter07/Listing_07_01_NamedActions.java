@@ -19,7 +19,6 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.borders.Border;
@@ -27,21 +26,20 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_01_NamedActions extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_01_NamedActions.pdf";
+public class Listing_07_01_NamedActions {
+    public static final String DEST = "./target/book/part2/chapter07/Listing_07_01_NamedActions.pdf";
 
     public static final String MOVIE_TEMPLATES = "./src/test/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
-        // new Listing_03_29_MovieTemplates().manipulatePdf(Listing_03_29_MovieTemplates.DEST);
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_01_NamedActions().manipulatePdf(DEST);
     }
 

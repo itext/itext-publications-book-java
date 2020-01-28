@@ -21,20 +21,19 @@ import com.itextpdf.kernel.pdf.xobject.PdfTransparencyGroup;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_10_06_Transparency1 extends GenericTest {
+public class Listing_10_06_Transparency1 {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter10/Listing_10_06_Transparency1.pdf";
+            = "./target/book/part3/chapter10/Listing_10_06_Transparency1.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_10_06_Transparency1().manipulatePdf(DEST);
     }
 

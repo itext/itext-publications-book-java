@@ -31,6 +31,7 @@ import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -47,11 +48,14 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
-    public static final String HTML = "./target/test/resources/book/part3/chapter09/Listing_09_16_HtmlMovies2.html";
-    public static final String DEST = "./target/test/resources/book/part3/chapter09/Listing_09_16_HtmlMovies2.pdf";
+    public static final String HTML = "./target/book/part3/chapter09/Listing_09_16_HtmlMovies2.html";
+    public static final String DEST = "./target/book/part3/chapter09/Listing_09_16_HtmlMovies2.pdf";
 
     public static void main(String[] args)
             throws IOException, SQLException, ParserConfigurationException, SAXException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_09_16_HtmlMovies2().manipulatePdf(DEST);
     }
 

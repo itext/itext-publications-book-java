@@ -18,24 +18,24 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.BaseDirection;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
-public class Listing_11_11_RightToLeftExample extends GenericTest {
+import java.io.File;
 
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_11_RightToLeftExample.pdf";
+public class Listing_11_11_RightToLeftExample {
+
+    public static final String DEST = "./target/book/part3/chapter11/Listing_11_11_RightToLeftExample.pdf";
     /** A movie title. */
     public static final String MOVIE
             = "\u05d4\u05d0\u05e1\u05d5\u05e0\u05d5\u05ea \u05e9\u05dc \u05e0\u05d9\u05e0\u05d4";
     private static final String FONT = "src/test/resources/font/FreeSans.ttf";
 
     public static void main(String[] agrs) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_11_RightToLeftExample().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
         LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");

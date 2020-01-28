@@ -12,22 +12,22 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_06_21_Concatenate extends GenericTest {
+public class Listing_06_21_Concatenate {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter06/Listing_06_21_Concatenate.pdf";
+            = "./target/book/part2/chapter06/Listing_06_21_Concatenate.pdf";
     public static final String MOVIE_LINKS1 =
             "./src/test/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
     public static final String MOVIE_HISTORY =
             "./src/test/resources/book/part1/chapter02/cmp_Listing_02_24_MovieHistory.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_06_21_Concatenate().manipulatePdf(DEST);
     }
 

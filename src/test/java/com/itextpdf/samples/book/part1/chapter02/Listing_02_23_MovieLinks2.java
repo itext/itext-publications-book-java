@@ -19,26 +19,25 @@ import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.Property;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
-import org.junit.experimental.categories.Category;
-
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@Category(SampleTest.class)
-public class Listing_02_23_MovieLinks2 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_23_MovieLinks2.pdf";
+public class Listing_02_23_MovieLinks2 {
+    public static final String DEST = "./target/book/part1/chapter02/Listing_02_23_MovieLinks2.pdf";
     public static final String MOVIE_LINKS1 = "Listing_02_22_MovieLinks1.pdf";
 
     protected PdfFont bold;
     protected PdfFont italic;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_02_23_MovieLinks2().manipulatePdf(DEST);
     }
 

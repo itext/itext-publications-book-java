@@ -24,27 +24,27 @@ import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TableRenderer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
-@Category(SampleTest.class)
-public class Listing_05_01_AlternatingBackground extends GenericTest {
+public class Listing_05_01_AlternatingBackground {
     public static final String DEST =
-            "./target/test/resources/book/part1/chapter05/Listing_05_01_AlternatingBackground.pdf";
+            "./target/book/part1/chapter05/Listing_05_01_AlternatingBackground.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_05_01_AlternatingBackground().manipulatePdf(DEST);
     }
 
@@ -131,53 +131,52 @@ public class Listing_05_01_AlternatingBackground extends GenericTest {
         }
         return table;
     }
-}
 
+    class AlternatingBackgroundTableRenderer extends TableRenderer {
+        private boolean isOdd = true;
 
-class AlternatingBackgroundTableRenderer extends TableRenderer {
-    private boolean isOdd = true;
-
-    public AlternatingBackgroundTableRenderer(Table modelElement, Table.RowRange rowRange) {
-        super(modelElement, rowRange);
-    }
-
-    public AlternatingBackgroundTableRenderer(Table modelElement) {
-        super(modelElement);
-    }
-
-    @Override
-    protected TableRenderer[] split(int row, boolean hasContent) {
-        return super.split(row, hasContent);
-    }
-
-    @Override
-    public AlternatingBackgroundTableRenderer getNextRenderer() {
-        return new AlternatingBackgroundTableRenderer((Table) modelElement);
-    }
-
-    @Override
-    public void draw(DrawContext drawContext) {
-        for (int i = 0; i < rows.size() && null != rows.get(i) && null != rows.get(i)[0]; i++) {
-            CellRenderer[] renderers = rows.get(i);
-            Rectangle rect = new Rectangle(renderers[0].getOccupiedArea().getBBox().getLeft(),
-                    renderers[0].getOccupiedArea().getBBox().getBottom(),
-                    renderers[renderers.length - 1].getOccupiedArea().getBBox().getRight() -
-                            renderers[0].getOccupiedArea().getBBox().getLeft(),
-                    renderers[0].getOccupiedArea().getBBox().getHeight());
-            PdfCanvas canvas = drawContext.getCanvas();
-            canvas.saveState();
-            if (isOdd) {
-                canvas.setFillColor(ColorConstants.WHITE);
-                isOdd = false;
-            } else {
-                canvas.setFillColor(ColorConstants.YELLOW);
-                isOdd = true;
-            }
-            canvas.rectangle(rect);
-            canvas.fill();
-            canvas.stroke();
-            canvas.restoreState();
+        public AlternatingBackgroundTableRenderer(Table modelElement, Table.RowRange rowRange) {
+            super(modelElement, rowRange);
         }
-        super.draw(drawContext);
+
+        public AlternatingBackgroundTableRenderer(Table modelElement) {
+            super(modelElement);
+        }
+
+        @Override
+        protected TableRenderer[] split(int row, boolean hasContent) {
+            return super.split(row, hasContent);
+        }
+
+        @Override
+        public AlternatingBackgroundTableRenderer getNextRenderer() {
+            return new AlternatingBackgroundTableRenderer((Table) modelElement);
+        }
+
+        @Override
+        public void draw(DrawContext drawContext) {
+            for (int i = 0; i < rows.size() && null != rows.get(i) && null != rows.get(i)[0]; i++) {
+                CellRenderer[] renderers = rows.get(i);
+                Rectangle rect = new Rectangle(renderers[0].getOccupiedArea().getBBox().getLeft(),
+                        renderers[0].getOccupiedArea().getBBox().getBottom(),
+                        renderers[renderers.length - 1].getOccupiedArea().getBBox().getRight() -
+                                renderers[0].getOccupiedArea().getBBox().getLeft(),
+                        renderers[0].getOccupiedArea().getBBox().getHeight());
+                PdfCanvas canvas = drawContext.getCanvas();
+                canvas.saveState();
+                if (isOdd) {
+                    canvas.setFillColor(ColorConstants.WHITE);
+                    isOdd = false;
+                } else {
+                    canvas.setFillColor(ColorConstants.YELLOW);
+                    isOdd = true;
+                }
+                canvas.rectangle(rect);
+                canvas.fill();
+                canvas.stroke();
+                canvas.restoreState();
+            }
+            super.draw(drawContext);
+        }
     }
 }

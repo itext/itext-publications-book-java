@@ -23,30 +23,27 @@ import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.HorizontalAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.sql.SQLException;
-import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
-public class Listing_04_20_MemoryTests extends GenericTest {
+public class Listing_04_20_MemoryTests {
     public static final String DEST =
-            "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests.pdf";
+            "./target/book/part1/chapter04/Listing_04_20_MemoryTests.pdf";
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
     public static final String RESULT0
-            = "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests_test_results.txt";
+            = "./target/book/part1/chapter04/Listing_04_20_MemoryTests_test_results.txt";
     public static final String RESULT1
-            = "./target/test/resources/book/part1/chapter04/Listing_04_20_MemoryTests_table_without_memory_management.pdf";
+            = "./target/book/part1/chapter04/Listing_04_20_MemoryTests_table_without_memory_management.pdf";
 
 
     protected PdfFont normal;
@@ -60,6 +57,9 @@ public class Listing_04_20_MemoryTests extends GenericTest {
     private long maximum_memory_use = 0l;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_04_20_MemoryTests().manipulatePdf(DEST);
     }
 

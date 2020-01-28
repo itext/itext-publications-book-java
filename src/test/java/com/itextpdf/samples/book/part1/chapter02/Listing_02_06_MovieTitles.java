@@ -12,25 +12,24 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
-
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.List;
 
-@Category(SampleTest.class)
-public class Listing_02_06_MovieTitles extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_06_MovieTitles.pdf";
+public class Listing_02_06_MovieTitles {
+    public static final String DEST = "./target/book/part1/chapter02/Listing_02_06_MovieTitles.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_02_06_MovieTitles().manipulatePdf(DEST);
     }
 

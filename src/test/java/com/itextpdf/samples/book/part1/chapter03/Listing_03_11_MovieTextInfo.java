@@ -24,21 +24,19 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.Screening;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
-@Category(SampleTest.class)
 public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
 
-    public static final String DEST = "./target/test/resources/book/part1/chapter03/Listing_03_11_MovieTextInfo.pdf";
+    public static final String DEST = "./target/book/part1/chapter03/Listing_03_11_MovieTextInfo.pdf";
 
     /** The different time slots. */
     public static String[] TIME =
@@ -50,10 +48,12 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
                     "00:30", "01:00" };
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_03_11_MovieTextInfo().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
@@ -148,6 +148,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
                     .setRotationAngle(Math.PI / 4));
         }
     }
+
     /**
      * Draws some text on every calendar sheet.
      *

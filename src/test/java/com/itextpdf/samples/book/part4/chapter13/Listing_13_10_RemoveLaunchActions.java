@@ -15,27 +15,25 @@ import com.itextpdf.kernel.pdf.PdfObject;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.kernel.xmp.XMPException;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_13_10_RemoveLaunchActions extends GenericTest {
+public class Listing_13_10_RemoveLaunchActions {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter13/Listing_13_10_RemoveLaunchActions.pdf";
+            = "./target/book/part4/chapter13/Listing_13_10_RemoveLaunchActions.pdf";
     public static final String LAUNCH_ACTIONS
             = "./src/test/resources/book/part2/chapter07/cmp_Listing_07_10_LaunchAction.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_13_10_RemoveLaunchActions().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
         changePdf(LAUNCH_ACTIONS, dest);
     }

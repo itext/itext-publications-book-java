@@ -16,19 +16,19 @@ import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-@Category(SampleTest.class)
-public class Listing_10_01_DeviceColor extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_01_DeviceColor.pdf";
+public class Listing_10_01_DeviceColor {
+    public static final String DEST = "./target/book/part3/chapter10/Listing_10_01_DeviceColor.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_10_01_DeviceColor().manipulatePdf(DEST);
     }
 

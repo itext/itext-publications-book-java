@@ -22,14 +22,11 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.LineSeparator;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
-import org.junit.experimental.categories.Category;
+import java.io.File;
 
-@Category(SampleTest.class)
-public class Listing_11_01_FontTypes extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_01_FontTypes.pdf";
+public class Listing_11_01_FontTypes {
+    public static final String DEST = "./target/book/part3/chapter11/Listing_11_01_FontTypes.pdf";
     public static String TEXT = "quick brown fox jumps over the lazy dog\nQUICK BROWN FOX JUMPS OVER THE LAZY DOG";
     public static String[][] FONTS = {
             {StandardFonts.HELVETICA, PdfEncodings.WINANSI},
@@ -43,10 +40,12 @@ public class Listing_11_01_FontTypes extends GenericTest {
     };
 
     public static void main(String[] agrs) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_01_FontTypes().manipulatePdf(DEST);
     }
 
-    @Override
     public void manipulatePdf(String dest) throws Exception {
         // License file is loaded because open type font is used and typography module is in classpath:
         // typography module is utilized and requires license.

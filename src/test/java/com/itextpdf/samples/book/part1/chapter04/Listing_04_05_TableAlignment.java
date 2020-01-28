@@ -16,18 +16,18 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_04_05_TableAlignment extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter04/Listing_04_05_TableAlignment.pdf";
+public class Listing_04_05_TableAlignment {
+    public static final String DEST = "./target/book/part1/chapter04/Listing_04_05_TableAlignment.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_04_05_TableAlignment().manipulatePdf(DEST);
     }
 

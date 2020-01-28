@@ -19,24 +19,23 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_11_19_FontFactory extends GenericTest {
+public class Listing_11_19_FontFactory {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter11/Listing_11_19_FontFactory.pdf";
+            = "./target/book/part3/chapter11/Listing_11_19_FontFactory.pdf";
     public static final String FONT_DIR
             = "./src/test/resources/book/part3/chapter11/font/";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_19_FontFactory().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         FontProgramFactory.clearRegisteredFonts();
         FontProgramFactory.clearRegisteredFontFamilies();

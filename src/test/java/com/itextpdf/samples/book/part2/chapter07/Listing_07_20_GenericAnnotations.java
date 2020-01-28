@@ -17,22 +17,18 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.layout.renderer.IRenderer;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TextRenderer;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_20_GenericAnnotations extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_20_GenericAnnotations.pdf";
+public class Listing_07_20_GenericAnnotations {
+    public static final String DEST = "./target/book/part2/chapter07/Listing_07_20_GenericAnnotations.pdf";
     /**
      * Possible icons.
      */
@@ -43,6 +39,9 @@ public class Listing_07_20_GenericAnnotations extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_20_GenericAnnotations().manipulatePdf(DEST);
     }
 

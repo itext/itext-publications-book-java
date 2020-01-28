@@ -13,26 +13,25 @@ import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.samples.GenericTest;
 
-import org.junit.experimental.categories.Category;
+import java.io.File;
 
-@Category(SampleTest.class)
-public class Listing_11_16_ExtraCharSpace extends GenericTest {
+public class Listing_11_16_ExtraCharSpace {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter11/Listing_11_16_ExtraCharSpace.pdf";
+            = "./target/book/part3/chapter11/Listing_11_16_ExtraCharSpace.pdf";
     public static final String MOVIE
             = "Aanrijding in Moscou";
 
     public static void main(String[] agrs) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_16_ExtraCharSpace().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);

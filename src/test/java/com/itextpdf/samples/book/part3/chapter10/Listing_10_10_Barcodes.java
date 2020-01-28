@@ -8,7 +8,17 @@
  */
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.barcodes.*;
+import com.itextpdf.barcodes.Barcode128;
+import com.itextpdf.barcodes.Barcode1D;
+import com.itextpdf.barcodes.Barcode39;
+import com.itextpdf.barcodes.BarcodeCodabar;
+import com.itextpdf.barcodes.BarcodeDataMatrix;
+import com.itextpdf.barcodes.BarcodeEAN;
+import com.itextpdf.barcodes.BarcodeEANSUPP;
+import com.itextpdf.barcodes.BarcodeInter25;
+import com.itextpdf.barcodes.BarcodePDF417;
+import com.itextpdf.barcodes.BarcodePostnet;
+import com.itextpdf.barcodes.BarcodeQRCode;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -17,19 +27,19 @@ import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-@Category(SampleTest.class)
-public class Listing_10_10_Barcodes extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part3/chapter10/Listing_10_10_Barcodes.pdf";
+public class Listing_10_10_Barcodes {
+    public static final String DEST = "./target/book/part3/chapter10/Listing_10_10_Barcodes.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_10_10_Barcodes().manipulatePdf(DEST);
     }
 

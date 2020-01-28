@@ -8,12 +8,16 @@
  */
 package com.itextpdf.samples.book.part4.chapter16;
 
-import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfNumber;
+import com.itextpdf.kernel.pdf.PdfObject;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -24,15 +28,17 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_16_02_ResizeImage extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_02_ResizeImage.pdf";
+public class Listing_16_02_ResizeImage {
+    public static final String DEST = "./target/book/part4/chapter16/Listing_16_02_ResizeImage.pdf";
     public static float FACTOR = 0.5f;
     public static final String SPECIAL_ID = "./src/test/resources/book/part4/chapter16/cmp_Listing_16_01_SpecialId.pdf";
 
     private static final String PRE_GENERATED_RESIZED_IMAGE = "./src/test/resources/book/part4/chapter16/resizedImage.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         boolean isLoadPreGeneratedImage = false;
         new Listing_16_02_ResizeImage().manipulatePdf(DEST, isLoadPreGeneratedImage);
     }

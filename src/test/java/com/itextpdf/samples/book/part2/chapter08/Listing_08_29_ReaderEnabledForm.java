@@ -9,33 +9,25 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.utils.CompareTool;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
+import com.itextpdf.kernel.pdf.PdfDictionary;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.StampingProperties;
 
 import java.io.File;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_08_29_ReaderEnabledForm extends GenericTest {
-    public static final String DEST
-            = "./target/test/resources/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_preserved.pdf";
+public class Listing_08_29_ReaderEnabledForm {
     public static final String RESOURCE = "./src/test/resources/pdfs/xfa_enabled.pdf";
     public static final String[] RESULT = {
-            "./target/test/resources/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_broken.pdf",
-            "./target/test/resources/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_removed.pdf",
-            "./target/test/resources/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_preserved.pdf"
+            "./target/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_broken.pdf",
+            "./target/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_removed.pdf",
+            "./target/book/part2/chapter08/Listing_08_29_ReaderEnabledForm_xfa_preserved.pdf"
     };
 
-    public static final String[] CMP_RESULT = {
-            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_29_ReaderEnabledForm_xfa_broken.pdf",
-            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_29_ReaderEnabledForm_xfa_removed.pdf",
-            "./src/test/resources/book/part2/chapter08/cmp_Listing_08_29_ReaderEnabledForm_xfa_preserved.pdf"
-    };
+    public static final String DEST = RESULT[2];
 
     /**
      * Removes any usage rights that this PDF may have. Only Adobe can grant usage rights
@@ -79,6 +71,7 @@ public class Listing_08_29_ReaderEnabledForm extends GenericTest {
     }
 
     public static void main(String[] args) throws Exception {
+        new File(DEST).getParentFile().mkdirs();
         new Listing_08_29_ReaderEnabledForm().manipulatePdf(DEST);
     }
 
@@ -86,28 +79,5 @@ public class Listing_08_29_ReaderEnabledForm extends GenericTest {
         manipulatePdf2(RESOURCE, RESULT[0], false, false);
         manipulatePdf2(RESOURCE, RESULT[1], true, false);
         manipulatePdf2(RESOURCE, RESULT[2], false, true);
-    }
-
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        CompareTool compareTool = new CompareTool();
-        String outPath;
-        for (int i = 0; i < RESULT.length; i++) {
-            outPath = new File(RESULT[i]).getParent();
-            if (compareXml) {
-                if (!compareTool.compareXmls(RESULT[i], CMP_RESULT[i])) {
-                    addError("The XML structures are different.");
-                }
-            } else {
-                if (compareRenders) {
-                    addError(compareTool.compareVisually(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                    addError(compareTool.compareLinkAnnotations(dest, cmp));
-                } else {
-                    addError(compareTool.compareByContent(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                }
-                addError(compareTool.compareDocumentInfo(RESULT[i], CMP_RESULT[i]));
-            }
-        }
-        if (errorMessage != null) Assert.fail(errorMessage);
     }
 }

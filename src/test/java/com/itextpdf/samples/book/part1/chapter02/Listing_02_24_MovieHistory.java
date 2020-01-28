@@ -11,30 +11,32 @@ package com.itextpdf.samples.book.part1.chapter02;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.*;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfOutline;
+import com.itextpdf.kernel.pdf.PdfString;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.element.*;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
+import java.util.Set;
+import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_02_24_MovieHistory extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_24_MovieHistory.pdf";
+public class Listing_02_24_MovieHistory {
+    public static final String DEST = "./target/book/part1/chapter02/Listing_02_24_MovieHistory.pdf";
 
     public List<BlockElement> titles = new ArrayList<>();
 
@@ -43,6 +45,9 @@ public class Listing_02_24_MovieHistory extends GenericTest {
                     "Nineties", "Twenty-first Century"};
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_02_24_MovieHistory().manipulatePdf(DEST);
     }
 

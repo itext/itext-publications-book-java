@@ -18,19 +18,18 @@ import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_14_10_TextMethods extends GenericTest {
+public class Listing_14_10_TextMethods {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter14/Listing_14_10_TextMethods.pdf";
+            = "./target/book/part4/chapter14/Listing_14_10_TextMethods.pdf";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_14_10_TextMethods().manipulatePdf(DEST);
     }
 

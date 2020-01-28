@@ -17,14 +17,11 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.WriterProperties;
-import com.itextpdf.kernel.utils.CompareTool;
 import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.property.ListNumberingType;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
@@ -37,29 +34,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.junit.Assert;
-import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
-public class Listing_12_06_HelloWorldCompression extends GenericTest {
+public class Listing_12_06_HelloWorldCompression {
     public static final String[] RESULT = {
-            "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_not_at_all.pdf",
-            "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_zero.pdf",
-            "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_normal.pdf",
-            "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_high.pdf",
-            "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_full.pdf",
-            "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_full_too.pdf",
-            "./target/test/resources/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_removed.pdf"
+            "./target/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_not_at_all.pdf",
+            "./target/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_zero.pdf",
+            "./target/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_normal.pdf",
+            "./target/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_high.pdf",
+            "./target/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_full.pdf",
+            "./target/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_full_too.pdf",
+            "./target/book/part3/chapter12/Listing_12_06_HelloWorldCompression_compression_removed.pdf"
     };
-    public static final String[] CMP_RESULT = {
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_06_HelloWorldCompression_compression_not_at_all.pdf",
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_06_HelloWorldCompression_compression_zero.pdf",
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_06_HelloWorldCompression_compression_normal.pdf",
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_06_HelloWorldCompression_compression_high.pdf",
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_06_HelloWorldCompression_compression_full.pdf",
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_06_HelloWorldCompression_compression_full_too.pdf",
-            "./src/test/resources/book/part3/chapter12/cmp_Listing_12_06_HelloWorldCompression_compression_removed.pdf"
-    };
+
+    public static final String DEST = RESULT[0];
 
     protected PdfFont bold;
     protected PdfFont boldItalic;
@@ -67,6 +54,9 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
     protected PdfFont normal;
 
     public static void main(String args[]) throws IOException, XMPException, SQLException {
+        File file = new File(RESULT[0]);
+        file.getParentFile().mkdirs();
+
         new Listing_12_06_HelloWorldCompression().manipulatePdf(RESULT[0]);
     }
 
@@ -160,37 +150,5 @@ public class Listing_12_06_HelloWorldCompression extends GenericTest {
         createPdf(RESULT[4], 3);
         compressPdf(RESULT[1], RESULT[5]);
         decompressPdf(RESULT[5], RESULT[6]);
-    }
-
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        CompareTool compareTool = new CompareTool();
-        String outPath;
-        for (int i = 0; i < RESULT.length; i++) {
-            outPath = new File(RESULT[i]).getParent();
-            if (compareXml) {
-                if (!compareTool.compareXmls(RESULT[i], CMP_RESULT[i])) {
-                    addError("The XML structures are different.");
-                }
-            } else {
-                if (compareRenders) {
-                    addError(compareTool.compareVisually(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                    addError(compareTool.compareLinkAnnotations(dest, cmp));
-                } else {
-                    addError(compareTool.compareByContent(RESULT[i], CMP_RESULT[i], outPath, differenceImagePrefix));
-                }
-                addError(compareTool.compareDocumentInfo(RESULT[i], CMP_RESULT[i]));
-            }
-        }
-
-        if (errorMessage != null) Assert.fail(errorMessage);
-    }
-
-    // only for GenericTest running
-    @Override
-    protected String getDest() {
-        File file = new File(RESULT[0]);
-        file.getParentFile().mkdirs();
-        return RESULT[0];
     }
 }

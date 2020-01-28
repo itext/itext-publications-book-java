@@ -17,9 +17,7 @@ import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.samples.GenericTest;
 import com.itextpdf.test.ITextTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,7 +34,6 @@ import java.security.cert.X509Certificate;
 import java.util.Properties;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.junit.experimental.categories.Category;
 
 /**
  * Due to import control restrictions by the governments of a few countries,
@@ -50,14 +47,13 @@ import org.junit.experimental.categories.Category;
  * Extension (JCE) Unlimited Strength Jurisdiction Policy Files. These JARs
  * are available for download from http://java.oracle.com/ in eligible countries.
  */
-@Category(SampleTest.class)
-public class Listing_12_11_EncryptWithCertificate extends GenericTest {
+public class Listing_12_11_EncryptWithCertificate {
     public static String RESULT1
-            = "./target/test/resources/book/part3/chapter12/Listing_12_11_EncryptWithCertificate_certificate_encryption.pdf";
-    public static String RESULT2
-            = "./target/test/resources/book/part3/chapter12/Listing_12_11_EncryptWithCertificate_certificate_decrypted.pdf";
+            = "./target/book/part3/chapter12/Listing_12_11_EncryptWithCertificate_certificate_encryption.pdf";
+    public static String DEST
+            = "./target/book/part3/chapter12/Listing_12_11_EncryptWithCertificate_certificate_decrypted.pdf";
     public static String RESULT3
-            = "./target/test/resources/book/part3/chapter12/Listing_12_11_EncryptWithCertificate_certificate_encrypted.pdf";
+            = "./target/book/part3/chapter12/Listing_12_11_EncryptWithCertificate_certificate_encrypted.pdf";
     /**
      * A properties file that is PRIVATE.
      * You should make your own properties file and adapt this line.
@@ -77,8 +73,8 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
         Security.addProvider(new BouncyCastleProvider());
         properties.load(new FileInputStream(PATH));
         createPdf(RESULT1);
-        decryptPdf(RESULT1, RESULT2);
-        encryptPdf(RESULT2, RESULT3);
+        decryptPdf(RESULT1, DEST);
+        encryptPdf(DEST, RESULT3);
     }
 
     public void createPdf(String dest) throws IOException, CertificateException {
@@ -159,22 +155,5 @@ public class Listing_12_11_EncryptWithCertificate extends GenericTest {
         PdfDocument pdfDoc = new PdfDocument(reader, writer);
         pdfDoc.close();
         reader.close();
-    }
-
-    @Override
-    protected String getDest() {
-        return RESULT2;
-    }
-
-    @Override
-    protected void beforeManipulatePdf() {
-        super.beforeManipulatePdf();
-        ITextTest.removeCryptographyRestrictions();
-    }
-
-    @Override
-    protected void afterManipulatePdf() {
-        super.afterManipulatePdf();
-        ITextTest.restoreCryptographyRestrictions();
     }
 }

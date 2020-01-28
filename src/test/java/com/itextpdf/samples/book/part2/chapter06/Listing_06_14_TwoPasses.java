@@ -29,17 +29,15 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,16 +45,18 @@ import java.sql.Statement;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_06_14_TwoPasses extends GenericTest {
+public class Listing_06_14_TwoPasses {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter06/Listing_06_14_TwoPasses.pdf";
+            = "./target/book/part2/chapter06/Listing_06_14_TwoPasses.pdf";
 
     protected PdfFont bold;
     protected PdfFont italic;
     protected PdfFont normal;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_06_14_TwoPasses().manipulatePdf(DEST);
     }
 

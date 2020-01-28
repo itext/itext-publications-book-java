@@ -23,16 +23,13 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_03_01_FestivalOpening extends GenericTest {
+public class Listing_03_01_FestivalOpening {
 
-    public static final String DEST = "./target/test/resources/book/part1/chapter03/Listing_03_01_FestivalOpening.pdf";
+    public static final String DEST = "./target/book/part1/chapter03/Listing_03_01_FestivalOpening.pdf";
 
     private static final String RESOURCE = "src/test/resources/img/loa.jpg";
 
@@ -40,6 +37,9 @@ public class Listing_03_01_FestivalOpening extends GenericTest {
     private static final float pageHeight = PageSize.A6.getHeight();
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_03_01_FestivalOpening().manipulatePdf(DEST);
     }
 

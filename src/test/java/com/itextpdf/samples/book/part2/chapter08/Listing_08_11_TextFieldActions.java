@@ -17,19 +17,19 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
-@Category(SampleTest.class)
-public class Listing_08_11_TextFieldActions extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_11_TextFieldActions.pdf";
+import java.io.File;
+
+public class Listing_08_11_TextFieldActions {
+    public static final String DEST = "./target/book/part2/chapter08/Listing_08_11_TextFieldActions.pdf";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_08_11_TextFieldActions().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

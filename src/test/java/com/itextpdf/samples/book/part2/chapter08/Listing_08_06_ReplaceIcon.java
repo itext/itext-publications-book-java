@@ -34,30 +34,29 @@ import com.itextpdf.layout.property.VerticalAlignment;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_08_06_ReplaceIcon extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_06_ReplaceIcon.pdf";
+public class Listing_08_06_ReplaceIcon {
+    public static final String DEST = "./target/book/part2/chapter08/Listing_08_06_ReplaceIcon.pdf";
 
     public static final String ADVERTISEMENT = "./src/test/resources/book/part2/chapter07/cmp_Listing_07_27_Advertisement.pdf";
 
     /** Image that will be used as an icon. */
     public static final String RESOURCE = "./src/test/resources/img/iia2.jpg";
+
     /**
      * Possible values of a Choice field.
      */
-
     protected String[] arguments;
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         Listing_08_06_ReplaceIcon application = new Listing_08_06_ReplaceIcon();
         application.arguments = args;
         application.manipulatePdf(DEST);
@@ -74,7 +73,6 @@ public class Listing_08_06_ReplaceIcon extends GenericTest {
         pdfDoc.close();
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         manipulatePdf2(ADVERTISEMENT, DEST);
     }

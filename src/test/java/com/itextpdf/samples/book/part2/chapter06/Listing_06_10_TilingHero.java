@@ -16,25 +16,24 @@ import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_06_10_TilingHero extends GenericTest {
+public class Listing_06_10_TilingHero {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter06/Listing_06_10_TilingHero.pdf";
+            = "./target/book/part2/chapter06/Listing_06_10_TilingHero.pdf";
     public static final String SOURCE
             = "./src/test/resources/pdfs/hero.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
-        new Listing_06_09_NUpTool().manipulatePdf(DEST);
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
+        new Listing_06_10_TilingHero().manipulatePdf(DEST);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {

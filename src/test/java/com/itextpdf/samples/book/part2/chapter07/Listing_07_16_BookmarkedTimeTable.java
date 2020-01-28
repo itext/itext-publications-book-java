@@ -14,23 +14,19 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_16_BookmarkedTimeTable extends GenericTest {
+public class Listing_07_16_BookmarkedTimeTable {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter07/Listing_07_16_BookmarkedTimeTable.pdf";
+            = "./target/book/part2/chapter07/Listing_07_16_BookmarkedTimeTable.pdf";
     public static final String RESOURCE
             = "./src/test/resources/js/print_page.js";
 
@@ -39,6 +35,9 @@ public class Listing_07_16_BookmarkedTimeTable extends GenericTest {
     protected String[] arguments;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         Listing_07_16_BookmarkedTimeTable application = new Listing_07_16_BookmarkedTimeTable();
         application.arguments = args;
         application.manipulatePdf(DEST);

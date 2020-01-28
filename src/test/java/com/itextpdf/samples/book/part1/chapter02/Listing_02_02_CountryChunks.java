@@ -17,26 +17,24 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
-import org.junit.experimental.categories.Category;
+import java.io.File;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@Category(SampleTest.class)
-public class Listing_02_02_CountryChunks extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter02/Listing_02_02_CountryChunks.pdf";
+public class Listing_02_02_CountryChunks {
+    public static final String DEST = "./target/book/part1/chapter02/Listing_02_02_CountryChunks.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
         new Listing_02_02_CountryChunks().manipulatePdf(DEST);
     }
 
-    @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);

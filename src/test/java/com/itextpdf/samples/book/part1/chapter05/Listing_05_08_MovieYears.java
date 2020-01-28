@@ -32,15 +32,13 @@ import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.LinkRenderer;
 import com.itextpdf.layout.renderer.ParagraphRenderer;
 import com.itextpdf.layout.renderer.TextRenderer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
@@ -48,12 +46,14 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_05_08_MovieYears extends GenericTest {
+public class Listing_05_08_MovieYears {
     public static final String DEST =
-            "./target/test/resources/book/part1/chapter05/Listing_05_08_MovieYears.pdf";
+            "./target/book/part1/chapter05/Listing_05_08_MovieYears.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_05_08_MovieYears().manipulatePdf(DEST);
     }
 

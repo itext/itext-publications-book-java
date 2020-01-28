@@ -17,17 +17,16 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.samples.GenericTest;
 
+import java.io.File;
 import java.io.IOException;
 
-public class Listing_09_06_SubmitForm extends GenericTest {
+public class Listing_09_06_SubmitForm {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter09/Listing_09_06_SubmitForm.pdf";
+            = "./target/book/part3/chapter09/Listing_09_06_SubmitForm.pdf";
     public static final String SUBCRIBE
             = "./src/test/resources/pdfs/subscribe.pdf";
 
-    @Override
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SUBCRIBE), new PdfWriter(dest));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
@@ -69,6 +68,9 @@ public class Listing_09_06_SubmitForm extends GenericTest {
     }
 
     public static void main(String[] args) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_09_06_SubmitForm().manipulatePdf(DEST);
     }
 }

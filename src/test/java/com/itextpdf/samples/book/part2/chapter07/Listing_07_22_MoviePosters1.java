@@ -19,25 +19,21 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfLinkAnnotation;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
-import com.itextpdf.samples.GenericTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.junit.experimental.categories.Category;
-
-@Category(SampleTest.class)
-public class Listing_07_22_MoviePosters1 extends GenericTest {
+public class Listing_07_22_MoviePosters1 {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter07/Listing_07_22_MoviePosters1.pdf";
+            = "./target/book/part2/chapter07/Listing_07_22_MoviePosters1.pdf";
     /**
      * Pattern for an info String.
      */
@@ -50,6 +46,9 @@ public class Listing_07_22_MoviePosters1 extends GenericTest {
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_22_MoviePosters1().manipulatePdf(DEST);
     }
 

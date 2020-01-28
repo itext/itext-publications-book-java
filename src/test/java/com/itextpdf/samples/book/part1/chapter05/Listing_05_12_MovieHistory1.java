@@ -29,17 +29,15 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.BlockRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -47,9 +45,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-@Category(SampleTest.class)
-public class Listing_05_12_MovieHistory1 extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part1/chapter05/Listing_05_12_MovieHistory1.pdf";
+public class Listing_05_12_MovieHistory1 {
+    public static final String DEST = "./target/book/part1/chapter05/Listing_05_12_MovieHistory1.pdf";
 
     public List<BlockElement> titles = new ArrayList<>();
 
@@ -58,6 +55,9 @@ public class Listing_05_12_MovieHistory1 extends GenericTest {
                     "Nineties", "Twenty-first Century"};
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_05_12_MovieHistory1().manipulatePdf(DEST);
     }
 

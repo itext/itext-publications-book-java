@@ -33,18 +33,13 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_07_29_Calculator extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter07/Listing_07_29_Calculator.pdf";
+public class Listing_07_29_Calculator {
+    public static final String DEST = "./target/book/part2/chapter07/Listing_07_29_Calculator.pdf";
 
     /**
      * Path to the resource.
@@ -65,6 +60,9 @@ public class Listing_07_29_Calculator extends GenericTest {
     Rectangle clearEntry, clear, result, move;
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_29_Calculator().manipulatePdf(DEST);
     }
 

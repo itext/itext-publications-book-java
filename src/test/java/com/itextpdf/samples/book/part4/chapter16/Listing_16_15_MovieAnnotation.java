@@ -15,17 +15,17 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.annot.PdfScreenAnnotation;
 import com.itextpdf.kernel.pdf.filespec.PdfFileSpec;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
-import org.junit.experimental.categories.Category;
+import java.io.File;
 
-@Category(SampleTest.class)
-public class Listing_16_15_MovieAnnotation extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part4/chapter16/Listing_16_15_MovieAnnotation.pdf";
+public class Listing_16_15_MovieAnnotation {
+    public static final String DEST = "./target/book/part4/chapter16/Listing_16_15_MovieAnnotation.pdf";
     public static final String RESOURCE = "./src/test/resources/img/foxdog.mpg";
 
     public static void main(String args[]) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_16_15_MovieAnnotation().manipulatePdf(DEST);
     }
 

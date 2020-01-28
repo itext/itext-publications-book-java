@@ -16,23 +16,23 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.kernel.pdf.colorspace.PdfPattern;
 import com.itextpdf.kernel.pdf.colorspace.PdfShading;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_10_04_ShadingPatternColor extends GenericTest {
+public class Listing_10_04_ShadingPatternColor {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter10/Listing_10_04_ShadingPatternColor.pdf";
+            = "./target/book/part3/chapter10/Listing_10_04_ShadingPatternColor.pdf";
 
     public static void colorRectangle(PdfCanvas canvas, Color color, float x, float y, float width, float height) {
         canvas.saveState().setFillColor(color).rectangle(x, y, width, height).fillStroke().restoreState();
     }
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_10_04_ShadingPatternColor().manipulatePdf(DEST);
     }
 

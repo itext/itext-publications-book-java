@@ -20,21 +20,21 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_08_15_Subscribe extends GenericTest {
-    public static final String DEST = "./target/test/resources/book/part2/chapter08/Listing_08_15_Subscribe.pdf";
-    public static final String SRC = "./target/test/resources/book/part2/chapter08/subscribe.pdf";
+public class Listing_08_15_Subscribe {
+    public static final String DEST = "./target/book/part2/chapter08/Listing_08_15_Subscribe.pdf";
+    public static final String SRC = "./target/book/part2/chapter08/subscribe.pdf";
 
     private String name = "Bruno Lowagie";
     private String login = "blowagie";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         Listing_08_15_Subscribe subscribe = new Listing_08_15_Subscribe();
         subscribe.createPdf(SRC);
         subscribe.name = "Bruno Lowagie";

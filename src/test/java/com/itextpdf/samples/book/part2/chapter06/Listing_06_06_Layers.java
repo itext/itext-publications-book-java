@@ -27,23 +27,23 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.HorizontalAlignment;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_06_06_Layers extends GenericTest {
+public class Listing_06_06_Layers {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter06/Listing_06_06_Layers.pdf";
+            = "./target/book/part2/chapter06/Listing_06_06_Layers.pdf";
     public static final String SOURCE
-            = "./target/test/resources/book/part2/chapter06/Listing_06_06_Layers_orig.pdf";
+            = "./target/book/part2/chapter06/Listing_06_06_Layers_orig.pdf";
     public static final String RESOURCE
             = "./src/test/resources/img/loa.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_06_06_Layers().manipulatePdf(DEST);
     }
 

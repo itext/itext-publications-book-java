@@ -15,11 +15,12 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.font.FontProvider;
 import com.itextpdf.layout.Document;
-import com.itextpdf.samples.GenericTest;
 
-public class Listing_11_20_FontSelectionExample extends GenericTest {
+import java.io.File;
+
+public class Listing_11_20_FontSelectionExample {
     public static final String DEST
-            = "./target/test/resources/book/part3/chapter11/Listing_11_20_FontSelectionExample.pdf";
+            = "./target/book/part3/chapter11/Listing_11_20_FontSelectionExample.pdf";
 
     public static final String TEXT
             = "These are the protagonists in 'Hero', a movie by Zhang Yimou:\n"
@@ -31,10 +32,12 @@ public class Listing_11_20_FontSelectionExample extends GenericTest {
             + "\u9577\u7a7a (Sky).";
 
     public static void main(String[] agrs) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_20_FontSelectionExample().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, PageSize.A4);

@@ -14,24 +14,25 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.TextMarginFinder;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.experimental.categories.Category;
+
+import java.io.File;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_15_29_ShowTextMargins extends GenericTest {
+public class Listing_15_29_ShowTextMargins {
     public static final String DEST
-            = "./target/test/resources/book/part4/chapter15/Listing_15_29_ShowTextMargins.pdf";
+            = "./target/book/part4/chapter15/Listing_15_29_ShowTextMargins.pdf";
     public static final String PREFACE
             = "./src/test/resources/pdfs/preface.pdf";
 
     public static void main(String args[])
             throws IOException, SQLException, ParserConfigurationException, SAXException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_15_29_ShowTextMargins().manipulatePdf(DEST);
     }
 

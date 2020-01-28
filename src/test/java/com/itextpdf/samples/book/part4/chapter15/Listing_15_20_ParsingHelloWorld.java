@@ -21,9 +21,8 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.File;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -32,24 +31,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-
-import org.junit.experimental.categories.Category;
 import org.xml.sax.SAXException;
 
-@Category(SampleTest.class)
-public class Listing_15_20_ParsingHelloWorld extends GenericTest {
+public class Listing_15_20_ParsingHelloWorld {
     public static final String DEST =
-            "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld.pdf";
+            "./target/book/part4/chapter15/Listing_15_20_ParsingHelloWorld.pdf";
     public static final String[] TEXT = {
-            "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld1.txt",
-            "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld2.txt",
-            "./target/test/resources/book/part4/chapter15/Listing_15_20_ParsingHelloWorld3.txt"
+            "./target/book/part4/chapter15/Listing_15_20_ParsingHelloWorld1.txt",
+            "./target/book/part4/chapter15/Listing_15_20_ParsingHelloWorld2.txt",
+            "./target/book/part4/chapter15/Listing_15_20_ParsingHelloWorld3.txt"
     };
-    public static final String[] CMP_TEXT = {
-            "./src/test/resources/book/part4/chapter15/cmp_Listing_15_20_ParsingHelloWorld1.txt",
-            "./src/test/resources/book/part4/chapter15/cmp_Listing_15_20_ParsingHelloWorld2.txt",
-            "./src/test/resources/book/part4/chapter15/cmp_Listing_15_20_ParsingHelloWorld3.txt"
-    };
+
     public static final String HELLO_WORLD =
             "./src/test/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
 
@@ -111,6 +103,9 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
         pdfDoc.close();
     }
     public static void main(String args[]) throws IOException, SQLException, ParserConfigurationException, SAXException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_15_20_ParsingHelloWorld().manipulatePdf(DEST);
     }
 
@@ -119,30 +114,5 @@ public class Listing_15_20_ParsingHelloWorld extends GenericTest {
         parsePdf(HELLO_WORLD, TEXT[0]);
         parsePdf(DEST, TEXT[1]);
         extractText(DEST, TEXT[2]);
-    }
-
-    @Override
-    protected void comparePdf(String dest, String cmp) throws Exception {
-        BufferedReader destReader;
-        BufferedReader cmpReader;
-        String curDestStr;
-        String curCmpStr;
-        for (int i = 0; i < TEXT.length; i++) {
-            destReader = new BufferedReader(new InputStreamReader(new FileInputStream(TEXT[i])));
-            cmpReader = new BufferedReader(new InputStreamReader(new FileInputStream(CMP_TEXT[i])));
-            int row = 1;
-            while ((curDestStr = destReader.readLine()) != null) {
-                if ((curCmpStr = cmpReader.readLine()) == null) {
-                    addError("The lengths of files are different.");
-                }
-                if (!curCmpStr.equals(curDestStr)) {
-                    addError("The files are different on the row " + row );
-                }
-                row++;
-            }
-            if ((curCmpStr = cmpReader.readLine()) != null) {
-                addError("The lengths of files are different.");
-            }
-        }
     }
 }

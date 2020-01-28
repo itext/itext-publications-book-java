@@ -21,28 +21,27 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.TextRenderer;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-import org.junit.experimental.categories.Category;
-
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Category(SampleTest.class)
-public class Listing_07_24_MovieAnnotations3 extends GenericTest {
+public class Listing_07_24_MovieAnnotations3 {
     public static final String DEST
-            = "./target/test/resources/book/part2/chapter07/Listing_07_24_MovieAnnotations3.pdf";
+            = "./target/book/part2/chapter07/Listing_07_24_MovieAnnotations3.pdf";
     /**
      * Pattern for an info String.
      */
     public static final String RESOURCE = "./src/test/resources/img/posters/%s.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_07_24_MovieAnnotations3().manipulatePdf(DEST);
     }
 

@@ -16,13 +16,10 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.font.FontProvider;
 import com.itextpdf.layout.font.FontSet;
-import com.itextpdf.layout.property.Property;
 import com.itextpdf.layout.property.UnitValue;
 import com.itextpdf.licensekey.LicenseKey;
-import com.itextpdf.samples.GenericTest;
-import com.itextpdf.test.annotations.type.SampleTest;
-import org.junit.Ignore;
-import org.junit.experimental.categories.Category;
+
+import java.io.File;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -33,10 +30,9 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-@Category(SampleTest.class)
-public class Listing_11_21_Peace extends GenericTest {
+public class Listing_11_21_Peace {
 
-    public static final String DEST = "./target/test/resources/book/part3/chapter11/Listing_11_21_Peace.pdf";
+    public static final String DEST = "./target/book/part3/chapter11/Listing_11_21_Peace.pdf";
 
     private static final String fontsFolder = "src/test/resources/font/";
 
@@ -50,10 +46,12 @@ public class Listing_11_21_Peace extends GenericTest {
     private static final String RESOURCE = "src/test/resources/xml/peace.xml";
 
     public static void main(String[] args) throws Exception {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_11_21_Peace().manipulatePdf(DEST);
     }
 
-    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
         LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
