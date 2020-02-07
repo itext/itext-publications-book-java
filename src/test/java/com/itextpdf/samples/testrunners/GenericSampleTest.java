@@ -117,7 +117,7 @@ public class GenericSampleTest extends WrappedSamplesRunner {
         return generateTestsList(searchConfig);
     }
 
-    @Test(timeout = 60000)
+    @Test(timeout = 150000)
     public void test() throws Exception {
         LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/all-products.xml");
         FontCache.clearSavedFonts();
