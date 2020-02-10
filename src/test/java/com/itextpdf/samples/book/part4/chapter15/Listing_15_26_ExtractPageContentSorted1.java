@@ -15,6 +15,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 
+import java.io.File;
 import java.io.OutputStreamWriter;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileOutputStream;
@@ -31,6 +32,9 @@ public class Listing_15_26_ExtractPageContentSorted1 {
 
     public static void main(String args[])
             throws IOException, SQLException, ParserConfigurationException, SAXException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_15_26_ExtractPageContentSorted1().manipulatePdf(DEST);
     }
 
