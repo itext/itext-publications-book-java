@@ -34,7 +34,7 @@ public class Listing_11_21_Peace {
 
     public static final String DEST = "./target/book/part3/chapter11/Listing_11_21_Peace.pdf";
 
-    private static final String fontsFolder = "src/test/resources/font/";
+    private static final String fontsFolder = "src/test/resources/font/listing_11_21_fonts/";
 
     private static final FontSet fontSet;
     /** Paths to and encodings of fonts we're going to use in this example */
