@@ -173,11 +173,11 @@ public class Listing_05_19_MovieHistory2 {
 
             PdfCanvas canvas = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
 
-            new Canvas(canvas, pdfDoc, artBox)
+            new Canvas(canvas, artBox)
                     .add(new Paragraph(header).setMargin(0).setMultipliedLeading(1).setFixedPosition(36, 800, 150));
-            new Canvas(canvas, pdfDoc, artBox)
+            new Canvas(canvas, artBox)
                     .add(new Paragraph("Movie History").setMargin(0).setMultipliedLeading(1).setFixedPosition(470, 800, 150));
-            new Canvas(canvas, pdfDoc, artBox)
+            new Canvas(canvas, artBox)
                     .add(new Paragraph(Integer.toString(pdfDoc.getPageNumber(page))).setMargin(0).setMultipliedLeading(1).setFixedPosition(285, 36, 30));
 
         }

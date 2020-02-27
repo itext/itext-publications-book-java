@@ -180,7 +180,7 @@ public class Listing_08_06_ReplaceIcon {
 
             Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
 
-            new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
+            new Canvas(canvas, new Rectangle(0, 0, width, height)).
                     showTextAligned(paragraph, 1, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
 
             PdfImageXObject imageXObject = new PdfImageXObject(modelButton.getImage());

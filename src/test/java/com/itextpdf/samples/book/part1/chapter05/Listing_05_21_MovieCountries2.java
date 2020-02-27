@@ -126,7 +126,7 @@ public class Listing_05_21_MovieCountries2 extends Listing_05_20_MovieCountries1
             }
             PdfCanvas canvas =
                     new PdfCanvas(page.newContentStreamBefore(), page.getResources(), docEvent.getDocument());
-            new Canvas(canvas, docEvent.getDocument(), docEvent.getDocument().getLastPage().getPageSize())
+            new Canvas(canvas, docEvent.getDocument().getLastPage().getPageSize())
                     .setFontColor(new DeviceGray(0.75f))
                     .setFontSize(52)
                     .setFont(font)

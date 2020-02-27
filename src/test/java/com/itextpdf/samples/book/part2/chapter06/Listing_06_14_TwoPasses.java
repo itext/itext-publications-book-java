@@ -134,7 +134,7 @@ public class Listing_06_14_TwoPasses {
         // Loop over the pages and add a header to each page
         int n = pdfDoc.getNumberOfPages();
         for (int i = 1; i <= n; i++) {
-            new Canvas(new PdfCanvas(pdfDoc.getPage(i)), pdfDoc,
+            new Canvas(new PdfCanvas(pdfDoc.getPage(i)),
                     new Rectangle(36, 803, 523, 30)).add(getHeaderTable(i, n));
         }
 

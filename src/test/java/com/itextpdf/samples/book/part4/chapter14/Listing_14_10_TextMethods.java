@@ -56,7 +56,7 @@ public class Listing_14_10_TextMethods {
                 .setFontAndSize(font, 12)
                 .setTextMatrix(50, 800)
                 .showText(text);
-        Canvas canvasModel = new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize());
+        Canvas canvasModel = new Canvas(canvas, pdfDoc.getDefaultPageSize());
         canvasModel.showTextAligned(text + " Center", 150, 760, TextAlignment.CENTER);
         canvasModel.showTextAligned(text + " Right", 150, 700, TextAlignment.RIGHT);
         canvasModel.showTextAligned(text + " Left", 150, 640, TextAlignment.LEFT);

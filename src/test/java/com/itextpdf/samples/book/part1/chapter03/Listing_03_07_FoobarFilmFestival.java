@@ -108,7 +108,7 @@ public class Listing_03_07_FoobarFilmFestival {
                 .restoreState();
         // Adding text with Canvas.showTextAligned()
         canvas.setFontAndSize(helvetica, 12);
-        new Canvas(canvas, pdfDoc, pdfDoc.getFirstPage().getPageSize())
+        new Canvas(canvas, pdfDoc.getFirstPage().getPageSize())
                 .showTextAligned(foobar, 400, 788, TextAlignment.LEFT)
                 .showTextAligned(foobar, 400, 752, TextAlignment.RIGHT)
                 .showTextAligned(foobar, 400, 716, TextAlignment.CENTER)

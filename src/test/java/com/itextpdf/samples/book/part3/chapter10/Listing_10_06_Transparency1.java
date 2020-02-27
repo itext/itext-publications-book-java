@@ -82,21 +82,21 @@ public class Listing_10_06_Transparency1 {
             canvas.resetFillColorRgb();
             // ColumnText ct = new ColumnText(canvas);
             Paragraph p = new Paragraph("Ungrouped objects\nObject opacity = 1.0");
-            new Canvas(canvas, pdfDoc, new Rectangle(gap, 0, 200, 500))
+            new Canvas(canvas, new Rectangle(gap, 0, 200, 500))
                     .add(p.setTextAlignment(TextAlignment.CENTER).setFontSize(18));
 
             p = new Paragraph("Ungrouped objects\nObject opacity = 0.5");
-            new Canvas(canvas, pdfDoc, new Rectangle(200 + 2 * gap, 0, 200, 500))
+            new Canvas(canvas, new Rectangle(200 + 2 * gap, 0, 200, 500))
                     .add(p.setTextAlignment(TextAlignment.CENTER).setFontSize(18));
 
             p = new Paragraph(
                     "Transparency group\nObject opacity = 1.0\nGroup opacity = 0.5\nBlend mode = Normal");
-            new Canvas(canvas, pdfDoc, new Rectangle(gap, 0, 200, 500 - 200 - gap))
+            new Canvas(canvas, new Rectangle(gap, 0, 200, 500 - 200 - gap))
                     .add(p.setTextAlignment(TextAlignment.CENTER).setFontSize(18));
 
             p = new Paragraph(
                     "Transparency group\nObject opacity = 0.5\nGroup opacity = 1.0\nBlend mode = HardLight");
-            new Canvas(canvas, pdfDoc, new Rectangle(200 + 2 * gap, 0, 200, 500 - 200 - gap))
+            new Canvas(canvas, new Rectangle(200 + 2 * gap, 0, 200, 500 - 200 - gap))
                     .add(p.setTextAlignment(TextAlignment.CENTER).setFontSize(18));
 
             pdfDoc.close();

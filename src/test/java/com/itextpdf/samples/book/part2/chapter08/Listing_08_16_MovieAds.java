@@ -150,7 +150,7 @@ public class Listing_08_16_MovieAds {
         button.setButtonBackgroundColor(color);
         form.removeField(POSTER);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage());
-        new Canvas(canvas, pdfDoc, rect)
+        new Canvas(canvas, rect)
                 .add(new Paragraph().add(button));
         // write the text using the appropriate font size
         rect = form.getField(TEXT).getWidgets().get(0).getRectangle().toRectangle();
@@ -361,7 +361,7 @@ public class Listing_08_16_MovieAds {
 
             Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
 
-            new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
+            new Canvas(canvas, new Rectangle(0, 0, width, height)).
                     showTextAligned(paragraph, 1, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
 
             PdfImageXObject imageXObject = new PdfImageXObject(modelButton.getImage());

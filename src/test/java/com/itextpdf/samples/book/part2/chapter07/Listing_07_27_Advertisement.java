@@ -216,7 +216,7 @@ public class Listing_07_27_Advertisement {
 
             Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(modelButton.getFontSize()).setMargin(0).setMultipliedLeading(1);
 
-            new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
+            new Canvas(canvas, new Rectangle(0, 0, width, height)).
                     showTextAligned(paragraph, 1, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
 
             PdfXObject obj = modelButton.getImage();

@@ -130,7 +130,7 @@ public class Listing_06_08_Stationery {
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
         PdfCanvas canvas = new PdfCanvas(pdfDoc.getLastPage().newContentStreamBefore(),
                 pdfDoc.getLastPage().getResources(), pdfDoc);
-        new Canvas(canvas, pdfDoc, pdfDoc.getLastPage().getPageSize())
+        new Canvas(canvas, pdfDoc.getLastPage().getPageSize())
                 .setFontColor(new DeviceGray(0.75f))
                 .setFontSize(52)
                 .setFont(font)

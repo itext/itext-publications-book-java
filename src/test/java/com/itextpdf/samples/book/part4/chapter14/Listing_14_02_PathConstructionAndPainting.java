@@ -40,17 +40,17 @@ public class Listing_14_02_PathConstructionAndPainting {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         // draw squares
         createSquares(canvas, 50, 720, 80, 20);
-        new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).showTextAligned(
+        new Canvas(canvas,pdfDoc.getDefaultPageSize()).showTextAligned(
                 new Paragraph("Methods moveTo(), lineTo(), stroke(), closePathStroke(), fill(), and closePathFill()"),
                 50, 700, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         // draw Bezier curves
         createBezierCurves(canvas, 70, 600, 80, 670, 140, 690, 160, 630, 160);
-        new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).showTextAligned(
+        new Canvas(canvas, pdfDoc.getDefaultPageSize()).showTextAligned(
                 new Paragraph("Different curveTo() methods, followed by stroke()"),
                 50, 580, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         // draw stars and circles
         createStarsAndCircles(canvas, 50, 470, 40, 20);
-        new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).showTextAligned(
+        new Canvas(canvas, pdfDoc.getDefaultPageSize()).showTextAligned(
                 new Paragraph("Methods fill(), eoFill(), newPath(), fillStroke(), and eoFillStroke()"),
                 50, 450, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         // draw different shapes using convenience methods
@@ -72,8 +72,8 @@ public class Listing_14_02_PathConstructionAndPainting {
         div.setFixedPosition(470, 270, 80);
         div.setHeight(60);
 
-        new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).add(div);
-        new Canvas(canvas, pdfDoc, pdfDoc.getDefaultPageSize()).showTextAligned(
+        new Canvas(canvas, pdfDoc.getDefaultPageSize()).add(div);
+        new Canvas(canvas, pdfDoc.getDefaultPageSize()).showTextAligned(
                 new Paragraph("Convenience methods"),
                 50, 250, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         pdfDoc.close();

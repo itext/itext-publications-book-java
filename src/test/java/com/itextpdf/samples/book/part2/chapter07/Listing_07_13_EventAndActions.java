@@ -70,7 +70,7 @@ public class Listing_07_13_EventAndActions {
         // Add this Paragraph to every page
         for (int i = 1; i <= n; i++) {
             canvas = new PdfCanvas(pdfDoc.getPage(i));
-            new Canvas(canvas, pdfDoc, pdfDoc.getPage(i).getPageSize())
+            new Canvas(canvas, pdfDoc.getPage(i).getPageSize())
                     .showTextAligned(paragraph, 816, 18, i,
                             TextAlignment.RIGHT, VerticalAlignment.MIDDLE, 0);
         }

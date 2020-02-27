@@ -302,7 +302,7 @@ public class Listing_08_01_Buttons {
 
             Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
 
-            new Canvas(canvas, drawContext.getDocument(), new Rectangle(0, 0, width, height)).
+            new Canvas(canvas, new Rectangle(0, 0, width, height)).
                     showTextAligned(paragraph, 20, 3, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
 
             ImageData image = modelButton.getImage();
