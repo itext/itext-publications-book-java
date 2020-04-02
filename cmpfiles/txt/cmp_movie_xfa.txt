@@ -1,0 +1,8 @@
+XFA form
+movies[0]
+movies[0].movie[0]
+movies[0].movie[0].duration[0]
+movies[0].movie[0].imdb[0]
+movies[0].movie[0].year[0]
+movies[0].movie[0].title[0]
+movies[0].movie[0].original[0]

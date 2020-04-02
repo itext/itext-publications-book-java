@@ -1,0 +1,38 @@
+preface
+I have lost count of the number of PCs I have worn out since I started my 
+career as a software developer—but I will never forget my first computer.
+ I was only 12 years old when I started programming in BASIC. I had to 
+learn English at the same time because there simply weren’t any books on 
+computer programming in my mother tongue (Dutch). This was in 1982. Win-
+dows didn’t exist yet; I worked on a TI99/4A home computer from Texas 
+Instruments. When I told my friends at school about it, they looked at me as if 
+I had just been beamed down from the Starship Enterprise.
+ Two years later, my parents bought me my first personal computer: a 
+Tandy/Radio Shack TRS80/4P. As the P indicates, it was supposed to be a port-
+able computer, but in reality it was bigger than my mother’s sewing machine. 
+It could be booted from a hard disk, but I didn’t have one; nor did I have any 
+software besides the TRSDOS and its BASIC interpreter. By the time I was 16, I 
+had written my own word-processing program, an indexed flat-file database 
+system, and a drawing program—nothing fancy, considering the low resolu-
+tion of the built-in, monochrome green computer screen.
+ I don’t remember exactly what happened to me at that age—maybe it was 
+my delayed discovery of girls—but it suddenly struck me that I was becoming 
+a first-class nerd. So I made a 180-degree turn, studying Latin and math in 
+high school and taking evening classes at a local art school. I decided that I 
+wanted to become an artist instead of going to college. As a compromise with 
+my parents, I studied civil architectural engineering at Ghent University. In my 
+final year, I bought myself a Compaq portable computer to write my master’s 
+thesis. It was like finding a long-lost friend! After I earned my degree as an archi-
+tect, I decided that it was time to return to the world of computers.
+ In 1996 I enrolled in a program that would retrain me as a software engineer. 
+I learned and taught a brand-new programming language, Java. During my 
+apprenticeship, I was put in charge of an experimental broadband Internet 
+project. It was my first acquaintance with the Web. This expertise resulted in dif-
+ferent assignments for the Flemish government. One of my tasks was to write an 
+R&D report on standard Internet–intranet tools for GIS applications. That’s when 
+I wrote my first Java servlets.
+ I returned to Ghent University as an employee in 1998. When I published my 
+first Free/Open Source Software library, I knew I had finally found my vocation. 
+Now I have had the chance to write a book about it. I tried to give this book the 
+personal touch I often miss when reading technical writings. I hope you will 
+enjoy reading it as much as I have enjoyed writing it.
