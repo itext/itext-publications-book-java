@@ -43,7 +43,7 @@ import java.io.IOException;
 public class Listing_08_06_ReplaceIcon {
     public static final String DEST = "./target/book/part2/chapter08/Listing_08_06_ReplaceIcon.pdf";
 
-    public static final String ADVERTISEMENT = "./src/main/resources/book/part2/chapter07/cmp_Listing_07_27_Advertisement.pdf";
+    public static final String ADVERTISEMENT = "./src/main/resources/pdfs/cmp_Listing_07_27_Advertisement.pdf";
 
     /** Image that will be used as an icon. */
     public static final String RESOURCE = "./src/main/resources/img/iia2.jpg";

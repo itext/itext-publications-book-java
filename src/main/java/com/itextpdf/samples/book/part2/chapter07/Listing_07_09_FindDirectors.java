@@ -32,7 +32,7 @@ public class Listing_07_09_FindDirectors {
     public static final String RESOURCE
             = "./src/main/resources/js/find_director.js";
 
-    public static final String NESTED_TABLES = "./src/main/resources/book/part1/chapter04/cmp_Listing_04_17_NestedTables.pdf";
+    public static final String NESTED_TABLES = "./src/main/resources/pdfs/cmp_Listing_04_17_NestedTables.pdf";
 
     protected String[] arguments;
 

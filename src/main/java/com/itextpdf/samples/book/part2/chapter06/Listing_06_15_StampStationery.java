@@ -42,7 +42,7 @@ public class Listing_06_15_StampStationery {
     public static final String ORIGINAL =
             "./target/book/part2/chapter06/Listing_06_15_StampStationery_original.pdf";
     public static final String STATIONERY_WATERMARK =
-            "./src/main/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery_watermark.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_06_08_Stationery_watermark.pdf";
 
     protected PdfFont bold;
     protected PdfFont italic;

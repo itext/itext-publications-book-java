@@ -31,9 +31,9 @@ import java.sql.SQLException;
 public class Listing_16_02_ResizeImage {
     public static final String DEST = "./target/book/part4/chapter16/Listing_16_02_ResizeImage.pdf";
     public static float FACTOR = 0.5f;
-    public static final String SPECIAL_ID = "./src/main/resources/book/part4/chapter16/cmp_Listing_16_01_SpecialId.pdf";
+    public static final String SPECIAL_ID = "./src/main/resources/pdfs/cmp_Listing_16_01_SpecialId.pdf";
 
-    private static final String PRE_GENERATED_RESIZED_IMAGE = "./src/main/resources/book/part4/chapter16/resizedImage.jpg";
+    private static final String PRE_GENERATED_RESIZED_IMAGE = "./src/main/resources/pdfs/resizedImage.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
         File file = new File(DEST);

@@ -30,7 +30,7 @@ public class Listing_06_09_NUpTool {
     public static final String RESOURCE
             = "./src/main/resources/img/loa.jpg";
     public static final String STATIONERY
-            = "./src/main/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_06_08_Stationery.pdf";
 
     protected String[] arguments;
 

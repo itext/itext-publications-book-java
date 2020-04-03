@@ -24,7 +24,7 @@ public class Listing_07_07_AddVersionChecker {
     public static final String RESOURCE
             = "./src/main/resources/js/viewer_version.js";
 
-    public static final String HELLO_WORLD = "./src/main/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
+    public static final String HELLO_WORLD = "./src/main/resources/pdfs/cmp_Listing_01_01_HelloWorld.pdf";
 
     protected String[] arguments;
 

@@ -25,7 +25,7 @@ public class Listing_15_19_ParseTaggedPdf {
             = "./target/book/part4/chapter15/Listing_15_19_ParseTaggedPdf.xml";
 
     public static final String STRUCTURED_CONTENT
-            = "./src/main/resources/book/part4/chapter15/cmp_Listing_15_16_StructuredContent.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_15_16_StructuredContent.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, ParserConfigurationException, SAXException {
         File file = new File(DEST);

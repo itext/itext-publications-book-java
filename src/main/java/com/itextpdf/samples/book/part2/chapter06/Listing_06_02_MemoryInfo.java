@@ -23,7 +23,7 @@ public class Listing_06_02_MemoryInfo {
             = "./target/book/part2/chapter06/Listing_06_02_MemoryInfo.txt";
 
     public static final String MOVIE_TEMPLATES
-            = "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws Exception {
         File file = new File(DEST);

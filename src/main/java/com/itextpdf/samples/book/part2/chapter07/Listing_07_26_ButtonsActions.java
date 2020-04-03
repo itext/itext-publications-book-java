@@ -26,7 +26,7 @@ import java.sql.SQLException;
 public class Listing_07_26_ButtonsActions {
     public static final String DEST = "./target/book/part2/chapter07/Listing_07_26_ButtonsActions.pdf";
 
-    public static final String MOVIE_TEMPLATES = "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+    public static final String MOVIE_TEMPLATES = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     protected String[] arguments;
 

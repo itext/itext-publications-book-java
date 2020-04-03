@@ -30,7 +30,7 @@ public class Listing_07_11_PrintTimeTable {
     public static final String RESOURCE
             = "./src/main/resources/js/print_page.js";
 
-    public static final String MOVIE_TEMPLATES = "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+    public static final String MOVIE_TEMPLATES = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     protected String[] arguments;
 

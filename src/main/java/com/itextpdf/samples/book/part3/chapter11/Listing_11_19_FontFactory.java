@@ -27,7 +27,7 @@ public class Listing_11_19_FontFactory {
     public static final String DEST
             = "./target/book/part3/chapter11/Listing_11_19_FontFactory.pdf";
     public static final String FONT_DIR
-            = "./src/main/resources/book/part3/chapter11/font/";
+            = "./src/main/resources/font/listing_11_19_fonts/";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

@@ -23,7 +23,7 @@ public class Listing_06_23_Burst {
     public static final String FORMATTEDDEST =
             "./target/book/part2/chapter06/Listing_06_23_Burst%d.pdf";
     public static final String MOVIE_TEMPLATES =
-            "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         File file = new File(DEST);

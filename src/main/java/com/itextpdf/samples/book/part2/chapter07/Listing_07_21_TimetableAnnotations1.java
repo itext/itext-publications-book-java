@@ -93,7 +93,7 @@ public class Listing_07_21_TimetableAnnotations1 {
 
     protected String[] arguments;
 
-    public static final String MOVIE_TEMPLATES = "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+    public static final String MOVIE_TEMPLATES = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static TimeZone CURRENT_USER_TIME_ZONE;
 

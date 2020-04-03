@@ -25,7 +25,7 @@ public class Listing_13_10_RemoveLaunchActions {
     public static final String DEST
             = "./target/book/part4/chapter13/Listing_13_10_RemoveLaunchActions.pdf";
     public static final String LAUNCH_ACTIONS
-            = "./src/main/resources/book/part2/chapter07/cmp_Listing_07_10_LaunchAction.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_07_10_LaunchAction.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
         File file = new File(DEST);

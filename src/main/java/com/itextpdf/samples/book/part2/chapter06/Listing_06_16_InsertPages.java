@@ -39,9 +39,9 @@ public class Listing_06_16_InsertPages {
     public static final String DEST =
             "./target/book/part2/chapter06/Listing_06_16_InsertPages_reordered.pdf";
     public static final String STAMP_STATIONERY =
-            "./src/main/resources/book/part2/chapter06/cmp_Listing_06_15_StampStationery.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_06_15_StampStationery.pdf";
     public static final String STATIONERY_WATERMARK =
-            "./src/main/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery_watermark.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_06_08_Stationery_watermark.pdf";
 
 
     public static void main(String args[]) throws IOException, SQLException {

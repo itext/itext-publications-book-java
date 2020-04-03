@@ -31,7 +31,7 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
     public static final String DEST
             = "./target/book/part2/chapter07/Listing_07_25_TimetableAnnotations3.pdf";
 
-    public static final String MOVIE_TEMPLATES = "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+    public static final String MOVIE_TEMPLATES = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     /**
      * Path to IMDB.

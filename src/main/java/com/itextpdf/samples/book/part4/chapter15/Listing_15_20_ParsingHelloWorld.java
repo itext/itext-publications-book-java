@@ -43,7 +43,7 @@ public class Listing_15_20_ParsingHelloWorld {
     };
 
     public static final String HELLO_WORLD =
-            "./src/main/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_01_01_HelloWorld.pdf";
 
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

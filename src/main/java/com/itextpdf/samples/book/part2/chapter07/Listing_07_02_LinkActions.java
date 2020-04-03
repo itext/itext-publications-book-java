@@ -39,8 +39,8 @@ import java.sql.Statement;
 import java.util.Map;
 
 public class Listing_07_02_LinkActions {
-    public static final String SRC = "./src/main/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
-    public static final String SRC_RELATIVE = "../../../../src/main/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
+    public static final String SRC = "./src/main/resources/pdfs/cmp_Listing_02_22_MovieLinks1.pdf";
+    public static final String SRC_RELATIVE = "../../../../src/main/resources/pdfs/cmp_Listing_02_22_MovieLinks1.pdf";
     public static final String DEST = "./target/book/part2/chapter07/Listing_07_02_LinkActions.pdf";
     public static final String DEST_XML = "./target/book/part2/chapter07/Listing_07_02_LinkActions.xml";
 

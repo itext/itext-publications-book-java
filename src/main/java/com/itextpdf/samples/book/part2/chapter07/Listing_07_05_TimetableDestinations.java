@@ -39,7 +39,7 @@ public class Listing_07_05_TimetableDestinations {
     public static final String SRC
             = "./src/main/resources/js/viewer_version.js";
     public static final String MOVIE_TEMPLATES
-            = "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     protected List<PdfAction> actions;
     protected String[] arguments;

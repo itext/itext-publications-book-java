@@ -23,7 +23,7 @@ import java.sql.SQLException;
 public class Listing_13_08_CropPages {
     public static final String DEST = "./target/book/part4/chapter13/Listing_13_08_CropPages.pdf";
     public static final String MOVIE_TEMPLATES
-            = "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
         File file = new File(DEST);

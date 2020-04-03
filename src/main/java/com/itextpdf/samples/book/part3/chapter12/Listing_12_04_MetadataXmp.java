@@ -28,7 +28,7 @@ import java.io.IOException;
 
 public class Listing_12_04_MetadataXmp {
     public static final String METADATA_PDF
-            = "./src/main/resources/book/part3/chapter12/cmp_Listing_12_01_MetadataPdf.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_12_01_MetadataPdf.pdf";
     public static final String[] RESULT = {
             "./target/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata.pdf",
             "./target/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_automatic.pdf",

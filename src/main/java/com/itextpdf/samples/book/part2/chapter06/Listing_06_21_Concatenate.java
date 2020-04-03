@@ -20,9 +20,9 @@ public class Listing_06_21_Concatenate {
     public static final String DEST
             = "./target/book/part2/chapter06/Listing_06_21_Concatenate.pdf";
     public static final String MOVIE_LINKS1 =
-            "./src/main/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_02_22_MovieLinks1.pdf";
     public static final String MOVIE_HISTORY =
-            "./src/main/resources/book/part1/chapter02/cmp_Listing_02_24_MovieHistory.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_02_24_MovieHistory.pdf";
 
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);

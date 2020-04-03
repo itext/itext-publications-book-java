@@ -22,7 +22,7 @@ import java.util.TreeSet;
 
 public class Listing_16_03_ListUsedFonts {
     public static final String DEST = "./target/book/part4/chapter16/Listing_16_03_ListUsedFonts.txt";
-    public static final String FONT_TYPES = "./src/main/resources/book/part3/chapter11/cmp_Listing_11_01_FontTypes.pdf";
+    public static final String FONT_TYPES = "./src/main/resources/pdfs/cmp_Listing_11_01_FontTypes.pdf";
 
     public static void main(String args[]) throws Exception {
         File file = new File(DEST);
