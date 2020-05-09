@@ -40,7 +40,7 @@ public class Listing_10_22_TransparentOverlay {
         float h = imgModel.getImageScaledHeight();
         canvas.ellipse(1, 1, 848, 598);
         canvas.clip();
-        canvas.newPath();
+        canvas.endPath();
         canvas.addImage(img, w, 0, 0, h, 0, -600);
 
         PdfFormXObject xObject2 = new PdfFormXObject(new Rectangle(850, 600));
