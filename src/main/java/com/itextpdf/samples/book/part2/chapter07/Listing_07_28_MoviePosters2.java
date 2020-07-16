@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.kernel.geom.Rectangle;
@@ -47,7 +39,7 @@ public class Listing_07_28_MoviePosters2 {
 
     protected String[] arguments;
 
-    public static final String MOVIE_POSTERS1 = "./src/main/resources/book/part2/chapter07/cmp_Listing_07_22_MoviePosters1.pdf";
+    public static final String MOVIE_POSTERS1 = "./src/main/resources/pdfs/cmp_Listing_07_22_MoviePosters1.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         File file = new File(DEST);

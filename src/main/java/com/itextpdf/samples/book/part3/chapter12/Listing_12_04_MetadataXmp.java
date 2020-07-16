@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part3.chapter12;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -28,7 +20,7 @@ import java.io.IOException;
 
 public class Listing_12_04_MetadataXmp {
     public static final String METADATA_PDF
-            = "./src/main/resources/book/part3/chapter12/cmp_Listing_12_01_MetadataPdf.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_12_01_MetadataPdf.pdf";
     public static final String[] RESULT = {
             "./target/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata.pdf",
             "./target/book/part3/chapter12/Listing_12_04_MetadataXmp_xmp_metadata_automatic.pdf",

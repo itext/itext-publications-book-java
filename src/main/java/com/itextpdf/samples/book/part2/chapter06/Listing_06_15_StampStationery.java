@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.io.font.constants.StandardFonts;
@@ -42,7 +34,7 @@ public class Listing_06_15_StampStationery {
     public static final String ORIGINAL =
             "./target/book/part2/chapter06/Listing_06_15_StampStationery_original.pdf";
     public static final String STATIONERY_WATERMARK =
-            "./src/main/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery_watermark.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_06_08_Stationery_watermark.pdf";
 
     protected PdfFont bold;
     protected PdfFont italic;

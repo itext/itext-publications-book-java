@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
@@ -30,7 +22,7 @@ public class Listing_07_11_PrintTimeTable {
     public static final String RESOURCE
             = "./src/main/resources/js/print_page.js";
 
-    public static final String MOVIE_TEMPLATES = "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+    public static final String MOVIE_TEMPLATES = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     protected String[] arguments;
 

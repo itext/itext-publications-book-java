@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part4.chapter14;
 
 import com.itextpdf.kernel.geom.Rectangle;
@@ -41,7 +33,7 @@ public class Listing_14_02_PathConstructionAndPainting {
         // draw squares
         createSquares(canvas, 50, 720, 80, 20);
         new Canvas(canvas,pdfDoc.getDefaultPageSize()).showTextAligned(
-                new Paragraph("Methods moveTo(), lineTo(), stroke(), closePathStroke(), fill(), and closePathFill()"),
+                new Paragraph("Methods moveTo(), lineTo(), stroke(), closePathStroke(), fill(), fillStroke(), closePathFillStroke()"),
                 50, 700, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         // draw Bezier curves
         createBezierCurves(canvas, 70, 600, 80, 670, 140, 690, 160, 630, 160);
@@ -51,7 +43,7 @@ public class Listing_14_02_PathConstructionAndPainting {
         // draw stars and circles
         createStarsAndCircles(canvas, 50, 470, 40, 20);
         new Canvas(canvas, pdfDoc.getDefaultPageSize()).showTextAligned(
-                new Paragraph("Methods fill(), eoFill(), newPath(), fillStroke(), and eoFillStroke()"),
+                new Paragraph("Methods fill(), eoFill(), endPath(), fillStroke(), and eoFillStroke()"),
                 50, 450, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         // draw different shapes using convenience methods
         canvas
@@ -160,7 +152,7 @@ public class Listing_14_02_PathConstructionAndPainting {
         canvas.eoFill();
         x += 2 * radius + gutter;
         createStar(canvas, x, y);
-        canvas.newPath();
+        canvas.endPath();
         createCircle(canvas, x + radius, y - 70, radius, true);
         createCircle(canvas, x + radius, y - 70, radius / 2, true);
         x += 2 * radius + gutter;

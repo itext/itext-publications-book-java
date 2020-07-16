@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.kernel.geom.Rectangle;
@@ -23,13 +15,13 @@ public class Listing_06_01_PageInformation {
             = "./target/book/part2/chapter06/Listing_06_01_PageInformation.txt";
 
     public static final String HELLO_WORLD_LANDSCAPE1
-            = "./src/main/resources/book/part1/chapter01/cmp_Listing_01_05_HelloWorldLandscape1.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_01_05_HelloWorldLandscape1.pdf";
     public static final String HELLO_WORLD_LANDSCAPE2
-            = "./src/main/resources/book/part1/chapter01/cmp_Listing_01_06_HelloWorldLandscape2.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_01_06_HelloWorldLandscape2.pdf";
     public static final String MOVIE_TEMPLATES
-            = "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
     public static final String HERO1
-            = "./src/main/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_05_15_Hero1.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         File file = new File(DEST);

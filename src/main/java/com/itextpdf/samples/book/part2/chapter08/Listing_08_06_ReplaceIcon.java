@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.io.image.ImageData;
@@ -43,7 +35,7 @@ import java.io.IOException;
 public class Listing_08_06_ReplaceIcon {
     public static final String DEST = "./target/book/part2/chapter08/Listing_08_06_ReplaceIcon.pdf";
 
-    public static final String ADVERTISEMENT = "./src/main/resources/book/part2/chapter07/cmp_Listing_07_27_Advertisement.pdf";
+    public static final String ADVERTISEMENT = "./src/main/resources/pdfs/cmp_Listing_07_27_Advertisement.pdf";
 
     /** Image that will be used as an icon. */
     public static final String RESOURCE = "./src/main/resources/img/iia2.jpg";

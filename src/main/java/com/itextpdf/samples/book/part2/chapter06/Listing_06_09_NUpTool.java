@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.kernel.geom.PageSize;
@@ -30,7 +22,7 @@ public class Listing_06_09_NUpTool {
     public static final String RESOURCE
             = "./src/main/resources/img/loa.jpg";
     public static final String STATIONERY
-            = "./src/main/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_06_08_Stationery.pdf";
 
     protected String[] arguments;
 

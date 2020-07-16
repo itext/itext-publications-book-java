@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.kernel.geom.PageSize;
@@ -48,7 +40,7 @@ public class Listing_10_22_TransparentOverlay {
         float h = imgModel.getImageScaledHeight();
         canvas.ellipse(1, 1, 848, 598);
         canvas.clip();
-        canvas.newPath();
+        canvas.endPath();
         canvas.addImage(img, w, 0, 0, h, 0, -600);
 
         PdfFormXObject xObject2 = new PdfFormXObject(new Rectangle(850, 600));

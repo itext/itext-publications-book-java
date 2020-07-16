@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.font.constants.StandardFonts;
@@ -43,7 +35,7 @@ public class Listing_15_20_ParsingHelloWorld {
     };
 
     public static final String HELLO_WORLD =
-            "./src/main/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_01_01_HelloWorld.pdf";
 
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

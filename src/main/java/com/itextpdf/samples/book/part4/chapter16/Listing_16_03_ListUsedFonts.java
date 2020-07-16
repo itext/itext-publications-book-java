@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.kernel.pdf.PdfDictionary;
@@ -22,7 +14,7 @@ import java.util.TreeSet;
 
 public class Listing_16_03_ListUsedFonts {
     public static final String DEST = "./target/book/part4/chapter16/Listing_16_03_ListUsedFonts.txt";
-    public static final String FONT_TYPES = "./src/main/resources/book/part3/chapter11/cmp_Listing_11_01_FontTypes.pdf";
+    public static final String FONT_TYPES = "./src/main/resources/pdfs/cmp_Listing_11_01_FontTypes.pdf";
 
     public static void main(String args[]) throws Exception {
         File file = new File(DEST);

@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.io.source.RandomAccessSourceFactory;
@@ -39,9 +31,9 @@ public class Listing_06_16_InsertPages {
     public static final String DEST =
             "./target/book/part2/chapter06/Listing_06_16_InsertPages_reordered.pdf";
     public static final String STAMP_STATIONERY =
-            "./src/main/resources/book/part2/chapter06/cmp_Listing_06_15_StampStationery.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_06_15_StampStationery.pdf";
     public static final String STATIONERY_WATERMARK =
-            "./src/main/resources/book/part2/chapter06/cmp_Listing_06_08_Stationery_watermark.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_06_08_Stationery_watermark.pdf";
 
 
     public static void main(String args[]) throws IOException, SQLException {

@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.io.image.ImageDataFactory;
@@ -57,7 +49,7 @@ import java.util.TreeSet;
 
 public class Listing_16_11_KubrickCollection {
     public static final String DEST = "./target/book/part4/chapter16/Listing_16_11_KubrickCollection.pdf";
-    public static final String RESOURCE = "./src/main/resources/book/part4/chapter16/";
+    public static final String RESOURCE = "./src/main/resources/pdfs/";
     public static final String IMG_BOX = "./src/main/resources/img/kubrick_box.jpg";
     public static final String IMG_KUBRICK = "./src/main/resources/img/kubrick.jpg";
     public static final String TYPE_FIELD = "TYPE";

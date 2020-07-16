@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.io.font.FontEncoding;
@@ -27,7 +19,7 @@ public class Listing_11_19_FontFactory {
     public static final String DEST
             = "./target/book/part3/chapter11/Listing_11_19_FontFactory.pdf";
     public static final String FONT_DIR
-            = "./src/main/resources/book/part3/chapter11/font/";
+            = "./src/main/resources/font/listing_11_19_fonts/";
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);

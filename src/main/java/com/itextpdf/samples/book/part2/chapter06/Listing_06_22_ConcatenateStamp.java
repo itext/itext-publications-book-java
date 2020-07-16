@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -26,9 +18,9 @@ public class Listing_06_22_ConcatenateStamp {
     public static final String DEST =
             "./target/book/part2/chapter06/Listing_06_22_ConcatenateStamp.pdf";
     public static final String MOVIE_LINKS1 =
-            "./src/main/resources/book/part1/chapter02/cmp_Listing_02_22_MovieLinks1.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_02_22_MovieLinks1.pdf";
     public static final String MOVIE_HISTORY =
-            "./src/main/resources/book/part1/chapter02/cmp_Listing_02_24_MovieHistory.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_02_24_MovieHistory.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         File file = new File(DEST);

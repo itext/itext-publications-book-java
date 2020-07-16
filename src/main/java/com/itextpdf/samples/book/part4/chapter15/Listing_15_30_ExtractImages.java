@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part4.chapter15;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
@@ -26,7 +18,7 @@ public class Listing_15_30_ExtractImages {
     public static final String DEST
             = "./target/book/part4/chapter15/Img%s.%s";
     public static final String IMAGE_TYPES
-            = "./src/main/resources/book/part3/chapter10/cmp_Listing_10_09_ImageTypes.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_10_09_ImageTypes.pdf";
 
     public static void main(String args[])
             throws IOException, SQLException, ParserConfigurationException, SAXException {

@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -19,7 +11,7 @@ public class Listing_06_03_SelectPages {
     public static final String DEST =
             "./target/book/part2/chapter06/Listing_06_03_SelectPages_copy.pdf";
     public static final String MOVIE_TEMPLATES =
-            "./src/main/resources/book/part1/chapter03/cmp_Listing_03_29_MovieTemplates.pdf";
+            "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);

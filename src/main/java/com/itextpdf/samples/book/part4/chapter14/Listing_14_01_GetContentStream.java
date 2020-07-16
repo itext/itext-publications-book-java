@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part4.chapter14;
 
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -22,9 +14,9 @@ public class Listing_14_01_GetContentStream {
     public static final String RESULT2
             = "./target/book/part4/chapter14/Listing_14_01_GetContentStream2.txt";
     public static final String HELLO_WORLD
-            = "./src/main/resources/book/part1/chapter01/cmp_Listing_01_01_HelloWorld.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_01_01_HelloWorld.pdf";
     public static final String HERO
-            = "./src/main/resources/book/part1/chapter05/cmp_Listing_05_15_Hero1.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_05_15_Hero1.pdf";
 
     public static void main(String args[]) throws IOException, SQLException {
         new Listing_14_01_GetContentStream().manipulatePdf(DEST);

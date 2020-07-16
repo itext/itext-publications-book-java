@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.kernel.pdf.PdfDictionary;
@@ -25,7 +17,7 @@ public class Listing_13_10_RemoveLaunchActions {
     public static final String DEST
             = "./target/book/part4/chapter13/Listing_13_10_RemoveLaunchActions.pdf";
     public static final String LAUNCH_ACTIONS
-            = "./src/main/resources/book/part2/chapter07/cmp_Listing_07_10_LaunchAction.pdf";
+            = "./src/main/resources/pdfs/cmp_Listing_07_10_LaunchAction.pdf";
 
     public static void main(String args[]) throws IOException, SQLException, XMPException {
         File file = new File(DEST);

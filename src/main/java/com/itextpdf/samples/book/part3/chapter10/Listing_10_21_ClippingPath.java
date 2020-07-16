@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.io.image.ImageDataFactory;
@@ -44,7 +36,7 @@ public class Listing_10_21_ClippingPath {
         PdfCanvas xObjectCanvas = new PdfCanvas(xObject, pdfDoc);
         xObjectCanvas.ellipse(0, 0, 850, 600);
         xObjectCanvas.clip();
-        xObjectCanvas.newPath();
+        xObjectCanvas.endPath();
         xObjectCanvas.addImage(img, w, 0, 0, h, 0, -600);
         com.itextpdf.layout.element.Image clipped = new com.itextpdf.layout.element.Image(xObject);
         clipped.scale(0.5f, 0.5f);

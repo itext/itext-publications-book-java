@@ -1,11 +1,3 @@
-/*
-    This file is part of the iText (R) project.
-    Copyright (c) 1998-2020 iText Group NV
-    Authors: iText Software.
-
-    For more information, please contact iText Software at this address:
-    sales@itextpdf.com
- */
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.io.source.ByteArrayOutputStream;
@@ -32,7 +24,7 @@ public class Listing_07_09_FindDirectors {
     public static final String RESOURCE
             = "./src/main/resources/js/find_director.js";
 
-    public static final String NESTED_TABLES = "./src/main/resources/book/part1/chapter04/cmp_Listing_04_17_NestedTables.pdf";
+    public static final String NESTED_TABLES = "./src/main/resources/pdfs/cmp_Listing_04_17_NestedTables.pdf";
 
     protected String[] arguments;
 
