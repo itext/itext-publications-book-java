@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.itextpdf.samples</groupId>
   <artifactId>book</artifactId>
-  <version>7.1.13-SNAPSHOT</version>
+  <version>7.1.14-SNAPSHOT</version>
   <name>iText 7 Publications: iText in Action</name>
   <url>https://itextpdf.com/</url>
   <properties>
@@ -25,7 +25,7 @@
     <slowtests>com.itextpdf.test.annotations.type.SlowTest</slowtests>
     <spotbugs.version>3.1.11</spotbugs.version>
     <surefire.version>3.0.0-M3</surefire.version>
-    <typography.version>2.0.8-SNAPSHOT</typography.version>
+    <typography.version>2.0.9-SNAPSHOT</typography.version>
     <unittests>com.itextpdf.test.annotations.type.UnitTest</unittests>
   </properties>
   <dependencies>
