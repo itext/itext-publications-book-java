@@ -16,7 +16,7 @@
     <jacoco.version>0.8.3</jacoco.version>
     <java.version>1.7</java.version>
     <javadoc.version>2.10.3</javadoc.version>
-    <licensekey.version>3.1.1</licensekey.version>
+    <licensekey.version>3.1.2</licensekey.version>
     <pitest.version>1.4.9</pitest.version>
     <pmd.version>3.5</pmd.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
