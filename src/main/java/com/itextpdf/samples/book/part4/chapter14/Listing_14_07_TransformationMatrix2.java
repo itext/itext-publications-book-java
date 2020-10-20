@@ -42,12 +42,12 @@ public class Listing_14_07_TransformationMatrix2 {
         PdfPage curPage = srcDoc.getPage(1);
         PdfFormXObject xObject = curPage.copyAsFormXObject(pdfDoc);
         // add it at different positions using different transformations
-        canvas.addXObject(xObject, 0, 0)
-                .addXObject(xObject, 0.5f, 0, 0, 0.5f, -595, 0)
-                .addXObject(xObject, 0.5f, 0, 0, 0.5f, -297.5f, 297.5f)
-                .addXObject(xObject, 1, 0, 0.4f, 1, -750, -650)
-                .addXObject(xObject, 0, -1, -1, 0, 650, 0)
-                .addXObject(xObject, 0, -0.2f, -0.5f, 0, 350, 0);
+        canvas.addXObjectAt(xObject, 0, 0)
+                .addXObjectWithTransformationMatrix(xObject, 0.5f, 0, 0, 0.5f, -595, 0)
+                .addXObjectWithTransformationMatrix(xObject, 0.5f, 0, 0, 0.5f, -297.5f, 297.5f)
+                .addXObjectWithTransformationMatrix(xObject, 1, 0, 0.4f, 1, -750, -650)
+                .addXObjectWithTransformationMatrix(xObject, 0, -1, -1, 0, 650, 0)
+                .addXObjectWithTransformationMatrix(xObject, 0, -0.2f, -0.5f, 0, 350, 0);
 
         pdfDoc.close();
         srcDoc.close();

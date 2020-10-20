@@ -127,7 +127,7 @@ public class Listing_05_20_MovieCountries1 {
             canvas.showText(String.format("Page %d of", pageNum));
             canvas.endText();
             canvas.stroke();
-            canvas.addXObject(template, 0, 0);
+            canvas.addXObject(template);
             canvas.release();
         }
 

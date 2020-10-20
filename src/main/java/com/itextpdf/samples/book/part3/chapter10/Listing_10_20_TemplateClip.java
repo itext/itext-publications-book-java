@@ -34,7 +34,7 @@ public class Listing_10_20_TemplateClip {
         float h = imgModel.getImageScaledHeight();
         PdfFormXObject xObject = new PdfFormXObject(new Rectangle(850, 600));
         PdfCanvas xObjectCanvas = new PdfCanvas(xObject, pdfDoc);
-        xObjectCanvas.addImage(img, w, 0, 0, h, 0, -600);
+        xObjectCanvas.addImageWithTransformationMatrix(img, w, 0, 0, h, 0, -600);
         com.itextpdf.layout.element.Image clipped = new com.itextpdf.layout.element.Image(xObject);
         clipped.scale(0.5f, 0.5f);
         doc.add(clipped);

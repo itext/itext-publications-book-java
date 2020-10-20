@@ -33,7 +33,7 @@ public class Listing_05_15_Hero1 {
                 pdfDoc.getDefaultPageSize().getHeight()));
         PdfCanvas canvasTemplate = new PdfCanvas(template, pdfDoc);
         createTemplate(canvasTemplate, 4);
-        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage()).addXObject(template, -1192, -1685);
+        PdfCanvas canvas = new PdfCanvas(pdfDoc.getFirstPage()).addXObjectAt(template, -1192, -1685);
         canvas.moveTo(-595, 0);
         canvas.lineTo(595, 0);
         canvas.moveTo(0, -842);

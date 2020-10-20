@@ -73,7 +73,7 @@ public class Listing_06_06_Layers {
         PdfCanvas canvas = new PdfCanvas(resultDoc.addNewPage());
         for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             PdfFormXObject layer = srcDoc.getPage(i).copyAsFormXObject(resultDoc);
-            canvas.addXObject(layer, 1f, 0, 0.4f, 0.4f, 72, 50 * i);
+            canvas.addXObjectWithTransformationMatrix(layer, 1f, 0, 0.4f, 0.4f, 72, 50 * i);
             canvas.beginText();
             canvas.setFontAndSize(font, 20);
             canvas.moveText(496, 150 + 50 * i);

@@ -31,7 +31,7 @@ public class Listing_16_01_SpecialId {
         PdfImageXObject xObject = new PdfImageXObject(ImageDataFactory.create(RESOURCE));
         xObject.put(new PdfName("ITXT_SpecialId"), new PdfName("123456789"));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
-        canvas.addXObject(xObject, 0, 0);
+        canvas.addXObjectAt(xObject, 0, 0);
         doc.close();
     }
 }

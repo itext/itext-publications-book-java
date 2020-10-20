@@ -37,7 +37,7 @@ public class Listing_03_23_ImageDirect {
         doc.add(p);
 
         PdfImageXObject img = new PdfImageXObject(ImageDataFactory.create(RESOURCE));
-        new PdfCanvas(pdfDoc.getLastPage()).addXObject(img, (postcard.getWidth() - img.getWidth()) / 2, (postcard.getHeight() - img.getHeight()) / 2);
+        new PdfCanvas(pdfDoc.getLastPage()).addXObjectAt(img, (postcard.getWidth() - img.getWidth()) / 2, (postcard.getHeight() - img.getHeight()) / 2);
 
         //Close document
         pdfDoc.close();

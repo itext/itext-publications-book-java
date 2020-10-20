@@ -24,6 +24,7 @@ import com.itextpdf.kernel.pdf.annot.PdfWidgetAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagging.StandardRoles;
 import com.itextpdf.kernel.pdf.tagutils.DefaultAccessibilityProperties;
+import com.itextpdf.kernel.pdf.xobject.PdfXObject;
 import com.itextpdf.layout.tagging.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
@@ -308,7 +309,9 @@ public class Listing_08_01_Buttons {
                 if (image.getHeight() > modelButton.rect.getHeight()) {
                     imageWidth = image.getWidth() * (modelButton.rect.getHeight() / image.getHeight()) * 2/3;
                 }
-                canvas.addXObject(imageXObject, 3, 3, imageWidth);
+                Rectangle rect = PdfXObject.calculateProportionallyFitRectangleWithWidth(imageXObject, 3, 3, imageWidth);
+                canvas.addXObjectFittedIntoRectangle(imageXObject, rect);
+
                 xObject.getResources().addImage(imageXObject);
             }
 

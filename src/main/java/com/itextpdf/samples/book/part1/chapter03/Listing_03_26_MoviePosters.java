@@ -58,14 +58,14 @@ public class Listing_03_26_MoviePosters {
         //Add XObjects to page canvas
         PdfCanvas canvas = new PdfCanvas(page);
         for (int i = 0; i < 10; i++) {
-            canvas.addXObject(xObj, 0, i * 84.2f);
+            canvas.addXObjectAt(xObj, 8, i * 84.2f + 8);
         }
         canvas.release();
 
         //Add XObjects to page canvas
         canvas = new PdfCanvas(page = pdfDoc.addNewPage());
         for (int i = 0; i < 10; i++) {
-            canvas.addXObject(xObj, 0, i * 84.2f);
+            canvas.addXObjectAt(xObj, 8, i * 84.2f + 8);
         }
 
         // Get the movies from the database
@@ -79,7 +79,7 @@ public class Listing_03_26_MoviePosters {
             ImageData image = ImageDataFactory.create(String.format(RESOURCE, movie.getImdb()));
             PdfImageXObject img = new PdfImageXObject(image);
             float scaleY = 60 / img.getHeight();
-            canvas.addImage(image, img.getWidth() * scaleY, 0, 0, 60, x + (45 - image.getWidth() * scaleY) / 2, y, false);
+            canvas.addImageWithTransformationMatrix(image, img.getWidth() * scaleY, 0, 0, 60, x + (45 - image.getWidth() * scaleY) / 2, y, false);
             x += 48;
             if (x > 578) {
                 x = 11.5f;
@@ -90,7 +90,7 @@ public class Listing_03_26_MoviePosters {
 
         canvas = new PdfCanvas(page = pdfDoc.addNewPage());
         // Add the template using a different CTM
-        canvas.addXObject(xObj, 0.8f, 0, 0.35f, 0.65f, 0, 600);
+        canvas.addXObjectWithTransformationMatrix(xObj, 0.8f, 0, 0.35f, 0.65f, 0, 600);
 
         Document document = new Document(pdfDoc);
 

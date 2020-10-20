@@ -222,9 +222,11 @@ public class Listing_07_27_Advertisement {
             }
 
             if (obj instanceof PdfFormXObject) {
-                canvas.addXObject(obj, width / obj.getWidth(), 0, 0, height / obj.getHeight(), .5f, .5f);
+                canvas.addXObjectWithTransformationMatrix(obj, width / obj.getWidth(), 0, 0, height / obj.getHeight(), .5f, .5f);
             } else {
-                canvas.addXObject(obj, 0 + occupiedArea.getBBox().getWidth() - imageWidth, 0, imageWidth);
+                Rectangle rect = PdfXObject.calculateProportionallyFitRectangleWithWidth(obj,
+                        0 + occupiedArea.getBBox().getWidth() - imageWidth, 0, imageWidth);
+                canvas.addXObjectFittedIntoRectangle(obj, rect);
             }
 
 

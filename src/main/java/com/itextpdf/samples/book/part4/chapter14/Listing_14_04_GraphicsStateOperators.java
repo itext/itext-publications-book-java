@@ -137,12 +137,12 @@ public class Listing_14_04_GraphicsStateOperators {
 
         canvas.saveState()
                 .setMiterLimit(2)
-                .addXObject(hooks, 300, 600)
+                .addXObjectAt(hooks, 300, 600)
                 .restoreState();
 
         canvas.saveState()
                 .setMiterLimit(2.1f)
-                .addXObject(hooks, 300, 550)
+                .addXObjectAt(hooks, 300, 550)
                 .restoreState();
 
         pdfDoc.close();

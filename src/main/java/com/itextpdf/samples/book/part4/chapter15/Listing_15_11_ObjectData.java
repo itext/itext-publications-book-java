@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagging.PdfUserPropertiesAttributes;
@@ -92,7 +93,7 @@ public class Listing_15_11_ObjectData {
             tagPointer.moveToKid(entry.getValue() - 1);
             tagPointer.addTag(image.getAccessibilityProperties().getRole());
             canvas.openTag(tagPointer.getTagReference());
-            canvas.addImage(img, x + (45 - 30) / 2, y, 30, false);
+            canvas.addImageFittedIntoRectangle(img, new Rectangle(x + (45 - 30) / 2, y, 30, 46), false);
             canvas.closeTag();
             tagPointer.moveToParent();
             tagPointer.moveToParent();

@@ -30,7 +30,7 @@ public class Listing_03_25_ImageInline {
 
         ImageData image = ImageDataFactory.create(RESOURCE);
         new PdfCanvas(pdfDoc.addNewPage(new PageSize(postcard))).
-                addImage(image, (postcard.getWidth() - image.getWidth()) / 2, (postcard.getHeight() - image.getHeight()) / 2, true);
+                addImageAt(image, (postcard.getWidth() - image.getWidth()) / 2, (postcard.getHeight() - image.getHeight()) / 2, true);
 
         //Close document
         pdfDoc.close();
