@@ -7,7 +7,6 @@
   <name>iText 7 Publications: iText in Action</name>
   <url>https://itextpdf.com/</url>
   <properties>
-    <bouncycastle.version>1.66</bouncycastle.version>
     <checkstyle.version>2.15</checkstyle.version>
     <failsafe.version>3.0.0-M3</failsafe.version>
     <fb-contrib.version>7.4.3</fb-contrib.version>
@@ -63,18 +62,6 @@
       <groupId>com.itextpdf</groupId>
       <artifactId>font-asian</artifactId>
       <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcpkix-jdk15on</artifactId>
-      <version>${bouncycastle.version}</version>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk15on</artifactId>
-      <version>${bouncycastle.version}</version>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>com.itextpdf</groupId>
