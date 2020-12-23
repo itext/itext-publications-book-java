@@ -41,23 +41,23 @@ public class Listing_14_06_TransformationMatrix1 {
         PdfFormXObject xObject = curPage.copyAsFormXObject(pdfDoc);
         // add it at different positions using different transformations
         canvas.saveState()
-                .addXObject(xObject, 0, 0)
+                .addXObjectAt(xObject, 0, 0)
                 .concatMatrix(0.5f, 0, 0, 0.5f, -595, 0)
-                .addXObject(xObject, 0, 0)
+                .addXObjectAt(xObject, 0, 0)
                 .concatMatrix(1, 0, 0, 1, 595, 595)
-                .addXObject(xObject, 0, 0)
+                .addXObjectAt(xObject, 0, 0)
                 .restoreState();
 
         canvas.saveState()
                 .concatMatrix(1, 0, 0.4f, 1, -750, -650)
-                .addXObject(xObject, 0, 0)
+                .addXObjectAt(xObject, 0, 0)
                 .restoreState();
 
         canvas.saveState()
                 .concatMatrix(0, -1, -1, 0, 650, 0)
-                .addXObject(xObject, 0, 0)
+                .addXObjectAt(xObject, 0, 0)
                 .concatMatrix(0.2f, 0, 0, 0.5f, 0, 300)
-                .addXObject(xObject, 0, 0)
+                .addXObjectAt(xObject, 0, 0)
                 .restoreState();
 
         pdfDoc.close();

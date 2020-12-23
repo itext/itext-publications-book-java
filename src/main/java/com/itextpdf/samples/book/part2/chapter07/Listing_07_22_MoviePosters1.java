@@ -3,7 +3,6 @@ package com.itextpdf.samples.book.part2.chapter07;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -68,7 +67,7 @@ public class Listing_07_22_MoviePosters1 {
 
         PdfCanvas pdfCanvas = new PdfCanvas(pdfDoc.addNewPage());
         for (int i = 0; i < 10; i++) {
-            pdfCanvas.addXObject(xObject, 0, i * 84.2f);
+            pdfCanvas.addXObjectAt(xObject, 0, i * 84.2f);
         }
         Canvas canvas = new Canvas(pdfCanvas, pdfDoc.getLastPage().getPageSize());
         PdfArray border = new PdfArray(new float[]{0, 0, 0});

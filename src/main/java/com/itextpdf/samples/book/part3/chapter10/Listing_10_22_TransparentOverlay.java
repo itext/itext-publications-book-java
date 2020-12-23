@@ -41,7 +41,7 @@ public class Listing_10_22_TransparentOverlay {
         canvas.ellipse(1, 1, 848, 598);
         canvas.clip();
         canvas.endPath();
-        canvas.addImage(img, w, 0, 0, h, 0, -600);
+        canvas.addImageWithTransformationMatrix(img, w, 0, 0, h, 0, -600);
 
         PdfFormXObject xObject2 = new PdfFormXObject(new Rectangle(850, 600));
         PdfCanvas xObject2Canvas = new PdfCanvas(xObject2, pdfDoc);
@@ -73,7 +73,7 @@ public class Listing_10_22_TransparentOverlay {
         gState.put(PdfName.SMask, maskDict);
         canvas.setExtGState(gState);
 
-        canvas.addXObject(xObject2, 0, 0);
+        canvas.addXObjectAt(xObject2, 0, 0);
 
         doc.close();
     }

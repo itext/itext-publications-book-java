@@ -38,7 +38,7 @@ public class Listing_05_17_Hero2 extends Listing_05_15_Hero1 {
         float adjust;
         int i = 1;
         while (true) {
-            new PdfCanvas(pdfDoc.getPage(i)).addXObject(template, -2 * w, -2 * h);
+            new PdfCanvas(pdfDoc.getPage(i)).addXObjectAt(template, -2 * w, -2 * h);
             adjust = cropBox.getRight() + w;
             if (adjust > 2 * w) {
                 adjust = cropBox.getBottom() - h;

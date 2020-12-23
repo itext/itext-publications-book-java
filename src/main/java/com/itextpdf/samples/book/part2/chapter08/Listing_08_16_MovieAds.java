@@ -28,6 +28,7 @@ import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.tagging.StandardRoles;
 import com.itextpdf.kernel.pdf.tagutils.DefaultAccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
+import com.itextpdf.kernel.pdf.xobject.PdfXObject;
 import com.itextpdf.layout.tagging.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
@@ -367,7 +368,9 @@ public class Listing_08_16_MovieAds {
                 imageWidth = imageWidth * (rect.getHeight() / imageHeight);
             }
 
-            canvas.addXObject(imageXObject, 0.5f + (rect.getWidth() - imageWidth) / 2, 0.5f, imageWidth - 1);
+            Rectangle rectangle = PdfXObject.calculateProportionallyFitRectangleWithWidth(imageXObject,
+                    0.5f + (rect.getWidth() - imageWidth) / 2, 0.5f, imageWidth - 1);
+            canvas.addXObjectFittedIntoRectangle(imageXObject, rectangle);
 
             PdfButtonFormField button = modelButton.getButton();
             button.getWidgets().get(0).setNormalAppearance(xObject.getPdfObject());

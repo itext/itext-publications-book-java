@@ -37,7 +37,7 @@ public class Listing_10_21_ClippingPath {
         xObjectCanvas.ellipse(0, 0, 850, 600);
         xObjectCanvas.clip();
         xObjectCanvas.endPath();
-        xObjectCanvas.addImage(img, w, 0, 0, h, 0, -600);
+        xObjectCanvas.addImageWithTransformationMatrix(img, w, 0, 0, h, 0, -600);
         com.itextpdf.layout.element.Image clipped = new com.itextpdf.layout.element.Image(xObject);
         clipped.scale(0.5f, 0.5f);
         doc.add(clipped);

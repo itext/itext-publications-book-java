@@ -53,7 +53,7 @@ public class Listing_06_07_Superimposing {
         PdfCanvas canvas = new PdfCanvas(resultDoc.addNewPage());
         for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             PdfFormXObject layer = srcDoc.getPage(i).copyAsFormXObject(resultDoc);
-            canvas.addXObject(layer, 1f, 0, 0, 1, 0, 0);
+            canvas.addXObjectWithTransformationMatrix(layer, 1f, 0, 0, 1, 0, 0);
         }
 
         // Close documents

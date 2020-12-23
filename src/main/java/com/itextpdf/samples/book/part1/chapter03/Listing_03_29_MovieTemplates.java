@@ -72,8 +72,8 @@ public class Listing_03_29_MovieTemplates extends Listing_03_15_MovieCalendar {
                 if (d != 1) {
                     doc.add(new AreaBreak());
                 }
-                new PdfCanvas(pdfDoc.getLastPage()).addXObject(t_under, 0, 0);
-                new PdfCanvas(pdfDoc.getLastPage()).addXObject(t_over, 0, 0);
+                new PdfCanvas(pdfDoc.getLastPage()).addXObjectAt(t_under, 0, 0);
+                new PdfCanvas(pdfDoc.getLastPage()).addXObjectAt(t_over, 0, 0);
 
                 over = new PdfCanvas(page.newContentStreamAfter(), page.getResources(), pdfDoc);
                 under = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);

@@ -33,7 +33,7 @@ public class Listing_05_18_Hero3 extends Listing_05_15_Hero1 {
         PdfCanvas canvas = new PdfCanvas(template, pdfDoc);
         createTemplate(canvas, 1);
         canvas.stroke();
-        new PdfCanvas(pdfDoc.getFirstPage()).addXObject(template, 0, 0);
+        new PdfCanvas(pdfDoc.getFirstPage()).addXObjectAt(template, 0, 0);
 
         doc.close();
     }

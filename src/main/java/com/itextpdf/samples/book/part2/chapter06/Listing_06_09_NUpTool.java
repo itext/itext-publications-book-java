@@ -77,7 +77,7 @@ public class Listing_06_09_NUpTool {
                     + (unitSize.getHeight() - (currentSize.getHeight() * factor)) / 2f;
             PdfFormXObject page = srcDoc.getPage(i).copyAsFormXObject(pdfDoc);
             new PdfCanvas(pdfDoc.getLastPage().newContentStreamBefore(), pdfDoc.getLastPage().getResources(), pdfDoc)
-                    .addXObject(page, factor, 0, 0, factor, offsetX, offsetY);
+                    .addXObjectWithTransformationMatrix(page, factor, 0, 0, factor, offsetX, offsetY);
             if (i % n == 0 && i != total) {
                 doc.add(new AreaBreak());
             }

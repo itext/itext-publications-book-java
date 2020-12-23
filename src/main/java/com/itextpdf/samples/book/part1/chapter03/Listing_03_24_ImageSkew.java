@@ -28,7 +28,7 @@ public class Listing_03_24_ImageSkew {
 
         ImageData img = ImageDataFactory.create(RESOURCE);
         new PdfCanvas(pdfDoc.addNewPage(new PageSize(416, 283))).
-                addImage(img, img.getWidth(), 0, .35f * img.getHeight(),
+                addImageWithTransformationMatrix(img, img.getWidth(), 0, .35f * img.getHeight(),
                         .65f * img.getHeight(), 30, 30);
 
         //Close document

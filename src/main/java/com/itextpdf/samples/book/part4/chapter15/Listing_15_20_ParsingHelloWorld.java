@@ -61,7 +61,7 @@ public class Listing_15_20_ParsingHelloWorld {
         xObjectCanvas.showText("Hello People");
         xObjectCanvas.endText();
 
-        canvas.addXObject(xObject, 36, 343);
+        canvas.addXObjectAt(xObject, 36, 343);
         pdfDoc.close();
     }
 
