@@ -124,6 +124,8 @@ public class Listing_04_23_ColumnTable {
     protected class ColumnDocumentRenderer extends DocumentRenderer {
         protected int nextAreaNumber = 0;
 
+        private int currentPageNumber = 0;
+
         public ColumnDocumentRenderer(Document document) {
             super(document);
         }
