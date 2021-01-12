@@ -59,7 +59,7 @@ public class Listing_04_19_HeaderFooter2 {
         connection.close();
     }
 
-    public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
+    public Table getTable(DatabaseConnection connection, Date day) throws SQLException {
         // Create a table with 7 columns
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 2, 5, 1, 3, 2}));
         // Add the first header row

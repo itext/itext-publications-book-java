@@ -94,7 +94,7 @@ public class Listing_04_23_ColumnTable {
     }
 
     public Table getTable(DatabaseConnection connection, Date day)
-            throws SQLException, IOException {
+            throws SQLException {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1.5f, 2, 4.5f, 1}));
         Style style = new Style().setBackgroundColor(ColorConstants.LIGHT_GRAY);
         table.addHeaderCell(new Cell().add(new Paragraph("Location")).addStyle(style));

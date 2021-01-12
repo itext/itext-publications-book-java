@@ -78,10 +78,8 @@ public class Listing_06_19_FillDataSheet{
      * Fill out the fields using info from a Movie object.
      * @param form The form object
      * @param movie A movie POJO
-     * @throws IOException
      */
-    public static void fill(PdfAcroForm form, Movie movie)
-            throws IOException  {
+    public static void fill(PdfAcroForm form, Movie movie) {
         form.getField("title").setValue(movie.getMovieTitle());
         form.getField("director").setValue(getDirectors(movie));
         form.getField("year").setValue(String.valueOf(movie.getYear()));

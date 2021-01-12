@@ -23,7 +23,7 @@ public class Listing_06_01_PageInformation {
     public static final String HERO1
             = "./src/main/resources/pdfs/cmp_Listing_05_15_Hero1.pdf";
 
-    public static void main(String args[]) throws IOException, SQLException {
+    public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
 

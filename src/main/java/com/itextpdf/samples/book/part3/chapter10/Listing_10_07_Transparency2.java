@@ -21,14 +21,14 @@ import java.io.IOException;
 public class Listing_10_07_Transparency2 {
     public static final String DEST = "./target/book/part3/chapter10/Listing_10_07_Transparency2.pdf";
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
 
         new Listing_10_07_Transparency2().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException {
+    public void manipulatePdf(String dest) {
         try {
             PdfDocument pdfDoc = new PdfDocument(new PdfWriter(DEST));
             PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());

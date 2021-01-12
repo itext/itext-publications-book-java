@@ -152,7 +152,7 @@ public class Listing_09_15_HtmlMovies1 {
          * java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
         public void startElement(String uri, String localName, String qName,
-                                 Attributes attributes) throws SAXException {
+                                 Attributes attributes) {
             if ("i".equals(qName)) {
                 isItalic = true;
             } else if ("br".equals(qName)) {
@@ -164,8 +164,7 @@ public class Listing_09_15_HtmlMovies1 {
          * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
          * java.lang.String, java.lang.String)
          */
-        public void endElement(String uri, String localName, String qName)
-                throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             if ("span".equals(qName)) {
                 if (!paragraph.isEmpty()) {
                     document.add(paragraph);
@@ -188,8 +187,7 @@ public class Listing_09_15_HtmlMovies1 {
         /**
          * @see org.xml.sax.ContentHandler#characters(char[], int, int)
          */
-        public void characters(char[] ch, int start, int length)
-                throws SAXException {
+        public void characters(char[] ch, int start, int length) {
             Text text = new Text(strip(new StringBuffer().append(ch, start, length)));
             if (isItalic) {
                 text.setItalic();

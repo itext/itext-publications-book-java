@@ -55,7 +55,7 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
     /**
      * @see org.xml.sax.ContentHandler#characters(char[], int, int)
      */
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         String content = new String(ch, start, length);
         if (content.trim().length() == 0)
             return;
@@ -71,7 +71,7 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
      * java.lang.String, java.lang.String, org.xml.sax.Attributes)
      */
     public void startElement(String uri, String localName, String qName,
-                             Attributes attributes) throws SAXException {
+                             Attributes attributes) {
         try {
             if ("directors".equals(qName) || "countries".equals(qName)) {
                 stack.push(new List());
@@ -98,8 +98,7 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
      * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
      * java.lang.String, java.lang.String)
      */
-    public void endElement(String uri, String localName, String qName)
-            throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         try {
             updateStack();
             if ("directors".equals(qName)) {

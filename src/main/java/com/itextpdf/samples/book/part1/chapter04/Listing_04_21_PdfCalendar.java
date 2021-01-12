@@ -65,7 +65,7 @@ public class Listing_04_21_PdfCalendar {
         createPdf(dest, locale, YEAR);
     }
 
-    public void createPdf(String dest, Locale locale, int year) throws IOException, SQLException {
+    public void createPdf(String dest, Locale locale, int year) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 

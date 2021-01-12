@@ -71,7 +71,7 @@ public class Listing_04_17_NestedTables {
 
 
     public Table getTable(DatabaseConnection connection, Date day)
-            throws UnsupportedEncodingException, SQLException, MalformedURLException {
+            throws SQLException, MalformedURLException {
         // Create a table with only one column
         Table table = new Table(UnitValue.createPercentArray(1)).useAllAvailableWidth();
         // add the cell with the date

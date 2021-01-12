@@ -66,7 +66,7 @@ public class Listing_11_21_Peace {
         private StringBuilder buf = new StringBuilder();
         private Table tab;
 
-        public CustomHandler(Table t) throws IOException {
+        public CustomHandler(Table t) {
             tab = t;
         }
 
@@ -79,8 +79,7 @@ public class Listing_11_21_Peace {
         }
 
         @Override
-        public void endElement(String uri, String localName, String qName)
-                throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             if (null != qName && "pace".equals(qName)) {
                 Paragraph para = new Paragraph();
                 para.add(strip(buf));
@@ -90,8 +89,7 @@ public class Listing_11_21_Peace {
         }
 
         @Override
-        public void characters(char[] ch, int start, int length)
-                throws SAXException {
+        public void characters(char[] ch, int start, int length) {
             buf.append(ch, start, length);
         }
 

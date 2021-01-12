@@ -20,7 +20,7 @@ public class Listing_09_01_Hello extends HttpServlet {
      *HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         response.setContentType("application/pdf");
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(response.getOutputStream()));
         Document doc = new Document(pdfDoc);

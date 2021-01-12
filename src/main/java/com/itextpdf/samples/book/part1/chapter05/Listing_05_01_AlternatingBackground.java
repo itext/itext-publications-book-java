@@ -62,7 +62,7 @@ public class Listing_05_01_AlternatingBackground {
         connection.close();
     }
 
-    public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
+    public Table getTable(DatabaseConnection connection, Date day) throws SQLException {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 2, 5, 1}));
 
         table.addHeaderCell(new Cell(1, 5)

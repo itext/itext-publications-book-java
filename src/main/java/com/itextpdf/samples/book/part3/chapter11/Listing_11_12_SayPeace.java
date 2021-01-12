@@ -92,7 +92,7 @@ public class Listing_11_12_SayPeace {
          *      java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
         public void startElement(String uri, String localName, String qName,
-                                 Attributes attributes) throws SAXException {
+                                 Attributes attributes) {
             if ("message".equals(qName)) {
                 buf = new StringBuffer();
                 cell = new Cell();
@@ -114,8 +114,7 @@ public class Listing_11_12_SayPeace {
          * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
          *      java.lang.String, java.lang.String)
          */
-        public void endElement(String uri, String localName, String qName)
-                throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             if ("big".equals(qName)) {
                 String txt = strip(buf);
                 Text bold = new Text(txt);
@@ -150,8 +149,7 @@ public class Listing_11_12_SayPeace {
         /**
          * @see org.xml.sax.ContentHandler#characters(char[], int, int)
          */
-        public void characters(char[] ch, int start, int length)
-                throws SAXException {
+        public void characters(char[] ch, int start, int length) {
             buf.append(ch, start, length);
         }
 

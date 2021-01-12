@@ -130,7 +130,7 @@ public class Listing_08_18_XfaMovie {
 
      */
     public void fillData2(String src, String xml, String dest)
-            throws IOException, SAXException, ParserConfigurationException {
+            throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
         XfaForm xfa = new XfaForm(new FileInputStream(xml));
         xfa.write(pdfDoc);

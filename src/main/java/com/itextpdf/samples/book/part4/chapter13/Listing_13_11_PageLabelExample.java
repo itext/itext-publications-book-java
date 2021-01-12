@@ -32,14 +32,14 @@ public class Listing_13_11_PageLabelExample {
     /** SQL statements */
     public static final String[] FIELD = { "country", "name", "title" };
 
-    public static void main(String args[]) throws IOException, SQLException, XMPException {
+    public static void main(String args[]) throws IOException, SQLException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
 
         new Listing_13_11_PageLabelExample().manipulatePdf(DEST);
     }
 
-    protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
+    protected void manipulatePdf(String dest) throws IOException, SQLException {
         createPdf(dest);
         listPageLabels(dest, DEST_TXT);
         //manipulatePageLabel(RESULT, DEST2);
@@ -77,10 +77,9 @@ public class Listing_13_11_PageLabelExample {
      * @param sql         The SQL statement
      * @param field       The name of the field that has to be shown
      * @throws SQLException
-     * @throws IOException
      */
     public void addParagraphs(Document doc, DatabaseConnection connection, String sql, String field)
-            throws SQLException,IOException {
+            throws SQLException {
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(sql);
         while (rs.next()) {

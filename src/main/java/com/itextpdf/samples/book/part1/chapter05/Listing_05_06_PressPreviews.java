@@ -52,7 +52,7 @@ public class Listing_05_06_PressPreviews {
         connection.close();
     }
 
-    public Table getTable(DatabaseConnection connection) throws UnsupportedEncodingException, SQLException {
+    public Table getTable(DatabaseConnection connection) throws SQLException {
         Table table = new Table(UnitValue.createPercentArray(new float[]{1, 2, 2, 5, 1})).useAllAvailableWidth();
         table.setBorder(new SolidBorder(1));
         Cell cell;

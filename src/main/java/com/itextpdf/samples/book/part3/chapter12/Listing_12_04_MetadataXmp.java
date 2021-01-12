@@ -69,7 +69,7 @@ public class Listing_12_04_MetadataXmp {
         doc.close();
     }
 
-    public void manipulatePdf(String src, String dest) throws IOException, XMPException {
+    public void manipulatePdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest, new WriterProperties().addXmpMetadata()));
         pdfDoc.close();
     }

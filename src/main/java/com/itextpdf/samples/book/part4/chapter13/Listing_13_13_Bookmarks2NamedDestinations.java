@@ -40,7 +40,7 @@ public class Listing_13_13_Bookmarks2NamedDestinations {
             {"Forties", "Fifties", "Sixties", "Seventies", "Eighties",
                     "Nineties", "Twenty-first Century"};
 
-    public static void main(String args[]) throws IOException, SQLException, XMPException, TransformerException, ParserConfigurationException {
+    public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
 
@@ -153,7 +153,7 @@ public class Listing_13_13_Bookmarks2NamedDestinations {
         }
     }
 
-    protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException, TransformerException, ParserConfigurationException {
+    protected void manipulatePdf(String dest) throws IOException, SQLException, TransformerException, ParserConfigurationException {
         createPdf(RESULT1);
         changePdf(RESULT1, DEST);
         Listing_07_02_LinkActions.createXml(DEST, RESULT2);

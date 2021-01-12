@@ -137,7 +137,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
          * java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
         public void startElement(String uri, String localName, String qName,
-                                 Attributes attributes) throws SAXException {
+                                 Attributes attributes) {
             if ("span".equals(qName)) {
                 if ("director".equals(attributes.getValue("class"))) {
                     // MidNightBlue color
@@ -171,8 +171,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
          * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
          * java.lang.String, java.lang.String)
          */
-        public void endElement(String uri, String localName, String qName)
-                throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             if ("span".equals(qName)) {
                 cell.add(paragraph);
                 paragraph = new Paragraph().setFont(font);
@@ -200,8 +199,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
         /**
          * @see org.xml.sax.ContentHandler#characters(char[], int, int)
          */
-        public void characters(char[] ch, int start, int length)
-                throws SAXException {
+        public void characters(char[] ch, int start, int length) {
             Text text = new Text(strip(new StringBuffer().append(ch, start, length)));
             if (isItalic) {
                 text.setItalic();

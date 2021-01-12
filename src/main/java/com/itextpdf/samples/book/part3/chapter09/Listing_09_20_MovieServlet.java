@@ -24,7 +24,7 @@ public class Listing_09_20_MovieServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         try {
             PdfDocument pdfDoc = new PdfDocument(new PdfWriter(response.getOutputStream()));
             Document doc = new Document(pdfDoc);

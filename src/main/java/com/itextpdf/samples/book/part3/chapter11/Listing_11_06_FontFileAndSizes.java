@@ -58,7 +58,7 @@ public class Listing_11_06_FontFileAndSizes {
         writeAndClosePdf(pdfDoc, font, TEXT);
     }
 
-    public void writeAndClosePdf(PdfDocument pdfDoc, PdfFont font, String text) throws IOException {
+    public void writeAndClosePdf(PdfDocument pdfDoc, PdfFont font, String text) {
         Document doc = new Document(pdfDoc);
         doc.add(new Paragraph(text).setFont(font).setFontSize(12));
         doc.close();

@@ -28,7 +28,7 @@ public class Listing_07_01_NamedActions {
 
     public static final String MOVIE_TEMPLATES = "./src/main/resources/pdfs/cmp_Listing_03_29_MovieTemplates.pdf";
 
-    public static void main(String args[]) throws IOException, SQLException {
+    public static void main(String args[]) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
 

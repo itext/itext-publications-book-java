@@ -30,8 +30,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
                 PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
     }
 
-    public void characters(char[] ch, int start, int length)
-            throws SAXException {
+    public void characters(char[] ch, int start, int length) {
         for (int i = start; i < start + length; i++) {
             if (ch[i] == '\n')
                 buf.append(' ');
@@ -41,7 +40,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
     }
 
     public void startElement(String uri, String localName, String qName,
-                             Attributes attributes) throws SAXException {
+                             Attributes attributes) {
         if ("chapter".equals(qName)) {
             return;
         }
@@ -49,8 +48,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
         roles.remove(0);
     }
 
-    public void endElement(String uri, String localName, String qName)
-            throws SAXException {
+    public void endElement(String uri, String localName, String qName) {
         if ("chapter".equals(qName)) {
             return;
         }

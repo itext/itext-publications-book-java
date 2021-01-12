@@ -31,7 +31,7 @@ public class Listing_02_10_MovieChain {
         new Listing_02_10_MovieChain().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, SQLException, UnsupportedEncodingException {
+    public void manipulatePdf(String dest) throws FileNotFoundException, SQLException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         List<Movie> kubrick = PojoFactory.getMovies(connection, 1);
         connection.close();

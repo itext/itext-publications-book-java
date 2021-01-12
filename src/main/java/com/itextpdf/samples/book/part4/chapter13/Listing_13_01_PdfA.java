@@ -34,7 +34,7 @@ public class Listing_13_01_PdfA {
         createPdfA(dest);
     }
 
-    public void createPdfA(String dest) throws IOException, XMPException {
+    public void createPdfA(String dest) throws IOException {
         InputStream is = new FileInputStream(sourceFolder + "sRGB Color Space Profile.icm");
 
         PdfADocument pdfADocument = new PdfADocument(new PdfWriter(dest),
