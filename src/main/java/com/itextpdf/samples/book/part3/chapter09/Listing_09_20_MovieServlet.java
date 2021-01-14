@@ -42,6 +42,5 @@ public class Listing_09_20_MovieServlet extends HttpServlet {
     /**
      * Serial version UID
      */
-    private static final long serialVersionUID = -6015985931115167175L;
 
 }

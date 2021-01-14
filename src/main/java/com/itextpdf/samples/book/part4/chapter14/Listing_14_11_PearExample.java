@@ -20,7 +20,6 @@ public class Listing_14_11_PearExample extends JPanel {
     protected Area st1;
     protected Area st2;
 
-    private static final long serialVersionUID = 1251626928914650961L;
 
     public Listing_14_11_PearExample() {
         circle = new Ellipse2D.Double();

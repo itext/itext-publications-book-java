@@ -54,5 +54,4 @@ public class Listing_09_07_ShowData extends HttpServlet {
     /**
      * Serial version UID
      */
-    private static final long serialVersionUID = 388110564278942780L;
 }

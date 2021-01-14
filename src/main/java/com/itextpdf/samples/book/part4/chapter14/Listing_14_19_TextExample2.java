@@ -22,7 +22,6 @@ public class Listing_14_19_TextExample2 extends JPanel {
 
     /** Strings that need to be displayed in a PDF document */
     private static AttributedString akira;
-    private static final long serialVersionUID = -3639324875232824761L;
 
     public Listing_14_19_TextExample2() {
         akira = new AttributedString(AKIRA);

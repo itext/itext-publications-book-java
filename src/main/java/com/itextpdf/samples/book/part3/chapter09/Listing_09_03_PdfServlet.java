@@ -52,5 +52,4 @@ public class Listing_09_03_PdfServlet extends HttpServlet {
     /**
      * Serial version UID.
      */
-    private static final long serialVersionUID = 6067021675155015602L;
 }

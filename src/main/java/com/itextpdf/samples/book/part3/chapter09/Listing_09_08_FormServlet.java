@@ -78,5 +78,4 @@ public class Listing_09_08_FormServlet extends HttpServlet {
     /**
      * A serial version UID
      */
-    private static final long serialVersionUID = 4423393678732940807L;
 }

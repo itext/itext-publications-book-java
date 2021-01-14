@@ -29,7 +29,6 @@ public class Listing_09_11_XFDFServlet extends HttpServlet {
     /**
      * Serial version UID.
      */
-    private static final long serialVersionUID = 7582490560292953774L;
     private static Logger logger = LoggerFactory.getLogger(Listing_09_11_XFDFServlet.class);
 
     /**

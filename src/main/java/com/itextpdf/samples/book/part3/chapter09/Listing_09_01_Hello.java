@@ -32,5 +32,4 @@ public class Listing_09_01_Hello extends HttpServlet {
     /**
      * A serial version uid
      */
-    private static final long serialVersionUID = 4262544639420765610L;
 }
