@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part4.chapter13;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
 import com.itextpdf.kernel.pdf.PdfOutputIntent;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -41,7 +42,7 @@ public class Listing_13_01_PdfA {
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));
         pdfADocument.addNewPage();
 
-        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.CP1252, true);
+        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.CP1252, EmbeddingStrategy.PREFER_EMBEDDED);
         Document doc = new Document(pdfADocument).add(new Paragraph("Hello World").setFont(font));
         doc.close();
     }

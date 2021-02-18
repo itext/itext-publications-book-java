@@ -69,7 +69,7 @@ public class Listing_06_06_Layers {
         PdfDocument resultDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(resultDoc, new PageSize(PageSize.A5).rotate());
 
-        PdfFont font = PdfFontFactory.createFont(StandardFonts.ZAPFDINGBATS, true);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.ZAPFDINGBATS);
         PdfCanvas canvas = new PdfCanvas(resultDoc.addNewPage());
         for (int i = 1; i <= srcDoc.getNumberOfPages(); i++) {
             PdfFormXObject layer = srcDoc.getPage(i).copyAsFormXObject(resultDoc);

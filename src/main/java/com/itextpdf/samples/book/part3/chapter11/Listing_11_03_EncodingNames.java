@@ -4,6 +4,7 @@ import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.font.TrueTypeFont;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -38,7 +39,7 @@ public class Listing_11_03_EncodingNames {
     }
 
     public void showEncodings(Document doc, String fontConstant) throws IOException {
-        PdfFont font = PdfFontFactory.createFont(fontConstant, PdfEncodings.WINANSI, true);
+        PdfFont font = PdfFontFactory.createFont(fontConstant, PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
 
         doc.add(new Paragraph("PostScript name: " + font.getFontProgram().getFontNames().getFontName()));
         doc.add(new Paragraph("Available code pages:"));

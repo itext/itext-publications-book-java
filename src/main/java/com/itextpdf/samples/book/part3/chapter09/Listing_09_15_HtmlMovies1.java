@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part3.chapter09;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -138,7 +139,7 @@ public class Listing_09_15_HtmlMovies1 {
             list = new com.itextpdf.layout.element.List().setListSymbol("").setSymbolIndent(10);
             listItem = new ListItem();
             try {
-                font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
+                font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
             } catch (IOException e) {
                 e.printStackTrace();
             }

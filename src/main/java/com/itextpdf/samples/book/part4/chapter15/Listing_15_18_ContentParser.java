@@ -3,7 +3,7 @@ package com.itextpdf.samples.book.part4.chapter15;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.PdfName;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
@@ -27,7 +27,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
         this.roles = roles;
 
         font = PdfFontFactory.createFont(/*"c:/windows/fonts/arial.ttf"*/"./src/main/resources/font/FreeSans.ttf",
-                PdfEncodings.WINANSI, true);
+                PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
     }
 
     public void characters(char[] ch, int start, int length)

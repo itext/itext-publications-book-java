@@ -5,6 +5,7 @@ import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceCmyk;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -34,7 +35,6 @@ import com.itextpdf.samples.book.part1.chapter04.Listing_04_21_PdfCalendar;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.security.cert.Certificate;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -65,8 +65,8 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         // fonts
-        bold = PdfFontFactory.createFont(/*"c://windows/fonts/arialbd.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
-        normal = PdfFontFactory.createFont(/*"c://windows/fonts/arial.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+        bold = PdfFontFactory.createFont(/*"c://windows/fonts/arialbd.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
+        normal = PdfFontFactory.createFont(/*"c://windows/fonts/arial.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
 
         // collections
         specialDays.load(new FileInputStream(String.format(SPECIAL, YEAR)));

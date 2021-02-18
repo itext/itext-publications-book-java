@@ -26,7 +26,7 @@ public class PositionedArrowTabRenderer extends TabRenderer {
         super(tab);
         this.isLeft = isLeft;
         try {
-            zapfdingbats = PdfFontFactory.createFont(StandardFonts.ZAPFDINGBATS, PdfEncodings.WINANSI, false);
+            zapfdingbats = PdfFontFactory.createFont(StandardFonts.ZAPFDINGBATS, PdfEncodings.WINANSI);
         } catch (IOException ioe) {
             zapfdingbats = null;
         }

@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -44,7 +45,7 @@ public class Listing_11_08_CJKExample {
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < 3; i++) {
-            font = PdfFontFactory.createFont(MOVIES[i][0], MOVIES[i][1], false);
+            font = PdfFontFactory.createFont(MOVIES[i][0], MOVIES[i][1], EmbeddingStrategy.PREFER_NOT_EMBEDDED);
             doc.add(new Paragraph(font.getFontProgram().getFontNames().getFontName()).setFont(font));
             for (int j = 2; j < 5; j++)
                 doc.add(new Paragraph(MOVIES[i][j]).setFont(font));

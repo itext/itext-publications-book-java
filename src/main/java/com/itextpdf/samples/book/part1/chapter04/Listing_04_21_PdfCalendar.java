@@ -6,6 +6,7 @@ import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceCmyk;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -69,8 +70,8 @@ public class Listing_04_21_PdfCalendar {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         // fonts
-        normal = PdfFontFactory.createFont(/*"c://windows/fonts/arial.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
-        bold = PdfFontFactory.createFont(/*"c://windows/fonts/arialbd.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+        normal = PdfFontFactory.createFont(/*"c://windows/fonts/arial.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
+        bold = PdfFontFactory.createFont(/*"c://windows/fonts/arialbd.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
 
         // collections
         specialDays.load(new FileInputStream(String.format(SPECIAL, YEAR)));

@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.font.PdfType0Font;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -28,7 +29,7 @@ public class Listing_11_05_UnicodeExample extends Listing_11_04_EncodingExample 
         Document doc = new Document(pdfDoc);
         PdfFont font;
         for (int i = 0; i < 4; i++) {
-            font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
+            font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
             // IDENTITY_H results in PdfType0Font and PdfType0Font supports cmap encoding
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()
                     + " with encoding: " + ((PdfType0Font)font).getCmap().getCmapName()));

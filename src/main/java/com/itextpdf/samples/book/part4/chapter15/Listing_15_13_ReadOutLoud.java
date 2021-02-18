@@ -7,6 +7,7 @@ import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
@@ -36,7 +37,7 @@ public class Listing_15_13_ReadOutLoud {
         PdfPage page = pdfDoc.addNewPage();
         PdfCanvas canvas = new PdfCanvas(page);
 
-        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA, PdfEncodings.CP1252, false);
+        PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA, PdfEncodings.CP1252, EmbeddingStrategy.PREFER_NOT_EMBEDDED);
         TrueTypeCollection coll = new TrueTypeCollection("./src/main/resources/font/ipam.ttc");
         PdfFont font2 = PdfFontFactory.createFont(coll.getFontByTccIndex(1), PdfEncodings.IDENTITY_H);
 
