@@ -6,6 +6,7 @@ import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.font.TrueTypeCollection;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer;
@@ -49,9 +50,9 @@ public class Listing_11_01_FontTypes {
         for (int i = 0; i < FONTS.length; i++) {
             if (FONTS[i][0].endsWith(".ttc")) {
                 TrueTypeCollection coll = new TrueTypeCollection(FONTS[i][0]);
-                font = PdfFontFactory.createFont(coll.getFontByTccIndex(0), FONTS[i][1], true);
+                font = PdfFontFactory.createFont(coll.getFontByTccIndex(0), FONTS[i][1], EmbeddingStrategy.PREFER_EMBEDDED);
             } else {
-                font = PdfFontFactory.createFont(FONTS[i][0], FONTS[i][1], true);
+                font = PdfFontFactory.createFont(FONTS[i][0], FONTS[i][1], EmbeddingStrategy.PREFER_EMBEDDED);
             }
             doc.add(new Paragraph(String.format("Font file: %s with encoding %s", FONTS[i][0], FONTS[i][1])));
             doc.add(new Paragraph(String.format("iText class: %s", font.getClass().getName())));

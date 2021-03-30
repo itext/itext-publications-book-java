@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part3.chapter11;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -27,7 +28,7 @@ public class Listing_11_17_Ligatures1 {
         Document document = new Document(pdfDoc);
 
         PdfFont font = PdfFontFactory.createFont(/*"c:/windows/fonts/arial.ttf"*/"./src/main/resources/font/FreeSans.ttf",
-                PdfEncodings.CP1252, true);
+                PdfEncodings.CP1252, EmbeddingStrategy.PREFER_EMBEDDED);
         document.add(new Paragraph("Movie title: Love at First Hiccough (Denmark)").setFont(font));
         document.add(new Paragraph("directed by Tomas Villum Jensen").setFont(font));
         document.add(new Paragraph("K\u00e6rlighed ved f\u00f8rste hik").setFont(font));

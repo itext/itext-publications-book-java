@@ -14,6 +14,7 @@ import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.colors.WebColors;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfArray;
@@ -175,9 +176,9 @@ public class Listing_08_16_MovieAds {
         PdfFont bold = null;
         PdfFont italic = null;
         try {
-            normal = PdfFontFactory.createFont(StandardFonts.HELVETICA, "", false, true);
-            bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD, "", false, true);
-            italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE, "", false, true);
+            normal = PdfFontFactory.createFont(StandardFonts.HELVETICA, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED, true);
+            bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED, true);
+            italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED, true);
         } catch (IOException e) {
             e.printStackTrace();
         }

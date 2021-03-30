@@ -7,6 +7,7 @@ import com.itextpdf.io.font.constants.FontStyles;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -57,11 +58,13 @@ public class Listing_11_19_FontFactory {
         FontProgramFactory.registerFontDirectory(FONT_DIR);
         // TreeSet is used to stabilize test.
         for (String f : new TreeSet<>(FontProgramFactory.getRegisteredFonts())) {
-            doc.add(new Paragraph(f).setFont(PdfFontFactory.createRegisteredFont(f, "", true)));
+            doc.add(new Paragraph(f).setFont(PdfFontFactory.createRegisteredFont(f, "",
+                    EmbeddingStrategy.PREFER_EMBEDDED)));
         }
         doc.add(new Paragraph("\n"));
 
-        PdfFont cmr10 = PdfFontFactory.createRegisteredFont("cmr10", FontEncoding.FONT_SPECIFIC, true);
+        PdfFont cmr10 = PdfFontFactory.createRegisteredFont("cmr10", FontEncoding.FONT_SPECIFIC,
+                EmbeddingStrategy.PREFER_EMBEDDED);
         doc.add(new Paragraph("Computer Modern").setFont(cmr10));
         doc.add(new Paragraph("\n"));
 
@@ -74,9 +77,11 @@ public class Listing_11_19_FontFactory {
         }
         doc.add(new Paragraph("\n"));
 
-        PdfFont garamond = PdfFontFactory.createRegisteredFont("EB Garamond", PdfEncodings.WINANSI, true);
+        PdfFont garamond = PdfFontFactory.createRegisteredFont("EB Garamond", PdfEncodings.WINANSI,
+                EmbeddingStrategy.PREFER_EMBEDDED);
         doc.add(new Paragraph("EB Garamond").setFont(garamond));
-        PdfFont garamondItalic = PdfFontFactory.createRegisteredFont("EB Garamond", PdfEncodings.WINANSI, true, FontStyles.ITALIC);
+        PdfFont garamondItalic = PdfFontFactory.createRegisteredFont("EB Garamond", PdfEncodings.WINANSI,
+                EmbeddingStrategy.PREFER_EMBEDDED, FontStyles.ITALIC);
         doc.add(new Paragraph("EB Garamond Italic").setFont(garamondItalic).setFontSize(12));
 
         doc.close();

@@ -4,6 +4,7 @@ import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.font.TrueTypeCollection;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -37,7 +38,7 @@ public class Listing_11_02_TTCExample {
         PdfFont font;
         TrueTypeCollection coll = new TrueTypeCollection(FONT);
         for (int i = 0; i < coll.getTTCSize(); i++) {
-            font = PdfFontFactory.createFont(coll.getFontByTccIndex(i), PdfEncodings.IDENTITY_H, true);
+            font = PdfFontFactory.createFont(coll.getFontByTccIndex(i), PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
             doc.add(new Paragraph("font " + i + ": " + coll.getFontByTccIndex(i).getFontNames().getFontName())
                     .setFont(font).setFontSize(12));
             doc.add(new Paragraph("Rash\u00f4mon")

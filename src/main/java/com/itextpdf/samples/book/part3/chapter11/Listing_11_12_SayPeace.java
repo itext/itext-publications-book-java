@@ -4,6 +4,7 @@ import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -79,8 +80,8 @@ public class Listing_11_12_SayPeace {
         public CustomHandler(Document document) {
             this.document = document;
             try {
-                this.f = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, true);
-                this.arabicF = PdfFontFactory.createFont(ARABIC_FONT, PdfEncodings.IDENTITY_H, true);
+                this.f = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
+                this.arabicF = PdfFontFactory.createFont(ARABIC_FONT, PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -5,6 +5,7 @@ import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -51,7 +52,7 @@ public class Listing_11_13_Diacritics1 {
                 "Movie title: Tears of the Black Tiger (Thailand)"));
         doc.add(new Paragraph("directed by Wisit Sasanatieng"));
         for (int i = 0; i < 2; i++) {
-            font = PdfFontFactory.createFont(FONTS[i], PdfEncodings.IDENTITY_H, true);
+            font = PdfFontFactory.createFont(FONTS[i], PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()));
             doc.add(new Paragraph(MOVIE).setFont(font).setFontSize(20));
         }

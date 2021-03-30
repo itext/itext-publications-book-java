@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part1.chapter02;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -37,10 +38,10 @@ public class Listing_02_05_DirectorPhrases2 {
         try {
             // create a font that will be embedded
             timesbd = PdfFontFactory.createFont(
-                    /*"c:/windows/fonts/timesbd.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+                    /*"c:/windows/fonts/timesbd.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
             // create a font that will be embedded
             times = PdfFontFactory.createFont(
-                    /*"c:/windows/fonts/times.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, true);
+                    /*"c:/windows/fonts/times.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);

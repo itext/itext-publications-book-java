@@ -1,7 +1,7 @@
 package com.itextpdf.samples.book.part3.chapter11;
 
-import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.font.PdfSimpleFont;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -52,7 +52,7 @@ public class Listing_11_04_EncodingExample {
         Document doc = new Document(pdfDoc);
         PdfSimpleFont font;
         for (int i = 0; i < 4; i++) {
-            font = (PdfSimpleFont) PdfFontFactory.createFont(FONT, MOVIES[i][0], true);
+            font = (PdfSimpleFont) PdfFontFactory.createFont(FONT, MOVIES[i][0], EmbeddingStrategy.PREFER_EMBEDDED);
             doc.add(new Paragraph("Font: " + font.getFontProgram().getFontNames().getFontName()
                     + " with encoding: " + font.getFontEncoding().getBaseEncoding()));
             doc.add(new Paragraph(MOVIES[i][1]));

@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part4.chapter16;
 
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.CompressionConstants;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -46,7 +47,7 @@ public class Listing_16_04_EmbedFontPostFacto {
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFontFactory.createFont(FONT, "", false);
+        PdfFont font = PdfFontFactory.createFont(FONT, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED);
         font.setSubset(false);
         doc.add(new Paragraph("iText in Action").setFont(font).setFontSize(60));
         doc.close();
