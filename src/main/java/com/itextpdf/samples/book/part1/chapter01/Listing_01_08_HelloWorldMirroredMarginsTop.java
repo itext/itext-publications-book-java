@@ -7,7 +7,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutResult;
-import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.layout.renderer.IRenderer;
 

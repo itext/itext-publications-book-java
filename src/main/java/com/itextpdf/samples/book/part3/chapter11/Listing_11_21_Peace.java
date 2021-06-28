@@ -8,19 +8,17 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.font.FontProvider;
 import com.itextpdf.layout.font.FontSet;
-import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.licensekey.LicenseKey;
 
 import java.io.File;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.FileInputStream;
-import java.io.IOException;
 
 public class Listing_11_21_Peace {
 

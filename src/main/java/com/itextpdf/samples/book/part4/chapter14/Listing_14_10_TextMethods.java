@@ -7,8 +7,8 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.VerticalAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.VerticalAlignment;
 import com.itextpdf.licensekey.LicenseKey;
 
 import java.io.File;

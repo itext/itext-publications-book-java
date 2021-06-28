@@ -15,15 +15,14 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.layout.property.BaseDirection;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.properties.BaseDirection;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.licensekey.LicenseKey;
 
 import java.io.File;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.SAXParser;

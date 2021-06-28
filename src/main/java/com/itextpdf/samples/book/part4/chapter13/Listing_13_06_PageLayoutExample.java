@@ -7,7 +7,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.samples.book.part1.chapter02.Listing_02_07_MovieParagraphs1;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;

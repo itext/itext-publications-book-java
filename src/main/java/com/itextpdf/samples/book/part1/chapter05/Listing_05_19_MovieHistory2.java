@@ -20,7 +20,7 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.BlockElement;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.property.Property;
+import com.itextpdf.layout.properties.Property;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.BlockRenderer;
 import com.itextpdf.layout.renderer.DrawContext;

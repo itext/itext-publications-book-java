@@ -13,8 +13,8 @@ import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.VerticalAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.VerticalAlignment;
 import com.itextpdf.licensekey.LicenseKey;
 
 import java.io.File;

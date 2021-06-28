@@ -9,7 +9,7 @@ import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.properties.HorizontalAlignment;
 import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;

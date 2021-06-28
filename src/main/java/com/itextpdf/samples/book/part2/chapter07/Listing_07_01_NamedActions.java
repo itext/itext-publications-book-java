@@ -9,8 +9,8 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
-import com.itextpdf.layout.property.HorizontalAlignment;
-import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.properties.HorizontalAlignment;
+import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.Style;
 import com.itextpdf.layout.borders.Border;
@@ -21,7 +21,6 @@ import com.itextpdf.layout.element.Table;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class Listing_07_01_NamedActions {
     public static final String DEST = "./target/book/part2/chapter07/Listing_07_01_NamedActions.pdf";
