@@ -13,7 +13,7 @@ endobj
 <</Pages 2 0 R/Type/Catalog>>
 endobj
 3 0 obj
-<</CreationDate(D:20210512152523+03'00')/ModDate(D:20210512152523+03'00')/Producer(iText® Core 7.1.16-SNAPSHOT \(AGPL version\) ©1998-2021 iText Group NV)>>
+<</CreationDate(D:20210923133351+03'00')/ModDate(D:20210923133351+03'00')/Producer(iText® Core 7.2.0-SNAPSHOT \(production version\), pdfCalligraph 3.0.0-SNAPSHOT \(production version\) ©2000-2021 iText Group NV, iText)>>
 endobj
 6 0 obj
 <</BaseFont/Helvetica/Encoding/WinAnsiEncoding/Subtype/Type1/Type/Font>>
@@ -28,15 +28,16 @@ xref
 0 8
 0000000000 65535 f 
 0000000677 00000 n 
-0000001070 00000 n 
+0000001135 00000 n 
 0000000722 00000 n 
 0000000535 00000 n 
 0000000015 00000 n 
-0000000894 00000 n 
-0000000982 00000 n 
+0000000959 00000 n 
+0000001047 00000 n 
 trailer
-<</ID [<9c102a9d315f79aaf1165400755d3fe6><9c102a9d315f79aaf1165400755d3fe6>]/Info 3 0 R/Root 1 0 R/Size 8>>
-%TEST-LICE-NSE0-7.1.16-SNAPSHOT
+<</ID [<ad89eea945cfa31be8951554bf38aa5f><ad89eea945cfa31be8951554bf38aa5f>]/Info 3 0 R/Root 1 0 R/Size 8>>
+%iText-Core-7.2.0-SNAPSHOT
+%iText-pdfCalligraph-3.0.0-SNAPSHOT
 startxref
-1121
+1186
 %%EOF

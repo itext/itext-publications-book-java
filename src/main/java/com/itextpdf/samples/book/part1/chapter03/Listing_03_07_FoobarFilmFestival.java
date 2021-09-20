@@ -15,9 +15,10 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.VerticalAlignment;
-import com.itextpdf.licensekey.LicenseKey;
+import com.itextpdf.licensing.base.LicenseKey;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.Locale;
 
 
@@ -35,7 +36,10 @@ public class Listing_03_07_FoobarFilmFestival {
     protected void manipulatePdf(String dest) throws Exception {
         // License file is loaded because open type font is used and typography module is in classpath:
         // typography module is utilized and requires license.
-        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+                + "/itextkey-typography.json")) {
+            LicenseKey.loadLicenseFile(license);
+        }
 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

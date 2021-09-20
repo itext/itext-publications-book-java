@@ -18,7 +18,7 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.properties.BaseDirection;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.UnitValue;
-import com.itextpdf.licensekey.LicenseKey;
+import com.itextpdf.licensing.base.LicenseKey;
 
 import java.io.File;
 import org.xml.sax.Attributes;
@@ -48,7 +48,10 @@ public class Listing_11_12_SayPeace {
 
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
-        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+                + "/itextkey-typography.json")) {
+            LicenseKey.loadLicenseFile(license);
+        }
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc, PageSize.A4);
