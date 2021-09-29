@@ -18,7 +18,7 @@ public class Listing_09_03_PdfServlet extends HttpServlet {
      * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
      */
     protected void service(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         // Get the text that will be added to the PDF
         String text = request.getParameter("text");
         if (text == null || text.trim().length() == 0) {
@@ -52,5 +52,4 @@ public class Listing_09_03_PdfServlet extends HttpServlet {
     /**
      * Serial version UID.
      */
-    private static final long serialVersionUID = 6067021675155015602L;
 }

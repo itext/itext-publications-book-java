@@ -24,7 +24,7 @@ public class Listing_10_01_DeviceColor {
         new Listing_10_01_DeviceColor().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, MalformedURLException {
+    public void manipulatePdf(String dest) throws FileNotFoundException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         // RGB Colors

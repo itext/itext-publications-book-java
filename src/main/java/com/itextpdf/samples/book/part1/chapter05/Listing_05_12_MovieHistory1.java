@@ -13,7 +13,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.Property;
+import com.itextpdf.layout.properties.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.BlockElement;
 import com.itextpdf.layout.element.Div;

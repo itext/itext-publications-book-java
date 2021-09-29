@@ -25,7 +25,7 @@ public class Listing_09_08_FormServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         response.setContentType("application/pdf");
         // We get a resource from our web app
         InputStream is = getServletContext().getResourceAsStream("/subscribe.pdf");
@@ -51,7 +51,7 @@ public class Listing_09_08_FormServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         response.setContentType("application/pdf");
         // We get a resource from our web app
         InputStream is
@@ -78,5 +78,4 @@ public class Listing_09_08_FormServlet extends HttpServlet {
     /**
      * A serial version UID
      */
-    private static final long serialVersionUID = 4423393678732940807L;
 }

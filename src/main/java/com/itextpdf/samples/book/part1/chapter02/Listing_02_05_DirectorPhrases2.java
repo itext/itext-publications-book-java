@@ -62,7 +62,7 @@ public class Listing_02_05_DirectorPhrases2 {
     }
 
     public Paragraph createDirectorPhrase(ResultSet rs, PdfFont timesbd, PdfFont times)
-            throws SQLException, IOException {
+            throws SQLException {
         Paragraph director = new Paragraph();
         Text name = new Text(rs.getString("name")).setFont(timesbd).setBold();
         name.setUnderline(0.2f, -2f);

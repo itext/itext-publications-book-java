@@ -10,7 +10,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.licensekey.LicenseKey;
+import com.itextpdf.licensing.base.LicenseKey;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Country;
@@ -51,7 +51,10 @@ public class Listing_09_15_HtmlMovies1 {
             throws SQLException, IOException, ParserConfigurationException, SAXException {
         // License file is loaded because open type font is used and typography module is in classpath:
         // typography module is utilized and requires license.
-        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+                + "/itextkey-typography.json")) {
+            LicenseKey.loadLicenseFile(license);
+        }
 
         // Create a database connection
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
@@ -152,7 +155,7 @@ public class Listing_09_15_HtmlMovies1 {
          * java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
         public void startElement(String uri, String localName, String qName,
-                                 Attributes attributes) throws SAXException {
+                                 Attributes attributes) {
             if ("i".equals(qName)) {
                 isItalic = true;
             } else if ("br".equals(qName)) {
@@ -164,8 +167,7 @@ public class Listing_09_15_HtmlMovies1 {
          * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
          * java.lang.String, java.lang.String)
          */
-        public void endElement(String uri, String localName, String qName)
-                throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             if ("span".equals(qName)) {
                 if (!paragraph.isEmpty()) {
                     document.add(paragraph);
@@ -188,8 +190,7 @@ public class Listing_09_15_HtmlMovies1 {
         /**
          * @see org.xml.sax.ContentHandler#characters(char[], int, int)
          */
-        public void characters(char[] ch, int start, int length)
-                throws SAXException {
+        public void characters(char[] ch, int start, int length) {
             Text text = new Text(strip(new StringBuffer().append(ch, start, length)));
             if (isItalic) {
                 text.setItalic();

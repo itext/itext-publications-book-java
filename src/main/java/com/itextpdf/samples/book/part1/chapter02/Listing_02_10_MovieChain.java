@@ -8,7 +8,7 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.hyphenation.HyphenationConfig;
-import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -16,7 +16,6 @@ import com.lowagie.filmfestival.PojoFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class Listing_02_10_MovieChain {
         new Listing_02_10_MovieChain().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, SQLException, UnsupportedEncodingException {
+    public void manipulatePdf(String dest) throws FileNotFoundException, SQLException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         List<Movie> kubrick = PojoFactory.getMovies(connection, 1);
         connection.close();

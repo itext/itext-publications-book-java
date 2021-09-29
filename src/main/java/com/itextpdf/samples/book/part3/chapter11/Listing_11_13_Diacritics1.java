@@ -9,13 +9,14 @@ import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.properties.HorizontalAlignment;
 import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.licensekey.LicenseKey;
+import com.itextpdf.licensing.base.LicenseKey;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Listing_11_13_Diacritics1 {
@@ -39,7 +40,10 @@ public class Listing_11_13_Diacritics1 {
 
     protected void manipulatePdf(String dest) throws IOException {
         //Load the license file to use advanced typography features (Thai script)
-        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+                + "/itextkey-typography.json")) {
+            LicenseKey.loadLicenseFile(license);
+        }
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         PdfFont font;

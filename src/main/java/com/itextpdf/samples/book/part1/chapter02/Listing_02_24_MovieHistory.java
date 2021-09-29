@@ -8,7 +8,7 @@ import com.itextpdf.kernel.pdf.PdfOutline;
 import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
-import com.itextpdf.layout.property.Property;
+import com.itextpdf.layout.properties.Property;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.Document;
 import com.lowagie.database.DatabaseConnection;

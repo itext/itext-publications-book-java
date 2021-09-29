@@ -91,11 +91,9 @@ public class Listing_07_28_MoviePosters2 {
      * @param title the annotation title
      * @param contents the annotation content
      * @param imdb the IMDB number of the movie used as name of the annotation
-     * @throws IOException
      */
     public void addPopup(PdfDocument pdfDoc, Rectangle rect,
-                         String title, String contents, String imdb)
-            throws IOException{
+                         String title, String contents, String imdb) {
         // Create the text annotation
         PdfTextAnnotation text = new PdfTextAnnotation(rect);
         text.setIconName(new PdfName("Comment"))

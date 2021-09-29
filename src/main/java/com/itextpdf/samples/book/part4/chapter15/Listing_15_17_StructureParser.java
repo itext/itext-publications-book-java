@@ -23,7 +23,7 @@ public class Listing_15_17_StructureParser extends DefaultHandler {
      * java.lang.String, java.lang.String, org.xml.sax.Attributes)
      */
     public void startElement(String uri, String localName, String qName,
-                             Attributes attributes) throws SAXException {
+                             Attributes attributes) {
         if ("chapter".equals(qName)) {
             return;
         }

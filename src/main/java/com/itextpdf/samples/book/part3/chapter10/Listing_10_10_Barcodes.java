@@ -35,7 +35,7 @@ public class Listing_10_10_Barcodes {
         new Listing_10_10_Barcodes().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, UnsupportedEncodingException {
+    public void manipulatePdf(String dest) throws FileNotFoundException {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 

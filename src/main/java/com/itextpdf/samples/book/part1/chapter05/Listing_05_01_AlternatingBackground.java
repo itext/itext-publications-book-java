@@ -11,8 +11,8 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.TableRenderer;
@@ -24,7 +24,6 @@ import com.lowagie.filmfestival.Screening;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
@@ -62,7 +61,7 @@ public class Listing_05_01_AlternatingBackground {
         connection.close();
     }
 
-    public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
+    public Table getTable(DatabaseConnection connection, Date day) throws SQLException {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 2, 5, 1}));
 
         table.addHeaderCell(new Cell(1, 5)

@@ -11,7 +11,7 @@ import com.itextpdf.layout.ColumnDocumentRenderer;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.samples.book.part1.chapter02.StarSeparator;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;

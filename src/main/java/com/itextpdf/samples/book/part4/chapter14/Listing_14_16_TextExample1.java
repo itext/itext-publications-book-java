@@ -10,7 +10,6 @@ import java.text.AttributedString;
 public class Listing_14_16_TextExample1 extends JPanel {
     /** A String that needs to be displayed in a PDF document */
     private static AttributedString akira;
-    private static final long serialVersionUID = -3639324875232824761L;
 
     public Listing_14_16_TextExample1() {
         akira = new AttributedString(

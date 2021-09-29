@@ -22,7 +22,7 @@ public class Listing_09_07_ShowData extends HttpServlet {
      */
     @SuppressWarnings("unchecked")
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         response.setContentType("text/plain");
         PrintWriter out = response.getWriter();
         Enumeration<String> parameters = request.getParameterNames();
@@ -40,7 +40,7 @@ public class Listing_09_07_ShowData extends HttpServlet {
      * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         response.setContentType("text/plain");
         OutputStream os = response.getOutputStream();
         InputStream is = request.getInputStream();
@@ -54,5 +54,4 @@ public class Listing_09_07_ShowData extends HttpServlet {
     /**
      * Serial version UID
      */
-    private static final long serialVersionUID = 388110564278942780L;
 }

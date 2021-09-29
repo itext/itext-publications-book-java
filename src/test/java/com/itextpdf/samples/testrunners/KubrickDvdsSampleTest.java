@@ -9,10 +9,12 @@
 package com.itextpdf.samples.testrunners;
 
 import com.itextpdf.kernel.utils.CompareTool;
+import com.itextpdf.licensing.base.LicenseKey;
 import com.itextpdf.test.RunnerSearchConfig;
 import com.itextpdf.test.WrappedSamplesRunner;
 import com.itextpdf.test.annotations.type.SampleTest;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -35,7 +37,11 @@ public class KubrickDvdsSampleTest extends WrappedSamplesRunner {
 
     @Test(timeout = 60000)
     public void test() throws Exception {
+        try (FileInputStream coreLicense = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY") + "/all-products.json")) {
+            LicenseKey.loadLicenseFile(coreLicense);
+        }
         runSamples();
+        LicenseKey.unloadLicenses();
     }
 
     @Override

@@ -11,7 +11,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.property.HorizontalAlignment;
+import com.itextpdf.layout.properties.HorizontalAlignment;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;

@@ -18,8 +18,8 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.layout.LayoutArea;
 import com.itextpdf.layout.layout.LayoutResult;
 import com.itextpdf.layout.layout.RootLayoutArea;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.layout.renderer.DocumentRenderer;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.lowagie.database.DatabaseConnection;
@@ -94,7 +94,7 @@ public class Listing_04_23_ColumnTable {
     }
 
     public Table getTable(DatabaseConnection connection, Date day)
-            throws SQLException, IOException {
+            throws SQLException {
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1.5f, 2, 4.5f, 1}));
         Style style = new Style().setBackgroundColor(ColorConstants.LIGHT_GRAY);
         table.addHeaderCell(new Cell().add(new Paragraph("Location")).addStyle(style));
@@ -124,12 +124,14 @@ public class Listing_04_23_ColumnTable {
     protected class ColumnDocumentRenderer extends DocumentRenderer {
         protected int nextAreaNumber = 0;
 
+        private int currentPageNumber = 0;
+
         public ColumnDocumentRenderer(Document document) {
             super(document);
         }
 
-        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
-        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // If a renderer overflows on the next area, iText uses #getNextRenderer() method to create a new renderer for the overflow part.
+        // If #getNextRenderer() isn't overridden, the default method will be used and thus the default rather than the custom
         // renderer will be created
         @Override
         public IRenderer getNextRenderer() {

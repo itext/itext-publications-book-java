@@ -29,14 +29,13 @@ public class Listing_09_11_XFDFServlet extends HttpServlet {
     /**
      * Serial version UID.
      */
-    private static final long serialVersionUID = 7582490560292953774L;
     private static Logger logger = LoggerFactory.getLogger(Listing_09_11_XFDFServlet.class);
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         response.setContentType("application/pdf");
         // We get a resource from our web app
         InputStream is
@@ -66,7 +65,7 @@ public class Listing_09_11_XFDFServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         response.setContentType("application/pdf");
         // Create an xfdf object out of the request's input stream
         XfdfObjectFactory factory = new XfdfObjectFactory();

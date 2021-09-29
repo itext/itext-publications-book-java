@@ -8,7 +8,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
-import com.itextpdf.layout.property.ListNumberingType;
+import com.itextpdf.layout.properties.ListNumberingType;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;

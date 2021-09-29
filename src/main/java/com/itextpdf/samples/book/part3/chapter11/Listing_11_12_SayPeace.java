@@ -15,15 +15,14 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.layout.property.BaseDirection;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.licensekey.LicenseKey;
+import com.itextpdf.layout.properties.BaseDirection;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
+import com.itextpdf.licensing.base.LicenseKey;
 
 import java.io.File;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.SAXParser;
@@ -49,7 +48,10 @@ public class Listing_11_12_SayPeace {
 
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
-        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+                + "/itextkey-typography.json")) {
+            LicenseKey.loadLicenseFile(license);
+        }
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc, PageSize.A4);
@@ -92,7 +94,7 @@ public class Listing_11_12_SayPeace {
          *      java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
         public void startElement(String uri, String localName, String qName,
-                                 Attributes attributes) throws SAXException {
+                                 Attributes attributes) {
             if ("message".equals(qName)) {
                 buf = new StringBuffer();
                 cell = new Cell();
@@ -114,8 +116,7 @@ public class Listing_11_12_SayPeace {
          * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
          *      java.lang.String, java.lang.String)
          */
-        public void endElement(String uri, String localName, String qName)
-                throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             if ("big".equals(qName)) {
                 String txt = strip(buf);
                 Text bold = new Text(txt);
@@ -150,8 +151,7 @@ public class Listing_11_12_SayPeace {
         /**
          * @see org.xml.sax.ContentHandler#characters(char[], int, int)
          */
-        public void characters(char[] ch, int start, int length)
-                throws SAXException {
+        public void characters(char[] ch, int start, int length) {
             buf.append(ch, start, length);
         }
 

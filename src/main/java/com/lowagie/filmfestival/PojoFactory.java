@@ -80,10 +80,9 @@ public class PojoFactory {
      * Fills a Movie POJO using a ResultSet.
      * @param rs a ResultSet with records from table film_movietitle
      * @return a Movie POJO
-     * @throws UnsupportedEncodingException 
      */
     public static Movie getMovie(ResultSet rs)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         Movie movie = new Movie();
         movie.setTitle(rs.getString("title"));
         if (rs.getObject("original_title") != null)
@@ -101,7 +100,7 @@ public class PojoFactory {
      * @return a Director POJO
      */
     public static Director getDirector(ResultSet rs)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         Director director = new Director();
         director.setName(rs.getString("name"));
         director.setGivenName(rs.getString("given_name"));
@@ -163,11 +162,10 @@ public class PojoFactory {
      * @param connection a connection to the film festival database
      * @param day a day (java.sql.Date)
      * @return a List of Screening POJOs
-     * @throws UnsupportedEncodingException 
      */
     public static List<Screening> getScreenings(
         DatabaseConnection connection, Date day)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         List<Screening> list = new ArrayList<>();
         PreparedStatement stm =
             connection.createPreparedStatement(SCREENINGS);
@@ -206,11 +204,10 @@ public class PojoFactory {
      * @param connection a connection to the film festival database
      * @param film_id a movie id
      * @return a List of Screening POJOs
-     * @throws UnsupportedEncodingException 
      */
     public static List<Screening> getScreenings(
         DatabaseConnection connection, int film_id)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         List<Screening> list = new ArrayList<>();
         PreparedStatement stm =
             connection.createPreparedStatement(MOVIESCREENINGS);
@@ -231,10 +228,9 @@ public class PojoFactory {
      * @param connection a connection to the film festival database
      * @param day a day (java.sql.Date)
      * @return a List of Screening POJOs
-     * @throws UnsupportedEncodingException 
      */
     public static List<Screening> getPressPreviews(DatabaseConnection connection)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         List<Screening> list = new ArrayList<>();
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(PRESS);
@@ -267,11 +263,10 @@ public class PojoFactory {
      * Returns a list with Movie objects.
      * @param connection a connection to the filmfestival database
      * @return a List of Screening POJOs
-     * @throws SQLException 
-     * @throws UnsupportedEncodingException 
+     * @throws SQLException
      */
     public static List<Movie> getMovies(DatabaseConnection connection)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         List<Movie> list = new ArrayList<>();
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(MOVIES);
@@ -303,12 +298,11 @@ public class PojoFactory {
      * @param connection a connection to the filmfestival database
      * @param director_id the id of a movie
      * @return a List of Screening POJOs
-     * @throws SQLException 
-     * @throws UnsupportedEncodingException 
+     * @throws SQLException
      */
     public static List<Director> getDirectors(
         DatabaseConnection connection, int movie_id)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         List<Director> list = new ArrayList<>();
         PreparedStatement directors =
             connection.createPreparedStatement(DIRECTORS);
@@ -325,12 +319,11 @@ public class PojoFactory {
      * @param connection a connection to the filmfestival database
      * @param movie_id the id of a movie
      * @return a List of Screening POJOs
-     * @throws SQLException 
-     * @throws UnsupportedEncodingException 
+     * @throws SQLException
      */
     public static List<Country> getCountries(
         DatabaseConnection connection, int movie_id)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         List<Country> list = new ArrayList<>();
         PreparedStatement countries =
             connection.createPreparedStatement(COUNTRIES);
@@ -347,12 +340,11 @@ public class PojoFactory {
      * @param connection a connection to the filmfestival database
      * @param director_id the id of a director
      * @return a List of Screening POJOs
-     * @throws SQLException 
-     * @throws UnsupportedEncodingException 
+     * @throws SQLException
      */
     public static List<Movie> getMovies(
         DatabaseConnection connection, int director_id)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         List<Movie> list = new ArrayList<>();
         PreparedStatement movies =
             connection.createPreparedStatement(MOVIEDIRECTORS);
@@ -374,12 +366,11 @@ public class PojoFactory {
      * @param connection a connection to the filmfestival database
      * @param country_id the id of a country
      * @return a List of Screening POJOs
-     * @throws SQLException 
-     * @throws UnsupportedEncodingException 
+     * @throws SQLException
      */
     public static List<Movie> getMovies(
        DatabaseConnection connection, String country_id)
-        throws SQLException, UnsupportedEncodingException {
+        throws SQLException {
         List<Movie> list = new ArrayList<>();
         PreparedStatement movies =
             connection.createPreparedStatement(MOVIECOUNTRIES);

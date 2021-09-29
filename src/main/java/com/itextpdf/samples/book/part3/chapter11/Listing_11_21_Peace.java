@@ -8,19 +8,17 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.font.FontProvider;
 import com.itextpdf.layout.font.FontSet;
-import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.licensekey.LicenseKey;
+import com.itextpdf.layout.properties.UnitValue;
+import com.itextpdf.licensing.base.LicenseKey;
 
 import java.io.File;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.FileInputStream;
-import java.io.IOException;
 
 public class Listing_11_21_Peace {
 
@@ -46,7 +44,10 @@ public class Listing_11_21_Peace {
 
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
-        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+                + "/itextkey-typography.json")) {
+            LicenseKey.loadLicenseFile(license);
+        }
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document document = new Document(pdfDoc, PageSize.A4);
@@ -66,7 +67,7 @@ public class Listing_11_21_Peace {
         private StringBuilder buf = new StringBuilder();
         private Table tab;
 
-        public CustomHandler(Table t) throws IOException {
+        public CustomHandler(Table t) {
             tab = t;
         }
 
@@ -79,8 +80,7 @@ public class Listing_11_21_Peace {
         }
 
         @Override
-        public void endElement(String uri, String localName, String qName)
-                throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             if (null != qName && "pace".equals(qName)) {
                 Paragraph para = new Paragraph();
                 para.add(strip(buf));
@@ -90,8 +90,7 @@ public class Listing_11_21_Peace {
         }
 
         @Override
-        public void characters(char[] ch, int start, int length)
-                throws SAXException {
+        public void characters(char[] ch, int start, int length) {
             buf.append(ch, start, length);
         }
 

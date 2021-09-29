@@ -9,8 +9,8 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -20,7 +20,6 @@ import com.lowagie.filmfestival.Screening;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
@@ -58,7 +57,7 @@ public class Listing_04_18_HeaderFooter1 {
         connection.close();
     }
 
-    public Table getTable(DatabaseConnection connection, Date day) throws UnsupportedEncodingException, SQLException {
+    public Table getTable(DatabaseConnection connection, Date day) throws SQLException {
         // Create a table with 7 columns
         Table table = new Table(UnitValue.createPercentArray(new float[]{2, 1, 2, 5, 1, 3, 2}));
         // Add the first header row

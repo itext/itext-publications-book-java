@@ -8,7 +8,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 
@@ -62,7 +62,7 @@ public class Listing_02_07_MovieParagraphs1 {
      *
      * @param movie the movie for which you want to create a Paragraph
      */
-    public Paragraph createMovieInformation(Movie movie) throws IOException {
+    public Paragraph createMovieInformation(Movie movie) {
         Paragraph p = new Paragraph();
         p.setFont(normal);
         p.add(new Text("Title: ").setFont(boldItalic));

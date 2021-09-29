@@ -1,6 +1,6 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
-import com.itextpdf.kernel.PdfException;
+import com.itextpdf.kernel.exceptions.PdfException;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;

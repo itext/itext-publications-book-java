@@ -9,9 +9,8 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.WriterProperties;
-import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.property.ListNumberingType;
+import com.itextpdf.layout.properties.ListNumberingType;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.lowagie.database.DatabaseConnection;
@@ -45,14 +44,14 @@ public class Listing_12_06_HelloWorldCompression {
     protected PdfFont italic;
     protected PdfFont normal;
 
-    public static void main(String args[]) throws IOException, XMPException, SQLException {
+    public static void main(String args[]) throws IOException, SQLException {
         File file = new File(RESULT[0]);
         file.getParentFile().mkdirs();
 
         new Listing_12_06_HelloWorldCompression().manipulatePdf(RESULT[0]);
     }
 
-    public void createPdf(String dest, int compression) throws IOException, XMPException, SQLException {
+    public void createPdf(String dest, int compression) throws IOException, SQLException {
         WriterProperties properties = new WriterProperties();
         switch (compression) {
             case -1:
@@ -134,7 +133,7 @@ public class Listing_12_06_HelloWorldCompression {
         pdfDoc.close();
     }
 
-    public void manipulatePdf(String dest) throws IOException, XMPException, SQLException {
+    public void manipulatePdf(String dest) throws IOException, SQLException {
         createPdf(RESULT[0], -1);
         createPdf(RESULT[1], 0);
         createPdf(RESULT[2], 1);

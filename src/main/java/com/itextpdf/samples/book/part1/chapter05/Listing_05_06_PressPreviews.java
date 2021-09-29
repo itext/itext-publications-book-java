@@ -11,7 +11,7 @@ import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
@@ -23,7 +23,6 @@ import com.lowagie.filmfestival.Screening;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +51,7 @@ public class Listing_05_06_PressPreviews {
         connection.close();
     }
 
-    public Table getTable(DatabaseConnection connection) throws UnsupportedEncodingException, SQLException {
+    public Table getTable(DatabaseConnection connection) throws SQLException {
         Table table = new Table(UnitValue.createPercentArray(new float[]{1, 2, 2, 5, 1})).useAllAvailableWidth();
         table.setBorder(new SolidBorder(1));
         Cell cell;
@@ -123,8 +122,8 @@ public class Listing_05_06_PressPreviews {
                     .stroke();
         }
 
-        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
-        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // If a renderer overflows on the next area, iText uses #getNextRenderer() method to create a new renderer for the overflow part.
+        // If #getNextRenderer() isn't overridden, the default method will be used and thus the default rather than the custom
         // renderer will be created
         @Override
         public IRenderer getNextRenderer() {

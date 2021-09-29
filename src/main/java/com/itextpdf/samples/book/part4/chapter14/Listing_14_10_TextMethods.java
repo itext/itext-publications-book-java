@@ -7,11 +7,12 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.layout.Canvas;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.VerticalAlignment;
-import com.itextpdf.licensekey.LicenseKey;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.VerticalAlignment;
+import com.itextpdf.licensing.base.LicenseKey;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Listing_14_10_TextMethods {
@@ -27,7 +28,10 @@ public class Listing_14_10_TextMethods {
 
     public void manipulatePdf(String dest) throws IOException {
         //Load the license file to use advanced typography features
-        LicenseKey.loadLicenseFile(System.getenv("ITEXT7_LICENSEKEY") + "/itextkey-typography.xml");
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+                + "/itextkey-typography.json")) {
+            LicenseKey.loadLicenseFile(license);
+        }
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         // draw helper lines
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());

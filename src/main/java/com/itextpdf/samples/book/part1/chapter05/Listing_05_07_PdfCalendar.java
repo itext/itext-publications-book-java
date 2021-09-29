@@ -21,11 +21,11 @@ import com.itextpdf.layout.element.Tab;
 import com.itextpdf.layout.element.TabStop;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.element.Text;
-import com.itextpdf.layout.property.HorizontalAlignment;
-import com.itextpdf.layout.property.TabAlignment;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.UnitValue;
-import com.itextpdf.layout.property.VerticalAlignment;
+import com.itextpdf.layout.properties.HorizontalAlignment;
+import com.itextpdf.layout.properties.TabAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
+import com.itextpdf.layout.properties.VerticalAlignment;
 import com.itextpdf.layout.renderer.CellRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
@@ -60,7 +60,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         createPdf(dest, locale, YEAR);
     }
 
-    public void createPdf(String dest, Locale locale, int year) throws IOException, SQLException {
+    public void createPdf(String dest, Locale locale, int year) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
@@ -233,8 +233,8 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
 
         }
 
-        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
-        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // If a renderer overflows on the next area, iText uses #getNextRenderer() method to create a new renderer for the overflow part.
+        // If #getNextRenderer() isn't overridden, the default method will be used and thus the default rather than the custom
         // renderer will be created
         @Override
         public IRenderer getNextRenderer() {
@@ -258,8 +258,8 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
             this.isColoredBackground = isColoredBackground;
         }
 
-        // If renderer overflows on the next area, iText uses getNextRender() method to create a renderer for the overflow part.
-        // If getNextRenderer isn't overriden, the default method will be used and thus a default rather than custom
+        // If a renderer overflows on the next area, iText uses #getNextRenderer() method to create a new renderer for the overflow part.
+        // If #getNextRenderer() isn't overridden, the default method will be used and thus the default rather than the custom
         // renderer will be created
         @Override
         public IRenderer getNextRenderer() {

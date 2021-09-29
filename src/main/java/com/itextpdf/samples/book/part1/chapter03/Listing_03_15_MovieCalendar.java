@@ -1,7 +1,7 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;

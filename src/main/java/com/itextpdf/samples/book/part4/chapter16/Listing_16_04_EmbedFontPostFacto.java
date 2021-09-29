@@ -1,5 +1,6 @@
 package com.itextpdf.samples.book.part4.chapter16;
 
+import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
@@ -47,7 +48,8 @@ public class Listing_16_04_EmbedFontPostFacto {
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
-        PdfFont font = PdfFontFactory.createFont(FONT, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED);
+        PdfFont font = PdfFontFactory.createFont(FONT, PdfEncodings.WINANSI,
+                EmbeddingStrategy.PREFER_NOT_EMBEDDED);
         font.setSubset(false);
         doc.add(new Paragraph("iText in Action").setFont(font).setFontSize(60));
         doc.close();
