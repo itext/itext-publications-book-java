@@ -91,6 +91,7 @@ public class GenericSampleTest extends WrappedSamplesRunner {
         searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part4.chapter16.Listing_16_04_EmbedFontPostFacto");
         searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part4.chapter16.Listing_16_05_KubrickDvds");
         searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part4.chapter16.Listing_16_06_KubrickDocumentary");
+        searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part4.chapter16.Listing_16_02_ResizeImage");
 
         // Not sample classes
         searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part1.chapter02.PipeSplitCharacter");
