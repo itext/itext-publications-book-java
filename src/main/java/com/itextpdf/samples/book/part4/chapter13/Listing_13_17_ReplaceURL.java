@@ -1,5 +1,8 @@
 package com.itextpdf.samples.book.part4.chapter13;
 
+import com.itextpdf.forms.fields.NonTerminalFormFieldBuilder;
+import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
+import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
@@ -37,27 +40,30 @@ public class Listing_13_17_ReplaceURL {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
 
-        PdfFormField personal = PdfFormField.createEmptyField(pdfDoc);
-        personal.setFieldName("personal");
+        PdfFormField personal =
+                new NonTerminalFormFieldBuilder(pdfDoc, "personal").createNonTerminalFormField();
         Table table = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
         Cell cell;
 
         table.addCell("Your name:");
         cell = new Cell(1, 2);
-        PdfTextFormField field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "name");
+        PdfTextFormField field = new TextFormFieldBuilder(pdfDoc, "name")
+                .setWidgetRectangle(new Rectangle(0, 0)).createText();
         field.setFontSize(12);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         table.addCell("Login:");
         cell = new Cell();
-        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "loginname");
+        field = new TextFormFieldBuilder(pdfDoc, "loginname")
+                .setWidgetRectangle(new Rectangle(0, 0)).createText();
         field.setFontSize(12);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         cell = new Cell();
-        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "password");
+        field = new TextFormFieldBuilder(pdfDoc, "password")
+                .setWidgetRectangle(new Rectangle(0, 0)).createText();
         field.setFieldFlag(PdfFormField.FF_PASSWORD);
         field.setFontSize(12);
         personal.addKid(field);
@@ -66,7 +72,8 @@ public class Listing_13_17_ReplaceURL {
         table.addCell("Your motivation:");
         cell = new Cell(1, 2);
         cell.setHeight(60);
-        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "reason");
+        field = new TextFormFieldBuilder(pdfDoc, "reason")
+                .setWidgetRectangle(new Rectangle(0, 0)).createText();
         field.setMultiline(true);
         field.setFontSize(12);
         personal.addKid(field);
@@ -76,7 +83,8 @@ public class Listing_13_17_ReplaceURL {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.addField(personal);
 
-        PdfButtonFormField button1 = PdfFormField.createPushButton(pdfDoc, new Rectangle(90, 660, 50, 30), "post", "POST");
+        PdfButtonFormField button1 = new PushButtonFormFieldBuilder(pdfDoc, "post")
+                .setWidgetRectangle(new Rectangle(90, 660, 50, 30)).setCaption("POST").createPushButton();
         button1.setBackgroundColor(new DeviceGray(0.7f));
         button1.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
         button1.setAction(PdfAction.createSubmitForm("/book/request", null,

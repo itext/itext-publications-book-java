@@ -4,6 +4,8 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
+import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
+import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.io.source.ByteArrayOutputStream;
@@ -96,21 +98,26 @@ public class Listing_08_16_MovieAds {
 
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
 
-        PdfButtonFormField poster = PdfFormField.createPushButton(pdfDoc, new Rectangle(millimetersToPoints(0),
-                millimetersToPoints(25), millimetersToPoints(35) - millimetersToPoints(0),
-                millimetersToPoints(50) - millimetersToPoints(25)), POSTER, "");
+        PdfButtonFormField poster = new PushButtonFormFieldBuilder(pdfDoc, POSTER)
+                .setWidgetRectangle(new Rectangle(millimetersToPoints(0),
+                        millimetersToPoints(25), millimetersToPoints(35) - millimetersToPoints(0),
+                        millimetersToPoints(50) - millimetersToPoints(25))).setCaption("").createPushButton();
         poster.setBackgroundColor(new DeviceGray(0.4f));
         form.addField(poster);
 
-        PdfTextFormField movie = PdfFormField.createText(pdfDoc, new Rectangle(millimetersToPoints(0),
-                millimetersToPoints(7), millimetersToPoints(35) - millimetersToPoints(0),
-                millimetersToPoints(25) - millimetersToPoints(7)), TEXT, "");
+        PdfTextFormField movie = new TextFormFieldBuilder(pdfDoc, TEXT)
+                .setWidgetRectangle(new Rectangle(millimetersToPoints(0),
+                        millimetersToPoints(7), millimetersToPoints(35) - millimetersToPoints(0),
+                        millimetersToPoints(25) - millimetersToPoints(7))).createText();
+        movie.setValue("");
         movie.setMultiline(true);
         form.addField(movie);
 
-        PdfTextFormField screening = PdfFormField.createText(pdfDoc, new Rectangle(millimetersToPoints(0),
-                millimetersToPoints(0), millimetersToPoints(35) - millimetersToPoints(0),
-                millimetersToPoints(7) - millimetersToPoints(0)), YEAR, "");
+        PdfTextFormField screening = new TextFormFieldBuilder(pdfDoc, YEAR)
+                .setWidgetRectangle(new Rectangle(millimetersToPoints(0),
+                        millimetersToPoints(0), millimetersToPoints(35) - millimetersToPoints(0),
+                        millimetersToPoints(7) - millimetersToPoints(0))).createText();
+        screening.setValue("");
         screening.setJustification(PdfFormField.ALIGN_CENTER);
         screening.setBackgroundColor(new DeviceGray(0.4f));
         screening.setColor(ColorConstants.LIGHT_GRAY);

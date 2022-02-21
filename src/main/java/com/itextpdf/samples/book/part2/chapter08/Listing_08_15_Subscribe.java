@@ -1,8 +1,10 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.NonTerminalFormFieldBuilder;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
+import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -57,27 +59,33 @@ public class Listing_08_15_Subscribe {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
 
-        PdfFormField personal = PdfFormField.createEmptyField(pdfDoc);
-        personal.setFieldName("personal");
+        PdfFormField personal =
+                new NonTerminalFormFieldBuilder(pdfDoc, "personal").createNonTerminalFormField();
         Table table = new Table(UnitValue.createPercentArray(3)).useAllAvailableWidth();
         Cell cell;
 
         table.addCell(new Cell().add(new Paragraph("Your name:")));
         cell = new Cell(1, 2);
-        PdfTextFormField field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "name", "");
+        PdfTextFormField field = new TextFormFieldBuilder(pdfDoc, "name")
+                .setWidgetRectangle(new Rectangle(0, 0)).createText();
+        field.setValue("");
         field.setBorderWidth(0);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         table.addCell(new Cell().add(new Paragraph("Login:")));
         cell = new Cell();
-        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "loginname", "");
+        field = new TextFormFieldBuilder(pdfDoc, "loginname")
+                .setWidgetRectangle(new Rectangle(0, 0)).createText();
+        field.setValue("");
         field.setBorderWidth(0);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         cell = new Cell();
-        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "password", "");
+        field = new TextFormFieldBuilder(pdfDoc, "password")
+                .setWidgetRectangle(new Rectangle(0, 0)).createText();
+        field.setValue("");
         field.setBorderWidth(0);
         field.setPassword(true);
         personal.addKid(field);
@@ -86,7 +94,9 @@ public class Listing_08_15_Subscribe {
         table.addCell(new Cell().add(new Paragraph("Your motivation:")));
         cell = new Cell(1, 2);
         cell.setHeight(60);
-        field = PdfFormField.createText(pdfDoc, new Rectangle(0, 0), "reason", "");
+        field = new TextFormFieldBuilder(pdfDoc, "reason")
+                .setWidgetRectangle(new Rectangle(0, 0)).createText();
+        field.setValue("");
         field.setBorderWidth(0);
         field.setMultiline(true);
         personal.addKid(field);

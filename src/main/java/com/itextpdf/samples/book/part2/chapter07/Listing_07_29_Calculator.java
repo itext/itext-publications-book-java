@@ -4,6 +4,8 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
+import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
+import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.ColorConstants;
@@ -135,7 +137,9 @@ public class Listing_07_29_Calculator {
      * @param name   the name of the text field
      */
     public void addTextField(PdfDocument pdfDoc, Rectangle rect, String name) {
-        PdfTextFormField field = PdfFormField.createText(pdfDoc, rect, name, "");
+        PdfTextFormField field = new TextFormFieldBuilder(pdfDoc, name)
+                .setWidgetRectangle(rect).createText();
+        field.setValue("");
         field.setMultiline(false).setPassword(false).setMaxLen(0);
         field.getWidgets().get(0).setHighlightMode(PdfName.None);
         field.getWidgets().get(0).put(PdfName.Q, new PdfNumber(2));
@@ -156,7 +160,8 @@ public class Listing_07_29_Calculator {
     public void addPushButton(PdfDocument pdfDoc, Rectangle rect, String btn, String script, PdfFont font) {
         float w = rect.getWidth();
         float h = rect.getHeight();
-        PdfButtonFormField pushButton = PdfFormField.createPushButton(pdfDoc, rect, "btn_" + btn, "btn_" + btn);
+        PdfButtonFormField pushButton = new PushButtonFormFieldBuilder(pdfDoc, "btn_" + btn)
+                .setWidgetRectangle(rect).setCaption("btn_" + btn).createPushButton();
         pushButton.setFieldName("btn_" + btn);
         pushButton.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_PUSH);
         pushButton.getWidgets().get(0).setNormalAppearance(createAppearance(pdfDoc, btn, ColorConstants.GRAY, w, h, font));

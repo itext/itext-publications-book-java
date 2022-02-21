@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.ChoiceFormFieldBuilder;
 import com.itextpdf.forms.fields.PdfChoiceFormField;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.kernel.colors.ColorConstants;
@@ -186,13 +187,19 @@ public class Listing_08_12_ChoiceFields {
                         langAndExpArray[i][0] = EXPORTVALUES[i];
                         langAndExpArray[i][1] = LANGUAGES[i];
                     }
-                    text = PdfFormField.createList(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langAndExpArray);
+                    text = new ChoiceFormFieldBuilder(document, String.format("choice_%s", cf))
+                            .setWidgetRectangle(getOccupiedAreaBBox()).setOptions(langAndExpArray)
+                            .createList();
+                    text.setValue("");
                     text.setTopIndex(1);
                     break;
                 case 2:
                     langArray = new String[LANGUAGES.length];
                     System.arraycopy(LANGUAGES, 0, langArray, 0, LANGUAGES.length);
-                    text = PdfFormField.createList(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langArray);
+                    text = new ChoiceFormFieldBuilder(document, String.format("choice_%s", cf))
+                            .setWidgetRectangle(getOccupiedAreaBBox()).setOptions(langArray)
+                            .createList();
+                    text.setValue("");
                     text.setBorderColor(ColorConstants.GREEN);
                     PdfDictionary borderDict = new PdfDictionary();
                     borderDict.put(PdfName.S, PdfName.D);
@@ -207,7 +214,10 @@ public class Listing_08_12_ChoiceFields {
                         langAndExpArray[i][0] = EXPORTVALUES[i];
                         langAndExpArray[i][1] = LANGUAGES[i];
                     }
-                    text = PdfFormField.createComboBox(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langAndExpArray);
+                    text = new ChoiceFormFieldBuilder(document, String.format("choice_%s", cf))
+                            .setWidgetRectangle(getOccupiedAreaBBox()).setOptions(langAndExpArray)
+                            .createComboBox();
+                    text.setValue("");
                     text.setBorderColor(ColorConstants.RED);
                     text.setBackgroundColor(ColorConstants.GRAY);
 
@@ -216,7 +226,10 @@ public class Listing_08_12_ChoiceFields {
                 case 4:
                     langArray = new String[LANGUAGES.length];
                     System.arraycopy(LANGUAGES, 0, langArray, 0, LANGUAGES.length);
-                    text = PdfFormField.createComboBox(document, getOccupiedAreaBBox(), String.format("choice_%s", cf), "", langArray);
+                    text = new ChoiceFormFieldBuilder(document, String.format("choice_%s", cf))
+                            .setWidgetRectangle(getOccupiedAreaBBox()).setOptions(langArray)
+                            .createComboBox();
+                    text.setValue("");
                     text.setFieldFlag(PdfChoiceFormField.FF_EDIT, true);
                     break;
             }

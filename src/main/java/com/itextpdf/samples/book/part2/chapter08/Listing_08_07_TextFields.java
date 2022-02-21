@@ -1,5 +1,6 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
+import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
@@ -125,8 +126,9 @@ public class Listing_08_07_TextFields {
         @Override
         public void draw(DrawContext drawContext) {
             super.draw(drawContext);
-            PdfTextFormField text = PdfFormField.createText(drawContext.getDocument(), getOccupiedAreaBBox(),
-                    String.format("text_%s", tf), "Enter your name here...");
+            PdfTextFormField text = new TextFormFieldBuilder(drawContext.getDocument(), String.format("text_%s", tf))
+                    .setWidgetRectangle(getOccupiedAreaBBox()).createText();
+            text.setValue("Enter your name here...");
             text.setBackgroundColor(new DeviceGray(0.75f));
             PdfDictionary borderStyleDict = new PdfDictionary();
             switch (tf) {

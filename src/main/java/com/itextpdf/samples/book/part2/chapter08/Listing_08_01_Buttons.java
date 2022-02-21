@@ -1,8 +1,11 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.CheckBoxFormFieldBuilder;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
+import com.itextpdf.forms.fields.RadioFormFieldBuilder;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -96,11 +99,13 @@ public class Listing_08_01_Buttons {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         Rectangle rect;
-        PdfButtonFormField radioGroup = PdfFormField.createRadioGroup(pdfDoc, "language", "");
+        PdfButtonFormField radioGroup = new RadioFormFieldBuilder(pdfDoc, "language").createRadioGroup();
+        radioGroup.setValue("");
         PdfFormField radio;
         for (int i = 0; i < LANGUAGES.length; i++) {
             rect = new Rectangle(40, 806 - i * 40, 60 - 40, 806 - 788);
-            radio = PdfFormField.createRadioButton(pdfDoc, rect, radioGroup, LANGUAGES[i]);
+            radio = new RadioFormFieldBuilder(pdfDoc)
+                    .setWidgetRectangle(rect).createRadioButton(radioGroup, LANGUAGES[i]);
             radio.setBorderColor(ColorConstants.DARK_GRAY);
             radio.setBackgroundColor(ColorConstants.LIGHT_GRAY);
             radio.setCheckType(PdfFormField.TYPE_CIRCLE);
@@ -138,7 +143,8 @@ public class Listing_08_01_Buttons {
                     .restoreState();
 
             rect = new Rectangle(180, 806 - i * 40, 200 - 180, 806 - 788);
-            checkBox = PdfFormField.createCheckBox(pdfDoc, rect, LANGUAGES[i], "Off");
+            checkBox = new CheckBoxFormFieldBuilder(pdfDoc, LANGUAGES[i])
+                    .setWidgetRectangle(rect).createCheckBox();
             checkBox.getWidgets().get(0).getNormalAppearanceObject().put(new PdfName("Off"),
                     xObjectApp1.getPdfObject());
             checkBox.getWidgets().get(0).getNormalAppearanceObject().put(new PdfName("Yes"),
@@ -200,8 +206,8 @@ public class Listing_08_01_Buttons {
         protected Color buttonBackgroundColor = ColorConstants.WHITE;
 
         public Button(String name, String caption, PdfDocument document, Rectangle rect) {
-            button = PdfFormField.createButton(document, new Rectangle(0, 0), 0);
-            button.setFieldName(name);
+            button = new PushButtonFormFieldBuilder(document, name)
+                    .setWidgetRectangle(new Rectangle(0, 0)).createPushButton();
             button.setPushButton(true);
 
             this.caption = caption;

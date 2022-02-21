@@ -1,5 +1,8 @@
 package com.itextpdf.samples.book.part4.chapter13;
 
+import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
+import com.itextpdf.forms.fields.RadioFormFieldBuilder;
+import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -40,7 +43,7 @@ public class Listing_13_16_AddJavaScriptToForm {
         new Listing_13_16_AddJavaScriptToForm().manipulatePdf(DEST);
     }
 
-    public void createPdf(String dest) throws IOException{
+    public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
 
@@ -48,7 +51,7 @@ public class Listing_13_16_AddJavaScriptToForm {
         canvas.setFontAndSize(PdfFontFactory.createFont(StandardFonts.HELVETICA), 12);
         canvas.moveText(36, 770);
         canvas.showText("Married?");
-        canvas.moveText(22, -20) ;// 58, 750);
+        canvas.moveText(22, -20);// 58, 750);
         canvas.showText("YES");
         canvas.moveText(44, 0); //102, 750);
         canvas.showText("NO");
@@ -57,16 +60,21 @@ public class Listing_13_16_AddJavaScriptToForm {
         canvas.endText();
 
         // create a radio button field
-        PdfButtonFormField married = PdfFormField.createRadioGroup(pdfDoc, "married", "Yes");
+        PdfButtonFormField married = new RadioFormFieldBuilder(pdfDoc, "married").createRadioGroup();
+        married.setValue("Yes");
         Rectangle rectYes = new Rectangle(40, 744, 16, 22);
-        PdfFormField yes = PdfFormField.createRadioButton(pdfDoc, rectYes, married, "Yes");
+        PdfFormField yes = new RadioFormFieldBuilder(pdfDoc)
+                .setWidgetRectangle(rectYes).createRadioButton(married, "Yes");
         Rectangle rectNo = new Rectangle(84, 744, 16, 22);
-        PdfFormField no = PdfFormField.createRadioButton(pdfDoc, rectNo, married, "No");
+        PdfFormField no = new RadioFormFieldBuilder(pdfDoc)
+                .setWidgetRectangle(rectNo).createRadioButton(married, "No");
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.addField(married);
         // create a text field
         Rectangle rect = new Rectangle(40, 710, 160, 16);
-        PdfTextFormField partner = PdfFormField.createText(pdfDoc, rect, "partner", "partner");
+        PdfTextFormField partner = new TextFormFieldBuilder(pdfDoc, "partner")
+                .setWidgetRectangle(rect).createText();
+        partner.setValue("partner");
         partner.setBorderColor(ColorConstants.DARK_GRAY);
         partner.setBorderWidth(0.5f);
         form.addField(partner);
@@ -85,7 +93,8 @@ public class Listing_13_16_AddJavaScriptToForm {
         fd.getWidgets().get(0).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("setReadOnly(false);"));
         // Get the PDF dictionary of the NO radio button and add an additional action
         fd.getWidgets().get(1).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("setReadOnly(true);"));
-        PdfButtonFormField button = PdfFormField.createPushButton(pdfDoc, new Rectangle(40, 690, 160, 20), "submit", "validate and submit");
+        PdfButtonFormField button = new PushButtonFormFieldBuilder(pdfDoc, "submit")
+                .setWidgetRectangle(new Rectangle(40, 690, 160, 20)).setCaption("validate and submit").createPushButton();
         button.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
         button.setAction(PdfAction.createJavaScript("validate();"));
         form.addField(button);
