@@ -1,5 +1,5 @@
 personal
-personal.name
-personal.loginname
 personal.password -> password
 personal.reason -> multiline
+personal.loginname
+personal.name

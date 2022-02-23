@@ -11,7 +11,6 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -64,7 +63,7 @@ public class Listing_09_08_FormServlet extends HttpServlet {
         // We alter the fields of the existing PDF
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.getField("password").setFieldFlag(PdfFormField.FF_PASSWORD, false);
-        Set<String> parameters = form.getFormFields().keySet();
+        Set<String> parameters = form.getAllFormFields().keySet();
         for (String parameter : parameters) {
             form.getField(parameter).setValue(request.getParameter(parameter));
         }

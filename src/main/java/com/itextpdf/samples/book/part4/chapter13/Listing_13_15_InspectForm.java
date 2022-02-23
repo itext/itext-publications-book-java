@@ -33,7 +33,7 @@ public class Listing_13_15_InspectForm {
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(dest));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SUBSCRIBE));
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
-        Map<String, PdfFormField> fields = form.getFormFields();
+        Map<String, PdfFormField> fields = form.getAllFormFields();
         PdfDictionary dict;
         int flags;
         PdfFormField item;

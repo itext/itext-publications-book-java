@@ -33,7 +33,7 @@ public class Listing_06_18_FormInformation {
         // Get the fields from the reader (read-only!!!)
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         // Loop over the fields and get info about them
-        Set<String> fields = form.getFormFields().keySet();
+        Set<String> fields = form.getAllFormFields().keySet();
         for (String key : fields) {
             writer.print(key + ": ");
             PdfName type = form.getField(key).getFormType();

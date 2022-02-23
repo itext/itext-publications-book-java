@@ -12,7 +12,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Set;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -23,7 +22,6 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 public class Listing_08_18_XfaMovie {
     /** The original PDF. */
@@ -74,7 +72,7 @@ public class Listing_08_18_XfaMovie {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         XfaForm xfa = form.getXfaForm();
         out.println(xfa.isXfaPresent() ? "XFA form" : "AcroForm");
-        Set<String> fields = form.getFormFields().keySet();
+        Set<String> fields = form.getAllFormFields().keySet();
         for (String key : fields) {
             out.println(key);
         }
