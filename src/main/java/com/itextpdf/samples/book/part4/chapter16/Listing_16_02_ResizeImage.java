@@ -25,7 +25,7 @@ public class Listing_16_02_ResizeImage {
     public static float FACTOR = 0.5f;
     public static final String SPECIAL_ID = "./src/main/resources/pdfs/cmp_Listing_16_01_SpecialId.pdf";
 
-    private static final String PRE_GENERATED_RESIZED_IMAGE = "./src/main/resources/pdfs/resizedImage.jpg";
+    private static final String PRE_GENERATED_RESIZED_IMAGE = "./src/main/resources/img/resizedImage.jpg";
 
     public static void main(String args[]) throws IOException, SQLException {
         File file = new File(DEST);

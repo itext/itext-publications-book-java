@@ -1,6 +1,6 @@
 /*
     This file is part of the iText (R) project.
-    Copyright (c) 1998-2021 iText Group NV
+    Copyright (c) 1998-2022 iText Group NV
     Authors: iText Software.
 
     For more information, please contact iText Software at this address:
@@ -91,6 +91,7 @@ public class GenericSampleTest extends WrappedSamplesRunner {
         searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part4.chapter16.Listing_16_04_EmbedFontPostFacto");
         searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part4.chapter16.Listing_16_05_KubrickDvds");
         searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part4.chapter16.Listing_16_06_KubrickDocumentary");
+        searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part4.chapter16.Listing_16_02_ResizeImage");
 
         // Not sample classes
         searchConfig.ignorePackageOrClass("com.itextpdf.samples.book.part1.chapter02.PipeSplitCharacter");
