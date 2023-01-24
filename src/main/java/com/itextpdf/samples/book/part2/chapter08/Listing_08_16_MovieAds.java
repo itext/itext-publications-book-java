@@ -102,7 +102,7 @@ public class Listing_08_16_MovieAds {
                 .setWidgetRectangle(new Rectangle(millimetersToPoints(0),
                         millimetersToPoints(25), millimetersToPoints(35) - millimetersToPoints(0),
                         millimetersToPoints(50) - millimetersToPoints(25))).setCaption("").createPushButton();
-        poster.setBackgroundColor(new DeviceGray(0.4f));
+        poster.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.4f));
         form.addField(poster);
 
         PdfTextFormField movie = new TextFormFieldBuilder(pdfDoc, TEXT)
@@ -119,7 +119,7 @@ public class Listing_08_16_MovieAds {
                         millimetersToPoints(7) - millimetersToPoints(0))).createText();
         screening.setValue("");
         screening.setJustification(PdfFormField.ALIGN_CENTER);
-        screening.setBackgroundColor(new DeviceGray(0.4f));
+        screening.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.4f));
         screening.setColor(ColorConstants.LIGHT_GRAY);
         form.addField(screening);
 
@@ -164,7 +164,7 @@ public class Listing_08_16_MovieAds {
         } while (paragraphRenderer.layout(new LayoutContext(new LayoutArea(1, rect))).getStatus() != LayoutResult.FULL);
         paragraphRenderer.draw(new DrawContext(pdfDoc, new PdfCanvas(pdfDoc.getFirstPage()), false));
         // fill out the year and change the background color
-        form.getField(YEAR).setBackgroundColor(color);
+        form.getField(YEAR).getFirstFormAnnotation().setBackgroundColor(color);
         form.getField(YEAR).setValue(String.valueOf(movie.getYear()));
         form.flattenFields();
         doc.close();

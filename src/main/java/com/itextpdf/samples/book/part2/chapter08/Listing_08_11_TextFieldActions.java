@@ -33,19 +33,18 @@ public class Listing_08_11_TextFieldActions {
         form.put(PdfName.NeedAppearances, new PdfBoolean(true));
 
         PdfFormField date = new TextFormFieldBuilder(pdfDoc, "date")
-                .setWidgetRectangle(new Rectangle(36, 780, 90, 26)).createText().
-                        setBorderColor(new DeviceGray(0.2f)).
-            setAdditionalAction(PdfName.V, PdfAction.createJavaScript(
-                    "AFDate_FormatEx( 'dd-mm-yyyy' );"));
+                .setWidgetRectangle(new Rectangle(36, 780, 90, 26)).createText()
+                .setAdditionalAction(PdfName.V, PdfAction.createJavaScript("AFDate_FormatEx( 'dd-mm-yyyy' );"));
+        date.getFirstFormAnnotation().setBorderColor(new DeviceGray(0.2f));
 
         form.addField(date);
 
         PdfFormField name = new TextFormFieldBuilder(pdfDoc, "name")
                 .setWidgetRectangle(new Rectangle(130, 780, 126, 26)).createText().
-                        setBorderColor(new DeviceGray(0.2f)).
                 setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("app.alert('name field got the focus');")).
                 setAdditionalAction(PdfName.Bl, PdfAction.createJavaScript("app.alert('name lost the focus');")).
                 setAdditionalAction(PdfName.K, PdfAction.createJavaScript("event.change = event.change.toUpperCase();"));
+        name.getFirstFormAnnotation().setBorderColor(new DeviceGray(0.2f));
 
         form.addField(name);
 

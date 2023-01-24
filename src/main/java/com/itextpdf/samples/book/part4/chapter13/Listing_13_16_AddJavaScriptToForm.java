@@ -1,5 +1,6 @@
 package com.itextpdf.samples.book.part4.chapter13;
 
+import com.itextpdf.forms.fields.PdfFormAnnotation;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.forms.fields.RadioFormFieldBuilder;
 import com.itextpdf.forms.fields.TextFormFieldBuilder;
@@ -75,8 +76,8 @@ public class Listing_13_16_AddJavaScriptToForm {
         PdfTextFormField partner = new TextFormFieldBuilder(pdfDoc, "partner")
                 .setWidgetRectangle(rect).createText();
         partner.setValue("partner");
-        partner.setBorderColor(ColorConstants.DARK_GRAY);
-        partner.setBorderWidth(0.5f);
+        partner.getFirstFormAnnotation().setBorderColor(ColorConstants.DARK_GRAY);
+        partner.getFirstFormAnnotation().setBorderWidth(0.5f);
         form.addField(partner);
 
         pdfDoc.close();
@@ -95,8 +96,8 @@ public class Listing_13_16_AddJavaScriptToForm {
         fd.getWidgets().get(1).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("setReadOnly(true);"));
         PdfButtonFormField button = new PushButtonFormFieldBuilder(pdfDoc, "submit")
                 .setWidgetRectangle(new Rectangle(40, 690, 160, 20)).setCaption("validate and submit").createPushButton();
-        button.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        button.setAction(PdfAction.createJavaScript("validate();"));
+        button.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
+        button.getFirstFormAnnotation().setAction(PdfAction.createJavaScript("validate();"));
         form.addField(button);
         // close the document
         pdfDoc.close();

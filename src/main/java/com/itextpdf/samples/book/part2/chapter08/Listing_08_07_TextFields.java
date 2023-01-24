@@ -1,5 +1,6 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
+import com.itextpdf.forms.fields.PdfFormAnnotation;
 import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceGray;
@@ -92,7 +93,7 @@ public class Listing_08_07_TextFields {
         fields.get("text_1").setValue("Bruno Lowagie");
 
         fields.get("text_2").setFieldFlags(0);
-        fields.get("text_2").setBorderColor(ColorConstants.RED);
+        fields.get("text_2").getFirstFormAnnotation().setBorderColor(ColorConstants.RED);
         fields.get("text_2").setValue("bruno");
 
         fields.get("text_3").setFieldFlag(PdfFormField.FF_PASSWORD, false);
@@ -129,7 +130,7 @@ public class Listing_08_07_TextFields {
             PdfTextFormField text = new TextFormFieldBuilder(drawContext.getDocument(), String.format("text_%s", tf))
                     .setWidgetRectangle(getOccupiedAreaBBox()).createText();
             text.setValue("Enter your name here...");
-            text.setBackgroundColor(new DeviceGray(0.75f));
+            text.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.75f));
             PdfDictionary borderStyleDict = new PdfDictionary();
             switch (tf) {
                 case 1:
@@ -146,23 +147,23 @@ public class Listing_08_07_TextFields {
                     text.setValue("Name...");
                     text.setMaxLen(8);
                     text.setComb(true);
-                    text.setBorderWidth(2);
+                    text.getFirstFormAnnotation().setBorderWidth(2);
                     break;
                 case 3:
                     borderStyleDict.put(PdfName.S, PdfName.I);
                     text.getWidgets().get(0).setBorderStyle(borderStyleDict);
                     text.setPassword(true);
                     text.setValue("Choose a password");
-                    text.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
+                    text.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
                     break;
                 case 4:
                     borderStyleDict.put(PdfName.S, PdfName.D);
                     text.getWidgets().get(0).setBorderStyle(borderStyleDict);
-                    text.setBorderColor(ColorConstants.RED);
+                    text.getFirstFormAnnotation().setBorderColor(ColorConstants.RED);
                     text.setFontSize(8);
                     text.setValue("Enter the reason why you want to win a free " +
                             "accreditation for the Foobar Film Festival");
-                    text.setBorderWidth(2);
+                    text.getFirstFormAnnotation().setBorderWidth(2);
                     text.setMultiline(true);
                     text.setRequired(true);
                     break;

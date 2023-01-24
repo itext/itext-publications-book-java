@@ -2,7 +2,7 @@ package com.itextpdf.samples.book.part3.chapter09;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
-import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.forms.fields.PdfFormAnnotation;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -25,9 +25,10 @@ public class Listing_09_06_SubmitForm {
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         PdfButtonFormField submit1 = new PushButtonFormFieldBuilder(pdfDoc, "POST")
                 .setWidgetRectangle(new Rectangle(90, 660, 50, 30)).setCaption("post").createPushButton();
-        submit1.setBackgroundColor(new DeviceGray(0.75f));
-        submit1.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        submit1.setAction(PdfAction.createSubmitForm(
+        submit1.setFontSize(12);
+        submit1.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.75f));
+        submit1.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
+        submit1.getFirstFormAnnotation().setAction(PdfAction.createSubmitForm(
                 "/book/request", null,
                 PdfAction.SUBMIT_HTML_FORMAT | PdfAction.SUBMIT_COORDINATES));
         // add the button
@@ -35,27 +36,30 @@ public class Listing_09_06_SubmitForm {
         // create a submit button that posts the form as FDF
         PdfButtonFormField submit2 = new PushButtonFormFieldBuilder(pdfDoc, "FDF")
                 .setWidgetRectangle(new Rectangle(200, 660, 50, 30)).setCaption("FDF").createPushButton();
-        submit2.setBackgroundColor(new DeviceGray(0.7f));
-        submit2.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        submit2.setAction(PdfAction.createSubmitForm(
+        submit2.setFontSize(12);
+        submit2.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.7f));
+        submit2.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
+        submit2.getFirstFormAnnotation().setAction(PdfAction.createSubmitForm(
                 "/book/request", null, PdfAction.SUBMIT_EXCL_F_KEY));
         // add the button
         form.addField(submit2);
         // create a submit button that posts the form as XFDF
         PdfButtonFormField submit3 = new PushButtonFormFieldBuilder(pdfDoc, "XFDF")
                 .setWidgetRectangle(new Rectangle(310, 660, 50, 30)).setCaption("XFDF").createPushButton();
-        submit3.setBackgroundColor(new DeviceGray(0.7f));
-        submit3.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        submit3.setAction(PdfAction.createSubmitForm(
+        submit3.setFontSize(12);
+        submit3.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.7f));
+        submit3.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
+        submit3.getFirstFormAnnotation().setAction(PdfAction.createSubmitForm(
                 "/book/request", null, PdfAction.SUBMIT_XFDF));
         // add the button
         form.addField(submit3);
         // create a reset button
         PdfButtonFormField reset = new PushButtonFormFieldBuilder(pdfDoc, "reset")
                 .setWidgetRectangle(new Rectangle(420, 660, 50, 30)).setCaption("RESET").createPushButton();
-        reset.setBackgroundColor(new DeviceGray(0.7f));
-        reset.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        reset.setAction(PdfAction.createResetForm(null, 0));
+        reset.setFontSize(12);
+        reset.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.7f));
+        reset.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
+        reset.getFirstFormAnnotation().setAction(PdfAction.createResetForm(null, 0));
         form.addField(reset);
         // close the document
         pdfDoc.close();

@@ -47,7 +47,7 @@ public class Listing_08_02_RadioButtons {
             pdfDoc.addNewPage();
             radio = new RadioFormFieldBuilder(pdfDoc)
                     .setWidgetRectangle(rect).createRadioButton(radioGroup, LANGUAGES[page - 1]);
-            radio.setPage(page);
+            radio.getFirstFormAnnotation().setPage(page);
             doc.showTextAligned(new Paragraph(LANGUAGES[page - 1]).setFont(font).setFontSize(18),
                     70, 790, page, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
             radio.getWidgets().get(0).setColor(new DeviceGray(0.8f).getColorValue());

@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part3.chapter09;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.forms.fields.PdfFormAnnotation;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -36,9 +37,9 @@ public class Listing_09_08_FormServlet extends HttpServlet {
         // We add a submit button to the existing form
         PdfButtonFormField submit = new PushButtonFormFieldBuilder(pdfDoc, "submit")
                 .setWidgetRectangle(new Rectangle(90, 660, 50, 30)).setCaption("POST").createPushButton();
-        submit.setBackgroundColor(new DeviceGray(0.7f));
-        submit.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        submit.setAction(PdfAction.createSubmitForm(
+        submit.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.7f));
+        submit.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
+        submit.getFirstFormAnnotation().setAction(PdfAction.createSubmitForm(
                 "/book/form", null, PdfAction.SUBMIT_HTML_FORMAT));
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(submit);
         // We write the PDF bytes to the OutputStream

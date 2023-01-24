@@ -200,7 +200,7 @@ public class Listing_08_12_ChoiceFields {
                             .setWidgetRectangle(getOccupiedAreaBBox()).setOptions(langArray)
                             .createList();
                     text.setValue("");
-                    text.setBorderColor(ColorConstants.GREEN);
+                    text.getFirstFormAnnotation().setBorderColor(ColorConstants.GREEN);
                     PdfDictionary borderDict = new PdfDictionary();
                     borderDict.put(PdfName.S, PdfName.D);
                     text.getWidgets().get(0).setBorderStyle(borderDict);
@@ -218,8 +218,8 @@ public class Listing_08_12_ChoiceFields {
                             .setWidgetRectangle(getOccupiedAreaBBox()).setOptions(langAndExpArray)
                             .createComboBox();
                     text.setValue("");
-                    text.setBorderColor(ColorConstants.RED);
-                    text.setBackgroundColor(ColorConstants.GRAY);
+                    text.getFirstFormAnnotation().setBorderColor(ColorConstants.RED);
+                    text.getFirstFormAnnotation().setBackgroundColor(ColorConstants.GRAY);
 
                     text.setListSelected(new int[]{4});
                     break;

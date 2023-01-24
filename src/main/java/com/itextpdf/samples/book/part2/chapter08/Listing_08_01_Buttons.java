@@ -106,8 +106,8 @@ public class Listing_08_01_Buttons {
             rect = new Rectangle(40, 806 - i * 40, 60 - 40, 806 - 788);
             radio = new RadioFormFieldBuilder(pdfDoc)
                     .setWidgetRectangle(rect).createRadioButton(radioGroup, LANGUAGES[i]);
-            radio.setBorderColor(ColorConstants.DARK_GRAY);
-            radio.setBackgroundColor(ColorConstants.LIGHT_GRAY);
+            radio.getFirstFormAnnotation().setBorderColor(ColorConstants.DARK_GRAY);
+            radio.getFirstFormAnnotation().setBackgroundColor(ColorConstants.LIGHT_GRAY);
             radio.setCheckType(PdfFormField.TYPE_CIRCLE);
             canvas
                     .beginText()

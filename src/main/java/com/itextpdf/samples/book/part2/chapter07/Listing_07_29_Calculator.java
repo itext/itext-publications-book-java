@@ -144,7 +144,7 @@ public class Listing_07_29_Calculator {
         field.getWidgets().get(0).setHighlightMode(PdfName.None);
         field.getWidgets().get(0).put(PdfName.Q, new PdfNumber(2));
         field.setFieldFlags(PdfFormField.FF_READ_ONLY);
-        field.setBorderWidth(1);
+        field.getFirstFormAnnotation().setBorderWidth(1);
         PdfAcroForm.getAcroForm(pdfDoc, true).addField(field);
     }
 

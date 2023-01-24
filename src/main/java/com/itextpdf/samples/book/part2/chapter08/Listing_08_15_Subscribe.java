@@ -69,7 +69,7 @@ public class Listing_08_15_Subscribe {
         PdfTextFormField field = new TextFormFieldBuilder(pdfDoc, "name")
                 .setWidgetRectangle(new Rectangle(0, 0)).createText();
         field.setValue("");
-        field.setBorderWidth(0);
+        field.getFirstFormAnnotation().setBorderWidth(0);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
@@ -78,7 +78,7 @@ public class Listing_08_15_Subscribe {
         field = new TextFormFieldBuilder(pdfDoc, "loginname")
                 .setWidgetRectangle(new Rectangle(0, 0)).createText();
         field.setValue("");
-        field.setBorderWidth(0);
+        field.getFirstFormAnnotation().setBorderWidth(0);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
@@ -86,7 +86,7 @@ public class Listing_08_15_Subscribe {
         field = new TextFormFieldBuilder(pdfDoc, "password")
                 .setWidgetRectangle(new Rectangle(0, 0)).createText();
         field.setValue("");
-        field.setBorderWidth(0);
+        field.getFirstFormAnnotation().setBorderWidth(0);
         field.setPassword(true);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
@@ -97,7 +97,7 @@ public class Listing_08_15_Subscribe {
         field = new TextFormFieldBuilder(pdfDoc, "reason")
                 .setWidgetRectangle(new Rectangle(0, 0)).createText();
         field.setValue("");
-        field.setBorderWidth(0);
+        field.getFirstFormAnnotation().setBorderWidth(0);
         field.setMultiline(true);
         personal.addKid(field);
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));

@@ -37,17 +37,17 @@ public class Listing_07_26_ButtonsActions {
         PdfButtonFormField saveAs =
                 new PushButtonFormFieldBuilder(pdfDoc, "Save")
                         .setWidgetRectangle(new Rectangle(636, 10, 80, 20)).setCaption("Save").createPushButton();
-        saveAs.setBorderColor(ColorConstants.BLACK);
-        saveAs.setBorderWidth(1);
+        saveAs.getFirstFormAnnotation().setBorderColor(ColorConstants.BLACK);
+        saveAs.getFirstFormAnnotation().setBorderWidth(1);
         saveAs.setColor(ColorConstants.RED);
         PdfAnnotation saveAsButton = saveAs.getWidgets().get(0);
-        saveAs.setAction(PdfAction.createJavaScript("app.execMenuItem('SaveAs')"));
+        saveAs.getFirstFormAnnotation().setAction(PdfAction.createJavaScript("app.execMenuItem('SaveAs')"));
 
         PdfButtonFormField mail =
                 new PushButtonFormFieldBuilder(pdfDoc, "Mail")
                         .setWidgetRectangle(new Rectangle(736, 10, 80, 20)).setCaption("Mail").createPushButton();
-        mail.setBorderColor(ColorConstants.BLACK);
-        mail.setBorderWidth(1);
+        mail.getFirstFormAnnotation().setBorderColor(ColorConstants.BLACK);
+        mail.getFirstFormAnnotation().setBorderWidth(1);
         mail.setColor(ColorConstants.RED);
         PdfWidgetAnnotation mailButton = mail.getWidgets().get(0);
         mailButton.setAction(PdfAction.createJavaScript("app.execMenuItem('AcroSendMail:SendMail')"));

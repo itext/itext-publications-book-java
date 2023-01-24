@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.forms.fields.NonTerminalFormFieldBuilder;
+import com.itextpdf.forms.fields.PdfFormAnnotation;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -85,9 +86,9 @@ public class Listing_13_17_ReplaceURL {
 
         PdfButtonFormField button1 = new PushButtonFormFieldBuilder(pdfDoc, "post")
                 .setWidgetRectangle(new Rectangle(90, 660, 50, 30)).setCaption("POST").createPushButton();
-        button1.setBackgroundColor(new DeviceGray(0.7f));
-        button1.setVisibility(PdfFormField.VISIBLE_BUT_DOES_NOT_PRINT);
-        button1.setAction(PdfAction.createSubmitForm("/book/request", null,
+        button1.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.7f));
+        button1.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
+        button1.getFirstFormAnnotation().setAction(PdfAction.createSubmitForm("/book/request", null,
                 PdfAction.SUBMIT_HTML_FORMAT | PdfAction.SUBMIT_COORDINATES));
         form.addField(button1);
 
