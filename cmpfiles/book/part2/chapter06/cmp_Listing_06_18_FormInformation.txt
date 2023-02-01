@@ -1,17 +1,18 @@
+title: Text
+director: Text
 CP_1: Button
+CP_2: Button
+CP_3: Button
+GP_3: Button
+GP_4: Button
 GP_7: Button
 GP_8: Button
 MA_2: Button
-year: Text
-director: Text
-title: Text
 MA_3: Button
-duration: Text
-GP_3: Button
 category: Button
-CP_3: Button
-CP_2: Button
-GP_4: Button
+duration: Text
+year: Text
+category.: Button
 Possible values for CP_1:
  - Off
  - Yes
