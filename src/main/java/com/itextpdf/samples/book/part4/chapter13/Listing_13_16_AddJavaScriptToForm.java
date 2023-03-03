@@ -61,14 +61,16 @@ public class Listing_13_16_AddJavaScriptToForm {
         canvas.endText();
 
         // create a radio button field
-        PdfButtonFormField married = new RadioFormFieldBuilder(pdfDoc, "married").createRadioGroup();
+        RadioFormFieldBuilder builder = new RadioFormFieldBuilder(pdfDoc, "married");
+        PdfButtonFormField married = builder.createRadioGroup();
         married.setValue("Yes");
         Rectangle rectYes = new Rectangle(40, 744, 16, 22);
-        PdfFormField yes = new RadioFormFieldBuilder(pdfDoc)
-                .setWidgetRectangle(rectYes).createRadioButton(married, "Yes");
+        PdfFormAnnotation yes = builder.createRadioButton("Yes", rectYes);
+        married.addKid(yes);
+
         Rectangle rectNo = new Rectangle(84, 744, 16, 22);
-        PdfFormField no = new RadioFormFieldBuilder(pdfDoc)
-                .setWidgetRectangle(rectNo).createRadioButton(married, "No");
+        PdfFormAnnotation no =builder.createRadioButton( "No", rectNo);
+        married.addKid(no);
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         form.addField(married);
         // create a text field

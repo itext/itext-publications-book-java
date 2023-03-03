@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part2.chapter08;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.CheckBoxFormFieldBuilder;
 import com.itextpdf.forms.fields.PdfButtonFormField;
+import com.itextpdf.forms.fields.PdfFormAnnotation;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.forms.fields.RadioFormFieldBuilder;
@@ -99,16 +100,16 @@ public class Listing_08_01_Buttons {
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
         PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
         Rectangle rect;
-        PdfButtonFormField radioGroup = new RadioFormFieldBuilder(pdfDoc, "language").createRadioGroup();
+        RadioFormFieldBuilder builder = new RadioFormFieldBuilder(pdfDoc, "language");
+        PdfButtonFormField radioGroup = builder.createRadioGroup();
         radioGroup.setValue("");
-        PdfFormField radio;
+        radioGroup.setCheckType(PdfFormField.TYPE_CIRCLE);
         for (int i = 0; i < LANGUAGES.length; i++) {
             rect = new Rectangle(40, 806 - i * 40, 60 - 40, 806 - 788);
-            radio = new RadioFormFieldBuilder(pdfDoc)
-                    .setWidgetRectangle(rect).createRadioButton(radioGroup, LANGUAGES[i]);
-            radio.getFirstFormAnnotation().setBorderColor(ColorConstants.DARK_GRAY);
-            radio.getFirstFormAnnotation().setBackgroundColor(ColorConstants.LIGHT_GRAY);
-            radio.setCheckType(PdfFormField.TYPE_CIRCLE);
+            PdfFormAnnotation radio = builder.createRadioButton(LANGUAGES[i], rect)
+                    .setBorderColor(ColorConstants.DARK_GRAY)
+                    .setBackgroundColor(ColorConstants.LIGHT_GRAY);
+            radioGroup.addKid(radio);
             canvas
                     .beginText()
                     .setFontAndSize(font, 18)
