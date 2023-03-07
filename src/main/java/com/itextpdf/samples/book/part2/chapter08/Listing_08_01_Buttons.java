@@ -7,6 +7,7 @@ import com.itextpdf.forms.fields.PdfFormAnnotation;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.forms.fields.RadioFormFieldBuilder;
+import com.itextpdf.forms.fields.properties.CheckBoxType;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -103,7 +104,7 @@ public class Listing_08_01_Buttons {
         RadioFormFieldBuilder builder = new RadioFormFieldBuilder(pdfDoc, "language");
         PdfButtonFormField radioGroup = builder.createRadioGroup();
         radioGroup.setValue("");
-        radioGroup.setCheckType(PdfFormField.TYPE_CIRCLE);
+        radioGroup.setCheckType(CheckBoxType.CIRCLE);
         for (int i = 0; i < LANGUAGES.length; i++) {
             rect = new Rectangle(40, 806 - i * 40, 60 - 40, 806 - 788);
             PdfFormAnnotation radio = builder.createRadioButton(LANGUAGES[i], rect)

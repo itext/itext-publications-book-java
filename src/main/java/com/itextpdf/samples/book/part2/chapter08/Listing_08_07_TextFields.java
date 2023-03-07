@@ -10,6 +10,7 @@ import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.layout.properties.HorizontalAlignment;
 import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.forms.PdfAcroForm;
@@ -139,7 +140,7 @@ public class Listing_08_07_TextFields {
                     text.setFontSize(10);
                     text.setValue("Enter your name here...");
                     text.setRequired(true);
-                    text.setJustification(PdfFormField.ALIGN_CENTER);
+                    text.setJustification(HorizontalAlignment.CENTER);
                     break;
                 case 2:
                     borderStyleDict.put(PdfName.S, PdfName.S);

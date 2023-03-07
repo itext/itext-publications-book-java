@@ -32,6 +32,7 @@ import com.itextpdf.kernel.pdf.tagging.StandardRoles;
 import com.itextpdf.kernel.pdf.tagutils.DefaultAccessibilityProperties;
 import com.itextpdf.kernel.pdf.tagutils.AccessibilityProperties;
 import com.itextpdf.kernel.pdf.xobject.PdfXObject;
+import com.itextpdf.layout.properties.HorizontalAlignment;
 import com.itextpdf.layout.tagging.IAccessibleElement;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
@@ -118,7 +119,7 @@ public class Listing_08_16_MovieAds {
                         millimetersToPoints(0), millimetersToPoints(35) - millimetersToPoints(0),
                         millimetersToPoints(7) - millimetersToPoints(0))).createText();
         screening.setValue("");
-        screening.setJustification(PdfFormField.ALIGN_CENTER);
+        screening.setJustification(HorizontalAlignment.CENTER);
         screening.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.4f));
         screening.setColor(ColorConstants.LIGHT_GRAY);
         form.addField(screening);
