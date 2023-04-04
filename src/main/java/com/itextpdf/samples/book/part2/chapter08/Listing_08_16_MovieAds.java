@@ -119,7 +119,7 @@ public class Listing_08_16_MovieAds {
                         millimetersToPoints(0), millimetersToPoints(35) - millimetersToPoints(0),
                         millimetersToPoints(7) - millimetersToPoints(0))).createText();
         screening.setValue("");
-        screening.setJustification(HorizontalAlignment.CENTER);
+        screening.setJustification(TextAlignment.CENTER);
         screening.getFirstFormAnnotation().setBackgroundColor(new DeviceGray(0.4f));
         screening.setColor(ColorConstants.LIGHT_GRAY);
         form.addField(screening);
