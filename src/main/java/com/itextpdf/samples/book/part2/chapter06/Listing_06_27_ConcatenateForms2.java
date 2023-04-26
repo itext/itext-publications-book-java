@@ -37,7 +37,8 @@ public class Listing_06_27_ConcatenateForms2 {
         // Get the fields
         PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
         // Loop over the fields
-        Map<String, PdfFormField> map = form.getFormFields();
+        //TODO DEVSIX-6346 Handle form fields without names more carefully
+        Map<String, PdfFormField> map = form.getAllFormFields();
         Set<String> keys = new HashSet<>(map.keySet());
         for (String key : keys) {
             // rename the fields

@@ -61,7 +61,7 @@ public class Listing_06_19_FillDataSheet{
             PdfAcroForm newForm = PdfAcroForm.getAcroForm(pdfDoc, false);
             if (newForm != null) {
                 // Rename fields so that fields on different pages do not share their value
-                for (PdfFormField field : newForm.getFormFields().values()) {
+                for (PdfFormField field : newForm.getAllFormFields().values()) {
                     if (field.getFieldName() != null) {
                         field.setFieldName(movie.getImdb() + field.getFieldName().toUnicodeString());
                     }

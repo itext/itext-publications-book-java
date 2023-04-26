@@ -1,5 +1,6 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
+import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -115,7 +116,8 @@ public class Listing_07_28_MoviePosters2 {
         pdfDoc.getPage(1).addAnnotation(text);
         pdfDoc.getPage(1).addAnnotation(popup);
         // Create a button field
-        PdfButtonFormField field = PdfFormField.createPushButton(pdfDoc, rect, String.format("b%s", imdb), "");
+        PdfButtonFormField field = new PushButtonFormFieldBuilder(pdfDoc, String.format("b%s", imdb))
+                .setWidgetRectangle(rect).setCaption("").createPushButton();
         PdfWidgetAnnotation widget = field.getWidgets().get(0);
         widget.remove(PdfName.AP);
         // Show the popup onMouseEnter

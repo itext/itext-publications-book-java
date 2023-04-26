@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormField;
+import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -34,17 +35,19 @@ public class Listing_07_26_ButtonsActions {
     public void manipulatePdf(String dest) throws IOException, SQLException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(MOVIE_TEMPLATES), new PdfWriter(DEST));
         PdfButtonFormField saveAs =
-                PdfFormField.createPushButton(pdfDoc, new Rectangle(636, 10, 80, 20), "Save", "Save");
-        saveAs.setBorderColor(ColorConstants.BLACK);
-        saveAs.setBorderWidth(1);
+                new PushButtonFormFieldBuilder(pdfDoc, "Save")
+                        .setWidgetRectangle(new Rectangle(636, 10, 80, 20)).setCaption("Save").createPushButton();
+        saveAs.getFirstFormAnnotation().setBorderColor(ColorConstants.BLACK);
+        saveAs.getFirstFormAnnotation().setBorderWidth(1);
         saveAs.setColor(ColorConstants.RED);
         PdfAnnotation saveAsButton = saveAs.getWidgets().get(0);
-        saveAs.setAction(PdfAction.createJavaScript("app.execMenuItem('SaveAs')"));
+        saveAs.getFirstFormAnnotation().setAction(PdfAction.createJavaScript("app.execMenuItem('SaveAs')"));
 
         PdfButtonFormField mail =
-                PdfFormField.createPushButton(pdfDoc, new Rectangle(736, 10, 80, 20), "Mail", "Mail");
-        mail.setBorderColor(ColorConstants.BLACK);
-        mail.setBorderWidth(1);
+                new PushButtonFormFieldBuilder(pdfDoc, "Mail")
+                        .setWidgetRectangle(new Rectangle(736, 10, 80, 20)).setCaption("Mail").createPushButton();
+        mail.getFirstFormAnnotation().setBorderColor(ColorConstants.BLACK);
+        mail.getFirstFormAnnotation().setBorderWidth(1);
         mail.setColor(ColorConstants.RED);
         PdfWidgetAnnotation mailButton = mail.getWidgets().get(0);
         mailButton.setAction(PdfAction.createJavaScript("app.execMenuItem('AcroSendMail:SendMail')"));

@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -105,8 +106,8 @@ public class Listing_07_27_Advertisement {
         protected int fontSize = 12;
 
         public CustomButton(String name, String caption, PdfDocument document, Rectangle rect) {
-            button = PdfFormField.createButton(document, new Rectangle(0, 0), 0);
-            button.setFieldName(name);
+            button = new PushButtonFormFieldBuilder(document, name)
+                    .setWidgetRectangle(new Rectangle(0, 0)).createPushButton();
             button.setPushButton(true);
 
             this.caption = caption;
