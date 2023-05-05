@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.PdfPageFormCopier;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -35,7 +36,7 @@ public class Listing_06_27_ConcatenateForms2 {
         // Create the stamper
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(datasheet), new PdfWriter(baos));
         // Get the fields
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         // Loop over the fields
         //TODO DEVSIX-6346 Handle form fields without names more carefully
         Map<String, PdfFormField> map = form.getAllFormFields();

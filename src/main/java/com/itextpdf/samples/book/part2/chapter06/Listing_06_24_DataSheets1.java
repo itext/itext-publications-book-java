@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -43,7 +44,7 @@ public class Listing_06_24_DataSheets1 extends Listing_06_19_FillDataSheet {
         for (Movie movie : movies) {
             baos = new ByteArrayOutputStream();
             PdfDocument pdfDoc = new PdfDocument(new PdfReader(DATASHEET), new PdfWriter(baos));
-            PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+            PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
             form.setGenerateAppearance(true);
             fill(form, movie);
             form.flattenFields();

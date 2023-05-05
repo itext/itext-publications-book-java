@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part3.chapter09;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfFormAnnotation;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
@@ -41,7 +42,7 @@ public class Listing_09_08_FormServlet extends HttpServlet {
         submit.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
         submit.getFirstFormAnnotation().setAction(PdfAction.createSubmitForm(
                 "/book/form", null, PdfAction.SUBMIT_HTML_FORMAT));
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(submit);
+        PdfFormCreator.getAcroForm(pdfDoc, true).addField(submit);
         // We write the PDF bytes to the OutputStream
         OutputStream os = response.getOutputStream();
         baos.writeTo(os);
@@ -62,7 +63,7 @@ public class Listing_09_08_FormServlet extends HttpServlet {
         // Now we create the PDF
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(is, null), new PdfWriter(baos));
         // We alter the fields of the existing PDF
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         form.getField("password").setFieldFlag(PdfFormField.FF_PASSWORD, false);
         Set<String> parameters = form.getAllFormFields().keySet();
         for (String parameter : parameters) {

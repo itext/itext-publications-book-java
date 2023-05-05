@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part3.chapter09;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormAnnotation;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.kernel.colors.DeviceGray;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -22,7 +23,7 @@ public class Listing_09_06_SubmitForm {
 
     public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SUBCRIBE), new PdfWriter(dest));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         PdfButtonFormField submit1 = new PushButtonFormFieldBuilder(pdfDoc, "POST")
                 .setWidgetRectangle(new Rectangle(90, 660, 50, 30)).setCaption("post").createPushButton();
         submit1.setFontSize(12);

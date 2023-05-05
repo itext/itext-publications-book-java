@@ -4,6 +4,7 @@ import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.CheckBoxFormFieldBuilder;
 import com.itextpdf.forms.fields.PdfButtonFormField;
 import com.itextpdf.forms.fields.PdfFormAnnotation;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.forms.fields.RadioFormFieldBuilder;
@@ -118,7 +119,7 @@ public class Listing_08_01_Buttons {
                     .showText(LANGUAGES[i])
                     .endText();
         }
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(radioGroup);
+        PdfFormCreator.getAcroForm(pdfDoc, true).addField(radioGroup);
 
         PdfButtonFormField checkBox;
         for (int i = 0; i < LANGUAGES.length; i++) {
@@ -158,7 +159,7 @@ public class Listing_08_01_Buttons {
                     .moveText(210, 790 - i * 40 + 20)
                     .showText(LANGUAGES[i])
                     .endText();
-            PdfAcroForm.getAcroForm(pdfDoc, true).addField(checkBox);
+            PdfFormCreator.getAcroForm(pdfDoc, true).addField(checkBox);
         }
 
         // Add the push button
@@ -187,7 +188,7 @@ public class Listing_08_01_Buttons {
      */
     public void fillPdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         String[] radiostates = form.getField("language").getAppearanceStates();
         form.getField("language").setValue(radiostates[4]);
         for (int i = 0; i < LANGUAGES.length; i++) {
@@ -327,7 +328,7 @@ public class Listing_08_01_Buttons {
             button.getWidgets().get(0).setNormalAppearance(xObject.getPdfObject());
             xObject.getPdfObject().getOutputStream().writeBytes(str.getBytes());
 
-            PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
+            PdfFormCreator.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
         }
 
         @Override

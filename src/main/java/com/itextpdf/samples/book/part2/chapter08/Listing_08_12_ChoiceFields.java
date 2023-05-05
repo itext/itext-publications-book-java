@@ -3,6 +3,7 @@ package com.itextpdf.samples.book.part2.chapter08;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.ChoiceFormFieldBuilder;
 import com.itextpdf.forms.fields.PdfChoiceFormField;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.pdf.*;
@@ -98,7 +99,7 @@ public class Listing_08_12_ChoiceFields {
 
     public void fillPdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         form.getField("choice_1").setValue("NL");
         PdfArray array = (PdfArray) (form.getField("choice_3")).getPdfObject().get(PdfName.Opt);
         PdfChoiceFormField choice2 = (PdfChoiceFormField) form.getField("choice_2");
@@ -233,7 +234,7 @@ public class Listing_08_12_ChoiceFields {
                     text.setFieldFlag(PdfChoiceFormField.FF_EDIT, true);
                     break;
             }
-            PdfAcroForm.getAcroForm(document, true).addField(text);
+            PdfFormCreator.getAcroForm(document, true).addField(text);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.Color;
@@ -57,7 +58,7 @@ public class Listing_08_06_ReplaceIcon {
 
     public void manipulatePdf2(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src),new PdfWriter(dest));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         Document doc = new Document(pdfDoc);
         CustomButton ad = new CustomButton((PdfButtonFormField) form.getField("advertisement"));
         ad.setImage(ImageDataFactory.create(RESOURCE));
@@ -193,7 +194,7 @@ public class Listing_08_06_ReplaceIcon {
             xObject.getPdfObject().getOutputStream().writeBytes(str.getBytes());
             xObject.getResources().addImage(imageXObject);
 
-            PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
+            PdfFormCreator.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
         }
 
         @Override

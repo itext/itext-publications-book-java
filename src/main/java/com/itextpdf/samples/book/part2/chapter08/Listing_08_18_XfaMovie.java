@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.xfa.XfaForm;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -69,7 +70,7 @@ public class Listing_08_18_XfaMovie {
     public void readFieldnames(String src, String dest) throws IOException {
         PrintStream out = new PrintStream(new FileOutputStream(dest));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         XfaForm xfa = form.getXfaForm();
         out.println(xfa.isXfaPresent() ? "XFA form" : "AcroForm");
         Set<String> fields = form.getAllFormFields().keySet();
@@ -110,7 +111,7 @@ public class Listing_08_18_XfaMovie {
      */
     public void fillData1(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         form.getField("movies[0].movie[0].imdb[0]").setValue("1075110");
         form.getField("movies[0].movie[0].duration[0]").setValue("108");
         form.getField("movies[0].movie[0].title[0]").setValue("The Misfortunates");
@@ -177,7 +178,7 @@ public class Listing_08_18_XfaMovie {
      */
     public void fillData3(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         form.removeXfaForm();
         form.getField("movies[0].movie[0].imdb[0]").setValue("1075110");
         form.getField("movies[0].movie[0].duration[0]").setValue("108");

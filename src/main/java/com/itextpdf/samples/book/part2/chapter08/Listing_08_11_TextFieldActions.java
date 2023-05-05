@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.kernel.colors.DeviceGray;
@@ -29,7 +30,7 @@ public class Listing_08_11_TextFieldActions {
 
         pdfDoc.addNewPage();
 
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         form.put(PdfName.NeedAppearances, new PdfBoolean(true));
 
         PdfFormField date = new TextFormFieldBuilder(pdfDoc, "date")

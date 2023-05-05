@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.forms.PdfAcroForm;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.kernel.pdf.PdfArray;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -55,7 +56,7 @@ public class Listing_13_14_FixBrokenForm {
 
     public void fillData(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         if (null != form.getField("title")) {
             form.getField("title").setValue("The Misfortunates");
         }

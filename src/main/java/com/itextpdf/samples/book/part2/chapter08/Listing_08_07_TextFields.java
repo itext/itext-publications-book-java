@@ -1,6 +1,7 @@
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.fields.PdfFormAnnotation;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.colors.DeviceGray;
@@ -88,7 +89,7 @@ public class Listing_08_07_TextFields {
 
     public void fillPdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         Map<String, PdfFormField> fields = form.getAllFormFields();
 
         fields.get("text_1").setValue("Bruno Lowagie");
@@ -169,7 +170,7 @@ public class Listing_08_07_TextFields {
                     text.setRequired(true);
                     break;
             }
-            PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(text);
+            PdfFormCreator.getAcroForm(drawContext.getDocument(), true).addField(text);
         }
     }
 }

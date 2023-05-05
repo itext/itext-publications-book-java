@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.forms.fields.NonTerminalFormFieldBuilder;
 import com.itextpdf.forms.fields.PdfFormAnnotation;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.forms.fields.TextFormFieldBuilder;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -81,7 +82,7 @@ public class Listing_13_17_ReplaceURL {
         cell.setNextRenderer(new Listing_08_14_ChildFieldEvent(field, 1, cell));
         table.addCell(cell);
         doc.add(table);
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         form.addField(personal);
 
         PdfButtonFormField button1 = new PushButtonFormFieldBuilder(pdfDoc, "post")
@@ -97,7 +98,7 @@ public class Listing_13_17_ReplaceURL {
 
     public void changePdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         PdfFormField field = form.getField("post");
         PdfDictionary action = field.getPdfObject().getAsDictionary(PdfName.A);
         PdfDictionary f = action.getAsDictionary(PdfName.F);

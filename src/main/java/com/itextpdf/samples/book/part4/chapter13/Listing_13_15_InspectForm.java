@@ -1,5 +1,6 @@
 package com.itextpdf.samples.book.part4.chapter13;
 
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
@@ -32,7 +33,7 @@ public class Listing_13_15_InspectForm {
     protected void manipulatePdf(String dest) throws IOException, SQLException, XMPException {
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(dest));
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SUBSCRIBE));
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         Map<String, PdfFormField> fields = form.getAllFormFields();
         PdfDictionary dict;
         int flags;

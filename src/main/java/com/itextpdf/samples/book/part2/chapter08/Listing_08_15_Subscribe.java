@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.NonTerminalFormFieldBuilder;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.forms.fields.TextFormFieldBuilder;
@@ -41,7 +42,7 @@ public class Listing_08_15_Subscribe {
 
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(SRC), new PdfWriter(dest));
 
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
 
         form.removeField("personal.password");
         form.getField("personal.name").setValue(name);
@@ -105,7 +106,7 @@ public class Listing_08_15_Subscribe {
 
         doc.add(table);
 
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(personal);
+        PdfFormCreator.getAcroForm(pdfDoc, true).addField(personal);
 
         doc.close();
     }

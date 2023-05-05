@@ -2,6 +2,7 @@ package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
@@ -97,7 +98,7 @@ public class Listing_08_16_MovieAds {
         pdfDoc.addNewPage();
         pdfDoc.getCatalog().setPageLayout(PdfName.SinglePage);
 
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
 
         PdfButtonFormField poster = new PushButtonFormFieldBuilder(pdfDoc, POSTER)
                 .setWidgetRectangle(new Rectangle(millimetersToPoints(0),
@@ -139,7 +140,7 @@ public class Listing_08_16_MovieAds {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(filename), new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
 
 
         PdfButtonFormField bt = (PdfButtonFormField) form.getField(POSTER);
@@ -229,7 +230,7 @@ public class Listing_08_16_MovieAds {
             if (count == 0) {
                 baos = new ByteArrayOutputStream();
                 pageDoc = new PdfDocument(new PdfReader(RESOURCE), new PdfWriter(baos));
-                form = PdfAcroForm.getAcroForm(pageDoc, true);
+                form = PdfFormCreator.getAcroForm(pageDoc, true);
                 doc = new Document(pageDoc);
                 currentPageNumber++;
             }
@@ -386,7 +387,7 @@ public class Listing_08_16_MovieAds {
             xObject.getPdfObject().getOutputStream().writeBytes(str.getBytes());
             xObject.getResources().addImage(imageXObject);
 
-            PdfAcroForm.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
+            PdfFormCreator.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
         }
 
         @Override
