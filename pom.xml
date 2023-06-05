@@ -4,7 +4,7 @@
   <groupId>com.itextpdf.samples</groupId>
   <artifactId>book</artifactId>
   <version>8.0.1-SNAPSHOT</version>
-  <name>iText 7 Publications: iText in Action</name>
+  <name>iText Publications: iText in Action</name>
   <url>https://itextpdf.com/</url>
   <properties>
     <checkstyle.version>2.15</checkstyle.version>

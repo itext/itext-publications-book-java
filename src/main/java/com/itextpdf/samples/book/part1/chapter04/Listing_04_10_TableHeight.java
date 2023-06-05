@@ -20,7 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-// The example has no sense because in itext7 the height of table and rows is not set until rendering
+// The example has no sense because in itext the height of table and rows is not set until rendering
 public class Listing_04_10_TableHeight {
     public static final String DEST = "./target/book/part1/chapter04/Listing_04_10_TableHeight.pdf";
 

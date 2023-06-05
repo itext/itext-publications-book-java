@@ -96,7 +96,7 @@ public class Listing_07_14_CreateOutlineTree {
             }
             movieBookmark = root.addOutline(title);
 
-            // Create an action GoTo to the top of the movieBookmark area. In iText7 element's renderer
+            // Create an action GoTo to the top of the movieBookmark area. In iText element's renderer
             // is used to layout and draw the element. By getting the current area of a document renderer we can obtain
             // the space yet to be covered by the document's content and, therefore, the position at which the very
             // next element will be placed.

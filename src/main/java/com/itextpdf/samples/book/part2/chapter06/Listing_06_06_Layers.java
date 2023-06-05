@@ -96,7 +96,7 @@ public class Listing_06_06_Layers {
     }
 
     public void createOriginalPdf(String filename) throws IOException {
-        // No POST_CARD constant in itext7
+        // No POST_CARD constant in itext
         PageSize postCard = new PageSize(283, 416);
 
         // Initialize document
