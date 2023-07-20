@@ -1,7 +1,16 @@
+/*
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2023 Apryse Group NV
+    Authors: Apryse Software.
+
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.PdfPageFormCopier;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.io.source.ByteArrayOutputStream;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -50,7 +59,7 @@ public class Listing_06_19_FillDataSheet{
                 continue;
             baos = new ByteArrayOutputStream();
             pdfDoc = new PdfDocument(new PdfReader(DATASHEET), new PdfWriter(baos));
-            PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+            PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
             form.setGenerateAppearance(true);
             fill(form, movie);
             if (movie.getYear() == 2007)
@@ -58,7 +67,7 @@ public class Listing_06_19_FillDataSheet{
             pdfDoc.close();
 
             pdfDoc = new PdfDocument(new PdfReader(new ByteArrayInputStream(baos.toByteArray())));
-            PdfAcroForm newForm = PdfAcroForm.getAcroForm(pdfDoc, false);
+            PdfAcroForm newForm = PdfFormCreator.getAcroForm(pdfDoc, false);
             if (newForm != null) {
                 // Rename fields so that fields on different pages do not share their value
                 for (PdfFormField field : newForm.getAllFormFields().values()) {

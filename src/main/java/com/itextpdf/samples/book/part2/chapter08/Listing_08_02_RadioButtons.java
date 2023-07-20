@@ -1,6 +1,15 @@
+/*
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2023 Apryse Group NV
+    Authors: Apryse Software.
+
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part2.chapter08;
 
 import com.itextpdf.forms.fields.PdfFormAnnotation;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.RadioFormFieldBuilder;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.PdfEncodings;
@@ -53,7 +62,7 @@ public class Listing_08_02_RadioButtons {
             doc.showTextAligned(new Paragraph(LANGUAGES[page - 1]).setFont(font).setFontSize(18),
                     70, 790, page, TextAlignment.LEFT, VerticalAlignment.BOTTOM, 0);
         }
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(radioGroup);
+        PdfFormCreator.getAcroForm(pdfDoc, true).addField(radioGroup);
         doc.close();
     }
 }

@@ -1,7 +1,16 @@
+/*
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2023 Apryse Group NV
+    Authors: Apryse Software.
+
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part3.chapter09;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfFormAnnotation;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
@@ -55,7 +64,7 @@ public class Listing_09_11_XFDFServlet extends HttpServlet {
         submit.getFirstFormAnnotation().setVisibility(PdfFormAnnotation.VISIBLE_BUT_DOES_NOT_PRINT);
         submit.getFirstFormAnnotation().setAction(PdfAction.createSubmitForm(
                 "/book/xfdf", null, PdfAction.SUBMIT_XFDF));
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(submit, pdfDoc.getFirstPage());
+        PdfFormCreator.getAcroForm(pdfDoc, true).addField(submit, pdfDoc.getFirstPage());
         pdfDoc.close();
         // We write the PDF bytes to the OutputStream
         OutputStream os = response.getOutputStream();
@@ -92,7 +101,7 @@ public class Listing_09_11_XFDFServlet extends HttpServlet {
         if (xfdfObject != null) {
             xfdfObject.mergeToPdf(pdfDoc, "subscribe.pdf");
         }
-        PdfAcroForm.getAcroForm(pdfDoc, true).flattenFields();
+        PdfFormCreator.getAcroForm(pdfDoc, true).flattenFields();
         // close the pdfDocument
         pdfDoc.close();
         // We write the PDF bytes to the OutputStream

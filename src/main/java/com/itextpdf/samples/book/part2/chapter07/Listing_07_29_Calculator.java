@@ -1,7 +1,16 @@
+/*
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2023 Apryse Group NV
+    Authors: Apryse Software.
+
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part2.chapter07;
 
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.fields.PdfButtonFormField;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PdfFormField;
 import com.itextpdf.forms.fields.PdfTextFormField;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
@@ -145,7 +154,7 @@ public class Listing_07_29_Calculator {
         field.getWidgets().get(0).put(PdfName.Q, new PdfNumber(2));
         field.setFieldFlags(PdfFormField.FF_READ_ONLY);
         field.getFirstFormAnnotation().setBorderWidth(1);
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(field);
+        PdfFormCreator.getAcroForm(pdfDoc, true).addField(field);
     }
 
     /**
@@ -172,7 +181,7 @@ public class Listing_07_29_Calculator {
                 PdfAction.createJavaScript("this.showMove('" + btn + "');"));
         pushButton.getWidgets().get(0).setAdditionalAction(new PdfName("X"),
                 PdfAction.createJavaScript("this.showMove(' ');"));
-        PdfAcroForm.getAcroForm(pdfDoc, true).addField(pushButton);
+        PdfFormCreator.getAcroForm(pdfDoc, true).addField(pushButton);
     }
 
     /**

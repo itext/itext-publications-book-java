@@ -1,6 +1,15 @@
+/*
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2023 Apryse Group NV
+    Authors: Apryse Software.
+
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part4.chapter13;
 
 import com.itextpdf.forms.fields.PdfFormAnnotation;
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.forms.fields.PushButtonFormFieldBuilder;
 import com.itextpdf.forms.fields.RadioFormFieldBuilder;
 import com.itextpdf.forms.fields.TextFormFieldBuilder;
@@ -71,7 +80,7 @@ public class Listing_13_16_AddJavaScriptToForm {
         Rectangle rectNo = new Rectangle(84, 744, 16, 22);
         PdfFormAnnotation no =builder.createRadioButton( "No", rectNo);
         married.addKid(no);
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         form.addField(married);
         // create a text field
         Rectangle rect = new Rectangle(40, 710, 160, 16);
@@ -90,7 +99,7 @@ public class Listing_13_16_AddJavaScriptToForm {
         // Add JavaScript
         pdfDoc.getCatalog().setOpenAction(PdfAction.createJavaScript(readFileToString(RESOURCE).replace("\r\n", "\n")));
         // get the form fields
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         PdfFormField fd = form.getField("married");
         // Get the PDF dictionary of the YES radio button and add an additional action
         fd.getWidgets().get(0).setAdditionalAction(PdfName.Fo, PdfAction.createJavaScript("setReadOnly(false);"));

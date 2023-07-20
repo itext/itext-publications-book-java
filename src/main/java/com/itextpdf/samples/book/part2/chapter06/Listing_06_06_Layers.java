@@ -1,3 +1,11 @@
+/*
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2023 Apryse Group NV
+    Authors: Apryse Software.
+
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.io.font.constants.StandardFonts;
@@ -88,7 +96,7 @@ public class Listing_06_06_Layers {
     }
 
     public void createOriginalPdf(String filename) throws IOException {
-        // No POST_CARD constant in itext7
+        // No POST_CARD constant in itext
         PageSize postCard = new PageSize(283, 416);
 
         // Initialize document

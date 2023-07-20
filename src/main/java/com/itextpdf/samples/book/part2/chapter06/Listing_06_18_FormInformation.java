@@ -1,5 +1,14 @@
+/*
+    This file is part of the iText (R) project.
+    Copyright (c) 1998-2023 Apryse Group NV
+    Authors: Apryse Software.
+
+    For more information, please contact iText Software at this address:
+    sales@itextpdf.com
+ */
 package com.itextpdf.samples.book.part2.chapter06;
 
+import com.itextpdf.forms.fields.PdfFormCreator;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfName;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -31,7 +40,7 @@ public class Listing_06_18_FormInformation {
         PdfReader reader = new PdfReader(DATASHEET);
         PdfDocument pdfDoc = new PdfDocument(reader);
         // Get the fields from the reader (read-only!!!)
-        PdfAcroForm form = PdfAcroForm.getAcroForm(pdfDoc, true);
+        PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
         // Loop over the fields and get info about them
         Set<String> fields = form.getAllFormFields().keySet();
         for (String key : fields) {
