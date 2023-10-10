@@ -30,7 +30,7 @@ public class Listing_10_09_ImageTypes {
     public static final String DEST = "./target/book/part3/chapter10/Listing_10_09_ImageTypes.pdf";
     public static final String[] RESOURCES = {
             "bruno_ingeborg.jpg",
-            "map.jp2",
+            "bee.jp2",
             "info.png",
             "close.bmp",
             "movie.gif",
