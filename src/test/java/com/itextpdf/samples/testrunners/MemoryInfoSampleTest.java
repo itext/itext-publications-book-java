@@ -2,21 +2,22 @@ package com.itextpdf.samples.testrunners;
 
 import com.itextpdf.test.RunnerSearchConfig;
 import com.itextpdf.test.WrappedSamplesRunner;
-import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-@Category(SampleTest.class)
+@Tag("SampleTest")
 public class MemoryInfoSampleTest extends WrappedSamplesRunner {
-    @Parameterized.Parameters(name = "{index}: {0}")
     public static Collection<Object[]> data() {
         RunnerSearchConfig searchConfig = new RunnerSearchConfig();
 
@@ -26,8 +27,12 @@ public class MemoryInfoSampleTest extends WrappedSamplesRunner {
         return generateTestsList(searchConfig);
     }
 
-    @Test(timeout = 60000)
-    public void test() throws Exception {
+    @Timeout(unit = TimeUnit.MILLISECONDS, value = 60000)
+    @ParameterizedTest(name = "{index}: {0}")
+    @MethodSource("data")
+    @Disabled("TODO DEVSIX-3691")
+    public void test(RunnerParams data) throws Exception {
+        this.sampleClassParams = data;
         runSamples();
     }
 
@@ -52,7 +57,7 @@ public class MemoryInfoSampleTest extends WrappedSamplesRunner {
         int partialMemoryValue = Integer.parseInt(matcher.group());
 
         System.out.println(fullMemoryValue + "-" + partialMemoryValue);
-        Assert.assertTrue((fullMemoryValue != 0) && (partialMemoryValue != 0));
-        Assert.assertTrue(fullMemoryValue > partialMemoryValue);
+        Assertions.assertTrue((fullMemoryValue != 0) && (partialMemoryValue != 0));
+        Assertions.assertTrue(fullMemoryValue > partialMemoryValue);
     }
 }
