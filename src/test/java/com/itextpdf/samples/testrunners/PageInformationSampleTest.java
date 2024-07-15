@@ -2,22 +2,22 @@ package com.itextpdf.samples.testrunners;
 
 import com.itextpdf.test.RunnerSearchConfig;
 import com.itextpdf.test.WrappedSamplesRunner;
-import com.itextpdf.test.annotations.type.SampleTest;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Collection;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.junit.runners.Parameterized;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import java.util.concurrent.TimeUnit;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-@Category(SampleTest.class)
+@Tag("SampleTest")
 public class PageInformationSampleTest extends WrappedSamplesRunner {
-    @Parameterized.Parameters(name = "{index}: {0}")
     public static Collection<Object[]> data() {
         RunnerSearchConfig searchConfig = new RunnerSearchConfig();
         searchConfig
@@ -26,8 +26,11 @@ public class PageInformationSampleTest extends WrappedSamplesRunner {
         return generateTestsList(searchConfig);
     }
 
-    @Test(timeout = 60000)
-    public void test() throws Exception {
+    @Timeout(unit = TimeUnit.MILLISECONDS, value = 60000)
+    @ParameterizedTest(name = "{index}: {0}")
+    @MethodSource("data")
+    public void test(RunnerParams data) throws Exception {
+        this.sampleClassParams = data;
         runSamples();
     }
 
@@ -41,11 +44,11 @@ public class PageInformationSampleTest extends WrappedSamplesRunner {
             String curCmpStr;
             int row = 1;
             while ((curDestStr = destReader.readLine()) != null) {
-                assertNotNull("The lengths of files are different.", curCmpStr = cmpReader.readLine());
-                assertEquals("The files are different on the row " + row, curCmpStr, curDestStr);
+                assertNotNull(curCmpStr = cmpReader.readLine(), "The lengths of files are different.");
+                assertEquals(curCmpStr, curDestStr, "The files are different on the row " + row);
                 row++;
             }
-            assertNull("The lengths of files are different.", curCmpStr = cmpReader.readLine());
+            assertNull(curCmpStr = cmpReader.readLine(), "The lengths of files are different.");
         }
     }
 }

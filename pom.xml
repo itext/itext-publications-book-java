@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.itextpdf.samples</groupId>
   <artifactId>book</artifactId>
-  <version>8.0.4</version>
+  <version>8.0.5</version>
   <name>iText Publications: iText in Action</name>
   <url>https://itextpdf.com/</url>
   <properties>
@@ -11,7 +11,6 @@
     <failsafe.version>3.0.0-M3</failsafe.version>
     <fb-contrib.version>7.4.3</fb-contrib.version>
     <findsecbugs.version>1.8.0</findsecbugs.version>
-    <integrationtests>com.itextpdf.test.annotations.type.IntegrationTest</integrationtests>
     <jacoco.version>0.8.3</jacoco.version>
     <java.version>1.8</java.version>
     <javadoc.version>2.10.3</javadoc.version>
@@ -20,18 +19,20 @@
     <pmd.version>3.5</pmd.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <sampletests>com.itextpdf.test.annotations.type.SampleTest</sampletests>
-    <slowtests>com.itextpdf.test.annotations.type.SlowTest</slowtests>
     <spotbugs.version>3.1.11</spotbugs.version>
-    <surefire.version>3.0.0-M3</surefire.version>
+    <surefire.version>3.2.5</surefire.version>
     <typography.version>4.0.2</typography.version>
-    <unittests>com.itextpdf.test.annotations.type.UnitTest</unittests>
-    <hsqldb.version>2.6.1</hsqldb.version>
+    <hsqldb.version>2.7.2</hsqldb.version>
   </properties>
   <dependencies>
     <dependency>
       <groupId>com.itextpdf</groupId>
       <artifactId>kernel</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>commons</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
@@ -143,7 +144,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire.version}</version>
         <configuration>
-          <groups>${unittests}</groups>
+          <groups>UnitTest,BouncyCastleUnitTest</groups>
           <parallel>all</parallel>
           <threadCount>10</threadCount>
           <useUnlimitedThreads>true</useUnlimitedThreads>
@@ -165,7 +166,7 @@
           <includes>
             <include>**/*.java</include>
           </includes>
-          <groups>${sampletests}</groups>
+          <groups>SampleTest</groups>
           <parallel>none</parallel>
         </configuration>
       </plugin>
@@ -265,8 +266,8 @@
             <version>${surefire.version}</version>
             <dependencies>
               <dependency>
-                <groupId>org.apache.maven.surefire</groupId>
-                <artifactId>surefire-junit47</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
                 <scope>compile</scope>
               </dependency>
@@ -276,7 +277,7 @@
               <includes>
                 <include>**/*Test.java</include>
               </includes>
-              <groups>${unittests}</groups>
+              <groups>UnitTest,BouncyCastleUnitTest</groups>
               <forkCount>1</forkCount>
               <reuseForks>false</reuseForks>
               <threadCount>10</threadCount>
@@ -301,7 +302,7 @@
               <includes>
                 <include>**/*Test.java</include>
               </includes>
-              <groups>${slowtests}</groups>
+              <groups>SlowTest,PerformanceTest</groups>
               <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
               <argLine>${jacoco.agent.argLine}</argLine>
               <threadCount>1</threadCount>
