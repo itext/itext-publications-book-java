@@ -13,21 +13,21 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.ReaderProperties;
 import com.itextpdf.kernel.pdf.navigation.PdfDestination;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.properties.Property;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.BlockElement;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.properties.Property;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.BlockRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -96,7 +96,7 @@ public class Listing_05_12_MovieHistory1 {
                 firstLevelOrder++;
                 secondLevelOrder = 0;
                 firstLevelTitle = firstLevelOrder + " " + EPOCH[epoch];
-                firstLevelParagraph = new Div().add(new Paragraph(firstLevelTitle).setFont(font).setFontSize(24).setBold());
+                firstLevelParagraph = new Div().add(new Paragraph(firstLevelTitle).setFont(bold).setFontSize(24));
                 firstLevelParagraph.setNextRenderer(new SectionRenderer(firstLevelParagraph, 1));
                 firstLevelParagraph.setProperty(Property.DESTINATION, firstLevelTitle);
                 firstLevel = rootOutLine.addOutline(firstLevelTitle);

@@ -11,6 +11,7 @@ import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.licensing.base.LicenseKey;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Country;
@@ -24,16 +25,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.Reader;
+import java.sql.SQLException;
+import java.util.List;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.sql.SQLException;
-import java.util.List;
 
 public class Listing_09_15_HtmlMovies1 {
     public static final String HTML = "./target/book/part3/chapter09/Listing_09_15_HtmlMovies1.html";
@@ -129,12 +129,14 @@ public class Listing_09_15_HtmlMovies1 {
 
     private static class CustomHandler extends DefaultHandler {
         public static final String FONT = "./src/main/resources/font/FreeSans.ttf";
+        public static final String FONT_ITALIC = "./src/main/resources/font/FreeSansOblique.ttf";
 
         protected Document document;
         protected Paragraph paragraph;
         protected com.itextpdf.layout.element.List list;
         protected ListItem listItem;
         protected PdfFont font;
+        protected PdfFont fontItalic;
         protected boolean isItalic;
 
         public CustomHandler(Document document) {
@@ -143,6 +145,7 @@ public class Listing_09_15_HtmlMovies1 {
             listItem = new ListItem();
             try {
                 font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
+                fontItalic = PdfFontFactory.createFont(FONT_ITALIC, PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -193,7 +196,7 @@ public class Listing_09_15_HtmlMovies1 {
         public void characters(char[] ch, int start, int length) {
             Text text = new Text(strip(new StringBuffer().append(ch, start, length)));
             if (isItalic) {
-                text.setItalic();
+                text.setFont(fontItalic);
             }
             if (0 != text.getText().length()) {
                 paragraph.add(text);

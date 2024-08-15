@@ -19,11 +19,11 @@ import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.layout.properties.VerticalAlignment;
 import com.itextpdf.licensing.base.LicenseKey;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.PojoFactory;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,7 +34,6 @@ import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -109,8 +108,13 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
 
     private static class CustomHandler extends DefaultHandler {
         public static final String FONT = "./src/main/resources/font/FreeSans.ttf";
+        public static final String FONT_BOLD = "./src/main/resources/font/FreeSansBold.ttf";
+        public static final String FONT_ITALIC = "./src/main/resources/font/FreeSansOblique.ttf";
+
 
         protected PdfFont font;
+        protected PdfFont fontBold;
+        protected PdfFont fontItalic;
         protected Paragraph paragraph;
         protected com.itextpdf.layout.element.List list;
         protected ListItem listItem;
@@ -124,6 +128,8 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
             this.document = document;
             try {
                 font = PdfFontFactory.createFont(FONT, PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
+                fontBold = PdfFontFactory.createFont(FONT_BOLD, PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
+                fontItalic = PdfFontFactory.createFont(FONT_ITALIC, PdfEncodings.IDENTITY_H, EmbeddingStrategy.PREFER_EMBEDDED);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -145,7 +151,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
                 if ("director".equals(attributes.getValue("class"))) {
                     // MidNightBlue color
                     paragraph.setFontColor(new DeviceRgb(0.09803922f, 0.09803922f, 0.4392157f));
-                    paragraph.setBold();
+                    paragraph.setFont(fontBold);
                 }
             } else if ("ul".equals(qName)) {
                 list.setSymbolIndent(10);
@@ -205,7 +211,7 @@ public class Listing_09_16_HtmlMovies2 extends Listing_09_15_HtmlMovies1 {
         public void characters(char[] ch, int start, int length) {
             Text text = new Text(strip(new StringBuffer().append(ch, start, length)));
             if (isItalic) {
-                text.setItalic();
+                text.setFont(fontItalic);
             }
             if (0 != text.getText().length()) {
                 paragraph.add(text);
