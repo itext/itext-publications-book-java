@@ -84,7 +84,7 @@ public class Listing_12_04_MetadataXmp {
     public void readXmpMetadata(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         FileOutputStream fos = new FileOutputStream(dest);
-        byte[] b = pdfDoc.getXmpMetadata();
+        byte[] b = pdfDoc.getXmpMetadataBytes();
         fos.write(b, 0, b.length);
         fos.flush();
         fos.close();
