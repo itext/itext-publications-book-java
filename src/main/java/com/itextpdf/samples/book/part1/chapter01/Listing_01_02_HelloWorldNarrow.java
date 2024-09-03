@@ -21,7 +21,7 @@ public class Listing_01_02_HelloWorldNarrow {
         new Listing_01_02_HelloWorldNarrow().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException {
+    public void manipulatePdf(String dest) throws IOException {
         // Initialize writer
         PdfWriter writer = new PdfWriter(dest);
 

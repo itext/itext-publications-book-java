@@ -25,7 +25,7 @@ public class Listing_02_06_MovieTitles {
         new Listing_02_06_MovieTitles().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, SQLException {
+    public void manipulatePdf(String dest) throws IOException, SQLException {
         // Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);

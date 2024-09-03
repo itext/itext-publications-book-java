@@ -28,7 +28,7 @@ public class Listing_10_04_ShadingPatternColor {
         new Listing_10_04_ShadingPatternColor().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException {
+    public void manipulatePdf(String dest) throws IOException {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 

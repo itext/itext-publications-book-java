@@ -31,7 +31,7 @@ public class Listing_12_01_MetadataPdf {
         changePdf(DEST, RESULT[1]);
     }
 
-    public void createPdf(String dest) throws FileNotFoundException {
+    public void createPdf(String dest) throws IOException {
         //Initialize pdf document and document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);

@@ -25,7 +25,7 @@ public class Listing_02_01_DatabaseTest {
         new Listing_02_01_DatabaseTest().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, SQLException {
+    public void manipulatePdf(String dest) throws IOException, SQLException {
 
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);

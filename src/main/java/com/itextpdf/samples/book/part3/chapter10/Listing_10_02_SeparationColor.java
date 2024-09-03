@@ -25,7 +25,7 @@ public class Listing_10_02_SeparationColor {
         new Listing_10_02_SeparationColor().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException {
+    public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 
         PdfCanvas canvas = new PdfCanvas(pdfDoc.addNewPage());
