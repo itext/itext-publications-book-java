@@ -4,7 +4,7 @@ import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.font.PdfFontFactory.EmbeddingStrategy;
-import com.itextpdf.kernel.pdf.PdfAConformanceLevel;
+import com.itextpdf.kernel.pdf.PdfAConformance;
 import com.itextpdf.kernel.pdf.PdfOutputIntent;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.xmp.XMPException;
@@ -38,7 +38,7 @@ public class Listing_13_01_PdfA {
         InputStream is = new FileInputStream(sourceFolder + "sRGB Color Space Profile.icm");
 
         PdfADocument pdfADocument = new PdfADocument(new PdfWriter(dest),
-                PdfAConformanceLevel.PDF_A_1B,
+                PdfAConformance.PDF_A_1B,
                 new PdfOutputIntent("Custom", "", "http://www.color.org", "sRGB IEC61966-2.1", is));
         pdfADocument.addNewPage();
 
