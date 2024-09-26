@@ -1,16 +1,17 @@
 package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.io.image.ImageDataFactory;
-import com.itextpdf.kernel.geom.PageSize;
-import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.DeviceGray;
-import com.itextpdf.kernel.events.IEventHandler;
-import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEventHandler;
+import com.itextpdf.kernel.pdf.event.PdfDocumentEvent;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Image;
@@ -21,10 +22,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class Listing_10_17_TransparentAwt {
-    public static final String DEST
-            = "./target/book/part3/chapter10/Listing_10_17_TransparentAwt.pdf";
-    public static final String RESOURCE
-            = "./src/main/resources/img/hitchcock.gif";
+    public static final String DEST = "./target/book/part3/chapter10/Listing_10_17_TransparentAwt.pdf";
+    public static final String RESOURCE = "./src/main/resources/img/hitchcock.gif";
 
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);
@@ -58,8 +57,7 @@ public class Listing_10_17_TransparentAwt {
         doc.close();
     }
 
-
-    protected class PageBackgroundsEventHandler implements IEventHandler {
+    protected static class PageBackgroundsEventHandler extends AbstractPdfDocumentEventHandler {
         protected Color color;
 
         public PageBackgroundsEventHandler(Color color) {
@@ -67,7 +65,7 @@ public class Listing_10_17_TransparentAwt {
         }
 
         @Override
-        public void handleEvent(com.itextpdf.kernel.events.Event event) {
+        public void onAcceptedEvent(AbstractPdfDocumentEvent event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfPage page = docEvent.getPage();
             PdfCanvas canvas = new PdfCanvas(page);

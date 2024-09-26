@@ -2,9 +2,9 @@ package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.colors.DeviceGray;
-import com.itextpdf.kernel.events.Event;
-import com.itextpdf.kernel.events.IEventHandler;
-import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEventHandler;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.PdfDocumentEvent;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -131,11 +131,11 @@ public class Listing_06_08_Stationery {
         doc.close();
     }
 
+    protected static class StationeryEventHandler extends AbstractPdfDocumentEventHandler {
 
-    protected class StationeryEventHandler implements IEventHandler {
         @Override
-        public void handleEvent(Event event) {
-            PdfDocument pdfDoc = ((PdfDocumentEvent) event).getDocument();
+        public void onAcceptedEvent(AbstractPdfDocumentEvent event) {
+            PdfDocument pdfDoc = event.getDocument();
             int pageNum = pdfDoc.getPageNumber(((PdfDocumentEvent) event).getPage());
 
             PdfReader reader = null;

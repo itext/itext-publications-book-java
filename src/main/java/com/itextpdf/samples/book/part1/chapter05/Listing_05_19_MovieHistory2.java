@@ -1,9 +1,9 @@
 package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.io.font.constants.StandardFonts;
-import com.itextpdf.kernel.events.Event;
-import com.itextpdf.kernel.events.IEventHandler;
-import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEventHandler;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.PdfDocumentEvent;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -141,8 +141,7 @@ public class Listing_05_19_MovieHistory2 {
         connection.close();
     }
 
-
-    protected class HeadertHandler implements IEventHandler {
+    protected static class HeadertHandler extends AbstractPdfDocumentEventHandler {
         protected String header;
 
         public void setHeader(String header) {
@@ -154,7 +153,7 @@ public class Listing_05_19_MovieHistory2 {
         }
 
         @Override
-        public void handleEvent(Event event) {
+        public void onAcceptedEvent(AbstractPdfDocumentEvent event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfPage page = docEvent.getPage();
 
@@ -171,9 +170,7 @@ public class Listing_05_19_MovieHistory2 {
                     .add(new Paragraph("Movie History").setMargin(0).setMultipliedLeading(1).setFixedPosition(470, 800, 150));
             new Canvas(canvas, artBox)
                     .add(new Paragraph(Integer.toString(pdfDoc.getPageNumber(page))).setMargin(0).setMultipliedLeading(1).setFixedPosition(285, 36, 30));
-
         }
-
     }
 
     class SectionRenderer extends BlockRenderer {

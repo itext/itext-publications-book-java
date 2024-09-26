@@ -1,9 +1,9 @@
 package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.io.font.constants.StandardFonts;
-import com.itextpdf.kernel.events.Event;
-import com.itextpdf.kernel.events.IEventHandler;
-import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEventHandler;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.PdfDocumentEvent;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
@@ -105,12 +105,11 @@ public class Listing_05_20_MovieCountries1 {
         connection.close();
     }
 
-
-    public class HeaderHandler implements IEventHandler {
+    public class HeaderHandler extends AbstractPdfDocumentEventHandler {
         protected String country;
 
         @Override
-        public void handleEvent(Event event) {
+        public void onAcceptedEvent(AbstractPdfDocumentEvent event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfPage page = docEvent.getPage();
             int pageNum = docEvent.getDocument().getPageNumber(page);
