@@ -37,7 +37,7 @@ public class Listing_12_09_EncryptionPdf {
         encryptPdf(RESULT[1], RESULT[2]);
     }
 
-    public void createPdf(String dest) throws FileNotFoundException {
+    public void createPdf(String dest) throws IOException {
         PdfWriter writer = new PdfWriter(dest, new WriterProperties()
                 .setStandardEncryption(USER, OWNER, EncryptionConstants.ALLOW_PRINTING, EncryptionConstants.STANDARD_ENCRYPTION_128));
         PdfDocument pdfDoc = new PdfDocument(writer);

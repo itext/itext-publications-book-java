@@ -13,6 +13,8 @@ Delicious-SmallCaps.otf
 GPLv3: gpl-3.0.txt
 
 FreeSans.ttf
+FreeSansBold.ttf
+FreeSansOblique.ttf
 
 
 The following fonts were found thanks to this article and link:

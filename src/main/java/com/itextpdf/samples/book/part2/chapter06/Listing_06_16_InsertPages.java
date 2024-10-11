@@ -1,9 +1,9 @@
 package com.itextpdf.samples.book.part2.chapter06;
 
 import com.itextpdf.io.source.RandomAccessSourceFactory;
-import com.itextpdf.kernel.events.Event;
-import com.itextpdf.kernel.events.IEventHandler;
-import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEventHandler;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.PdfDocumentEvent;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -94,8 +94,7 @@ public class Listing_06_16_InsertPages {
 
     }
 
-
-    public class StationeryHandler implements IEventHandler {
+    public static class StationeryHandler extends AbstractPdfDocumentEventHandler {
         protected PdfDocument stationery;
 
         public StationeryHandler(String src) {
@@ -107,7 +106,7 @@ public class Listing_06_16_InsertPages {
         }
 
         @Override
-        public void handleEvent(Event event) {
+        public void onAcceptedEvent(AbstractPdfDocumentEvent event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
 
             PdfFormXObject page = null;

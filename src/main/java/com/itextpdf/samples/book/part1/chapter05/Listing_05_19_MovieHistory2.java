@@ -1,9 +1,9 @@
 package com.itextpdf.samples.book.part1.chapter05;
 
 import com.itextpdf.io.font.constants.StandardFonts;
-import com.itextpdf.kernel.events.Event;
-import com.itextpdf.kernel.events.IEventHandler;
-import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEventHandler;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.PdfDocumentEvent;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
@@ -24,13 +24,13 @@ import com.itextpdf.layout.properties.Property;
 import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.BlockRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
 import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -93,7 +93,7 @@ public class Listing_05_19_MovieHistory2 {
                     }
                 }
                 // chapter
-                firstTitle = new Div().add(new Paragraph(EPOCH[epoch]).setFont(font).setFontSize(24).setBold());
+                firstTitle = new Div().add(new Paragraph(EPOCH[epoch]).setFont(bold).setFontSize(24));
                 firstTitle.setNextRenderer(new SectionRenderer(firstTitle, 1));
                 firstTitle.setProperty(Property.DESTINATION, EPOCH[epoch]);
                 firstLevel = rootOutLine.addOutline(EPOCH[epoch]);
@@ -141,8 +141,7 @@ public class Listing_05_19_MovieHistory2 {
         connection.close();
     }
 
-
-    protected class HeadertHandler implements IEventHandler {
+    protected static class HeadertHandler extends AbstractPdfDocumentEventHandler {
         protected String header;
 
         public void setHeader(String header) {
@@ -154,7 +153,7 @@ public class Listing_05_19_MovieHistory2 {
         }
 
         @Override
-        public void handleEvent(Event event) {
+        public void onAcceptedEvent(AbstractPdfDocumentEvent event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
             PdfPage page = docEvent.getPage();
 
@@ -171,9 +170,7 @@ public class Listing_05_19_MovieHistory2 {
                     .add(new Paragraph("Movie History").setMargin(0).setMultipliedLeading(1).setFixedPosition(470, 800, 150));
             new Canvas(canvas, artBox)
                     .add(new Paragraph(Integer.toString(pdfDoc.getPageNumber(page))).setMargin(0).setMultipliedLeading(1).setFixedPosition(285, 36, 30));
-
         }
-
     }
 
     class SectionRenderer extends BlockRenderer {

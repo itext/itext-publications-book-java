@@ -12,12 +12,12 @@ import com.itextpdf.kernel.pdf.PdfOutline;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
-import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.samples.book.part2.chapter07.Listing_07_02_LinkActions;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -25,12 +25,12 @@ import com.lowagie.filmfestival.MovieComparator;
 import com.lowagie.filmfestival.PojoFactory;
 import com.lowagie.filmfestival.PojoToElementFactory;
 import java.io.File;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 public class Listing_13_13_Bookmarks2NamedDestinations {
     public static final String DEST = "./target/book/part4/chapter13/Listing_13_13_Bookmarks2NamedDestinations_named_destinations.pdf";
@@ -85,7 +85,7 @@ public class Listing_13_13_Bookmarks2NamedDestinations {
                 firstLevelOrder++;
                 secondLevelOrder = 0;
                 firstLevelTitle = firstLevelOrder + " " + EPOCH[epoch];
-                firstLevelParagraph = new Div().add(new Paragraph(firstLevelTitle).setFont(font).setFontSize(24).setBold());
+                firstLevelParagraph = new Div().add(new Paragraph(firstLevelTitle).setFont(bold).setFontSize(24));
                 doc.add(firstLevelParagraph);
                 firstLevel = rootOutLine.addOutline(firstLevelTitle);
                 firstLevel.addDestination(PdfExplicitDestination.createFit(pdfDoc.getLastPage()));

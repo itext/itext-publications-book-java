@@ -39,7 +39,7 @@ public class Listing_10_03_TilingPatternColor {
         new Listing_10_03_TilingPatternColor().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException, MalformedURLException {
+    public void manipulatePdf(String dest) throws IOException {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
 

@@ -37,7 +37,7 @@ public class Listing_03_26_MoviePosters {
         new Listing_03_26_MoviePosters().manipulatePdf(DEST);
     }
 
-    public  void manipulatePdf(String dest) throws FileNotFoundException, SQLException, MalformedURLException {
+    public  void manipulatePdf(String dest) throws IOException, SQLException {
         //Initialize document and add page
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         PdfPage page = pdfDoc.addNewPage();

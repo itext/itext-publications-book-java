@@ -20,7 +20,7 @@ public class Listing_10_08_RawImage {
         new Listing_10_08_RawImage().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException {
+    public void manipulatePdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);
         // Image in color space DeviceGray

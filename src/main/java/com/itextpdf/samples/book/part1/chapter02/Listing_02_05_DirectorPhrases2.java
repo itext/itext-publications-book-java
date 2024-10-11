@@ -9,6 +9,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import java.io.File;
@@ -38,7 +39,7 @@ public class Listing_02_05_DirectorPhrases2 {
         try {
             // create a font that will be embedded
             timesbd = PdfFontFactory.createFont(
-                    /*"c:/windows/fonts/timesbd.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
+                    /*"c:/windows/fonts/timesbd.ttf"*/"./src/main/resources/font/FreeSansBold.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
             // create a font that will be embedded
             times = PdfFontFactory.createFont(
                     /*"c:/windows/fonts/times.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
@@ -64,7 +65,7 @@ public class Listing_02_05_DirectorPhrases2 {
     public Paragraph createDirectorPhrase(ResultSet rs, PdfFont timesbd, PdfFont times)
             throws SQLException {
         Paragraph director = new Paragraph();
-        Text name = new Text(rs.getString("name")).setFont(timesbd).setBold();
+        Text name = new Text(rs.getString("name")).setFont(timesbd);
         name.setUnderline(0.2f, -2f);
         director.add(name);
         director.add(new Text(",").setFont(timesbd));

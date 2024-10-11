@@ -2,14 +2,13 @@ package com.itextpdf.samples.book.part3.chapter10;
 
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.geom.Rectangle;
-import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.DeviceCmyk;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
 import com.itextpdf.kernel.pdf.colorspace.PdfDeviceCs;
 import com.itextpdf.kernel.pdf.colorspace.PdfPattern;
-import com.itextpdf.kernel.pdf.colorspace.PdfShading;
+import com.itextpdf.kernel.pdf.colorspace.shading.PdfAxialShading;
 import com.itextpdf.kernel.pdf.extgstate.PdfExtGState;
 import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.kernel.pdf.xobject.PdfTransparencyGroup;
@@ -93,7 +92,7 @@ public class Listing_10_07_Transparency2 {
      * @throws Exception
      */
     public static void pictureBackdrop(float x, float y, PdfCanvas canvas) {
-        PdfShading.Axial axial = new PdfShading.Axial(new PdfDeviceCs.Rgb(), x, y, ColorConstants.YELLOW.getColorValue(),
+        PdfAxialShading axial = new PdfAxialShading(new PdfDeviceCs.Rgb(), x, y, ColorConstants.YELLOW.getColorValue(),
                 x + 200, y, ColorConstants.RED.getColorValue());
         PdfPattern.Shading axialPattern = new PdfPattern.Shading(axial);
         canvas

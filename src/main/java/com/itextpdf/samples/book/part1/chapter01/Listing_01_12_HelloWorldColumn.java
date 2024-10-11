@@ -21,7 +21,7 @@ public class Listing_01_12_HelloWorldColumn {
         new Listing_01_12_HelloWorldColumn().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException {
+    public void manipulatePdf(String dest) throws IOException {
         //Initialize writer
         PdfWriter writer = new PdfWriter(dest);
 

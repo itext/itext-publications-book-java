@@ -26,7 +26,7 @@ public class Listing_01_05_HelloWorldLandscape1 {
         new Listing_01_05_HelloWorldLandscape1().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws FileNotFoundException {
+    public void manipulatePdf(String dest) throws IOException {
         // Initialize writer
         PdfWriter writer = new PdfWriter(dest);
 

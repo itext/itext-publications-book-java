@@ -1,9 +1,9 @@
 package com.itextpdf.samples.book.part1.chapter03;
 
 import com.itextpdf.io.font.constants.StandardFonts;
-import com.itextpdf.kernel.events.Event;
-import com.itextpdf.kernel.events.IEventHandler;
-import com.itextpdf.kernel.events.PdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEventHandler;
+import com.itextpdf.kernel.pdf.event.AbstractPdfDocumentEvent;
+import com.itextpdf.kernel.pdf.event.PdfDocumentEvent;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -53,10 +53,10 @@ public class Listing_03_19_MovieColumns4 extends Listing_03_16_MovieColumns1 {
         doc.setProperty(Property.FONT, normal);
 
         doc.setRenderer(new ColumnDocumentRenderer(doc, COLUMNS));
-        pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, new IEventHandler() {
+        pdfDoc.addEventHandler(PdfDocumentEvent.START_PAGE, new AbstractPdfDocumentEventHandler() {
             @Override
-            public void handleEvent(Event event) {
-                drawRectangles(new PdfCanvas(((PdfDocumentEvent)event).getPage()));
+            public void onAcceptedEvent(AbstractPdfDocumentEvent event) {
+                drawRectangles(new PdfCanvas(((PdfDocumentEvent) event).getPage()));
             }
         });
 
