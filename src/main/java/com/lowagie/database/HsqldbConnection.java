@@ -12,19 +12,21 @@ public class HsqldbConnection extends DatabaseConnection {
 
     /**
      * Creates the connection.
+     *
      * @param db_file_name_prefix the database name,
-     * which is the prefix of the database file
-     * @throws SQLException 
+     *                            which is the prefix of the database file
+     *
+     * @throws SQLException database related error
      */
     public HsqldbConnection(String db_file_name_prefix)
-        throws SQLException {
+            throws SQLException {
         try {
             Class.forName("org.hsqldb.jdbcDriver");
         } catch (ClassNotFoundException e) {
             throw new SQLException("HSQLDB database driver not found");
         }
         connection = DriverManager.getConnection(
-            "jdbc:hsqldb:src/main/resources/db/" + db_file_name_prefix + ";shutdown=true", "SA", "");
+                "jdbc:hsqldb:src/main/resources/db/" + db_file_name_prefix + ";shutdown=true", "SA", "");
     }
 
 }

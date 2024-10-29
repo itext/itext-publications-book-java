@@ -6,6 +6,7 @@ import com.itextpdf.kernel.xmp.XMPException;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 
@@ -29,8 +30,10 @@ public class Listing_13_11_PageLabelExample {
             "SELECT name FROM film_director ORDER BY name",
             "SELECT title FROM film_movietitle ORDER BY title"
     };
-    /** SQL statements */
-    public static final String[] FIELD = { "country", "name", "title" };
+    /**
+     * SQL statements
+     */
+    public static final String[] FIELD = {"country", "name", "title"};
 
     public static void main(String args[]) throws IOException, SQLException {
         File file = new File(DEST);
@@ -39,20 +42,16 @@ public class Listing_13_11_PageLabelExample {
         new Listing_13_11_PageLabelExample().manipulatePdf(DEST);
     }
 
-    protected void manipulatePdf(String dest) throws IOException, SQLException {
-        createPdf(dest);
-        listPageLabels(dest, DEST_TXT);
-        //manipulatePageLabel(RESULT, DEST2);
-    }
-
     /**
      * Creates a PDF document.
+     *
      * @param dest the path to the new PDF document
-     * @throws    IOException
-     * @throws    SQLException
+     *
+     * @throws IOException  error during file creation/accessing
+     * @throws SQLException database related error
      */
     public void createPdf(String dest)
-            throws IOException, SQLException{
+            throws IOException, SQLException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, PageSize.A5);
@@ -65,18 +64,21 @@ public class Listing_13_11_PageLabelExample {
         }
         pdfDoc.getPage(start[0]).setPageLabel(PageLabelNumberingStyle.UPPERCASE_LETTERS, null);
         pdfDoc.getPage(start[1]).setPageLabel(PageLabelNumberingStyle.DECIMAL_ARABIC_NUMERALS, null);
-        pdfDoc.getPage(start[2]).setPageLabel(PageLabelNumberingStyle.DECIMAL_ARABIC_NUMERALS, "Movies-", start[2] - start[1] + 1);
+        pdfDoc.getPage(start[2])
+                .setPageLabel(PageLabelNumberingStyle.DECIMAL_ARABIC_NUMERALS, "Movies-", start[2] - start[1] + 1);
         pdfDoc.close();
         connection.close();
     }
 
     /**
      * Performs an SQL query and writes the results to a PDF using the Paragraph object.
-     * @param doc    The document to which the paragraphs have to be added
-     * @param connection  The database connection that has to be used
-     * @param sql         The SQL statement
-     * @param field       The name of the field that has to be shown
-     * @throws SQLException
+     *
+     * @param doc        The document to which the paragraphs have to be added
+     * @param connection The database connection that has to be used
+     * @param sql        The SQL statement
+     * @param field      The name of the field that has to be shown
+     *
+     * @throws SQLException database related error
      */
     public void addParagraphs(Document doc, DatabaseConnection connection, String sql, String field)
             throws SQLException {
@@ -89,9 +91,11 @@ public class Listing_13_11_PageLabelExample {
 
     /**
      * Reads the page labels from an existing PDF
+     *
      * @param src  the path to an existing PDF
      * @param dest the path to the resulting text file
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void listPageLabels(String src, String dest) throws IOException {
         // no PDF, just a text file
@@ -110,9 +114,11 @@ public class Listing_13_11_PageLabelExample {
 
     /**
      * Manipulates the page labels at the lowest PDF level.
+     *
      * @param src  The path to the source file
      * @param dest The path to the changed PDF
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void manipulatePageLabel(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
@@ -131,5 +137,11 @@ public class Listing_13_11_PageLabelExample {
             }
         }
         pdfDoc.close();
+    }
+
+    protected void manipulatePdf(String dest) throws IOException, SQLException {
+        createPdf(dest);
+        listPageLabels(dest, DEST_TXT);
+        //manipulatePageLabel(RESULT, DEST2);
     }
 }

@@ -98,10 +98,9 @@ public class Listing_10_06_Transparency1 {
     /**
      * Prints a square and fills half of it with a gray rectangle.
      *
-     * @param x
-     * @param y
-     * @param canvas
-     * @throws Exception
+     * @param x x-coordinate
+     * @param y y-coordinate
+     * @param canvas canvas to draw upon
      */
     public static void pictureBackdrop(float x, float y, PdfCanvas canvas) {
         canvas.setStrokeColor(ColorConstants.DARK_GRAY)
@@ -114,12 +113,11 @@ public class Listing_10_06_Transparency1 {
     }
 
     /**
-     * Prints 3 circles in different colors that intersect with eachother.
+     * Prints 3 circles in different colors that intersect with each-other.
      *
-     * @param x
-     * @param y
-     * @param canvas
-     * @throws Exception
+     * @param x x-coordinate
+     * @param y y-coordinate
+     * @param canvas canvas to draw upon
      */
     public static void pictureCircles(float x, float y, PdfCanvas canvas) {
         canvas.setFillColor(ColorConstants.RED)

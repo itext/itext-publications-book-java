@@ -13,6 +13,7 @@ import com.itextpdf.kernel.pdf.xobject.PdfFormXObject;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.Paragraph;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -76,8 +77,9 @@ public class Listing_06_15_StampStationery {
      * Creates a PDF document.
      *
      * @param filename the path to the new PDF document
-     * @throws IOException
-     * @throws SQLException
+     *
+     * @throws IOException  error during file creation/accessing
+     * @throws SQLException database related error
      */
     public void createPdf(String filename) throws SQLException, IOException {
         // Create a database connection
@@ -101,8 +103,9 @@ public class Listing_06_15_StampStationery {
             movies.addAll(PojoFactory.getMovies(connection, rs.getString("id")));
             for (Movie movie : movies) {
                 doc.add(new Paragraph(movie.getMovieTitle()).setFont(bold));
-                if (movie.getOriginalTitle() != null)
+                if (movie.getOriginalTitle() != null) {
                     doc.add(new Paragraph(movie.getOriginalTitle()).setFont(italic));
+                }
                 doc.add(new Paragraph(
                         String.format("Year: %d; run length: %d minutes",
                                 movie.getYear(), movie.getDuration())).setFont(normal));

@@ -82,19 +82,6 @@ public class Listing_08_01_Buttons {
         new Listing_08_01_Buttons().manipulatePdf(DEST);
     }
 
-    protected void manipulatePdf(String dest) throws Exception {
-        createPdf(DEST);
-        fillPdf(DEST, RESULT[1]);
-    }
-
-    protected static String readFileToString(String path) throws IOException {
-        File file = new File(path);
-        byte[] jsBytes = new byte[(int) file.length()];
-        FileInputStream f = new FileInputStream(file);
-        f.read(jsBytes);
-        return new String(jsBytes);
-    }
-
     public void createPdf(String filename) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
         Document doc = new Document(pdfDoc);
@@ -184,7 +171,8 @@ public class Listing_08_01_Buttons {
      *
      * @param src  the original PDF
      * @param dest the resulting PDF
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void fillPdf(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
@@ -198,15 +186,28 @@ public class Listing_08_01_Buttons {
         pdfDoc.close();
     }
 
+    protected static String readFileToString(String path) throws IOException {
+        File file = new File(path);
+        byte[] jsBytes = new byte[(int) file.length()];
+        FileInputStream f = new FileInputStream(file);
+        f.read(jsBytes);
+        return new String(jsBytes);
+    }
+
+    protected void manipulatePdf(String dest) throws Exception {
+        createPdf(DEST);
+        fillPdf(DEST, RESULT[1]);
+    }
+
     private class Button extends AbstractElement<Button> implements ILeafElement, IAccessibleElement {
 
-        DefaultAccessibilityProperties accessibilityProperties;
         protected PdfButtonFormField button;
         protected String caption;
         protected ImageData image;
         protected Rectangle rect;
         protected Color borderColor = ColorConstants.BLACK;
         protected Color buttonBackgroundColor = ColorConstants.WHITE;
+        DefaultAccessibilityProperties accessibilityProperties;
 
         public Button(String name, String caption, PdfDocument document, Rectangle rect) {
             button = new PushButtonFormFieldBuilder(document, name)
@@ -215,11 +216,6 @@ public class Listing_08_01_Buttons {
 
             this.caption = caption;
             this.rect = rect;
-        }
-
-        @Override
-        protected IRenderer makeNewRenderer() {
-            return new ButtonRenderer(this);
         }
 
         @Override
@@ -238,12 +234,12 @@ public class Listing_08_01_Buttons {
             return caption;
         }
 
-        public void setImage(ImageData image) {
-            this.image = image;
-        }
-
         public ImageData getImage() {
             return image;
+        }
+
+        public void setImage(ImageData image) {
+            this.image = image;
         }
 
         public Color getBorderColor() {
@@ -256,6 +252,11 @@ public class Listing_08_01_Buttons {
 
         public void setButtonBackgroundColor(Color buttonBackgroundColor) {
             this.buttonBackgroundColor = buttonBackgroundColor;
+        }
+
+        @Override
+        protected IRenderer makeNewRenderer() {
+            return new ButtonRenderer(this);
         }
     }
 
@@ -279,6 +280,11 @@ public class Listing_08_01_Buttons {
         }
 
         @Override
+        public IRenderer getNextRenderer() {
+            return null;
+        }
+
+        @Override
         public void draw(DrawContext drawContext) {
             Button modelButton = (Button) modelElement;
             occupiedArea.setBBox(modelButton.rect);
@@ -298,11 +304,13 @@ public class Listing_08_01_Buttons {
                     rectangle(0, 0, occupiedArea.getBBox().getWidth(), occupiedArea.getBBox().getHeight()).
                     stroke().
                     setFillColor(modelButton.buttonBackgroundColor).
-                    rectangle(0.5f, 0.5f, occupiedArea.getBBox().getWidth() - 1, occupiedArea.getBBox().getHeight() - 1).
+                    rectangle(0.5f, 0.5f, occupiedArea.getBBox().getWidth() - 1,
+                            occupiedArea.getBBox().getHeight() - 1).
                     fill().
                     restoreState();
 
-            Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
+            Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0)
+                    .setMultipliedLeading(1);
 
             new Canvas(canvas, new Rectangle(0, 0, width, height)).
                     showTextAligned(paragraph, 20, 3, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
@@ -312,13 +320,14 @@ public class Listing_08_01_Buttons {
                 PdfImageXObject imageXObject = new PdfImageXObject(image);
                 float imageWidth = image.getWidth();
 
-                if (image.getWidth() > modelButton.rect.getWidth() * 2/3) {
-                    imageWidth = modelButton.rect.getWidth() * 2/3;
+                if (image.getWidth() > modelButton.rect.getWidth() * 2 / 3) {
+                    imageWidth = modelButton.rect.getWidth() * 2 / 3;
                 }
                 if (image.getHeight() > modelButton.rect.getHeight()) {
-                    imageWidth = image.getWidth() * (modelButton.rect.getHeight() / image.getHeight()) * 2/3;
+                    imageWidth = image.getWidth() * (modelButton.rect.getHeight() / image.getHeight()) * 2 / 3;
                 }
-                Rectangle rect = PdfXObject.calculateProportionallyFitRectangleWithWidth(imageXObject, 3, 3, imageWidth);
+                Rectangle rect = PdfXObject.calculateProportionallyFitRectangleWithWidth(imageXObject, 3, 3,
+                        imageWidth);
                 canvas.addXObjectFittedIntoRectangle(imageXObject, rect);
 
                 xObject.getResources().addImage(imageXObject);
@@ -328,12 +337,8 @@ public class Listing_08_01_Buttons {
             button.getWidgets().get(0).setNormalAppearance(xObject.getPdfObject());
             xObject.getPdfObject().getOutputStream().writeBytes(str.getBytes());
 
-            PdfFormCreator.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
-        }
-
-        @Override
-        public IRenderer getNextRenderer() {
-            return null;
+            PdfFormCreator.getAcroForm(drawContext.getDocument(), true)
+                    .addField(button, drawContext.getDocument().getPage(1));
         }
     }
 }

@@ -24,25 +24,13 @@ public class Listing_06_02_MemoryInfo {
         new Listing_06_02_MemoryInfo().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws Exception {
-        // Create a writer for a report file
-        PrintWriter writer = new PrintWriter(dest);
-        garbageCollect();
-        // Do a full read
-        fullRead(writer, MOVIE_TEMPLATES);
-        // Do a partial read
-        partialRead(writer, MOVIE_TEMPLATES);
-        // Close the text file writer
-        writer.close();
-        // The test passes if there is no exception, because the results may vary on different machines
-    }
-
     /**
      * Do a full read of a PDF file
      *
      * @param writer   a writer to a report file
      * @param filename the file to read
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public static void fullRead(PrintWriter writer, String filename)
             throws IOException {
@@ -60,13 +48,16 @@ public class Listing_06_02_MemoryInfo {
      *
      * @param writer   a writer to a report file
      * @param fileName the file to read
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public static void partialRead(PrintWriter writer, String fileName) throws IOException {
         long before = getMemoryUse();
         PdfReader reader = new PdfReader(fileName);
 
-        PdfDocument pdfDocument = new PdfDocument(new PdfReader(new RandomAccessSourceFactory().createSource(new FileInputStream(fileName)), new ReaderProperties()));
+        PdfDocument pdfDocument = new PdfDocument(
+                new PdfReader(new RandomAccessSourceFactory().createSource(new FileInputStream(fileName)),
+                        new ReaderProperties()));
         pdfDocument.getNumberOfPages();
         writer.println(String.format("Memory used by partial read: %d",
                 getMemoryUse() - before));
@@ -99,6 +90,19 @@ public class Listing_06_02_MemoryInfo {
         System.runFinalization();
         System.gc();
         System.runFinalization();
+    }
+
+    public void manipulatePdf(String dest) throws Exception {
+        // Create a writer for a report file
+        PrintWriter writer = new PrintWriter(dest);
+        garbageCollect();
+        // Do a full read
+        fullRead(writer, MOVIE_TEMPLATES);
+        // Do a partial read
+        partialRead(writer, MOVIE_TEMPLATES);
+        // Close the text file writer
+        writer.close();
+        // The test passes if there is no exception, because the results may vary on different machines
     }
 
 }

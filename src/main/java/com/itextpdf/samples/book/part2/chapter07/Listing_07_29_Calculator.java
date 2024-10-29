@@ -28,6 +28,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.VerticalAlignment;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -59,14 +60,6 @@ public class Listing_07_29_Calculator {
         file.getParentFile().mkdirs();
 
         new Listing_07_29_Calculator().manipulatePdf(DEST);
-    }
-
-    protected static String readFileToString(String path) throws IOException {
-        File file = new File(path);
-        byte[] jsBytes = new byte[(int) file.length()];
-        FileInputStream f = new FileInputStream(file);
-        f.read(jsBytes);
-        return new String(jsBytes);
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
@@ -103,7 +96,8 @@ public class Listing_07_29_Calculator {
      * Creates a PDF document.
      *
      * @param dest the path to the new PDF document
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void createPdf(String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
@@ -165,9 +159,12 @@ public class Listing_07_29_Calculator {
                 .setWidgetRectangle(rect).setCaption("btn_" + btn).createPushButton();
         pushButton.setFieldName("btn_" + btn);
         pushButton.getWidgets().get(0).setHighlightMode(PdfAnnotation.HIGHLIGHT_PUSH);
-        pushButton.getWidgets().get(0).setNormalAppearance(createAppearance(pdfDoc, btn, ColorConstants.GRAY, w, h, font));
-        pushButton.getWidgets().get(0).setRolloverAppearance(createAppearance(pdfDoc, btn, ColorConstants.RED, w, h, font));
-        pushButton.getWidgets().get(0).setDownAppearance(createAppearance(pdfDoc, btn, ColorConstants.BLUE, w, h, font));
+        pushButton.getWidgets().get(0)
+                .setNormalAppearance(createAppearance(pdfDoc, btn, ColorConstants.GRAY, w, h, font));
+        pushButton.getWidgets().get(0)
+                .setRolloverAppearance(createAppearance(pdfDoc, btn, ColorConstants.RED, w, h, font));
+        pushButton.getWidgets().get(0)
+                .setDownAppearance(createAppearance(pdfDoc, btn, ColorConstants.BLUE, w, h, font));
         pushButton.getWidgets().get(0).setAdditionalAction(PdfName.U, PdfAction.createJavaScript(script));
         pushButton.getWidgets().get(0).setAdditionalAction(PdfName.E,
                 PdfAction.createJavaScript("this.showMove('" + btn + "');"));
@@ -185,6 +182,7 @@ public class Listing_07_29_Calculator {
      * @param w      the width
      * @param h      the height
      * @param font   the PdfFont
+     *
      * @return an appearance
      */
     public PdfDictionary createAppearance(PdfDocument pdfDoc, String btn, Color color, float w, float h, PdfFont font) {
@@ -209,12 +207,21 @@ public class Listing_07_29_Calculator {
      * @param row    row of the key on the key pad
      * @param width  width of the key
      * @param height height of the key
+     *
      * @return a rectangle defining the position of a key.
      */
     public Rectangle createRectangle(int column, int row, int width,
-                                     int height) {
+            int height) {
         column = column * 36 - 18;
         row = row * 36 - 18;
         return new Rectangle(column, row, width * 36, height * 36);
+    }
+
+    protected static String readFileToString(String path) throws IOException {
+        File file = new File(path);
+        byte[] jsBytes = new byte[(int) file.length()];
+        FileInputStream f = new FileInputStream(file);
+        f.read(jsBytes);
+        return new String(jsBytes);
     }
 }

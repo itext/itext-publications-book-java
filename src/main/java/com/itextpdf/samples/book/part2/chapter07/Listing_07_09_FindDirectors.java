@@ -8,6 +8,7 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import java.io.ByteArrayInputStream;
@@ -33,14 +34,6 @@ public class Listing_07_09_FindDirectors {
         file.getParentFile().mkdirs();
 
         new Listing_07_09_FindDirectors().manipulatePdf(DEST);
-    }
-
-    protected static String readFileToString(String path) throws IOException {
-        File file = new File(path);
-        byte[] jsBytes = new byte[(int) file.length()];
-        FileInputStream f = new FileInputStream(file);
-        f.read(jsBytes);
-        return new String(jsBytes).replace("\r\n", "\n");
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
@@ -96,6 +89,10 @@ public class Listing_07_09_FindDirectors {
      * using different fonts.
      *
      * @param rs the ResultSet containing director records.
+     *
+     * @return resulting paragraph
+     *
+     * @throws SQLException database related error
      */
     public Paragraph createDirectorParagraph(ResultSet rs) throws SQLException {
         String strName = rs.getString("name");
@@ -106,5 +103,13 @@ public class Listing_07_09_FindDirectors {
         buffer.append(rs.getString("given_name"));
         Link name = new Link(buffer.toString(), action);
         return new Paragraph(name);
+    }
+
+    protected static String readFileToString(String path) throws IOException {
+        File file = new File(path);
+        byte[] jsBytes = new byte[(int) file.length()];
+        FileInputStream f = new FileInputStream(file);
+        f.read(jsBytes);
+        return new String(jsBytes).replace("\r\n", "\n");
     }
 }

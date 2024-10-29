@@ -25,10 +25,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class Listing_08_18_XfaMovie {
-    /** The original PDF. */
+    /**
+     * The original PDF.
+     */
     public static final String RESOURCE = "./src/main/resources/pdfs/xfa_movie.pdf";
 
-    /** XML making up an XFA form we want to put inside an existing PDF. */
+    /**
+     * XML making up an XFA form we want to put inside an existing PDF.
+     */
     public static final String RESOURCEXFA = "./src/main/resources/xml/xfa.xml";
 
     public static final String[] TXT_FILES = {
@@ -50,7 +54,9 @@ public class Listing_08_18_XfaMovie {
             "./target/book/part2/chapter08/movie.xml"
     };
 
-    /** The resulting PDF. */
+    /**
+     * The resulting PDF.
+     */
     public static final String[] RESULT = {
             "./target/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_1.pdf",
             "./target/book/part2/chapter08/Listing_08_18_XfaMovie_xfa_filled_2.pdf",
@@ -59,13 +65,19 @@ public class Listing_08_18_XfaMovie {
 
     public static final String DEST = RESULT[2];
 
+    public static void main(String[] args) throws Exception {
+        new Listing_08_18_XfaMovie().manipulatePdf(RESULT[0]);
+    }
+
     /**
      * Checks if a PDF containing an interactive form uses
      * AcroForm technology, XFA technology, or both.
      * Also lists the field names.
-     * @param src the original PDF
+     *
+     * @param src  the original PDF
      * @param dest a text file containing form info.
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void readFieldnames(String src, String dest) throws IOException {
         PrintStream out = new PrintStream(new FileOutputStream(dest));
@@ -84,15 +96,17 @@ public class Listing_08_18_XfaMovie {
 
     /**
      * Reads the XML that makes up an XFA form.
-     * @param src the original PDF file
+     *
+     * @param src  the original PDF file
      * @param dest the resulting XML file
-     * @throws IOException
-
+     *
+     * @throws IOException          error during file creation/accessing
+     * @throws TransformerException error during transformation process
      */
     public void readXfa(String src, String dest)
             throws IOException, TransformerException {
         FileOutputStream os = new FileOutputStream(dest);
-        PdfDocument pdfDoc = new PdfDocument( new PdfReader(src));
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
         XfaForm xfa = new XfaForm(pdfDoc);
         Document doc = xfa.getDomDocument();
         Transformer tf = TransformerFactory.newInstance().newTransformer();
@@ -105,9 +119,11 @@ public class Listing_08_18_XfaMovie {
     /**
      * Fill out a form the "traditional way".
      * Note that not all fields are correctly filled in because of the way the form was created.
-     * @param src the original PDF
+     *
+     * @param src  the original PDF
      * @param dest the resulting PDF
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void fillData1(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
@@ -122,11 +138,12 @@ public class Listing_08_18_XfaMovie {
 
     /**
      * Fills out a form by replacing the XFA stream.
-     * @param src the original PDF
-     * @param xml the XML making up the new form
+     *
+     * @param src  the original PDF
+     * @param xml  the XML making up the new form
      * @param dest the resulting PDF
-     * @throws IOException
-
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void fillData2(String src, String xml, String dest)
             throws IOException {
@@ -138,10 +155,12 @@ public class Listing_08_18_XfaMovie {
 
     /**
      * Reads the data from a PDF containing an XFA form.
-     * @param src the original PDF
+     *
+     * @param src  the original PDF
      * @param dest the data in XML format
-     * @throws IOException
-     * @throws TransformerException
+     *
+     * @throws IOException          error during file creation/accessing
+     * @throws TransformerException error during transformation process
      */
     public void readData(String src, String dest)
             throws IOException, TransformerException {
@@ -151,14 +170,14 @@ public class Listing_08_18_XfaMovie {
         Node node = xfa.getDatasetsNode();
         NodeList list = node.getChildNodes();
         for (int i = 0; i < list.getLength(); i++) {
-            if("data".equals(list.item(i).getLocalName())) {
+            if ("data".equals(list.item(i).getLocalName())) {
                 node = list.item(i);
                 break;
             }
         }
         list = node.getChildNodes();
         for (int i = 0; i < list.getLength(); i++) {
-            if("movies".equals(list.item(i).getLocalName())) {
+            if ("movies".equals(list.item(i).getLocalName())) {
                 node = list.item(i);
                 break;
             }
@@ -172,9 +191,11 @@ public class Listing_08_18_XfaMovie {
 
     /**
      * Fills out a PDF form, removing the XFA.
-     * @param src
-     * @param dest
-     * @throws IOException
+     *
+     * @param src  source PDF path
+     * @param dest destination PDF path
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void fillData3(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));
@@ -186,10 +207,6 @@ public class Listing_08_18_XfaMovie {
         form.getField("movies[0].movie[0].original[0]").setValue("De helaasheid der dingen");
         form.getField("movies[0].movie[0].year[0]").setValue("2009");
         pdfDoc.close();
-    }
-
-    public static void main(String[] args) throws Exception {
-        new Listing_08_18_XfaMovie().manipulatePdf(RESULT[0]);
     }
 
     protected void manipulatePdf(String dest) throws Exception {

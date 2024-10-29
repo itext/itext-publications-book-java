@@ -79,7 +79,7 @@ public class Listing_12_04_MetadataXmp {
      *
      * @param src  A PDF file containing XMP data
      * @param dest XML file containing the XMP data extracted from the PDF
-     * @throws IOException
+     * @throws IOException error during file creation/accessing
      */
     public void readXmpMetadata(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));

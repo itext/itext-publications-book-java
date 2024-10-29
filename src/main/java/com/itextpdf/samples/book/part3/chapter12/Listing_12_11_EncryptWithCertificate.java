@@ -29,7 +29,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
  * Due to import control restrictions by the governments of a few countries,
  * the encryption libraries shipped by default with the Java SDK restrict the
  * length, and as a result the strength, of encryption keys.
- * <br/>
+ * <br>
  * To solve this problem you need to replace the
  * default security JARs in your Java installation with the Java Cryptography
  * Extension (JCE) Unlimited Strength Jurisdiction Policy Files. These JARs
@@ -79,8 +79,8 @@ public class Listing_12_11_EncryptWithCertificate {
      *
      * @param path the path to the certificate
      * @return a Certificate object
-     * @throws IOException
-     * @throws CertificateException
+     * @throws IOException error during file creation/accessing
+     * @throws CertificateException certificate related error
      */
     public Certificate getPublicCertificate(String path)
             throws IOException, CertificateException {
@@ -94,8 +94,8 @@ public class Listing_12_11_EncryptWithCertificate {
      * Gets a private key from a KeyStore.
      *
      * @return a PrivateKey object
-     * @throws GeneralSecurityException
-     * @throws IOException
+     * @throws GeneralSecurityException security related error
+     * @throws IOException error during file creation/accessing
      */
     public PrivateKey getPrivateKey() throws GeneralSecurityException, IOException {
         String path = "./src/main/resources/encryption/.keystore";
@@ -110,8 +110,8 @@ public class Listing_12_11_EncryptWithCertificate {
      *
      * @param src  The encrypted PDF
      * @param dest The decrypted PDF
-     * @throws IOException
-     * @throws GeneralSecurityException
+     * @throws IOException error during file creation/accessing
+     * @throws GeneralSecurityException security related error
      */
     public void decryptPdf(String src, String dest)
             throws IOException, GeneralSecurityException {
@@ -129,8 +129,8 @@ public class Listing_12_11_EncryptWithCertificate {
      *
      * @param src  The original PDF document
      * @param dest The encrypted PDF document
-     * @throws IOException
-     * @throws CertificateException
+     * @throws IOException error during file creation/accessing
+     * @throws CertificateException certificate related error
      */
     public void encryptPdf(String src, String dest)
             throws IOException, CertificateException {

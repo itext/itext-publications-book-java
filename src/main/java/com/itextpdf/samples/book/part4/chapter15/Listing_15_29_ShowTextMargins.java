@@ -38,6 +38,7 @@ public class Listing_15_29_ShowTextMargins {
      *
      * @param src  the source PDF
      * @param dest the resulting PDF
+     * @throws IOException error during file creation/accessing
      */
     public void addMarginRectangle(String src, String dest) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(src), new PdfWriter(dest));

@@ -42,6 +42,11 @@ public class Listing_16_02_ResizeImage {
     /**
      * Different JDK versions have different Color Management Modules, which result in different bytes
      * content for images. That's why for testing purposes we use pre-generated image.
+     *
+     * @param dest path to destination PDF
+     * @param isLoadPreGeneratedImage whether to load pre-generated image
+     * @throws IOException error during file creation/accessing
+     * @throws SQLException database related error
      */
     public void manipulatePdf(String dest, boolean isLoadPreGeneratedImage) throws IOException, SQLException {
         PdfName key = new PdfName("ITXT_SpecialId");

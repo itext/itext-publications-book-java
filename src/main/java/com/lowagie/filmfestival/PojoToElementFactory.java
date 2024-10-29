@@ -64,7 +64,10 @@ public class PojoToElementFactory {
 
     /**
      * Creates a Phrase containing the name of a Country.
+     *
      * @param country a Country object
+     * @param normal  regular font object
+     *
      * @return a Phrase object
      */
     public static List<Text> getCountryPhrase(Country country, PdfFont normal) {

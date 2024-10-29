@@ -37,17 +37,16 @@ public class Listing_04_21_PdfCalendar {
      */
     public static final String LANGUAGE = "en";
     /**
-     * Collection with special days
-     */
-    public static Properties specialDays = new Properties();
-    /**
      * Collection with the description of the images
      */
 
     public static final String RESOURCE = "./src/main/resources/calendar/%tm.jpg";
     public static final String SPECIAL = "./src/main/resources/calendar/%d.txt";
     public static final String CONTENT = "./src/main/resources/calendar/content.txt";
-
+    /**
+     * Collection with special days
+     */
+    public static Properties specialDays = new Properties();
     public static Properties content = new Properties();
 
     protected PdfFont normal;
@@ -70,8 +69,10 @@ public class Listing_04_21_PdfCalendar {
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
 
         // fonts
-        normal = PdfFontFactory.createFont(/*"c://windows/fonts/arial.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
-        bold = PdfFontFactory.createFont(/*"c://windows/fonts/arialbd.ttf"*/"./src/main/resources/font/FreeSans.ttf", PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
+        normal = PdfFontFactory.createFont(/*"c://windows/fonts/arial.ttf"*/"./src/main/resources/font/FreeSans.ttf",
+                PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
+        bold = PdfFontFactory.createFont(/*"c://windows/fonts/arialbd.ttf"*/"./src/main/resources/font/FreeSans.ttf",
+                PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
 
         // collections
         specialDays.load(new FileInputStream(String.format(SPECIAL, YEAR)));
@@ -121,7 +122,8 @@ public class Listing_04_21_PdfCalendar {
      *
      * @param calendar the month (to know which picture to use)
      * @param doc      the document model
-     * @throws IOException
+     *
+     * @throws IOException error during file accessing
      */
     public void drawImageAndText(Calendar calendar, Document doc) throws IOException {
         // get the image
@@ -152,6 +154,7 @@ public class Listing_04_21_PdfCalendar {
      *
      * @param calendar a date
      * @param locale   a locale
+     *
      * @return a PdfPCell with rowspan 7, containing the name of the month
      */
     public Cell getMonthCell(Calendar calendar, Locale locale) {
@@ -168,6 +171,7 @@ public class Listing_04_21_PdfCalendar {
      *
      * @param calendar a date
      * @param locale   a locale
+     *
      * @return a PdfPCell
      */
     public Cell getDayCell(Calendar calendar, Locale locale) {
@@ -199,6 +203,7 @@ public class Listing_04_21_PdfCalendar {
      * Returns true for Sundays.
      *
      * @param calendar a date
+     *
      * @return true for Sundays
      */
     public boolean isSunday(Calendar calendar) {
@@ -212,13 +217,16 @@ public class Listing_04_21_PdfCalendar {
      * Returns true if the date was found in a list with special days (holidays).
      *
      * @param calendar a date
+     *
      * @return true for holidays
      */
     public boolean isSpecialDay(Calendar calendar) {
-        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY)
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
             return true;
-        if (specialDays.containsKey(String.format("%1$tm%1$td", calendar)))
+        }
+        if (specialDays.containsKey(String.format("%1$tm%1$td", calendar))) {
             return true;
+        }
         return false;
     }
 }

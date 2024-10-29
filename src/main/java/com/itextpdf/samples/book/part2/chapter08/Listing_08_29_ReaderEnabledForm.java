@@ -22,10 +22,17 @@ public class Listing_08_29_ReaderEnabledForm {
 
     public static final String DEST = RESULT[2];
 
+    public static void main(String[] args) throws Exception {
+        new File(DEST).getParentFile().mkdirs();
+        new Listing_08_29_ReaderEnabledForm().manipulatePdf(DEST);
+    }
+
     /**
      * Removes any usage rights that this PDF may have. Only Adobe can grant usage rights
      * and any PDF modification with iText will invalidate them. Invalidated usage rights may
      * confuse Acrobat and it's advisable to remove them altogether.
+     *
+     * @param pdfDoc document to remove the usage rights from
      */
     public void removeUsageRights(PdfDocument pdfDoc) {
         PdfDictionary perms = pdfDoc.getCatalog().getPdfObject().getAsDictionary(PdfName.Perms);
@@ -61,11 +68,6 @@ public class Listing_08_29_ReaderEnabledForm {
         form.getField("movie[0].#subform[0].duration[0]").setValue("108");
         form.getField("movie[0].#subform[0].year[0]").setValue("2009");
         pdfDoc.close();
-    }
-
-    public static void main(String[] args) throws Exception {
-        new File(DEST).getParentFile().mkdirs();
-        new Listing_08_29_ReaderEnabledForm().manipulatePdf(DEST);
     }
 
     protected void manipulatePdf(String dest) throws Exception {

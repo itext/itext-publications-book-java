@@ -27,6 +27,8 @@ public class Listing_01_03_HelloWorldMaximum {
      * the PDF correctly due to their own limitations.
      *
      * @param args no arguments needed
+     *
+     * @throws IOException error during file creation/accessing
      */
     public static void main(String args[]) throws IOException {
         File file = new File(DEST);
