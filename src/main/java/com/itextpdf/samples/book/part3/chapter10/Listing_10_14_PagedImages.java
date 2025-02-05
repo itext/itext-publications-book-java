@@ -47,7 +47,7 @@ public class Listing_10_14_PagedImages {
      *
      * @param document the document to which the pages have to be added
      * @param path     the path to the TIFF file
-     * @throws IOException
+     * @throws IOException error during file creation/accessing
      */
     public static void addTif(Document document, String path) throws IOException {
         RandomAccessFileOrArray ra = new RandomAccessFileOrArray(
@@ -66,7 +66,7 @@ public class Listing_10_14_PagedImages {
      *
      * @param document the document to which the pages have to be added
      * @param path     the path to the JBIG2 file
-     * @throws IOException
+     * @throws IOException error during file creation/accessing
      */
     public static void addJBIG2(Document document, String path) throws IOException {
         RandomAccessFileOrArray ra = new RandomAccessFileOrArray(
@@ -85,7 +85,7 @@ public class Listing_10_14_PagedImages {
      *
      * @param document the document to which the frames have to be added
      * @param path     the path to the GIF file
-     * @throws IOException
+     * @throws IOException error during file creation/accessing
      */
     public static void addGif(Document document, String path) throws IOException {
         int n = 10;

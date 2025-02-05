@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipFile;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -43,7 +42,7 @@ public class HelloZipSampleTest extends WrappedSamplesRunner {
             try {
                 new PdfDocument(new PdfReader(in));
             } catch (IOException e) {
-                Assertions.fail();
+                assert false;
             }
         }
     }

@@ -23,12 +23,55 @@ public class Listing_16_03_ListUsedFonts {
         new Listing_16_03_ListUsedFonts().manipulatePdf();
     }
 
+    /**
+     * Extracts the font names from page or XObject resources.
+     *
+     * @param set      the set with the font names
+     * @param resource resource dictionary
+     */
+    public static void processResource(Set<String> set, PdfDictionary resource) {
+        if (resource == null) {
+            return;
+        }
+        PdfDictionary xobjects = resource.getAsDictionary(PdfName.XObject);
+        if (xobjects != null) {
+            for (PdfName key : xobjects.keySet()) {
+                processResource(set, xobjects.getAsDictionary(key));
+            }
+        }
+        PdfDictionary fonts = resource.getAsDictionary(PdfName.Font);
+        if (fonts == null) {
+            return;
+        }
+        PdfDictionary font;
+        for (PdfName key : fonts.keySet()) {
+            font = fonts.getAsDictionary(key);
+            String name = font.getAsName(PdfName.BaseFont).toString();
+            if (name.length() > 8 && name.charAt(7) == '+') {
+                name = String.format("%s subset (%s)", name.substring(8), name.substring(1, 7));
+            } else {
+                name = name.substring(1);
+                PdfDictionary desc = font.getAsDictionary(PdfName.FontDescriptor);
+                if (desc == null) {
+                    name += " nofontdescriptor";
+                } else if (desc.get(PdfName.FontFile) != null) {
+                    name += " (Type 1) embedded";
+                } else if (desc.get(PdfName.FontFile2) != null) {
+                    name += " (TrueType) embedded";
+                } else if (desc.get(PdfName.FontFile3) != null) {
+                    name += " (" + font.getAsName(PdfName.Subtype).toString().substring(1) + ") embedded";
+                }
+            }
+            set.add(name);
+        }
+    }
+
     public void manipulatePdf() throws Exception {
         new File(DEST).getParentFile().mkdirs();
         Set<String> set = listFonts(FONT_TYPES);
         StringBuffer buffer = new StringBuffer();
         for (String fontName : set) {
-            buffer.append(fontName+"\n");
+            buffer.append(fontName + "\n");
         }
 
         PrintWriter out = new PrintWriter(new FileOutputStream(DEST));
@@ -41,7 +84,10 @@ public class Listing_16_03_ListUsedFonts {
      * Creates a Set containing information about the fonts in the src PDF file.
      *
      * @param src the path to a PDF file
-     * @throws IOException
+     *
+     * @return set containing font names from source PDF
+     *
+     * @throws IOException error during file creation/accessing
      */
     public Set<String> listFonts(String src) throws IOException {
         Set<String> set = new TreeSet<>();
@@ -53,44 +99,5 @@ public class Listing_16_03_ListUsedFonts {
         }
         pdfDoc.close();
         return set;
-    }
-
-    /**
-     * Extracts the font names from page or XObject resources.
-     *
-     * @param set the set with the font names
-     */
-    public static void processResource(Set<String> set, PdfDictionary resource) {
-        if (resource == null)
-            return;
-        PdfDictionary xobjects = resource.getAsDictionary(PdfName.XObject);
-        if (xobjects != null) {
-            for (PdfName key : xobjects.keySet()) {
-                processResource(set, xobjects.getAsDictionary(key));
-            }
-        }
-        PdfDictionary fonts = resource.getAsDictionary(PdfName.Font);
-        if (fonts == null)
-            return;
-        PdfDictionary font;
-        for (PdfName key : fonts.keySet()) {
-            font = fonts.getAsDictionary(key);
-            String name = font.getAsName(PdfName.BaseFont).toString();
-            if (name.length() > 8 && name.charAt(7) == '+') {
-                name = String.format("%s subset (%s)", name.substring(8), name.substring(1, 7));
-            } else {
-                name = name.substring(1);
-                PdfDictionary desc = font.getAsDictionary(PdfName.FontDescriptor);
-                if (desc == null)
-                    name += " nofontdescriptor";
-                else if (desc.get(PdfName.FontFile) != null)
-                    name += " (Type 1) embedded";
-                else if (desc.get(PdfName.FontFile2) != null)
-                    name += " (TrueType) embedded";
-                else if (desc.get(PdfName.FontFile3) != null)
-                    name += " (" + font.getAsName(PdfName.Subtype).toString().substring(1) + ") embedded";
-            }
-            set.add(name);
-        }
     }
 }

@@ -52,6 +52,7 @@ import com.itextpdf.layout.renderer.AbstractRenderer;
 import com.itextpdf.layout.renderer.DrawContext;
 import com.itextpdf.layout.renderer.IRenderer;
 import com.itextpdf.layout.renderer.ParagraphRenderer;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Director;
@@ -90,7 +91,8 @@ public class Listing_08_16_MovieAds {
      * Create a small formXObject that will be used for an individual ad.
      *
      * @param filename the filename of the add
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void createTemplate(String filename) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(filename));
@@ -133,15 +135,16 @@ public class Listing_08_16_MovieAds {
      *
      * @param filename the formXObject for an individual ad
      * @param movie    the movie that needs to be in the ad
+     *
      * @return a byte[] containing an individual ad
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public byte[] fillTemplate(String filename, Movie movie) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PdfDocument pdfDoc = new PdfDocument(new PdfReader(filename), new PdfWriter(baos));
         Document doc = new Document(pdfDoc);
         PdfAcroForm form = PdfFormCreator.getAcroForm(pdfDoc, true);
-
 
         PdfButtonFormField bt = (PdfButtonFormField) form.getField(POSTER);
         Rectangle rect = bt.getWidgets().get(0).getRectangle().toRectangle();
@@ -178,6 +181,7 @@ public class Listing_08_16_MovieAds {
      *
      * @param movie    the Movie pojo
      * @param fontsize the font size
+     *
      * @return a Paragraph object
      */
     public Paragraph createMovieParagraph(Movie movie, float fontsize) {
@@ -185,9 +189,12 @@ public class Listing_08_16_MovieAds {
         PdfFont bold = null;
         PdfFont italic = null;
         try {
-            normal = PdfFontFactory.createFont(StandardFonts.HELVETICA, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED, true);
-            bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED, true);
-            italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED, true);
+            normal = PdfFontFactory.createFont(StandardFonts.HELVETICA, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED,
+                    true);
+            bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD, "", EmbeddingStrategy.PREFER_NOT_EMBEDDED,
+                    true);
+            italic = PdfFontFactory.createFont(StandardFonts.HELVETICA_OBLIQUE, "",
+                    EmbeddingStrategy.PREFER_NOT_EMBEDDED, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -276,11 +283,6 @@ public class Listing_08_16_MovieAds {
         }
 
         @Override
-        protected IRenderer makeNewRenderer() {
-            return new CustomButtonRenderer(this);
-        }
-
-        @Override
         public AccessibilityProperties getAccessibilityProperties() {
             if (accessibilityProperties == null) {
                 accessibilityProperties = new DefaultAccessibilityProperties(StandardRoles.FIGURE);
@@ -296,12 +298,12 @@ public class Listing_08_16_MovieAds {
             return caption == null ? "" : caption;
         }
 
-        public void setImage(com.itextpdf.io.image.ImageData image) {
-            this.image = image;
-        }
-
         public com.itextpdf.io.image.ImageData getImage() {
             return image;
+        }
+
+        public void setImage(com.itextpdf.io.image.ImageData image) {
+            this.image = image;
         }
 
         public Color getBorderColor() {
@@ -314,6 +316,11 @@ public class Listing_08_16_MovieAds {
 
         public void setButtonBackgroundColor(Color buttonBackgroundColor) {
             this.buttonBackgroundColor = buttonBackgroundColor;
+        }
+
+        @Override
+        protected IRenderer makeNewRenderer() {
+            return new CustomButtonRenderer(this);
         }
     }
 
@@ -330,11 +337,17 @@ public class Listing_08_16_MovieAds {
             Rectangle layoutBox = area.getBBox();
             applyMargins(layoutBox, false);
             CustomButton modelButton = (CustomButton) modelElement;
-            occupiedArea = new LayoutArea(area.getPageNumber(), new Rectangle(modelButton.button.getWidgets().get(0).getRectangle().toRectangle()));
+            occupiedArea = new LayoutArea(area.getPageNumber(),
+                    new Rectangle(modelButton.button.getWidgets().get(0).getRectangle().toRectangle()));
             PdfButtonFormField button = ((CustomButton) getModelElement()).getButton();
             button.getWidgets().get(0).setRectangle(new PdfArray(occupiedArea.getBBox()));
 
             return new LayoutResult(LayoutResult.FULL, occupiedArea, null, null);
+        }
+
+        @Override
+        public IRenderer getNextRenderer() {
+            return null;
         }
 
         @Override
@@ -358,11 +371,13 @@ public class Listing_08_16_MovieAds {
                     rectangle(0, 0, occupiedArea.getBBox().getWidth(), occupiedArea.getBBox().getHeight()).
                     stroke().
                     setFillColor(modelButton.buttonBackgroundColor).
-                    rectangle(0.5f, 0.5f, occupiedArea.getBBox().getWidth() - 1, occupiedArea.getBBox().getHeight() - 1).
+                    rectangle(0.5f, 0.5f, occupiedArea.getBBox().getWidth() - 1,
+                            occupiedArea.getBBox().getHeight() - 1).
                     fill().
                     restoreState();
 
-            Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0).setMultipliedLeading(1);
+            Paragraph paragraph = new Paragraph(modelButton.getCaption()).setFontSize(10).setMargin(0)
+                    .setMultipliedLeading(1);
 
             new Canvas(canvas, new Rectangle(0, 0, width, height)).
                     showTextAligned(paragraph, 1, 1, TextAlignment.LEFT, VerticalAlignment.BOTTOM);
@@ -387,12 +402,8 @@ public class Listing_08_16_MovieAds {
             xObject.getPdfObject().getOutputStream().writeBytes(str.getBytes());
             xObject.getResources().addImage(imageXObject);
 
-            PdfFormCreator.getAcroForm(drawContext.getDocument(), true).addField(button, drawContext.getDocument().getPage(1));
-        }
-
-        @Override
-        public IRenderer getNextRenderer() {
-            return null;
+            PdfFormCreator.getAcroForm(drawContext.getDocument(), true)
+                    .addField(button, drawContext.getDocument().getPage(1));
         }
     }
 

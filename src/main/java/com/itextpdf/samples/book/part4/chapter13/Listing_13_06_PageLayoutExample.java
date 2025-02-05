@@ -9,6 +9,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.samples.book.part1.chapter02.Listing_02_07_MovieParagraphs1;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -41,16 +42,18 @@ public class Listing_13_06_PageLayoutExample extends Listing_02_07_MovieParagrap
     /**
      * Creates a PDF with information about the movies
      *
-     * @param dest             the name of the PDF file that will be created.
-     * @param pageLayoutMode   the layout mode of the page
-     * @throws IOException
-     * @throws SQLException
+     * @param dest           the name of the PDF file that will be created.
+     * @param pageLayoutMode the layout mode of the page
+     *
+     * @throws IOException  error during file creation/accessing
+     * @throws SQLException database related error
      */
     public void createPdf(String dest, PdfName pageLayoutMode) throws IOException, SQLException {
         // Create a database connection
         createFonts();
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_5)));
+        PdfDocument pdfDoc = new PdfDocument(
+                new PdfWriter(dest, new WriterProperties().setPdfVersion(PdfVersion.PDF_1_5)));
         Document doc = new Document(pdfDoc);
         pdfDoc.getCatalog().setPageLayout(pageLayoutMode);
 
@@ -68,7 +71,7 @@ public class Listing_13_06_PageLayoutExample extends Listing_02_07_MovieParagrap
     }
 
     public void manipulatePdf(String dest) throws IOException, SQLException {
-        createPdf(RESULT[0], PdfName.SinglePage);;
+        createPdf(RESULT[0], PdfName.SinglePage);
         createPdf(RESULT[1], PdfName.OneColumn);
         createPdf(RESULT[2], PdfName.TwoColumnLeft);
         createPdf(RESULT[3], PdfName.TwoColumnRight);

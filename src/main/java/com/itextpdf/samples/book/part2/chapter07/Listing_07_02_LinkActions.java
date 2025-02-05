@@ -11,6 +11,7 @@ import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Link;
 import com.itextpdf.layout.element.Paragraph;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import java.io.File;
@@ -37,14 +38,54 @@ public class Listing_07_02_LinkActions {
     public static final String DEST = "./target/book/part2/chapter07/Listing_07_02_LinkActions.pdf";
     public static final String DEST_XML = "./target/book/part2/chapter07/Listing_07_02_LinkActions.xml";
 
-    public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException {
+    public static void main(String args[])
+            throws IOException, SQLException, TransformerException, ParserConfigurationException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
 
         new Listing_07_02_LinkActions().manipulatePdf(DEST);
     }
 
-    public void manipulatePdf(String dest) throws IOException, SQLException, TransformerException, ParserConfigurationException {
+    /**
+     * Create an XML file with named destinations
+     *
+     * @param src  The path to the PDF with the destinations
+     * @param dest The path to the XML file
+     *
+     * @throws IOException                  error during file creation/accessing
+     * @throws ParserConfigurationException error during document builder creation
+     * @throws TransformerException         error during transformation process
+     */
+    public static void createXml(String src, String dest)
+            throws IOException, ParserConfigurationException, TransformerException {
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
+
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = docFactory.newDocumentBuilder();
+
+        org.w3c.dom.Document doc = db.newDocument();
+        Element root = doc.createElement("Destination");
+        doc.appendChild(root);
+
+        Map<PdfString, PdfObject> names = pdfDoc.getCatalog().getNameTree(PdfName.Dests).getNames();
+        for (Map.Entry<PdfString, PdfObject> name : names.entrySet()) {
+            Element el = doc.createElement("Name");
+            el.setAttribute("Page", name.getValue().toString());
+            el.setTextContent(name.getKey().toUnicodeString());
+            root.appendChild(el);
+        }
+
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer t = tf.newTransformer();
+        t.setOutputProperty("encoding", "ISO8859-1");
+        t.setOutputProperty(OutputKeys.INDENT, "yes");
+
+        t.transform(new DOMSource(doc), new StreamResult(dest));
+        pdfDoc.close();
+    }
+
+    public void manipulatePdf(String dest)
+            throws IOException, SQLException, TransformerException, ParserConfigurationException {
         manipulatePdf2(dest);
         createXml(SRC, DEST_XML);
     }
@@ -91,44 +132,10 @@ public class Listing_07_02_LinkActions {
                 add(".");
         doc.add(p);
 
-        pdfDoc.addNamedDestination("top", PdfExplicitDestination.createXYZ(pdfDoc.getPage(1), 36, 842, 1).getPdfObject());
+        pdfDoc.addNamedDestination("top",
+                PdfExplicitDestination.createXYZ(pdfDoc.getPage(1), 36, 842, 1).getPdfObject());
 
         // Close document
         doc.close();
-    }
-
-
-    /**
-     * Create an XML file with named destinations
-     *
-     * @param src  The path to the PDF with the destinations
-     * @param dest The path to the XML file
-     * @throws IOException
-     */
-    public static void createXml(String src, String dest) throws IOException, ParserConfigurationException, TransformerException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
-
-        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = docFactory.newDocumentBuilder();
-
-        org.w3c.dom.Document doc = db.newDocument();
-        Element root = doc.createElement("Destination");
-        doc.appendChild(root);
-
-        Map<PdfString, PdfObject> names = pdfDoc.getCatalog().getNameTree(PdfName.Dests).getNames();
-        for (Map.Entry<PdfString, PdfObject> name : names.entrySet()) {
-            Element el = doc.createElement("Name");
-            el.setAttribute("Page", name.getValue().toString());
-            el.setTextContent(name.getKey().toUnicodeString());
-            root.appendChild(el);
-        }
-
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer t = tf.newTransformer();
-        t.setOutputProperty("encoding", "ISO8859-1");
-        t.setOutputProperty(OutputKeys.INDENT, "yes");
-
-        t.transform(new DOMSource(doc), new StreamResult(dest));
-        pdfDoc.close();
     }
 }

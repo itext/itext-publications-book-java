@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -71,7 +71,7 @@ public class ExtractImagesSampleTest extends WrappedSamplesRunner {
         file.close();
 
         try {
-            Assertions.assertArrayEquals(cmpBytes, destBytes);
+            assert Arrays.equals(cmpBytes, destBytes);
         } catch (AssertionError exc) {
             errorMessage = "Files are not equal.";
         }

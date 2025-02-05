@@ -8,6 +8,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
@@ -23,13 +24,19 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
 
     public static final String DEST = "./target/book/part1/chapter03/Listing_03_05_MovieTimeBlocks.pdf";
 
-    /** The "offset time" for our calendar sheets. */
+    /**
+     * The "offset time" for our calendar sheets.
+     */
     public static final long TIME930 = Time.valueOf("09:30:00").getTime();
 
-    /** The width of one minute. */
+    /**
+     * The width of one minute.
+     */
     public static final float MINUTE = WIDTH_TIMESLOT / 30f;
 
-    /** A list containing all the locations. */
+    /**
+     * A list containing all the locations.
+     */
     protected List<String> locations;
 
     public static void main(String[] args) throws Exception {
@@ -43,7 +50,6 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         pdfDoc.setDefaultPageSize(PageSize.A4.rotate());
-
 
         try {
             DatabaseConnection connection = new HsqldbConnection("filmfestival");
@@ -63,8 +69,7 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
                 }
             }
             connection.close();
-        }
-        catch(SQLException sqle) {
+        } catch (SQLException sqle) {
             sqle.printStackTrace();
             //document.add(new Paragraph("Database error: " + sqle.getMessage()));
         }
@@ -75,12 +80,13 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
     /**
      * Draws a colored block on the time table, corresponding with
      * the screening of a specific movie.
-     * @param    screening    a screening POJO, contains a movie and a category
-     * @param    under    the canvas to which the block is drawn
+     *
+     * @param screening a screening POJO, contains a movie and a category
+     * @param under     the canvas to which the block is drawn
+     * @param over      the top canvas
      */
     protected void drawBlock(Screening screening, PdfCanvas under, PdfCanvas over) {
         under.saveState();
-
 
         DeviceRgb color = WebColors.getRGBColor(
                 "#" + screening.getMovie().getEntry().getCategory().getColor());
@@ -96,8 +102,10 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
 
     /**
      * Calculates the position of a rectangle corresponding with a screening.
-     * @param    screening    a screening POJO, contains a movie
-     * @return    a Rectangle
+     *
+     * @param screening a screening POJO, contains a movie
+     *
+     * @return a Rectangle
      */
     protected Rectangle getPosition(Screening screening) {
         float llx, lly, width, height;

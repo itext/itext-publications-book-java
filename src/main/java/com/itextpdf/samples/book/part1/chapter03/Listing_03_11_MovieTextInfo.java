@@ -16,6 +16,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.properties.Property;
 import com.itextpdf.layout.properties.TextAlignment;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.PojoFactory;
@@ -30,14 +31,16 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
 
     public static final String DEST = "./target/book/part1/chapter03/Listing_03_11_MovieTextInfo.pdf";
 
-    /** The different time slots. */
+    /**
+     * The different time slots.
+     */
     public static String[] TIME =
-            { "09:30", "10:00", "10:30", "11:00", "11:30", "12:00",
+            {"09:30", "10:00", "10:30", "11:00", "11:30", "12:00",
                     "00:30", "01:00", "01:30", "02:00", "02:30", "03:00",
                     "03:30", "04:00", "04:30", "05:00", "05:30", "06:00",
                     "06:30", "07:00", "07:30", "08:00", "08:30", "09:00",
                     "09:30", "10:00", "10:30", "11:00", "11:30", "12:00",
-                    "00:30", "01:00" };
+                    "00:30", "01:00"};
 
     public static void main(String[] args) throws Exception {
         File file = new File(DEST);
@@ -68,8 +71,9 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
             int d = 1;
             for (Date day : days) {
                 PdfPage page = pdfDoc.addNewPage();
-                if (d != 1)
+                if (d != 1) {
                     doc.add(new AreaBreak());
+                }
                 PdfCanvas over = new PdfCanvas(page.newContentStreamAfter(), page.getResources(), pdfDoc);
                 PdfCanvas under = new PdfCanvas(page.newContentStreamBefore(), page.getResources(), pdfDoc);
 
@@ -84,8 +88,7 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
                 }
             }
             connection.close();
-        }
-        catch(SQLException sqle) {
+        } catch (SQLException sqle) {
             sqle.printStackTrace();
             //document.add(new Paragraph("Database error: " + sqle.getMessage()));
         }
@@ -96,13 +99,15 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
     /**
      * Draws some text on every calendar sheet.
      *
+     * @param doc the document to write on
      */
     protected void drawInfo(Document doc) {
         float x, y;
         x = (OFFSET_LEFT + OFFSET_LOCATION) / 2;
         y = OFFSET_BOTTOM + HEIGHT + 24;
         doc.add(new Paragraph("FOOBAR FILM FESTIVAL").setFontSize(18)
-                .setFixedPosition(x, y, WIDTH).setMarginBottom(0).setMultipliedLeading(1).setTextAlignment(TextAlignment.CENTER));
+                .setFixedPosition(x, y, WIDTH).setMarginBottom(0).setMultipliedLeading(1)
+                .setTextAlignment(TextAlignment.CENTER));
 
         x = OFFSET_LOCATION + WIDTH_LOCATION / 2f - 3;
         y = OFFSET_BOTTOM;
@@ -144,6 +149,9 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
     /**
      * Draws some text on every calendar sheet.
      *
+     * @param day date object of the day
+     * @param d   page number
+     * @param doc the document to draw on
      */
     protected void drawDateInfo(Date day, int d, Document doc) {
         float x, y;
@@ -167,6 +175,10 @@ public class Listing_03_11_MovieTextInfo extends Listing_03_05_MovieTimeBlocks {
 
     /**
      * Draws the info about the movie.
+     *
+     * @param screening screening object
+     * @param doc       the document to draw on
+     * @param press     text object
      */
     protected void drawMovieInfo(Screening screening, Document doc, Text press) {
         if (screening.isPress()) {

@@ -12,11 +12,15 @@ import java.sql.Statement;
 
 public abstract class DatabaseConnection {
 
-    /** our connection to the db. */
+    /**
+     * our connection to the db.
+     */
     protected Connection connection;
-    
+
     /**
      * Closes the connection to the database.
+     *
+     * @throws SQLException database related error
      */
     public void close() throws SQLException {
         connection.close();
@@ -24,8 +28,10 @@ public abstract class DatabaseConnection {
 
     /**
      * Creates a statement.
-     * @return    a statement
-     * @throws SQLException 
+     *
+     * @return a statement
+     *
+     * @throws SQLException database related error
      */
     public Statement createStatement() throws SQLException {
         return connection.createStatement();
@@ -33,20 +39,26 @@ public abstract class DatabaseConnection {
 
     /**
      * Creates a prepated statement using a query.
-     * @param    query    the query that will be used to create
-     * a prepared statement.
-     * @return    a statement
-     * @throws SQLException 
+     *
+     * @param query the query that will be used to create
+     *              a prepared statement.
+     *
+     * @return a statement
+     *
+     * @throws SQLException database related error
      */
     public PreparedStatement createPreparedStatement(String query)
-        throws SQLException {
+            throws SQLException {
         return connection.prepareStatement(query);
     }
-    
+
     /**
      * Performs an update in the database.
-     * @param    expression    an SQL expression
-     * (CREATE, DROP, INSERT, UPDATE)
+     *
+     * @param expression an SQL expression
+     *                   (CREATE, DROP, INSERT, UPDATE)
+     *
+     * @throws SQLException database related error
      */
     public void update(String expression) throws SQLException {
         Statement st = createStatement();

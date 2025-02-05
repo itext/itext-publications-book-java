@@ -11,6 +11,7 @@ import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.kernel.pdf.navigation.PdfExplicitDestination;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Movie;
@@ -50,11 +51,57 @@ public class Listing_07_14_CreateOutlineTree {
 
     protected String[] arguments;
 
-    public static void main(String args[]) throws IOException, SQLException, TransformerException, ParserConfigurationException {
+    public static void main(String args[])
+            throws IOException, SQLException, TransformerException, ParserConfigurationException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
 
         new Listing_07_14_CreateOutlineTree().manipulatePdf(DEST);
+    }
+
+    /**
+     * Create an XML file with named destinations
+     *
+     * @param src  The path to the PDF with the destinations
+     * @param dest The path to the XML file
+     *
+     * @throws IOException                  error during file creation/accessing
+     * @throws ParserConfigurationException error during document builder creation
+     * @throws TransformerException         error during transformation process
+     */
+    public static void createXml(String src, String dest)
+            throws IOException, ParserConfigurationException, TransformerException {
+        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
+
+        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = docFactory.newDocumentBuilder();
+
+        org.w3c.dom.Document doc = db.newDocument();
+        Element root = doc.createElement("Bookmark");
+        doc.appendChild(root);
+
+        List<PdfOutline> outlines = pdfDoc.getOutlines(false).getAllChildren();
+        for (PdfOutline outline : outlines) {
+            Element el = doc.createElement("Title");
+            Element el2 = doc.createElement("Link");
+            Element el3 = doc.createElement("Info");
+            el.setTextContent(outline.getTitle());
+            el.setAttribute("ElementsNumber", outline.getContent().get(PdfName.Parent).toString().substring(47, 55));
+            el2.setTextContent(outline.getAllChildren().get(0).getTitle());
+            el3.setTextContent(outline.getAllChildren().get(1).getTitle());
+            root.appendChild(el);
+            el.appendChild(el2);
+            el.appendChild(el3);
+        }
+
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer t = tf.newTransformer();
+        t.setOutputProperty("encoding", "ISO8859-1");
+        t.setOutputProperty(OutputKeys.INDENT, "yes");
+        t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+        t.transform(new DOMSource(doc), new StreamResult(dest));
+
+        pdfDoc.close();
     }
 
     public void manipulatePdf(String dest)
@@ -63,7 +110,7 @@ public class Listing_07_14_CreateOutlineTree {
         createXml(dest, DEST_XML);
     }
 
-    public void manipulatePdf2 (String dest) throws IOException, SQLException {
+    public void manipulatePdf2(String dest) throws IOException, SQLException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
 
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
@@ -71,7 +118,8 @@ public class Listing_07_14_CreateOutlineTree {
 
         pdfDoc.getCatalog().setPageMode(PdfName.UseOutlines);
 
-        // To get cached outline tree, set flag to false. If outlines have not been initialized before the method will return null
+        // To get cached outline tree, set flag to false. If outlines have not been initialized before the method
+        // will return null
         PdfOutline root = pdfDoc.getOutlines(false);
         PdfOutline movieBookmark;
         PdfOutline link;
@@ -113,46 +161,5 @@ public class Listing_07_14_CreateOutlineTree {
 
         // Close the database connection
         connection.close();
-    }
-
-    /**
-     * Create an XML file with named destinations
-     *
-     * @param src  The path to the PDF with the destinations
-     * @param dest The path to the XML file
-     * @throws IOException
-     */
-    public static void createXml(String src, String dest) throws IOException, ParserConfigurationException, TransformerException {
-        PdfDocument pdfDoc = new PdfDocument(new PdfReader(src));
-
-        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = docFactory.newDocumentBuilder();
-
-        org.w3c.dom.Document doc = db.newDocument();
-        Element root = doc.createElement("Bookmark");
-        doc.appendChild(root);
-
-        List<PdfOutline> outlines = pdfDoc.getOutlines(false).getAllChildren();
-        for (PdfOutline outline : outlines) {
-            Element el = doc.createElement("Title");
-            Element el2 = doc.createElement("Link");
-            Element el3 = doc.createElement("Info");
-            el.setTextContent(outline.getTitle());
-            el.setAttribute("ElementsNumber", outline.getContent().get(PdfName.Parent).toString().substring(47, 55));
-            el2.setTextContent(outline.getAllChildren().get(0).getTitle());
-            el3.setTextContent(outline.getAllChildren().get(1).getTitle());
-            root.appendChild(el);
-            el.appendChild(el2);
-            el.appendChild(el3);
-        }
-
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer t = tf.newTransformer();
-        t.setOutputProperty("encoding", "ISO8859-1");
-        t.setOutputProperty(OutputKeys.INDENT, "yes");
-        t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-        t.transform(new DOMSource(doc), new StreamResult(dest));
-
-        pdfDoc.close();
     }
 }

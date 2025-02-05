@@ -12,9 +12,6 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 @Tag("SampleTest")
 public class PageInformationSampleTest extends WrappedSamplesRunner {
@@ -44,11 +41,12 @@ public class PageInformationSampleTest extends WrappedSamplesRunner {
             String curCmpStr;
             int row = 1;
             while ((curDestStr = destReader.readLine()) != null) {
-                assertNotNull(curCmpStr = cmpReader.readLine(), "The lengths of files are different.");
-                assertEquals(curCmpStr, curDestStr, "The files are different on the row " + row);
+                curCmpStr = cmpReader.readLine();
+                assert curCmpStr != null;
+                assert curCmpStr.equals(curDestStr);
                 row++;
             }
-            assertNull(curCmpStr = cmpReader.readLine(), "The lengths of files are different.");
+            assert cmpReader.readLine() == null;
         }
     }
 }

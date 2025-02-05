@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Timeout;
@@ -57,7 +56,7 @@ public class MemoryInfoSampleTest extends WrappedSamplesRunner {
         int partialMemoryValue = Integer.parseInt(matcher.group());
 
         System.out.println(fullMemoryValue + "-" + partialMemoryValue);
-        Assertions.assertTrue((fullMemoryValue != 0) && (partialMemoryValue != 0));
-        Assertions.assertTrue(fullMemoryValue > partialMemoryValue);
+        assert (fullMemoryValue != 0) && (partialMemoryValue != 0);
+        assert fullMemoryValue > partialMemoryValue;
     }
 }

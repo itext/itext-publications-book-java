@@ -86,10 +86,9 @@ public class Listing_10_07_Transparency2 {
     /**
      * Prints a square and fills half of it with a gray rectangle.
      *
-     * @param x
-     * @param y
-     * @param canvas
-     * @throws Exception
+     * @param x x-coordinate
+     * @param y y-coordinate
+     * @param canvas canvas to draw upon
      */
     public static void pictureBackdrop(float x, float y, PdfCanvas canvas) {
         PdfAxialShading axial = new PdfAxialShading(new PdfDeviceCs.Rgb(), x, y, ColorConstants.YELLOW.getColorValue(),
@@ -106,10 +105,9 @@ public class Listing_10_07_Transparency2 {
     /**
      * Prints 3 circles in different colors that intersect with eachother.
      *
-     * @param x
-     * @param y
-     * @param canvas
-     * @throws Exception
+     * @param x x-coordinate
+     * @param y y-coordinate
+     * @param canvas canvas to draw upon
      */
     public static void pictureCircles(float x, float y, PdfCanvas canvas) {
         PdfExtGState gs = new PdfExtGState();

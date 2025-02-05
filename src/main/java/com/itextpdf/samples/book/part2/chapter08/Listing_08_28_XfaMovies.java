@@ -6,6 +6,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.forms.PdfAcroForm;
 import com.itextpdf.forms.xfa.XfaForm;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Country;
@@ -23,15 +24,21 @@ import java.util.List;
 
 public class Listing_08_28_XfaMovies {
 
-    /** The original PDF. */
+    /**
+     * The original PDF.
+     */
     public static final String RESOURCE = "./src/main/resources/pdfs/xfa_movies.pdf";
 
-    /** Information about the form in xfa_movies.pdf */
+    /**
+     * Information about the form in xfa_movies.pdf
+     */
     public static final String[] TXT_FILES = {
             "./target/book/part2/chapter08/movies_xfa.txt"
     };
 
-    /** The XML data that is going to be used to fill out the XFA form. */
+    /**
+     * The XML data that is going to be used to fill out the XFA form.
+     */
     public static final String[] XML_FILES = {
             "./target/book/part2/chapter08/movies.xml"
     };
@@ -42,12 +49,20 @@ public class Listing_08_28_XfaMovies {
 
     public static final String DEST = RESULT[0];
 
+    public static void main(String[] args) throws Exception {
+        new File(DEST).getParentFile().mkdirs();
+
+        new Listing_08_28_XfaMovies().manipulatePdf(DEST);
+    }
+
     /**
      * Manipulates a PDF file src with the file dest as result
-     * @param src the original PDF
-     * @param xml the XML data that needs to be added to the XFA form
+     *
+     * @param src  the original PDF
+     * @param xml  the XML data that needs to be added to the XFA form
      * @param dest the resulting PDF
-     * @throws IOException
+     *
+     * @throws IOException error during file creation/accessing
      */
     public void manipulatePdf2(String src, String xml, String dest)
             throws IOException {
@@ -62,8 +77,11 @@ public class Listing_08_28_XfaMovies {
 
     /**
      * Creates an XML file containing data about movies.
+     *
      * @param dest the path to the resulting XML file
-     * @throws IOException
+     *
+     * @throws IOException  error during file creation/accessing
+     * @throws SQLException database related error
      */
     public void createXML(String dest) throws IOException, SQLException {
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(dest), "UTF-8");
@@ -82,7 +100,9 @@ public class Listing_08_28_XfaMovies {
 
     /**
      * Creates an XML snippet containing information about a movie.
+     *
      * @param movie the Movie pojo
+     *
      * @return an XML snippet
      */
     public String getXml(Movie movie) {
@@ -120,12 +140,6 @@ public class Listing_08_28_XfaMovies {
         buf.append("</countries>");
         buf.append("</movie>\n");
         return buf.toString();
-    }
-
-    public static void main(String[] args) throws Exception {
-        new File(DEST).getParentFile().mkdirs();
-
-        new Listing_08_28_XfaMovies().manipulatePdf(DEST);
     }
 
     protected void manipulatePdf(String dest) throws Exception {

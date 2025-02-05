@@ -13,6 +13,8 @@ public class Listing_15_17_StructureParser extends DefaultHandler {
 
     /**
      * Creates a parser that will parse an XML file into a structure tree.
+     *
+     * @param roles list of roles
      */
     public Listing_15_17_StructureParser(List<String> roles) {
         this.roles = roles;
@@ -23,7 +25,7 @@ public class Listing_15_17_StructureParser extends DefaultHandler {
      * java.lang.String, java.lang.String, org.xml.sax.Attributes)
      */
     public void startElement(String uri, String localName, String qName,
-                             Attributes attributes) {
+            Attributes attributes) {
         if ("chapter".equals(qName)) {
             return;
         }

@@ -9,6 +9,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.properties.TextAlignment;
+
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 
@@ -61,6 +62,8 @@ public class Listing_02_07_MovieParagraphs1 {
      * Creates a Paragraph containing information about a movie.
      *
      * @param movie the movie for which you want to create a Paragraph
+     *
+     * @return paragraph element
      */
     public Paragraph createMovieInformation(Movie movie) {
         Paragraph p = new Paragraph();
