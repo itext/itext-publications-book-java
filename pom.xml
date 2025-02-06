@@ -22,7 +22,7 @@
     <spotbugs.version>3.1.11</spotbugs.version>
     <surefire.version>3.2.5</surefire.version>
     <typography.version>5.0.2-SNAPSHOT</typography.version>
-    <hsqldb.version>2.7.2</hsqldb.version>
+    <hsqldb.version>2.7.4</hsqldb.version>
   </properties>
   <dependencies>
     <dependency>
@@ -385,7 +385,7 @@
                 <featureBranchPrefix>feature/</featureBranchPrefix>
                 <releaseBranchPrefix>release/</releaseBranchPrefix>
                 <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
-                <versionTagPrefix />
+                <versionTagPrefix/>
               </flowInitContext>
               <allowUntracked>true</allowUntracked>
               <autoVersionSubmodules>true</autoVersionSubmodules>
