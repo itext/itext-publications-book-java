@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Listing_02_23_MovieLinks2 {
     public static final String DEST = "./target/book/part1/chapter02/Listing_02_23_MovieLinks2.pdf";
@@ -43,7 +45,9 @@ public class Listing_02_23_MovieLinks2 {
 
         Paragraph p = new Paragraph();
         Text top = new Text("Country List").setFont(bold);
-        top.setProperty(Property.DESTINATION, "top");
+        Set<Object> destinations = new HashSet<>();
+        destinations.add("top");
+        top.setProperty(Property.DESTINATION, destinations);
         p.add(top);
         doc.add(p);
         // create an external link

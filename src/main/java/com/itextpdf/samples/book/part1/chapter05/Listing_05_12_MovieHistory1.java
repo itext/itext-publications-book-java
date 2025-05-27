@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -98,7 +99,9 @@ public class Listing_05_12_MovieHistory1 {
                 firstLevelTitle = firstLevelOrder + " " + EPOCH[epoch];
                 firstLevelParagraph = new Div().add(new Paragraph(firstLevelTitle).setFont(bold).setFontSize(24));
                 firstLevelParagraph.setNextRenderer(new SectionRenderer(firstLevelParagraph, 1));
-                firstLevelParagraph.setProperty(Property.DESTINATION, firstLevelTitle);
+                Set<Object> destinations = new HashSet<>();
+                destinations.add(firstLevelTitle);
+                firstLevelParagraph.setProperty(Property.DESTINATION, destinations);
                 firstLevel = rootOutLine.addOutline(firstLevelTitle);
                 firstLevel.addDestination(PdfDestination.makeDestination(new PdfString(firstLevelTitle)));
                 titles.add(new Paragraph(firstLevelTitle).setFontSize(10));
@@ -112,7 +115,9 @@ public class Listing_05_12_MovieHistory1 {
                 secondLevelTitle = firstLevelOrder + ". " + secondLevelOrder + " " +
                         String.format("The year %d", movie.getYear());
                 secondLevelParagraph = new Div().add(new Paragraph(secondLevelTitle).setFont(font).setFontSize(18));
-                secondLevelParagraph.setProperty(Property.DESTINATION, secondLevelTitle);
+                Set<Object> destinations = new HashSet<>();
+                destinations.add(secondLevelTitle);
+                secondLevelParagraph.setProperty(Property.DESTINATION, destinations);
                 secondLevelParagraph.setNextRenderer(new SectionRenderer(secondLevelParagraph, 2));
                 secondLevel = firstLevel.addOutline(secondLevelTitle);
                 secondLevel.addDestination(PdfDestination.makeDestination(new PdfString(secondLevelTitle)));
@@ -133,7 +138,9 @@ public class Listing_05_12_MovieHistory1 {
             thirdLevelTitle = thirdLevelOrder + " " + movie.getMovieTitle();
             thirdLevelParagraph = new Div().add(new Paragraph(thirdLevelTitle).setFont(font).setFontSize(14).setMarginLeft(20));
             thirdLevelParagraph.setNextRenderer(new SectionRenderer(thirdLevelParagraph, 3));
-            thirdLevelParagraph.setProperty(Property.DESTINATION, thirdLevelTitle);
+            Set<Object> destinations = new HashSet<>();
+            destinations.add(thirdLevelTitle);
+            thirdLevelParagraph.setProperty(Property.DESTINATION, destinations);
             thirdLevel = secondLevel.addOutline(thirdLevelTitle);
             thirdLevel.addDestination(PdfDestination.makeDestination(new PdfString(thirdLevelTitle)));
 
