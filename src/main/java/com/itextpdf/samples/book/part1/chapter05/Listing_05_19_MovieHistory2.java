@@ -34,6 +34,7 @@ import com.lowagie.filmfestival.PojoToElementFactory;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -95,7 +96,9 @@ public class Listing_05_19_MovieHistory2 {
                 // chapter
                 firstTitle = new Div().add(new Paragraph(EPOCH[epoch]).setFont(bold).setFontSize(24));
                 firstTitle.setNextRenderer(new SectionRenderer(firstTitle, 1));
-                firstTitle.setProperty(Property.DESTINATION, EPOCH[epoch]);
+                Set<Object> destinations = new HashSet<>();
+                destinations.add(EPOCH[epoch]);
+                firstTitle.setProperty(Property.DESTINATION, destinations);
                 firstLevel = rootOutLine.addOutline(EPOCH[epoch]);
                 firstLevel.addDestination(PdfDestination.makeDestination(new PdfString(EPOCH[epoch])));
             }
@@ -105,7 +108,9 @@ public class Listing_05_19_MovieHistory2 {
                 // section
                 secondTitle = new Div().add(new Paragraph(
                         String.format("The year %d", movie.getYear())).setFont(font).setFontSize(18));
-                secondTitle.setProperty(Property.DESTINATION, String.valueOf(movie.getYear()));
+                Set<Object> destinations = new HashSet<>();
+                destinations.add(String.valueOf(movie.getYear()));
+                secondTitle.setProperty(Property.DESTINATION, destinations);
                 secondTitle.setNextRenderer(new SectionRenderer(secondTitle, 2));
                 secondLevel = firstLevel.addOutline(String.valueOf(movie.getYear()));
                 secondLevel.addDestination(PdfDestination.makeDestination(new PdfString(String.valueOf(movie.getYear()))));
@@ -119,7 +124,9 @@ public class Listing_05_19_MovieHistory2 {
             // subsection
             thirdTitle = new Div().add(new Paragraph(movie.getMovieTitle()).setFont(font).setFontSize(14).setMarginLeft(20));
             thirdTitle.setNextRenderer(new SectionRenderer(thirdTitle, 3));
-            thirdTitle.setProperty(Property.DESTINATION, movie.getMovieTitle());
+            Set<Object> destinations = new HashSet<>();
+            destinations.add(movie.getMovieTitle());
+            thirdTitle.setProperty(Property.DESTINATION, destinations);
             thirdLevel = secondLevel.addOutline(movie.getMovieTitle());
             thirdLevel.addDestination(PdfDestination.makeDestination(new PdfString(movie.getMovieTitle())));
 

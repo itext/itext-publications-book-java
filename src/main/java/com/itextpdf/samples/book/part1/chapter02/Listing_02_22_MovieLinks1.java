@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Listing_02_22_MovieLinks1 {
     public static final String DEST = "./target/book/part1/chapter02/Listing_02_22_MovieLinks1.pdf";
@@ -53,7 +55,9 @@ public class Listing_02_22_MovieLinks1 {
         while (rs.next()) {
             Paragraph anchor = new Paragraph(rs.getString("country"));
             anchor.setFont(bold);
-            anchor.setProperty(Property.DESTINATION, rs.getString("country_id"));
+            Set<Object> destinations = new HashSet<>();
+            destinations.add(rs.getString("country_id"));
+            anchor.setProperty(Property.DESTINATION, destinations);
 
             doc.add(anchor);
             // loop over the movies
