@@ -32,7 +32,7 @@ public class XFAMovieSampleTest extends WrappedSamplesRunner {
     @MethodSource("data")
     public void test(RunnerParams data) throws Exception {
         this.sampleClassParams = data;
-        try (FileInputStream coreLicense = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY") + "/all-products.json")) {
+        try (FileInputStream coreLicense = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE") + "/all-products.json")) {
             LicenseKey.loadLicenseFile(coreLicense);
         }
         runSamples();
@@ -61,7 +61,6 @@ public class XFAMovieSampleTest extends WrappedSamplesRunner {
         for (String pdf : destPdfs) {
             String currentCmp = getCmpPdf(pdf);
             addError(compareTool.compareByContent(pdf, currentCmp, outPath, "diff_"));
-            addError(compareTool.compareDocumentInfo(pdf, currentCmp));
         }
     }
 

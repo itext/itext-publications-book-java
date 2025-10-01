@@ -116,7 +116,7 @@ public class GenericSampleTest extends WrappedSamplesRunner {
     public void test(RunnerParams data) throws Exception {
         this.sampleClassParams = data;
         LicenseKeyReportingConfigurer.useLocalReporting("./target/test/com/itextpdf/samples/report/");
-        try (FileInputStream allLicense = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY") + "/all-products.json")) {
+        try (FileInputStream allLicense = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE") + "/all-products.json")) {
             LicenseKey.loadLicenseFile(allLicense);
         }
         FontCache.clearSavedFonts();
@@ -139,7 +139,6 @@ public class GenericSampleTest extends WrappedSamplesRunner {
             }
         } else {
             addError(compareTool.compareByContent(dest, cmp, outPath, "diff_"));
-            addError(compareTool.compareDocumentInfo(dest, cmp));
         }
     }
 

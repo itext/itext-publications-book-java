@@ -40,7 +40,7 @@ public class Listing_11_13_Diacritics1 {
 
     protected void manipulatePdf(String dest) throws IOException {
         //Load the license file to use advanced typography features (Thai script)
-        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE")
                 + "/itextkey-typography.json")) {
             LicenseKey.loadLicenseFile(license);
         }

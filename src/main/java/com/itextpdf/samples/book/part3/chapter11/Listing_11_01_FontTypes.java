@@ -43,7 +43,7 @@ public class Listing_11_01_FontTypes {
     public void manipulatePdf(String dest) throws Exception {
         // License file is loaded because open type font is used and typography module is in classpath:
         // typography module is utilized and requires license.
-        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE")
                 + "/itextkey-typography.json")) {
             LicenseKey.loadLicenseFile(license);
         }

@@ -28,7 +28,7 @@ public class Listing_14_10_TextMethods {
 
     public void manipulatePdf(String dest) throws IOException {
         //Load the license file to use advanced typography features
-        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE")
                 + "/itextkey-typography.json")) {
             LicenseKey.loadLicenseFile(license);
         }

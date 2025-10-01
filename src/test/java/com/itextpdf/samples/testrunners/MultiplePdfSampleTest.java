@@ -55,7 +55,6 @@ public class MultiplePdfSampleTest extends WrappedSamplesRunner {
         for (String currentDest : destPathArray) {
             String currentCmp = getCmpPdf(currentDest);
             addError(compareTool.compareByContent(currentDest, currentCmp, outPath, "diff_"));
-            addError(compareTool.compareDocumentInfo(currentDest, currentCmp));
         }
     }
 

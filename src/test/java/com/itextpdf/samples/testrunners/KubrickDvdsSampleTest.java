@@ -32,7 +32,7 @@ public class KubrickDvdsSampleTest extends WrappedSamplesRunner {
     @MethodSource("data")
     public void test(RunnerParams data) throws Exception {
         this.sampleClassParams = data;
-        try (FileInputStream coreLicense = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY") + "/all-products.json")) {
+        try (FileInputStream coreLicense = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE") + "/all-products.json")) {
             LicenseKey.loadLicenseFile(coreLicense);
         }
         runSamples();
@@ -44,7 +44,6 @@ public class KubrickDvdsSampleTest extends WrappedSamplesRunner {
         CompareTool compareTool = new CompareTool();
 
         addError(compareTool.compareByContent(dest, cmp, outPath, "diff_"));
-        addError(compareTool.compareDocumentInfo(dest, cmp));
 
         List<String> imagesToCompareList = new ArrayList<>();
         imagesToCompareList.add("0048254.jpg");

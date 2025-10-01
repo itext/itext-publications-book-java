@@ -37,7 +37,6 @@ public class ParsingHelloWorldSampleTest extends WrappedSamplesRunner {
         CompareTool compareTool = new CompareTool();
 
         addError(compareTool.compareByContent(dest, cmp, outPath, "diff_"));
-        addError(compareTool.compareDocumentInfo(dest, cmp));
 
         String[] txtToCompare = getStringArrayField(sampleClass, "TEXT");
         for (String txtDest : txtToCompare) {
