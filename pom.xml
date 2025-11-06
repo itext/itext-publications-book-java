@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.itextpdf.samples</groupId>
   <artifactId>book</artifactId>
-  <version>9.4.0-SNAPSHOT</version>
+  <version>9.4.0</version>
   <name>iText Publications: iText in Action</name>
   <url>https://itextpdf.com/</url>
   <properties>
@@ -14,14 +14,14 @@
     <jacoco.version>0.8.3</jacoco.version>
     <java.version>1.8</java.version>
     <javadoc.version>2.10.3</javadoc.version>
-    <licensekey.version>4.2.4-SNAPSHOT</licensekey.version>
+    <licensekey.version>4.2.4</licensekey.version>
     <pitest.version>1.4.9</pitest.version>
     <pmd.version>3.5</pmd.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <spotbugs.version>3.1.11</spotbugs.version>
     <surefire.version>3.2.5</surefire.version>
-    <typography.version>5.0.4-SNAPSHOT</typography.version>
+    <typography.version>5.0.4</typography.version>
     <hsqldb.version>2.7.2</hsqldb.version>
   </properties>
   <dependencies>
