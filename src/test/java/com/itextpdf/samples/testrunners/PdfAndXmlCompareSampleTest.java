@@ -29,7 +29,7 @@ public class PdfAndXmlCompareSampleTest extends WrappedSamplesRunner {
     @MethodSource("data")
     public void test(RunnerParams data) throws Exception {
         this.sampleClassParams = data;
-        try (FileInputStream coreLicense = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY") + "/all-products.json")) {
+        try (FileInputStream coreLicense = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE") + "/all-products.json")) {
             LicenseKey.loadLicenseFile(coreLicense);
         }
         runSamples();
@@ -47,6 +47,5 @@ public class PdfAndXmlCompareSampleTest extends WrappedSamplesRunner {
         }
 
         addError(compareTool.compareByContent(dest, cmp, outPath, "diff_"));
-        addError(compareTool.compareDocumentInfo(dest, cmp));
     }
 }

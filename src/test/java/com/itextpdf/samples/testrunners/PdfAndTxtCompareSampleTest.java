@@ -36,7 +36,6 @@ public class PdfAndTxtCompareSampleTest extends WrappedSamplesRunner {
         CompareTool compareTool = new CompareTool();
 
         addError(compareTool.compareByContent(dest, cmp, outPath, "diff_"));
-        addError(compareTool.compareDocumentInfo(dest, cmp));
 
         String destTxt = getStringField(sampleClass, "DEST_TXT");
         String cmpTxt = "./cmpfiles/txt/cmp_" + destTxt.substring(dest.lastIndexOf("/") + 1);

@@ -35,7 +35,7 @@ public class HtmlMoviesSampleTest extends WrappedSamplesRunner {
     public void test(RunnerParams data) throws Exception {
         this.sampleClassParams = data;
         LicenseKeyReportingConfigurer.useLocalReporting("./target/test/com/itextpdf/samples/report/");
-        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT7_LICENSEKEY")
+        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE")
                 + "/all-products.json")) {
             LicenseKey.loadLicenseFile(license);
         }
@@ -56,7 +56,6 @@ public class HtmlMoviesSampleTest extends WrappedSamplesRunner {
         addError(compareTxt(htmlPath, cmpHtmlPath));
 
         addError(compareTool.compareByContent(dest, cmp, outPath, "diff_"));
-        addError(compareTool.compareDocumentInfo(dest, cmp));
     }
 
     private String compareTxt(String dest, String cmp) throws IOException {

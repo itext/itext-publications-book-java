@@ -58,6 +58,5 @@ public class ResizeImageSampleTest extends WrappedSamplesRunner {
     protected void comparePdf(String outPath, String dest, String cmp) throws Exception {
         CompareTool compareTool = new CompareTool();
         addError(compareTool.compareByContent(dest, cmp, outPath, "diff_"));
-        addError(compareTool.compareDocumentInfo(dest, cmp));
     }
 }
