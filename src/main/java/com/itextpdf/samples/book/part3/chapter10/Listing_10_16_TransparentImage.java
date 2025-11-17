@@ -8,6 +8,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Listing_10_16_TransparentImage {
@@ -22,6 +23,9 @@ public class Listing_10_16_TransparentImage {
             = "./src/main/resources/img/logo.gif";
 
     public static void main(String args[]) throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+
         new Listing_10_16_TransparentImage().manipulatePdf(DEST);
     }
 
@@ -35,12 +39,12 @@ public class Listing_10_16_TransparentImage {
         img2.setFixedPosition(0, 260);
         doc.add(img2);
         ImageData img3basics = ImageDataFactory.create(RESOURCE3);
-        img3basics.setTransparency(new int[]{0x00, 0x10});
+        img3basics.setTransparency(new int[] {0x00, 0x10});
         Image img3 = new Image(img3basics);
         img3.setFixedPosition(0, 0);
         doc.add(img3);
         ImageData img4basics = ImageDataFactory.create(RESOURCE4);
-        img4basics.setTransparency(new int[]{0xF0, 0xFF});
+        img4basics.setTransparency(new int[] {0xF0, 0xFF});
         Image img4 = new Image(img4basics);
         img4.setFixedPosition(50, 50);
         doc.add(img4);
