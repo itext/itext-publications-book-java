@@ -10,6 +10,7 @@ import com.itextpdf.layout.Canvas;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.VerticalAlignment;
 import com.itextpdf.licensing.base.LicenseKey;
+import com.itextpdf.samples.util.LicenseUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,8 +29,8 @@ public class Listing_14_10_TextMethods {
 
     public void manipulatePdf(String dest) throws IOException {
         //Load the license file to use advanced typography features
-        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE")
-                + "/itextkey-typography.json")) {
+        String licensePath = LicenseUtil.getPathToLicenseFileWithITextCoreAndPdfCalligraphProducts();
+        try (FileInputStream license = new FileInputStream(licensePath)) {
             LicenseKey.loadLicenseFile(license);
         }
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

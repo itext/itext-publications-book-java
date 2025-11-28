@@ -12,6 +12,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 import com.itextpdf.licensing.base.LicenseKey;
 
+import com.itextpdf.samples.util.LicenseUtil;
 import com.lowagie.database.DatabaseConnection;
 import com.lowagie.database.HsqldbConnection;
 import com.lowagie.filmfestival.Country;
@@ -51,8 +52,8 @@ public class Listing_09_15_HtmlMovies1 {
             throws SQLException, IOException, ParserConfigurationException, SAXException {
         // License file is loaded because open type font is used and typography module is in classpath:
         // typography module is utilized and requires license.
-        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE")
-                + "/itextkey-typography.json")) {
+        String licensePath = LicenseUtil.getPathToLicenseFileWithITextCoreAndPdfCalligraphProducts();
+        try (FileInputStream license = new FileInputStream(licensePath)) {
             LicenseKey.loadLicenseFile(license);
         }
 

@@ -12,6 +12,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.properties.BaseDirection;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.licensing.base.LicenseKey;
+import com.itextpdf.samples.util.LicenseUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,8 +46,8 @@ public class Listing_11_18_Ligatures2 {
 
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
-        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE")
-                + "/itextkey-typography.json")) {
+        String licensePath = LicenseUtil.getPathToLicenseFileWithITextCoreAndPdfCalligraphProducts();
+        try (FileInputStream license = new FileInputStream(licensePath)) {
             LicenseKey.loadLicenseFile(license);
         }
         //Initialize document
