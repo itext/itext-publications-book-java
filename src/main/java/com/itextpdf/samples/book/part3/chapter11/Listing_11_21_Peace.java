@@ -12,6 +12,8 @@ import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.licensing.base.LicenseKey;
 
 import java.io.File;
+
+import com.itextpdf.samples.util.LicenseUtil;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.helpers.DefaultHandler;
@@ -44,8 +46,8 @@ public class Listing_11_21_Peace {
 
     protected void manipulatePdf(String dest) throws Exception {
         //Load the license file to use advanced typography features
-        try (FileInputStream license = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE")
-                + "/itextkey-typography.json")) {
+        String licensePath = LicenseUtil.getPathToLicenseFileWithITextCoreAndPdfCalligraphProducts();
+        try (FileInputStream license = new FileInputStream(licensePath)) {
             LicenseKey.loadLicenseFile(license);
         }
         //Initialize document

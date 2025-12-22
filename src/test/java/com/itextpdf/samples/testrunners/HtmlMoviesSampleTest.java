@@ -36,7 +36,7 @@ public class HtmlMoviesSampleTest extends WrappedSamplesRunner {
         this.sampleClassParams = data;
         LicenseKeyReportingConfigurer.useLocalReporting("./target/test/com/itextpdf/samples/report/");
         try (FileInputStream license = new FileInputStream(System.getenv("ITEXT_LICENSE_FILE_LOCAL_STORAGE")
-                + "/all-products.json")) {
+                + "/dev_all_products.json")) {
             LicenseKey.loadLicenseFile(license);
         }
         FontCache.clearSavedFonts();
