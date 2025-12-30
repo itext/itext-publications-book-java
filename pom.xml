@@ -19,7 +19,7 @@
     <pmd.version>3.5</pmd.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <spotbugs.version>3.1.11</spotbugs.version>
+    <spotbugs.version>4.8.6.6</spotbugs.version>
     <surefire.version>3.2.5</surefire.version>
     <typography.version>5.0.6-SNAPSHOT</typography.version>
     <hsqldb.version>2.7.2</hsqldb.version>
