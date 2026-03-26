@@ -83,13 +83,15 @@ public class Listing_07_14_CreateOutlineTree {
         List<PdfOutline> outlines = pdfDoc.getOutlines(false).getAllChildren();
         for (PdfOutline outline : outlines) {
             Element el = doc.createElement("Title");
+            Element text = doc.createElement("Text");
             Element el2 = doc.createElement("Link");
             Element el3 = doc.createElement("Info");
-            el.setTextContent(outline.getTitle());
+            text.setTextContent(outline.getTitle());
             el.setAttribute("ElementsNumber", outline.getContent().get(PdfName.Parent).toString().substring(47, 55));
             el2.setTextContent(outline.getAllChildren().get(0).getTitle());
             el3.setTextContent(outline.getAllChildren().get(1).getTitle());
             root.appendChild(el);
+            el.appendChild(text);
             el.appendChild(el2);
             el.appendChild(el3);
         }
