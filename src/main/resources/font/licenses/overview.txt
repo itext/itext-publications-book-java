@@ -36,7 +36,7 @@ OpenSans-ExtraBoldItalic.ttf
 
 Noto is Google’s font family that aims to support all the world’s languages.
 Its design goal is to achieve visual harmonization across languages.
-Noto fonts are under Apache License 2.0.
+Noto fonts are under SIL Open Font License, Version 1.1: OFL.txt.
 See https://www.google.com/get/noto/#/
 Noto's goal is providing a beautiful reading experience for everyone and for all languages. With visual harmony when multiple languages share a page. With multiple styles and weights. Freely available to all.
 Currently, Noto covers all major languages of the world and many others, including European,
