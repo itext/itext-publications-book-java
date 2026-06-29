@@ -12,7 +12,7 @@
     <javadoc.version>2.10.3</javadoc.version>
     <licensekey.version>4.2.7-SNAPSHOT</licensekey.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <typography.version>5.0.7-SNAPSHOT</typography.version>
+    <typography.version>5.1.0-SNAPSHOT</typography.version>
     <hsqldb.version>2.7.2</hsqldb.version>
   </properties>
   <dependencies>
