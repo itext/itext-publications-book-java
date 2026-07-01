@@ -6,10 +6,12 @@ import com.itextpdf.test.WrappedSamplesRunner;
 
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+@Tag("SampleTest")
 public class KubrickDocumentarySampleTest extends WrappedSamplesRunner {
     public static Collection<Object[]> data() {
         RunnerSearchConfig searchConfig = new RunnerSearchConfig();
