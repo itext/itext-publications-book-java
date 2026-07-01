@@ -3,16 +3,16 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.itextpdf.samples</groupId>
   <artifactId>book</artifactId>
-  <version>9.7.0-SNAPSHOT</version>
+  <version>9.7.0</version>
   <name>iText Publications: iText in Action</name>
   <url>https://itextpdf.com/</url>
   <properties>
     <failsafe.version>3.0.0-M3</failsafe.version>
     <java.version>1.8</java.version>
     <javadoc.version>2.10.3</javadoc.version>
-    <licensekey.version>4.2.7-SNAPSHOT</licensekey.version>
+    <licensekey.version>4.2.7</licensekey.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <typography.version>5.1.0-SNAPSHOT</typography.version>
+    <typography.version>5.1.0</typography.version>
     <hsqldb.version>2.7.2</hsqldb.version>
   </properties>
   <dependencies>
