@@ -24,6 +24,7 @@ public class Listing_05_17_Hero2 extends Listing_05_15_Hero1 {
         new Listing_05_17_Hero2().manipulatePdf(DEST);
     }
 
+    @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         float w = PageSize.A4.getWidth();
         float h = PageSize.A4.getHeight();

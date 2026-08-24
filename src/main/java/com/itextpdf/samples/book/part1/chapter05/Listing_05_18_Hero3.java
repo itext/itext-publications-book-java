@@ -22,6 +22,7 @@ public class Listing_05_18_Hero3 extends Listing_05_15_Hero1 {
         new Listing_05_18_Hero3().manipulatePdf(DEST);
     }
 
+    @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc);

@@ -38,6 +38,7 @@ public class Listing_03_29_MovieTemplates extends Listing_03_15_MovieCalendar {
         new Listing_03_29_MovieTemplates().manipulatePdf(DEST);
     }
 
+    @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         //Initialize doc
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

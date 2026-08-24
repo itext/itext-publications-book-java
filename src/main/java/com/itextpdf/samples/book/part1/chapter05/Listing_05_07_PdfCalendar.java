@@ -55,11 +55,13 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         new Listing_05_07_PdfCalendar().manipulatePdf(DEST);
     }
 
+    @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         Locale locale = new Locale(LANGUAGE);
         createPdf(dest, locale, YEAR);
     }
 
+    @Override
     public void createPdf(String dest, Locale locale, int year) throws IOException {
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));
         Document doc = new Document(pdfDoc, new PageSize(PageSize.A4).rotate());
@@ -117,6 +119,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
         doc.close();
     }
 
+    @Override
     public void drawImageAndText(Calendar calendar, Document doc) throws IOException {
         // get the image
         Image img = new Image(ImageDataFactory.create(String.format(RESOURCE, calendar)));
@@ -148,6 +151,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
      * @param locale   a locale
      * @return a PdfPCell with rowspan 7, containing the name of the month
      */
+    @Override
     public Cell getMonthCell(Calendar calendar, Locale locale) {
         Cell cell = new Cell(1, 7);
         cell.setNextRenderer(new RoundedCellRenderer(cell, cmykYellow, false));
@@ -164,6 +168,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
      * @param locale   a locale
      * @return a PdfPCell
      */
+    @Override
     public Cell getDayCell(Calendar calendar, Locale locale) {
         Cell cell = new Cell();
         cell.setPadding(10);
@@ -194,6 +199,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
      * @param calendar a date
      * @return true for Sundays
      */
+    @Override
     public boolean isSunday(Calendar calendar) {
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
             return true;
@@ -207,6 +213,7 @@ public class Listing_05_07_PdfCalendar extends Listing_04_21_PdfCalendar {
      * @param calendar a date
      * @return true for holidays
      */
+    @Override
     public boolean isSpecialDay(Calendar calendar) {
         if (specialDays.containsKey(String.format("%1$tm%1$td", calendar)))
             return true;

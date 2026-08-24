@@ -40,6 +40,7 @@ public class Listing_07_25_TimetableAnnotations3 extends Listing_07_21_Timetable
         application.afterManipulatePdf();
     }
 
+    @Override
     public void manipulatePdf(String dest) throws IOException, SQLException {
         // Listing_03_29_MovieTemplates.main(arguments);
         // Create a database connection

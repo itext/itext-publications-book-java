@@ -95,6 +95,7 @@ public class Listing_11_12_SayPeace {
          * @see org.xml.sax.ContentHandler#startElement(java.lang.String,
          *      java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
+        @Override
         public void startElement(String uri, String localName, String qName,
                                  Attributes attributes) {
             if ("message".equals(qName)) {
@@ -118,6 +119,7 @@ public class Listing_11_12_SayPeace {
          * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
          *      java.lang.String, java.lang.String)
          */
+        @Override
         public void endElement(String uri, String localName, String qName) {
             if ("big".equals(qName)) {
                 String txt = strip(buf);
@@ -153,6 +155,7 @@ public class Listing_11_12_SayPeace {
         /**
          * @see org.xml.sax.ContentHandler#characters(char[], int, int)
          */
+        @Override
         public void characters(char[] ch, int start, int length) {
             buf.append(ch, start, length);
         }
