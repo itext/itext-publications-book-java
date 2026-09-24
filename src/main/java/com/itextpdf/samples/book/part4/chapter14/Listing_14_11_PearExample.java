@@ -34,6 +34,7 @@ public class Listing_14_11_PearExample extends JPanel {
         st2 = new Area(stem);
     }
 
+    @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         double ew = 75;
@@ -85,6 +86,7 @@ public class Listing_14_11_PearExample extends JPanel {
         f.getContentPane().add( pear, "Center" );
 
         f.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }

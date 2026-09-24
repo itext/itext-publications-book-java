@@ -158,6 +158,7 @@ public class Listing_09_15_HtmlMovies1 {
          * @see org.xml.sax.ContentHandler#startElement(java.lang.String,
          * java.lang.String, java.lang.String, org.xml.sax.Attributes)
          */
+        @Override
         public void startElement(String uri, String localName, String qName,
                                  Attributes attributes) {
             if ("i".equals(qName)) {
@@ -171,6 +172,7 @@ public class Listing_09_15_HtmlMovies1 {
          * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
          * java.lang.String, java.lang.String)
          */
+        @Override
         public void endElement(String uri, String localName, String qName) {
             if ("span".equals(qName)) {
                 if (!paragraph.isEmpty()) {
@@ -194,6 +196,7 @@ public class Listing_09_15_HtmlMovies1 {
         /**
          * @see org.xml.sax.ContentHandler#characters(char[], int, int)
          */
+        @Override
         public void characters(char[] ch, int start, int length) {
             Text text = new Text(strip(new StringBuffer().append(ch, start, length)));
             if (isItalic) {

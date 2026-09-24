@@ -55,6 +55,7 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
     /**
      * @see org.xml.sax.ContentHandler#characters(char[], int, int)
      */
+    @Override
     public void characters(char[] ch, int start, int length) {
         String content = new String(ch, start, length);
         if (content.trim().length() == 0)
@@ -70,6 +71,7 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
      * @see org.xml.sax.ContentHandler#startElement(java.lang.String,
      * java.lang.String, java.lang.String, org.xml.sax.Attributes)
      */
+    @Override
     public void startElement(String uri, String localName, String qName,
                              Attributes attributes) {
         try {
@@ -98,6 +100,7 @@ public class Listing_09_19_XmlHandler extends DefaultHandler {
      * @see org.xml.sax.ContentHandler#endElement(java.lang.String,
      * java.lang.String, java.lang.String)
      */
+    @Override
     public void endElement(String uri, String localName, String qName) {
         try {
             updateStack();

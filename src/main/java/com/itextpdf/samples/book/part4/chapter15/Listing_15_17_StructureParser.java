@@ -24,6 +24,7 @@ public class Listing_15_17_StructureParser extends DefaultHandler {
      * @see org.xml.sax.ContentHandler#startElement(java.lang.String,
      * java.lang.String, java.lang.String, org.xml.sax.Attributes)
      */
+    @Override
     public void startElement(String uri, String localName, String qName,
             Attributes attributes) {
         if ("chapter".equals(qName)) {

@@ -52,6 +52,7 @@ public class Listing_14_22_TextExample4 {
         f.getContentPane().add( createTextPane(), "Center" );
 
         f.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }

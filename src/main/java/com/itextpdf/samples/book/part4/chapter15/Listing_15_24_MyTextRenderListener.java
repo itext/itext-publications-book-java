@@ -15,6 +15,7 @@ public class Listing_15_24_MyTextRenderListener implements IEventListener {
         this.out = out;
     }
 
+    @Override
     public void eventOccurred(IEventData data, EventType type) {
         switch (type) {
             case BEGIN_TEXT:
@@ -36,6 +37,7 @@ public class Listing_15_24_MyTextRenderListener implements IEventListener {
         }
     }
 
+    @Override
     public Set<EventType> getSupportedEvents() {
         return null;
     }

@@ -28,12 +28,14 @@ public class Listing_06_25_DataSheets2 extends Listing_06_24_DataSheets1 {
         new Listing_06_25_DataSheets2().manipulatePdf(DEST);
     }
 
+    @Override
     public void manipulatePdf(String dest) throws SQLException, IOException {
         PdfDocument pdfDocResult = new PdfDocument(new PdfWriter(dest));
         pdfDocResult.initializeOutlines();
         addDataSheet(pdfDocResult);
     }
 
+    @Override
     public void addDataSheet(PdfDocument pdfDocResult) throws IOException, SQLException {
         DatabaseConnection connection = new HsqldbConnection("filmfestival");
         List<Movie> movies = PojoFactory.getMovies(connection);

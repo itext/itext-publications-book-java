@@ -27,6 +27,7 @@ public class MovieComparator implements Comparator<Movie> {
     /**
      * @see Comparator#compare(Object, Object)
      */
+    @Override
     public int compare(Movie m1, Movie m2) {
         if (type == BY_YEAR) {
             int c = m1.getYear() - m2.getYear();

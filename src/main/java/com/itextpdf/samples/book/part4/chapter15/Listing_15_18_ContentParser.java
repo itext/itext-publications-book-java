@@ -29,6 +29,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
                 PdfEncodings.WINANSI, EmbeddingStrategy.PREFER_EMBEDDED);
     }
 
+    @Override
     public void characters(char[] ch, int start, int length) {
         for (int i = start; i < start + length; i++) {
             if (ch[i] == '\n')
@@ -38,6 +39,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
         }
     }
 
+    @Override
     public void startElement(String uri, String localName, String qName,
                              Attributes attributes) {
         if ("chapter".equals(qName)) {
@@ -47,6 +49,7 @@ public class Listing_15_18_ContentParser extends DefaultHandler {
         roles.remove(0);
     }
 
+    @Override
     public void endElement(String uri, String localName, String qName) {
         if ("chapter".equals(qName)) {
             return;

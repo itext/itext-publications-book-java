@@ -46,6 +46,7 @@ public class Listing_03_05_MovieTimeBlocks extends Listing_03_03_MovieTimeTable 
         new Listing_03_05_MovieTimeBlocks().manipulatePdf(DEST);
     }
 
+    @Override
     protected void manipulatePdf(String dest) throws Exception {
         //Initialize document
         PdfDocument pdfDoc = new PdfDocument(new PdfWriter(dest));

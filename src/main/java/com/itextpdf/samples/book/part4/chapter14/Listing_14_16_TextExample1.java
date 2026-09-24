@@ -21,6 +21,7 @@ public class Listing_14_16_TextExample1 extends JPanel {
         akira.addAttribute(TextAttribute.FONT, new Font("MS PGothic", Font.PLAIN, 12), 24, 28);
     }
 
+    @Override
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawString(akira.getIterator(), 10, 16);
@@ -31,6 +32,7 @@ public class Listing_14_16_TextExample1 extends JPanel {
         JFrame f = new JFrame("Kurosawa");
         f.getContentPane().add( Kurosawa, "Center" );
         f.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }

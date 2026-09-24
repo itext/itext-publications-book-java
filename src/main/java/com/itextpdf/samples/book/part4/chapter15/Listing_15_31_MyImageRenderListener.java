@@ -21,6 +21,7 @@ public class Listing_15_31_MyImageRenderListener implements IEventListener {
         this.path = path;
     }
 
+    @Override
     public void eventOccurred(IEventData data, EventType type) {
         switch (type) {
             case RENDER_IMAGE:
@@ -49,6 +50,7 @@ public class Listing_15_31_MyImageRenderListener implements IEventListener {
         }
     }
 
+    @Override
     public Set<EventType> getSupportedEvents() {
         return null;
     }

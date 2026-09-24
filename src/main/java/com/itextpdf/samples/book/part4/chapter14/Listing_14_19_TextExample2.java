@@ -28,6 +28,7 @@ public class Listing_14_19_TextExample2 extends JPanel {
         akira.addAttribute(TextAttribute.FONT, new Font("Arial Unicode MS", Font.PLAIN, 12));
     }
 
+    @Override
     public void paint(Graphics g) {
         LineBreakMeasurer lineMeasurer = null;
         int paragraphStart = 0;
@@ -62,6 +63,7 @@ public class Listing_14_19_TextExample2 extends JPanel {
         f.getContentPane().add( Kurosawa, "Center" );
 
         f.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
